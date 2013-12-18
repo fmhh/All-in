@@ -18,23 +18,24 @@ It supports SOAP as well as RESTful (XML/JSON) interface.
 
 ##### Custom Properties:
 
-| Property Variable | Default Value |
+| Property Variable | Description |
 | :------------- | :------------- |
-${#TestSuite#AP_ID}|cartel.ch
-${#TestSuite#STATIC_ID}|:kp2-cartel.ch
-${#TestSuite#ONDEMAND_QUALIFIED}|:OnDemand-Qualified
-${#TestSuite#ONDEMAND_ADVANCED}|:OnDemand-Advanced
-${#TestSuite#MSISDN}|41793083455
-${#TestSuite#SHA224}|http://www.w3.org/2001/04/xmldsig-more#sha224
-${#TestSuite#SHA256}|http://www.w3.org/2001/04/xmlenc#sha256
-${#TestSuite#SHA384}|http://www.w3.org/2001/04/xmldsig-more#sha384
-${#TestSuite#SHA512}|http://www.w3.org/2001/04/xmlenc#sha512
-${#TestSuite#DIGEST_224}|YyNmU8FIXM0wNgdcmZyJIW1S3f8KbOcN8Ulgzw==
-${#TestSuite#DIGEST_256}|1WON4H3Hrinf7LYRNmhV6Uf7apdUvuYEsmhxAklxumA=
-${#TestSuite#DIGEST_384}|be5JJtVMoZqkJ3isZaBBpwXXQtV4Opqf3KtYcHacCh7fVZ1bS8VSnMnK3z9mIy1R
-${#TestSuite#DIGEST_512}|FsntfB/ATHb1O7HlxpB4l9L+1vkgCOki3omkM6jJVnxXDRRgd1uZ7S/GkLPkFEUJ+SDllcWWjDNJHJcnkritGg==
-${#TestSuite#tmp_ResponseID}|c086e98c-5951-46ad-ac2a-7f21b8d7be88
-
+${#TestSuite#AP_ID}|ClaimedIdentity Customer ID
+${#TestSuite#STATIC_ID}|ClaimedIdentity Key ID for Static Keys
+${#TestSuite#ONDEMAND_QUALIFIED}|ClaimedIdentity Key ID for OnDemand Keys and enforced MID Auth
+${#TestSuite#ONDEMAND_ADVANCED}|ClaimedIdentity Key ID for OnDemand Keys and optional MID Auth
+${#TestSuite#MSISDN}|The Mobile Subscriber Number
+${#TestSuite#SHA224}|URI For SHA-224 Algorithm
+${#TestSuite#SHA256}|URI For SHA-256 Algorithm
+${#TestSuite#SHA384}|URI For SHA-384 Algorithm
+${#TestSuite#SHA512}|URI For SHA-512 Algorithm
+${#TestSuite#DIGEST_224}|Base64 encoded binary hash (SHA-224) value of any document
+${#TestSuite#DIGEST_256}|Base64 encoded binary hash (SHA-256) value of any document
+${#TestSuite#DIGEST_384}|Base64 encoded binary hash (SHA-384) value of any document
+${#TestSuite#DIGEST_512}|Base64 encoded binary hash (SHA-512) value of any document
+${#TestSuite#tmp_ResponseID}|Temporary Variable
+${#TestSuite#tmp_RequestID_RawReq}|Temporary Variable
+${#TestSuite#tmp_RequestID_Resp}|Temporary Variable
 
 ### Known issues
 
