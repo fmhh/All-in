@@ -51,12 +51,12 @@ if [ $# -lt 4 ]; then                           # Parse the rest of the argument
   echo "  dn        - distinguished name in the ondemand certificate"
   echo "  <msisdn>  - optional Mobile ID step-up"
   echo "  <msg>     - optional Mobile ID message"
-  echo "  <lang>    - optional Mobile ID language element (EN, DE, FR, IT)"
+  echo "  <lang>    - optional Mobile ID language element (en, de, fr, it)"
   echo
   echo "  Example $0 -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH'"
   echo "          $0 -v -t JSON GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH'"
   echo "          $0 -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH' +41792080350"
-  echo "          $0 -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' EN"
+  echo "          $0 -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en"
   echo 
   exit 1
 fi
