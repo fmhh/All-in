@@ -3547,7 +3547,7 @@
     <xs:attribute name="AttRefURI" type="xs:anyURI"/>
     <xs:attribute name="MimeType" type="xs:string" use="optional"/>
   </xs:complexType>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint></con:endpoints><con:resource name="/v1.0" path="/v1.0"><con:settings/><con:parameters/><con:resource name="/pending" path="/pending"><con:settings/><con:parameters><con:parameter><con:name>Accept</con:name><con:value/><con:style>HEADER</con:style><con:default/><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="POST" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xmlns:urn="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0">urn:PendingRequest</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xmlns:urn="urn:oasis:names:tc:dss:1.0:core:schema">urn:Response</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="XML Pending" mediaType="application/xml" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<ns3:PendingRequest Profile="urn:com:swisscom:dss:v1.0" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ns4="urn:com:swisscom:dss:1.0:schema" xmlns:ns3="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0">
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint></con:endpoints><con:resource name="/v1.0" path="/v1.0"><con:settings/><con:parameters/><con:resource name="/pending" path="/pending"><con:settings/><con:parameters><con:parameter><con:name>Accept</con:name><con:value/><con:style>HEADER</con:style><con:default/><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="POST" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xmlns:urn="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0">urn:PendingRequest</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xmlns:urn="urn:oasis:names:tc:dss:1.0:core:schema">urn:Response</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="XML Pending" mediaType="application/xml" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<ns3:PendingRequest Profile="urn:com:swisscom:dss:v1.0" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ns4="urn:com:swisscom:dss:1.0:schema" xmlns:ns3="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0">
     <OptionalInputs>
         <ClaimedIdentity>
             <Name>cartel.ch</Name>
@@ -3556,7 +3556,7 @@
     </OptionalInputs>
 </ns3:PendingRequest>
 
-]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>Accept</con:entry></con:parameterOrder></con:request><con:request name="JSON Pending" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
+]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>Accept</con:entry></con:parameterOrder></con:request><con:request name="JSON Pending" mediaType="application/json" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
   "async.PendingRequest": {
     "@Profile": "urn:com:swisscom:dss:v1.0",
     "dss.OptionalInputs": {
@@ -3566,7 +3566,7 @@
       "async.ResponseID": "969be0c4-a071-4e51-bde3-50cd4f443aa4"
     }
   }
-}</con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>Accept</con:entry></con:parameterOrder></con:request></con:method></con:resource><con:resource name="/sign" path="/sign"><con:settings/><con:parameters><con:parameter><con:name>Accept</con:name><con:value/><con:style>HEADER</con:style><con:default/><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="POST" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xmlns:urn="urn:oasis:names:tc:dss:1.0:core:schema">urn:SignRequest</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xmlns:urn="urn:oasis:names:tc:dss:1.0:core:schema">urn:Response</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="XML Timestamp [synch]" mediaType="application/xml" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<SignRequest xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
+}</con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>Accept</con:entry></con:parameterOrder></con:request></con:method></con:resource><con:resource name="/sign" path="/sign"><con:settings/><con:parameters><con:parameter><con:name>Accept</con:name><con:value/><con:style>HEADER</con:style><con:default/><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="POST" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xmlns:urn="urn:oasis:names:tc:dss:1.0:core:schema">urn:SignRequest</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xmlns:urn="urn:oasis:names:tc:dss:1.0:core:schema">urn:Response</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="XML Timestamp [synch]" mediaType="application/xml" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<SignRequest xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
 <OptionalInputs>
     <ClaimedIdentity>
         <Name>cartel.ch</Name>
@@ -3580,7 +3580,7 @@
         <dsig:DigestValue>GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA=</dsig:DigestValue>
     </DocumentHash>
 </InputDocuments>
-</SignRequest>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="XML Timestamp [asynch]" mediaType="application/xml" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<SignRequest xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
+</SignRequest>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="XML Timestamp [asynch]" mediaType="application/xml" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<SignRequest xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
 <OptionalInputs>
     <ClaimedIdentity>
         <Name>cartel.ch</Name>
@@ -3595,7 +3595,7 @@
         <dsig:DigestValue>GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA=</dsig:DigestValue>
     </DocumentHash>
 </InputDocuments>
-</SignRequest>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="JSON Timestamp [synch]" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
+</SignRequest>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="JSON Timestamp [synch]" mediaType="application/json" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
   "dss.SignRequest": {
     "@RequestID": "${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}",
     "@Profile": "urn:com:swisscom:dss:v1.0",
@@ -3615,7 +3615,7 @@
       }
     }
   }
-}</con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="JSON Timestamp [asynch]" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
+}</con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="JSON Timestamp [asynch]" mediaType="application/json" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
   "dss.SignRequest": {
     "@RequestID": "${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}",
     "@Profile": "urn:com:swisscom:dss:v1.0",
@@ -3638,7 +3638,7 @@
       }
     }
   }
-}</con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:request></con:method></con:resource></con:resource></con:interface><con:testSuite name="Automatic Regression Test Suite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SOAP Timestamps" searchProperties="true" id="aed39093-604a-494a-bb0e-75ed51d729ab"><con:settings/><con:testStep type="request" name="TS Sha256 [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="TS Sha256 [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+}</con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:request></con:method></con:resource></con:resource></con:interface><con:testSuite name="Automatic Regression Test Suite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="01 SOAP Timestamps" searchProperties="true" id="aed39093-604a-494a-bb0e-75ed51d729ab" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="request" name="TS Sha256 [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="TS Sha256 [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
    <soap:Body>
       <ais:sign>
          <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
@@ -3830,7 +3830,7 @@ declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
   <OptionalOutputs>
     <ns3:ResponseID>*</ns3:ResponseID>
   </OptionalOutputs>
-</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="transfer" name="Get ResponseID"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false"><con:name>ID</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>TS Batch [asyn]</con:sourceStep><con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="transfer" name="Get ResponseID 1"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false"><con:name>ID</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>TS Batch [asyn]</con:sourceStep><con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
 declare namespace ns1='urn:oasis:names:tc:dss:1.0:core:schema';
 declare namespace ns5='urn:com:swisscom:dss:1.0:schema';
 declare namespace ns4='http://service.ais.swisscom.com/';
@@ -3939,7 +3939,17 @@ declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
       </Other>
     </SignatureObject>
   </Response>
-</ns4:pendingResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SOAP Timestamps [Error]" searchProperties="true"><con:settings/><con:testStep type="request" name="TS WrongCust [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="TS WrongCust [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+</ns4:pendingResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="groovy" name="Groovy Jar Test" disabled="true"><con:settings/><con:config><script>// Import custom jar from &lt;soapui>/bin/ext
+import DecoderTest
+
+// Get Test Suite Property
+def msisdn = testRunner.testCase.testSuite.getPropertyValue("MSISDN");
+
+// Call custom jar method
+def name = new DecoderTest().getHello( msisdn );
+
+// Print the output of the custom jar
+log.info("$name");</script></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="02 SOAP Timestamps [Error]" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="request" name="TS WrongCust [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="TS WrongCust [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
    <soap:Body>
       <ais:sign>
          <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
@@ -4229,7 +4239,7 @@ declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
   <ResultMajor>urn:oasis:names:tc:dss:1.0:resultmajor:RequesterError</ResultMajor>
   <ResultMinor>urn:com:swisscom:dss:1.0:resultminor:UnexpectedData</ResultMinor>
   <ResultMessage xml:lang="en">More than one document has the same ID</ResultMessage>
-</Result>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="RESTful Timestamps" searchProperties="true" id="c1054c17-4bc7-42dd-9b43-b3bb7b27d0e2"><con:settings/><con:testStep type="restrequest" name="XML TS Sha256 [syn]"><con:settings/><con:config service="AIS RESTful" resourcePath="/DSS-Server/rs/v1.0/sign" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="XML TS Sha256 [syn]" mediaType="application/xml" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+</Result>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="03 RESTful Timestamps" searchProperties="true" id="c1054c17-4bc7-42dd-9b43-b3bb7b27d0e2" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="restrequest" name="XML TS Sha384 [syn]"><con:settings/><con:config service="AIS RESTful" resourcePath="/DSS-Server/rs/v1.0/sign" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="XML TS Sha384 [syn]" mediaType="application/xml" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
    <OptionalInputs>
       <ClaimedIdentity>
          <Name>${#TestSuite#AP_ID}</Name>
@@ -4239,8 +4249,8 @@ declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
    </OptionalInputs>
    <InputDocuments>
       <DocumentHash>
-         <dsig:DigestMethod Algorithm="${#TestSuite#SHA256}"/>
-         <dsig:DigestValue>${#TestSuite#DIGEST_256}</dsig:DigestValue>
+         <dsig:DigestMethod Algorithm="${#TestSuite#SHA384}"/>
+         <dsig:DigestValue>${#TestSuite#DIGEST_384}</dsig:DigestValue>
       </DocumentHash>
    </InputDocuments>
 </SignRequest>]]></con:request><con:assertion type="Valid HTTP Status Codes" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace ns1='urn:oasis:names:tc:dss:1.0:core:schema';
@@ -4256,7 +4266,7 @@ declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
       <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
     </Timestamp>
   </SignatureObject>
-</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="JSON TS Sha256 [syn]"><con:settings/><con:config service="AIS RESTful" methodName="POST" resourcePath="/DSS-Server/rs/v1.0/sign" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="JSON TS Sha256 [syn]" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="JSON TS Sha512 [syn]"><con:settings/><con:config service="AIS RESTful" methodName="POST" resourcePath="/DSS-Server/rs/v1.0/sign" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="JSON TS Sha512 [syn]" mediaType="application/json" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
   "dss.SignRequest": {
     "@RequestID": "${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}",
     "@Profile": "urn:com:swisscom:dss:v1.0",
@@ -4270,9 +4280,9 @@ declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
     "dss.InputDocuments": {
       "dss.DocumentHash": {
         "xmldsig.DigestMethod": {
-          "@Algorithm": "${#TestSuite#SHA256}"
+          "@Algorithm": "${#TestSuite#SHA512}"
         },
-        "xmldsig.DigestValue": "${#TestSuite#DIGEST_256}"
+        "xmldsig.DigestValue": "${#TestSuite#DIGEST_512}"
       }
     }
   }
@@ -4286,7 +4296,442 @@ declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
       <dss.RFC3161TimeStampToken>*</dss.RFC3161TimeStampToken>
     </dss.Timestamp>
   </dss.SignatureObject>
-</dss.SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SOAP Static" searchProperties="true" id="a6c6b5b7-ddeb-49d0-83cc-402213f514cb"><con:settings/><con:testStep type="request" name="Static [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="Static [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+</dss.SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="XML TS Batch [syn]"><con:settings/><con:config service="AIS RESTful" resourcePath="/DSS-Server/rs/v1.0/sign" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="XML TS Batch [syn]" mediaType="application/xml" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+   <OptionalInputs>
+      <ClaimedIdentity>
+         <Name>${#TestSuite#AP_ID}</Name>
+      </ClaimedIdentity>
+      <SignatureType>urn:ietf:rfc:3161</SignatureType>
+      <AdditionalProfile>urn:oasis:names:tc:dss:1.0:profiles:timestamping</AdditionalProfile>
+      <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:batchprocessing</AdditionalProfile>
+   </OptionalInputs>
+   <InputDocuments>
+      <!--<DocumentHash ID="224">
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA224}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_224}</dsig:DigestValue>
+               </DocumentHash>-->
+      <DocumentHash ID="256">
+         <dsig:DigestMethod Algorithm="${#TestSuite#SHA256}"/>
+         <dsig:DigestValue>${#TestSuite#DIGEST_256}</dsig:DigestValue>
+      </DocumentHash>
+      <DocumentHash ID="384">
+         <dsig:DigestMethod Algorithm="${#TestSuite#SHA384}"/>
+         <dsig:DigestValue>${#TestSuite#DIGEST_384}</dsig:DigestValue>
+      </DocumentHash>
+      <DocumentHash ID="512">
+         <dsig:DigestMethod Algorithm="${#TestSuite#SHA512}"/>
+         <dsig:DigestValue>${#TestSuite#DIGEST_512}</dsig:DigestValue>
+      </DocumentHash>
+   </InputDocuments>
+</SignRequest>]]></con:request><con:assertion type="Valid HTTP Status Codes" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace ns1='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace ns4='urn:com:swisscom:dss:1.0:schema';
+declare namespace ns3='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
+//ns1:SignResponse</path><content><![CDATA[<SignResponse RequestID="*" Profile="urn:com:swisscom:dss:v1.0" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns:ns3="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0" xmlns:ns4="urn:com:swisscom:dss:1.0:schema">
+  <Result>
+    <ResultMajor>urn:oasis:names:tc:dss:1.0:resultmajor:Success</ResultMajor>
+  </Result>
+  <SignatureObject>
+    <Other>
+      <ns4:SignatureObjects>
+        <ns4:ExtendedSignatureObject WhichDocument="256">
+          <Timestamp>
+            <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+          </Timestamp>
+        </ns4:ExtendedSignatureObject>
+        <ns4:ExtendedSignatureObject WhichDocument="384">
+          <Timestamp>
+            <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+          </Timestamp>
+        </ns4:ExtendedSignatureObject>
+        <ns4:ExtendedSignatureObject WhichDocument="512">
+          <Timestamp>
+            <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+          </Timestamp>
+        </ns4:ExtendedSignatureObject>
+      </ns4:SignatureObjects>
+    </Other>
+  </SignatureObject>
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="JSON TS Batch [syn]"><con:settings/><con:config service="AIS RESTful" methodName="POST" resourcePath="/DSS-Server/rs/v1.0/sign" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="JSON TS Batch [syn]" mediaType="application/json" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
+  "dss.SignRequest": {
+    "@RequestID": "${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}",
+    "@Profile": "urn:com:swisscom:dss:v1.0",
+    "dss.OptionalInputs": {
+      "dss.ClaimedIdentity": {
+        "dss.Name": "${#TestSuite#AP_ID}"
+      },
+      "dss.SignatureType": "urn:ietf:rfc:3161",
+      "dss.AdditionalProfile": "urn:oasis:names:tc:dss:1.0:profiles:timestamping",
+      "dss.AdditionalProfile": "urn:com:swisscom:dss:v1.0:profiles:batchprocessing"
+    },
+    "dss.InputDocuments": {
+      "dss.DocumentHash": {
+        "@ID": "256",
+        "xmldsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA256}" },
+        "xmldsig.DigestValue": "${#TestSuite#DIGEST_256}"
+      },
+     "dss.DocumentHash": {
+        "@ID": "384",
+        "xmldsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA384}" },
+        "xmldsig.DigestValue": "${#TestSuite#DIGEST_384}"
+      },
+     "dss.DocumentHash": {
+        "@ID": "512",
+        "xmldsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "xmldsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      }
+    }
+  }
+}</con:request><con:assertion type="Valid HTTP Status Codes" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace ns1='https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/sign';
+//ns1:Response/ns1:dss.SignResponse</path><content><![CDATA[<dss.SignResponse Profile="urn:com:swisscom:dss:v1.0" RequestID="*" xmlns="https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/sign">
+  <dss.Result>
+    <dss.ResultMajor>urn:oasis:names:tc:dss:1.0:resultmajor:Success</dss.ResultMajor>
+  </dss.Result>
+  <dss.SignatureObject>
+    <dss.Other>
+      <sc.SignatureObjects>
+        <sc.ExtendedSignatureObject>
+          <e WhichDocument="256">
+            <dss.Timestamp>
+              <dss.RFC3161TimeStampToken>*</dss.RFC3161TimeStampToken>
+            </dss.Timestamp>
+          </e>
+          <e WhichDocument="384">
+            <dss.Timestamp>
+              <dss.RFC3161TimeStampToken>*</dss.RFC3161TimeStampToken>
+            </dss.Timestamp>
+          </e>
+          <e WhichDocument="512">
+            <dss.Timestamp>
+              <dss.RFC3161TimeStampToken>*</dss.RFC3161TimeStampToken>
+            </dss.Timestamp>
+          </e>
+        </sc.ExtendedSignatureObject>
+      </sc.SignatureObjects>
+    </dss.Other>
+  </dss.SignatureObject>
+</dss.SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="XML TS Batch [asyn]"><con:settings/><con:config service="AIS RESTful" resourcePath="/DSS-Server/rs/v1.0/sign" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="XML TS Batch [asyn]" mediaType="application/xml" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+   <OptionalInputs>
+      <ClaimedIdentity>
+         <Name>${#TestSuite#AP_ID}</Name>
+      </ClaimedIdentity>
+      <SignatureType>urn:ietf:rfc:3161</SignatureType>
+      <AdditionalProfile>urn:oasis:names:tc:dss:1.0:profiles:timestamping</AdditionalProfile>
+      <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:batchprocessing</AdditionalProfile>
+      <AdditionalProfile>urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing</AdditionalProfile>
+   </OptionalInputs>
+   <InputDocuments>
+      <!--<DocumentHash ID="224">
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA224}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_224}</dsig:DigestValue>
+               </DocumentHash>-->
+      <DocumentHash ID="256">
+         <dsig:DigestMethod Algorithm="${#TestSuite#SHA256}"/>
+         <dsig:DigestValue>${#TestSuite#DIGEST_256}</dsig:DigestValue>
+      </DocumentHash>
+      <DocumentHash ID="384">
+         <dsig:DigestMethod Algorithm="${#TestSuite#SHA384}"/>
+         <dsig:DigestValue>${#TestSuite#DIGEST_384}</dsig:DigestValue>
+      </DocumentHash>
+      <DocumentHash ID="512_1">
+         <dsig:DigestMethod Algorithm="${#TestSuite#SHA512}"/>
+         <dsig:DigestValue>${#TestSuite#DIGEST_512}</dsig:DigestValue>
+      </DocumentHash>
+      <DocumentHash ID="512_2">
+         <dsig:DigestMethod Algorithm="${#TestSuite#SHA512}"/>
+         <dsig:DigestValue>${#TestSuite#DIGEST_512}</dsig:DigestValue>
+      </DocumentHash>
+      <DocumentHash ID="512_3">
+         <dsig:DigestMethod Algorithm="${#TestSuite#SHA512}"/>
+         <dsig:DigestValue>${#TestSuite#DIGEST_512}</dsig:DigestValue>
+      </DocumentHash>
+      <DocumentHash ID="512_4">
+         <dsig:DigestMethod Algorithm="${#TestSuite#SHA512}"/>
+         <dsig:DigestValue>${#TestSuite#DIGEST_512}</dsig:DigestValue>
+      </DocumentHash>
+      <DocumentHash ID="512_5">
+         <dsig:DigestMethod Algorithm="${#TestSuite#SHA512}"/>
+         <dsig:DigestValue>${#TestSuite#DIGEST_512}</dsig:DigestValue>
+      </DocumentHash>
+      <DocumentHash ID="512_6">
+         <dsig:DigestMethod Algorithm="${#TestSuite#SHA512}"/>
+         <dsig:DigestValue>${#TestSuite#DIGEST_512}</dsig:DigestValue>
+      </DocumentHash>
+      <DocumentHash ID="512_7">
+         <dsig:DigestMethod Algorithm="${#TestSuite#SHA512}"/>
+         <dsig:DigestValue>${#TestSuite#DIGEST_512}</dsig:DigestValue>
+      </DocumentHash>
+      <DocumentHash ID="512_8">
+         <dsig:DigestMethod Algorithm="${#TestSuite#SHA512}"/>
+         <dsig:DigestValue>${#TestSuite#DIGEST_512}</dsig:DigestValue>
+      </DocumentHash>
+   </InputDocuments>
+</SignRequest>]]></con:request><con:assertion type="Valid HTTP Status Codes" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace ns1='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace ns4='urn:com:swisscom:dss:1.0:schema';
+declare namespace ns3='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
+//ns1:SignResponse</path><content><![CDATA[<SignResponse RequestID="*" Profile="urn:com:swisscom:dss:v1.0" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns:ns3="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0" xmlns:ns4="urn:com:swisscom:dss:1.0:schema">
+  <Result>
+    <ResultMajor>urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:resultmajor:Pending</ResultMajor>
+  </Result>
+  <OptionalOutputs>
+    <ns3:ResponseID>*</ns3:ResponseID>
+  </OptionalOutputs>
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:restRequest></con:config></con:testStep><con:testStep type="transfer" name="Get ResponseID 1"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false"><con:name>ID</con:name><con:sourceType>ResponseAsXml</con:sourceType><con:sourceStep>XML TS Batch [asyn]</con:sourceStep><con:sourcePath>declare namespace ns1='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace ns4='urn:com:swisscom:dss:1.0:schema';
+declare namespace ns3='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
+//ns1:SignResponse/ns1:OptionalOutputs/ns3:ResponseID</con:sourcePath><con:targetType>tmp_ResponseID</con:targetType><con:targetStep>#TestSuite#</con:targetStep></con:transfers></con:config></con:testStep><con:testStep type="delay" name="Poll Delay 1"><con:settings/><con:config><delay>0</delay></con:config></con:testStep><con:testStep type="restrequest" name="XML Poll RequestID (Pending)"><con:settings/><con:config service="AIS RESTful" resourcePath="/DSS-Server/rs/v1.0/pending" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="XML Poll RequestID (Pending)" mediaType="application/xml" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<ns3:PendingRequest Profile="urn:com:swisscom:dss:v1.0" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ns4="urn:com:swisscom:dss:1.0:schema" xmlns:ns3="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0">
+    <OptionalInputs>
+        <ClaimedIdentity>
+            <Name>${#TestSuite#AP_ID}</Name>
+        </ClaimedIdentity>
+        <ns3:ResponseID>${#TestSuite#tmp_ResponseID}</ns3:ResponseID>
+    </OptionalInputs>
+</ns3:PendingRequest>]]></con:request><con:assertion type="Valid HTTP Status Codes" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:restRequest></con:config></con:testStep><con:testStep type="goto" name="Check-If-Pending 1"><con:settings/><con:config xsi:type="con:GotoStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:condition><con:name>Check-If-Ready</con:name><con:type>XPATH</con:type><con:expression>declare namespace ns1='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace ns4='urn:com:swisscom:dss:1.0:schema';
+declare namespace ns3='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
+matches(//ns1:ResultMajor/text(),'Pending')</con:expression><con:targetStep>Poll Delay 1</con:targetStep></con:condition></con:config></con:testStep><con:testStep type="restrequest" name="XML Poll RequestID (Final)"><con:settings/><con:config service="AIS RESTful" resourcePath="/DSS-Server/rs/v1.0/pending" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="XML Poll RequestID (Final)" mediaType="application/xml" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<ns3:PendingRequest Profile="urn:com:swisscom:dss:v1.0" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ns4="urn:com:swisscom:dss:1.0:schema" xmlns:ns3="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0">
+    <OptionalInputs>
+        <ClaimedIdentity>
+            <Name>${#TestSuite#AP_ID}</Name>
+        </ClaimedIdentity>
+        <ns3:ResponseID>${#TestSuite#tmp_ResponseID}</ns3:ResponseID>
+    </OptionalInputs>
+</ns3:PendingRequest>]]></con:request><con:assertion type="Valid HTTP Status Codes" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace ns1='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace ns4='urn:com:swisscom:dss:1.0:schema';
+declare namespace ns3='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
+//ns1:SignResponse</path><content><![CDATA[<SignResponse RequestID="*" Profile="urn:com:swisscom:dss:v1.0" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns:ns3="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0" xmlns:ns4="urn:com:swisscom:dss:1.0:schema">
+  <Result>
+    <ResultMajor>urn:oasis:names:tc:dss:1.0:resultmajor:Success</ResultMajor>
+  </Result>
+  <SignatureObject>
+    <Other>
+      <ns4:SignatureObjects>
+        <ns4:ExtendedSignatureObject WhichDocument="256">
+          <Timestamp>
+            <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+          </Timestamp>
+        </ns4:ExtendedSignatureObject>
+        <ns4:ExtendedSignatureObject WhichDocument="384">
+          <Timestamp>
+            <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+          </Timestamp>
+        </ns4:ExtendedSignatureObject>
+        <ns4:ExtendedSignatureObject WhichDocument="512_1">
+          <Timestamp>
+            <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+          </Timestamp>
+        </ns4:ExtendedSignatureObject>
+        <ns4:ExtendedSignatureObject WhichDocument="512_2">
+          <Timestamp>
+            <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+          </Timestamp>
+        </ns4:ExtendedSignatureObject>
+        <ns4:ExtendedSignatureObject WhichDocument="512_3">
+          <Timestamp>
+            <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+          </Timestamp>
+        </ns4:ExtendedSignatureObject>
+        <ns4:ExtendedSignatureObject WhichDocument="512_4">
+          <Timestamp>
+            <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+          </Timestamp>
+        </ns4:ExtendedSignatureObject>
+        <ns4:ExtendedSignatureObject WhichDocument="512_5">
+          <Timestamp>
+            <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+          </Timestamp>
+        </ns4:ExtendedSignatureObject>
+        <ns4:ExtendedSignatureObject WhichDocument="512_6">
+          <Timestamp>
+            <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+          </Timestamp>
+        </ns4:ExtendedSignatureObject>
+        <ns4:ExtendedSignatureObject WhichDocument="512_7">
+          <Timestamp>
+            <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+          </Timestamp>
+        </ns4:ExtendedSignatureObject>
+        <ns4:ExtendedSignatureObject WhichDocument="512_8">
+          <Timestamp>
+            <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+          </Timestamp>
+        </ns4:ExtendedSignatureObject>
+      </ns4:SignatureObjects>
+    </Other>
+  </SignatureObject>
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="JSON TS Batch [asyn]"><con:settings/><con:config service="AIS RESTful" methodName="POST" resourcePath="/DSS-Server/rs/v1.0/sign" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="JSON TS Batch [asyn]" mediaType="application/json" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Accept" value="application/json"/>
+  &lt;con:entry key="Accept" value="application/json"/>
+&lt;/xml-fragment></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
+  "dss.SignRequest": {
+    "@RequestID": "${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}",
+    "@Profile": "urn:com:swisscom:dss:v1.0",
+    "dss.OptionalInputs": {
+      "dss.ClaimedIdentity": {
+        "dss.Name": "${#TestSuite#AP_ID}"
+      },
+      "dss.SignatureType": "urn:ietf:rfc:3161",
+      "dss.AdditionalProfile": "urn:oasis:names:tc:dss:1.0:profiles:timestamping",
+      "dss.AdditionalProfile": "urn:com:swisscom:dss:v1.0:profiles:batchprocessing",
+      "dss.AdditionalProfile": "urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing"
+    },
+    "dss.InputDocuments": {
+      "dss.DocumentHash": {
+        "@ID": "256",
+        "xmldsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA256}" },
+        "xmldsig.DigestValue": "${#TestSuite#DIGEST_256}"
+      },
+     "dss.DocumentHash": {
+        "@ID": "384",
+        "xmldsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA384}" },
+        "xmldsig.DigestValue": "${#TestSuite#DIGEST_384}"
+      },
+     "dss.DocumentHash": {
+        "@ID": "512_1",
+        "xmldsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "xmldsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+      "dss.DocumentHash": {
+        "@ID": "512_2",
+        "xmldsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "xmldsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+      "dss.DocumentHash": {
+        "@ID": "512_3",
+        "xmldsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "xmldsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+      "dss.DocumentHash": {
+        "@ID": "512_4",
+        "xmldsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "xmldsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+      "dss.DocumentHash": {
+        "@ID": "512_5",
+        "xmldsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "xmldsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+      "dss.DocumentHash": {
+        "@ID": "512_6",
+        "xmldsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "xmldsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+      "dss.DocumentHash": {
+        "@ID": "512_7",
+        "xmldsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "xmldsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+      "dss.DocumentHash": {
+        "@ID": "512_8",
+        "xmldsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "xmldsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      }
+    }
+  }
+}</con:request><con:assertion type="Valid HTTP Status Codes" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace ns1='https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/sign';
+//ns1:Response/ns1:dss.SignResponse</path><content><![CDATA[<dss.SignResponse Profile="urn:com:swisscom:dss:v1.0" RequestID="*" xmlns="https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/sign">
+  <dss.OptionalOutputs>
+    <async.ResponseID>*</async.ResponseID>
+  </dss.OptionalOutputs>
+  <dss.Result>
+    <dss.ResultMajor>urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:resultmajor:Pending</dss.ResultMajor>
+  </dss.Result>
+</dss.SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="transfer" name="Get ResponseID 2"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false"><con:name>ID</con:name><con:sourceType>ResponseAsXml</con:sourceType><con:sourceStep>JSON TS Batch [asyn]</con:sourceStep><con:sourcePath>declare namespace ns1='https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/sign';
+//ns1:Response/ns1:dss.SignResponse/ns1:dss.OptionalOutputs/ns1:async.ResponseID</con:sourcePath><con:targetType>tmp_ResponseID</con:targetType><con:targetStep>#TestSuite#</con:targetStep></con:transfers></con:config></con:testStep><con:testStep type="delay" name="Poll Delay 2"><con:settings/><con:config><delay>0</delay></con:config></con:testStep><con:testStep type="restrequest" name="JSON Poll RequestID (Pending)"><con:settings/><con:config service="AIS RESTful" methodName="POST" resourcePath="/DSS-Server/rs/v1.0/pending" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="JSON Poll RequestID (Pending)" mediaType="application/json" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Accept" value="application/json"/>
+  &lt;con:entry key="Accept" value="application/json"/>
+&lt;/xml-fragment></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
+  "async.PendingRequest": {
+    "@Profile": "urn:com:swisscom:dss:v1.0",
+    "dss.OptionalInputs": {
+      "dss.ClaimedIdentity": {
+        "dss.Name": "${#TestSuite#AP_ID}"
+      },
+      "async.ResponseID": "${#TestSuite#tmp_ResponseID}"
+    }
+  }
+}</con:request><con:assertion type="Valid HTTP Status Codes" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="goto" name="Check-If-Pending 2"><con:settings/><con:config xsi:type="con:GotoStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:condition><con:name>Check-If-Ready</con:name><con:type>XPATH</con:type><con:expression>declare namespace ns1='https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/pending';
+matches(//ns1:dss.ResultMajor/text(),'Pending')</con:expression><con:targetStep>Poll Delay 2</con:targetStep></con:condition></con:config></con:testStep><con:testStep type="restrequest" name="JSON Poll RequestID (Final)"><con:settings/><con:config service="AIS RESTful" methodName="POST" resourcePath="/DSS-Server/rs/v1.0/pending" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="JSON Poll RequestID (Final)" mediaType="application/json" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Accept" value="application/json"/>
+  &lt;con:entry key="Accept" value="application/json"/>
+&lt;/xml-fragment></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
+  "async.PendingRequest": {
+    "@Profile": "urn:com:swisscom:dss:v1.0",
+    "dss.OptionalInputs": {
+      "dss.ClaimedIdentity": {
+        "dss.Name": "${#TestSuite#AP_ID}"
+      },
+      "async.ResponseID": "${#TestSuite#tmp_ResponseID}"
+    }
+  }
+}</con:request><con:assertion type="Valid HTTP Status Codes" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace ns1='https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/pending';
+//ns1:Response/ns1:dss.SignResponse</path><content><![CDATA[<dss.SignResponse Profile="urn:com:swisscom:dss:v1.0" RequestID="*" xmlns="https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/pending">
+  <dss.Result>
+    <dss.ResultMajor>urn:oasis:names:tc:dss:1.0:resultmajor:Success</dss.ResultMajor>
+  </dss.Result>
+  <dss.SignatureObject>
+    <dss.Other>
+      <sc.SignatureObjects>
+        <sc.ExtendedSignatureObject>
+          <e WhichDocument="256">
+            <dss.Timestamp>
+              <dss.RFC3161TimeStampToken>*</dss.RFC3161TimeStampToken>
+            </dss.Timestamp>
+          </e>
+          <e WhichDocument="384">
+            <dss.Timestamp>
+              <dss.RFC3161TimeStampToken>*</dss.RFC3161TimeStampToken>
+            </dss.Timestamp>
+          </e>
+          <e WhichDocument="512_1">
+            <dss.Timestamp>
+              <dss.RFC3161TimeStampToken>*</dss.RFC3161TimeStampToken>
+            </dss.Timestamp>
+          </e>
+          <e WhichDocument="512_2">
+            <dss.Timestamp>
+              <dss.RFC3161TimeStampToken>*</dss.RFC3161TimeStampToken>
+            </dss.Timestamp>
+          </e>
+          <e WhichDocument="512_3">
+            <dss.Timestamp>
+              <dss.RFC3161TimeStampToken>*</dss.RFC3161TimeStampToken>
+            </dss.Timestamp>
+          </e>
+          <e WhichDocument="512_4">
+            <dss.Timestamp>
+              <dss.RFC3161TimeStampToken>*</dss.RFC3161TimeStampToken>
+            </dss.Timestamp>
+          </e>
+          <e WhichDocument="512_5">
+            <dss.Timestamp>
+              <dss.RFC3161TimeStampToken>*</dss.RFC3161TimeStampToken>
+            </dss.Timestamp>
+          </e>
+          <e WhichDocument="512_6">
+            <dss.Timestamp>
+              <dss.RFC3161TimeStampToken>*</dss.RFC3161TimeStampToken>
+            </dss.Timestamp>
+          </e>
+          <e WhichDocument="512_7">
+            <dss.Timestamp>
+              <dss.RFC3161TimeStampToken>*</dss.RFC3161TimeStampToken>
+            </dss.Timestamp>
+          </e>
+          <e WhichDocument="512_8">
+            <dss.Timestamp>
+              <dss.RFC3161TimeStampToken>*</dss.RFC3161TimeStampToken>
+            </dss.Timestamp>
+          </e>
+        </sc.ExtendedSignatureObject>
+      </sc.SignatureObjects>
+    </dss.Other>
+  </dss.SignatureObject>
+</dss.SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="04 SOAP Static" searchProperties="true" id="a6c6b5b7-ddeb-49d0-83cc-402213f514cb" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="request" name="Static [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="Static [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
    <soap:Body>
       <ais:sign>
          <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
@@ -4507,7 +4952,7 @@ declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
   <OptionalOutputs>
     <ns3:ResponseID>*</ns3:ResponseID>
   </OptionalOutputs>
-</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="transfer" name="Get ResponseID"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false"><con:name>ID</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>Static Batch [asyn]</con:sourceStep><con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="transfer" name="Get ResponseID 1"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false"><con:name>ID</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>Static Batch [asyn]</con:sourceStep><con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
 declare namespace ns1='urn:oasis:names:tc:dss:1.0:core:schema';
 declare namespace ns5='urn:com:swisscom:dss:1.0:schema';
 declare namespace ns4='http://service.ais.swisscom.com/';
@@ -4596,7 +5041,7 @@ declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
       </Other>
     </SignatureObject>
   </Response>
-</ns4:pendingResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SOAP Static [Error]" searchProperties="true"><con:settings/><con:testStep type="request" name="Static WrongCust [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="Static WrongCust [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+</ns4:pendingResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="05 SOAP Static [Error]" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="request" name="Static WrongCust [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="Static WrongCust [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
    <soap:Body>
       <ais:sign>
          <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
@@ -4809,7 +5254,7 @@ declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
     <ResultMinor>urn:com:swisscom:dss:1.0:resultminor:UnexpectedData</ResultMinor>
     <ResultMessage xml:lang="en">More than one document has the same ID</ResultMessage>
   </Result>
-</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="RESTful Static" searchProperties="true"><con:settings/><con:testStep type="restrequest" name="XML Static [syn]"><con:settings/><con:config service="AIS RESTful" resourcePath="/DSS-Server/rs/v1.0/sign" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="asdf6 [syn]" mediaType="application/xml" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="06 RESTful Static" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="restrequest" name="XML Static [syn]"><con:settings/><con:config service="AIS RESTful" resourcePath="/DSS-Server/rs/v1.0/sign" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="XML Static [syn]" mediaType="application/xml" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
    <OptionalInputs>
       <ClaimedIdentity>
          <Name>${#TestSuite#AP_ID}:${#TestSuite#STATIC_ID}</Name>
@@ -4835,7 +5280,7 @@ declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
   <SignatureObject>
     <Base64Signature Type="urn:ietf:rfc:3369">*</Base64Signature>
   </SignatureObject>
-</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="JSON Static [syn]"><con:settings/><con:config service="AIS RESTful" methodName="POST" resourcePath="/DSS-Server/rs/v1.0/sign" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Copy of JSON TS Sha256 [syn]" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="JSON Static [syn]"><con:settings/><con:config service="AIS RESTful" methodName="POST" resourcePath="/DSS-Server/rs/v1.0/sign" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="JSON Static [syn]" mediaType="application/json" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
   "dss.SignRequest": {
     "@RequestID": "${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}",
     "@Profile": "urn:com:swisscom:dss:v1.0",
@@ -4858,7 +5303,7 @@ declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
     }
   }
 }</con:request><con:assertion type="Valid HTTP Status Codes" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace ns1='https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/sign';
-//ns1:Response/ns1:dss.SignResponse</path><content/><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SOAP OnDemand" searchProperties="true" id="49af4756-b8a6-4266-8352-081638c22cdb"><con:settings/><con:testStep type="request" name="OnDemand [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="OnDemand [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+//ns1:Response/ns1:dss.SignResponse</path><content/><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="07 SOAP OnDemand" searchProperties="true" id="49af4756-b8a6-4266-8352-081638c22cdb" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="request" name="OnDemand [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="OnDemand [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
    <soap:Body>
       <ais:sign>
          <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
@@ -5010,7 +5455,328 @@ declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
       </ns5:SignatureObjects>
     </Other>
   </SignatureObject>
-</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SOAP OnDemand [Error]" searchProperties="true"><con:settings/><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="RESTful OnDemand" searchProperties="true"><con:settings/><con:testStep type="restrequest" name="XML OnDemand [syn]"><con:settings/><con:config service="AIS RESTful" resourcePath="/DSS-Server/rs/v1.0/sign" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Copy of asdf6 [syn]" mediaType="application/xml" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="OnDemand Batch [asyn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="OnDemand Batch [asyn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+   <soap:Body>
+      <ais:sign>
+         <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
+            <OptionalInputs>
+               <ClaimedIdentity>
+                  <Name>${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}</Name>
+               </ClaimedIdentity>
+               <SignatureType>urn:ietf:rfc:3369</SignatureType>
+               <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:ondemandcertificate</AdditionalProfile>
+               <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:batchprocessing</AdditionalProfile>
+               <AdditionalProfile>urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing</AdditionalProfile>
+               <sc:CertificateRequest>
+                  <sc:DistinguishedName>cn=Hans Muster,o=ACME,c=CH</sc:DistinguishedName>
+               </sc:CertificateRequest>
+               <AddTimestamp Type="urn:ietf:rfc:3161"/>
+               <sc:AddOcspResponse Type="urn:ietf:rfc:2560"/>
+            </OptionalInputs>
+            <InputDocuments>
+               <!--<DocumentHash ID="224">
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA224}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_224}</dsig:DigestValue>
+               </DocumentHash>-->
+               <DocumentHash ID="256">
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA256}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_256}</dsig:DigestValue>
+               </DocumentHash>
+               <DocumentHash ID="384">
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA384}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_384}</dsig:DigestValue>
+               </DocumentHash>
+               <DocumentHash ID="512_1">
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA512}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_512}</dsig:DigestValue>
+               </DocumentHash>
+               <DocumentHash ID="512_2">
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA512}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_512}</dsig:DigestValue>
+               </DocumentHash>
+               <DocumentHash ID="512_3">
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA512}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_512}</dsig:DigestValue>
+               </DocumentHash>
+               <DocumentHash ID="512_4">
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA512}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_512}</dsig:DigestValue>
+               </DocumentHash>
+               <DocumentHash ID="512_5">
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA512}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_512}</dsig:DigestValue>
+               </DocumentHash>
+               <DocumentHash ID="512_6">
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA512}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_512}</dsig:DigestValue>
+               </DocumentHash>
+               <DocumentHash ID="512_7">
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA512}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_512}</dsig:DigestValue>
+               </DocumentHash>
+               <DocumentHash ID="512_8">
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA512}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_512}</dsig:DigestValue>
+               </DocumentHash>
+            </InputDocuments>
+         </SignRequest>
+      </ais:sign>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace ns5='urn:com:swisscom:dss:1.0:schema';
+declare namespace ns4='http://service.ais.swisscom.com/';
+declare namespace ns3='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
+
+//soap:Envelope/soap:Body/ns4:signResponse/ns1:SignResponse</path><content><![CDATA[<SignResponse xsi:type="SignResponse" RequestID="*" Profile="urn:com:swisscom:dss:v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns:ns3="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0" xmlns:ns4="http://service.ais.swisscom.com/" xmlns:ns5="urn:com:swisscom:dss:1.0:schema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <Result>
+    <ResultMajor>urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:resultmajor:Pending</ResultMajor>
+  </Result>
+  <OptionalOutputs>
+    <ns3:ResponseID>*</ns3:ResponseID>
+  </OptionalOutputs>
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="transfer" name="Get ResponseID 1"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false"><con:name>ID</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>OnDemand Batch [asyn]</con:sourceStep><con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace ns5='urn:com:swisscom:dss:1.0:schema';
+declare namespace ns4='http://service.ais.swisscom.com/';
+declare namespace ns3='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
+
+//soap:Envelope/soap:Body/ns4:signResponse/ns1:SignResponse/ns1:OptionalOutputs/ns3:ResponseID</con:sourcePath><con:targetType>tmp_ResponseID</con:targetType><con:targetStep>#TestSuite#</con:targetStep></con:transfers></con:config></con:testStep><con:testStep type="delay" name="Poll Delay 1"><con:settings/><con:config><delay>0</delay></con:config></con:testStep><con:testStep type="request" name="Poll RequestID (Pending)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="Poll RequestID (Pending)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:asynch="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/">
+   <soap:Body>
+      <ais:pending>
+         <asynch:PendingRequest Profile="urn:com:swisscom:dss:v1.0">
+            <OptionalInputs>
+               <ClaimedIdentity>
+                  <Name>${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}</Name>
+               </ClaimedIdentity>
+               <asynch:ResponseID>${#TestSuite#tmp_ResponseID}</asynch:ResponseID>
+            </OptionalInputs>
+         </asynch:PendingRequest>
+      </ais:pending>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="goto" name="Check-If-Pending 1"><con:settings/><con:config xsi:type="con:GotoStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:condition><con:name>Check-If-Ready</con:name><con:type>XPATH</con:type><con:expression>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace ns5='urn:com:swisscom:dss:1.0:schema';
+declare namespace ns4='http://service.ais.swisscom.com/';
+declare namespace ns3='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
+matches(//ns1:ResultMajor/text(),'Pending')</con:expression><con:targetStep>Poll Delay 1</con:targetStep></con:condition></con:config></con:testStep><con:testStep type="request" name="Poll RequestID (Final)"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="Poll RequestID (Final)"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:asynch="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/">
+   <soap:Body>
+      <ais:pending>
+         <asynch:PendingRequest Profile="urn:com:swisscom:dss:v1.0">
+            <OptionalInputs>
+               <ClaimedIdentity>
+                  <Name>${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}</Name>
+               </ClaimedIdentity>
+               <asynch:ResponseID>${#TestSuite#tmp_ResponseID}</asynch:ResponseID>
+            </OptionalInputs>
+         </asynch:PendingRequest>
+      </ais:pending>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace ns5='urn:com:swisscom:dss:1.0:schema';
+declare namespace ns4='http://service.ais.swisscom.com/';
+declare namespace ns3='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
+
+//soap:Envelope/soap:Body/ns4:pendingResponse</path><content><![CDATA[<ns4:pendingResponse xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns:ns3="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0" xmlns:ns4="http://service.ais.swisscom.com/" xmlns:ns5="urn:com:swisscom:dss:1.0:schema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <Response xsi:type="SignResponse" RequestID="*" Profile="urn:com:swisscom:dss:v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Result>
+      <ResultMajor>urn:oasis:names:tc:dss:1.0:resultmajor:Success</ResultMajor>
+    </Result>
+    <SignatureObject>
+      <Other>
+      <ns5:SignatureObjects>
+        <ns5:ExtendedSignatureObject WhichDocument="256">
+          <Base64Signature Type="urn:ietf:rfc:3369">*</Base64Signature>
+        </ns5:ExtendedSignatureObject>
+        <ns5:ExtendedSignatureObject WhichDocument="384">
+          <Base64Signature Type="urn:ietf:rfc:3369">*</Base64Signature>
+        </ns5:ExtendedSignatureObject>
+        <ns5:ExtendedSignatureObject WhichDocument="512_1">
+          <Base64Signature Type="urn:ietf:rfc:3369">*</Base64Signature>
+        </ns5:ExtendedSignatureObject>
+        <ns5:ExtendedSignatureObject WhichDocument="512_2">
+          <Base64Signature Type="urn:ietf:rfc:3369">*</Base64Signature>
+        </ns5:ExtendedSignatureObject>
+        <ns5:ExtendedSignatureObject WhichDocument="512_3">
+          <Base64Signature Type="urn:ietf:rfc:3369">*</Base64Signature>
+        </ns5:ExtendedSignatureObject>
+        <ns5:ExtendedSignatureObject WhichDocument="512_4">
+          <Base64Signature Type="urn:ietf:rfc:3369">*</Base64Signature>
+        </ns5:ExtendedSignatureObject>
+        <ns5:ExtendedSignatureObject WhichDocument="512_5">
+          <Base64Signature Type="urn:ietf:rfc:3369">*</Base64Signature>
+        </ns5:ExtendedSignatureObject>
+        <ns5:ExtendedSignatureObject WhichDocument="512_6">
+          <Base64Signature Type="urn:ietf:rfc:3369">*</Base64Signature>
+        </ns5:ExtendedSignatureObject>
+        <ns5:ExtendedSignatureObject WhichDocument="512_7">
+          <Base64Signature Type="urn:ietf:rfc:3369">*</Base64Signature>
+        </ns5:ExtendedSignatureObject>
+        <ns5:ExtendedSignatureObject WhichDocument="512_8">
+          <Base64Signature Type="urn:ietf:rfc:3369">*</Base64Signature>
+        </ns5:ExtendedSignatureObject>
+      </ns5:SignatureObjects>
+      </Other>
+    </SignatureObject>
+  </Response>
+</ns4:pendingResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="08 SOAP OnDemand [Error]" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="request" name="OnDemand WrongCust [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="OnDemand WrongCust [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+   <soap:Body>
+      <ais:sign>
+         <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
+            <OptionalInputs>
+               <ClaimedIdentity>
+                  <Name>xxxxxx:${#TestSuite#ONDEMAND_ADVANCED}</Name>
+               </ClaimedIdentity>
+               <SignatureType>urn:ietf:rfc:3369</SignatureType>
+               <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:ondemandcertificate</AdditionalProfile>
+               <sc:CertificateRequest>
+                  <sc:DistinguishedName>cn=Hans Muster,o=ACME,c=CH</sc:DistinguishedName>
+               </sc:CertificateRequest>
+               <AddTimestamp Type="urn:ietf:rfc:3161"/>
+               <sc:AddOcspResponse Type="urn:ietf:rfc:2560"/>
+            </OptionalInputs>
+            <InputDocuments>
+               <DocumentHash>
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA256}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_256}</dsig:DigestValue>
+               </DocumentHash>
+            </InputDocuments>
+         </SignRequest>
+      </ais:sign>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace ns5='urn:com:swisscom:dss:1.0:schema';
+declare namespace ns4='http://service.ais.swisscom.com/';
+declare namespace ns3='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
+
+//soap:Envelope/soap:Body/ns4:signResponse/ns1:SignResponse</path><content><![CDATA[<SignResponse xsi:type="SignResponse" RequestID="*" Profile="urn:com:swisscom:dss:v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns:ns3="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0" xmlns:ns4="http://service.ais.swisscom.com/" xmlns:ns5="urn:com:swisscom:dss:1.0:schema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <Result>
+    <ResultMajor>urn:oasis:names:tc:dss:1.0:resultmajor:RequesterError</ResultMajor>
+    <ResultMinor>urn:com:swisscom:dss:1.0:resultminor:UnknownCustomer</ResultMinor>
+    <ResultMessage xml:lang="en"/>
+  </Result>
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="OnDemand WrongStaticId [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="OnDemand WrongStaticId [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+   <soap:Body>
+      <ais:sign>
+         <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
+            <OptionalInputs>
+               <ClaimedIdentity>
+                  <Name>${#TestSuite#AP_ID}:xxxxxx</Name>
+               </ClaimedIdentity>
+               <SignatureType>urn:ietf:rfc:3369</SignatureType>
+               <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:ondemandcertificate</AdditionalProfile>
+               <sc:CertificateRequest>
+                  <sc:DistinguishedName>cn=Hans Muster,o=ACME,c=CH</sc:DistinguishedName>
+               </sc:CertificateRequest>
+               <AddTimestamp Type="urn:ietf:rfc:3161"/>
+               <sc:AddOcspResponse Type="urn:ietf:rfc:2560"/>
+            </OptionalInputs>
+            <InputDocuments>
+               <DocumentHash>
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA256}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_256}</dsig:DigestValue>
+               </DocumentHash>
+            </InputDocuments>
+         </SignRequest>
+      </ais:sign>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace ns5='urn:com:swisscom:dss:1.0:schema';
+declare namespace ns4='http://service.ais.swisscom.com/';
+declare namespace ns3='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
+
+//soap:Envelope/soap:Body/ns4:signResponse/ns1:SignResponse</path><content><![CDATA[<SignResponse xsi:type="SignResponse" RequestID="*" Profile="urn:com:swisscom:dss:v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns:ns3="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0" xmlns:ns4="http://service.ais.swisscom.com/" xmlns:ns5="urn:com:swisscom:dss:1.0:schema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <Result>
+    <ResultMajor>urn:oasis:names:tc:dss:1.0:resultmajor:RequesterError</ResultMajor>
+    <ResultMinor>urn:com:swisscom:dss:1.0:resultminor:UnknownServiceEntity</ResultMinor>
+    <ResultMessage xml:lang="en"/>
+  </Result>
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="OnDemand WrongDN 1 [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="OnDemand WrongDN 1 [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+   <soap:Body>
+      <ais:sign>
+         <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
+            <OptionalInputs>
+               <ClaimedIdentity>
+                  <Name>${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}</Name>
+               </ClaimedIdentity>
+               <SignatureType>urn:ietf:rfc:3369</SignatureType>
+               <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:ondemandcertificate</AdditionalProfile>
+               <sc:CertificateRequest>
+                  <sc:DistinguishedName>xxxxxx</sc:DistinguishedName>
+               </sc:CertificateRequest>
+               <AddTimestamp Type="urn:ietf:rfc:3161"/>
+               <sc:AddOcspResponse Type="urn:ietf:rfc:2560"/>
+            </OptionalInputs>
+            <InputDocuments>
+               <DocumentHash>
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA256}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_256}</dsig:DigestValue>
+               </DocumentHash>
+            </InputDocuments>
+         </SignRequest>
+      </ais:sign>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace ns5='urn:com:swisscom:dss:1.0:schema';
+declare namespace ns4='http://service.ais.swisscom.com/';
+declare namespace ns3='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
+
+//soap:Envelope/soap:Body/ns4:signResponse/ns1:SignResponse</path><content><![CDATA[<SignResponse xsi:type="SignResponse" RequestID="*" Profile="urn:com:swisscom:dss:v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns:ns3="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0" xmlns:ns4="http://service.ais.swisscom.com/" xmlns:ns5="urn:com:swisscom:dss:1.0:schema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <Result>
+    <ResultMajor>urn:oasis:names:tc:dss:1.0:resultmajor:SubsystemError</ResultMajor>
+    <ResultMinor>urn:com:swisscom:dss:1.0:resultminor:subsystem:Cmp</ResultMinor>
+    <ResultMessage xml:lang="en">distinguished name could not be parsed</ResultMessage>
+  </Result>
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="OnDemand WrongDN 2 [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="OnDemand WrongDN 2 [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+   <soap:Body>
+      <ais:sign>
+         <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
+            <OptionalInputs>
+               <ClaimedIdentity>
+                  <Name>${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}</Name>
+               </ClaimedIdentity>
+               <SignatureType>urn:ietf:rfc:3369</SignatureType>
+               <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:ondemandcertificate</AdditionalProfile>
+               <sc:CertificateRequest>
+                  <sc:DistinguishedName>cn=,o=,c=</sc:DistinguishedName>
+               </sc:CertificateRequest>
+               <AddTimestamp Type="urn:ietf:rfc:3161"/>
+               <sc:AddOcspResponse Type="urn:ietf:rfc:2560"/>
+            </OptionalInputs>
+            <InputDocuments>
+               <DocumentHash>
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA256}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_256}</dsig:DigestValue>
+               </DocumentHash>
+            </InputDocuments>
+         </SignRequest>
+      </ais:sign>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace ns5='urn:com:swisscom:dss:1.0:schema';
+declare namespace ns4='http://service.ais.swisscom.com/';
+declare namespace ns3='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
+
+//soap:Envelope/soap:Body/ns4:signResponse/ns1:SignResponse</path><content><![CDATA[<SignResponse xsi:type="SignResponse" RequestID="*" Profile="urn:com:swisscom:dss:v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns:ns3="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0" xmlns:ns4="http://service.ais.swisscom.com/" xmlns:ns5="urn:com:swisscom:dss:1.0:schema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <Result>
+    <ResultMajor>urn:oasis:names:tc:dss:1.0:resultmajor:SubsystemError</ResultMajor>
+    <ResultMinor>urn:com:swisscom:dss:1.0:resultminor:subsystem:Cmp</ResultMinor>
+    <ResultMessage xml:lang="en">distinguished name could not be parsed</ResultMessage>
+  </Result>
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="09 RESTful OnDemand" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="restrequest" name="XML OnDemand [syn]"><con:settings/><con:config service="AIS RESTful" resourcePath="/DSS-Server/rs/v1.0/sign" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="XML OnDemand [syn]" mediaType="application/xml" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
    <OptionalInputs>
       <ClaimedIdentity>
          <Name>${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}</Name>
@@ -5040,7 +5806,7 @@ declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
   <SignatureObject>
     <Base64Signature Type="urn:ietf:rfc:3369">*</Base64Signature>
   </SignatureObject>
-</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="JSON OnDemand [syn]"><con:settings/><con:config service="AIS RESTful" methodName="POST" resourcePath="/DSS-Server/rs/v1.0/sign" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Copy of JSON Static [syn]" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="JSON OnDemand [syn]"><con:settings/><con:config service="AIS RESTful" methodName="POST" resourcePath="/DSS-Server/rs/v1.0/sign" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="JSON OnDemand [syn]" mediaType="application/json" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
   "dss.SignRequest": {
     "@RequestID": "${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}",
     "@Profile": "urn:com:swisscom:dss:v1.0",
@@ -5064,7 +5830,7 @@ declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
     }
   }
 }</con:request><con:assertion type="Valid HTTP Status Codes" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace ns1='https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/sign';
-//ns1:Response/ns1:dss.SignResponse</path><content/><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SOAP OnDemand MID" searchProperties="true" id="48772586-0c45-42fb-aa09-2b1b82f1525e"><con:settings/><con:testStep type="groovy" name="Alert Mobile ID 1"><con:settings/><con:config><script>def alert = com.eviware.soapui.support.UISupport;
+//ns1:Response/ns1:dss.SignResponse</path><content/><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="10 SOAP OnDemand MID" searchProperties="true" id="48772586-0c45-42fb-aa09-2b1b82f1525e" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="groovy" name="Alert Mobile ID 1"><con:settings/><con:config><script>def alert = com.eviware.soapui.support.UISupport;
 def myMSISDN = testRunner.testCase.testSuite.getPropertyValue("MSISDN");
 alert.showInfoMessage("Please first click OK and then proceed the Mobile ID Request on your Mobile $myMSISDN")</script></con:config></con:testStep><con:testStep type="request" name="OnDemand MID [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="OnDemand MID [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
    <soap:Body>
@@ -5240,7 +6006,9 @@ declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
       </ns5:SignatureObjects>
     </Other>
   </SignatureObject>
-</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SOAP OnDemand MID [Error]" searchProperties="true"><con:settings/><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="RESTful OnDemand MID" searchProperties="true"><con:settings/><con:testStep type="restrequest" name="XML OnDemand MID [syn]"><con:settings/><con:config service="AIS RESTful" resourcePath="/DSS-Server/rs/v1.0/sign" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="XML OnDemand MID [syn]" mediaType="application/xml" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="11 SOAP OnDemand MID [Error]" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:properties/><con:reportParameters/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="12 RESTful OnDemand MID" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="groovy" name="Alert Mobile ID 1"><con:settings/><con:config><script>def alert = com.eviware.soapui.support.UISupport;
+def myMSISDN = testRunner.testCase.testSuite.getPropertyValue("MSISDN");
+alert.showInfoMessage("Please first click OK and then proceed the Mobile ID Request on your Mobile $myMSISDN")</script></con:config></con:testStep><con:testStep type="restrequest" name="XML OnDemand MID [syn]"><con:settings/><con:config service="AIS RESTful" resourcePath="/DSS-Server/rs/v1.0/sign" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="XML OnDemand MID [syn]" mediaType="application/xml" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
    <OptionalInputs>
       <ClaimedIdentity>
          <Name>${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}</Name>
@@ -5280,7 +6048,9 @@ declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
   <SignatureObject>
     <Base64Signature Type="urn:ietf:rfc:3369">*</Base64Signature>
   </SignatureObject>
-</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="JSON OnDemand MID [syn]"><con:settings/><con:config service="AIS RESTful" methodName="POST" resourcePath="/DSS-Server/rs/v1.0/sign" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="JSON OnDemand MID [syn]" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:restRequest></con:config></con:testStep><con:testStep type="groovy" name="Alert Mobile ID 2"><con:settings/><con:config><script>def alert = com.eviware.soapui.support.UISupport;
+def myMSISDN = testRunner.testCase.testSuite.getPropertyValue("MSISDN");
+alert.showInfoMessage("Please first click OK and then proceed the Mobile ID Request on your Mobile $myMSISDN")</script></con:config></con:testStep><con:testStep type="restrequest" name="JSON OnDemand MID [syn]"><con:settings/><con:config service="AIS RESTful" methodName="POST" resourcePath="/DSS-Server/rs/v1.0/sign" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="JSON OnDemand MID [syn]" mediaType="application/json" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
   "dss.SignRequest": {
     "@RequestID": "${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}",
     "@Profile": "urn:com:swisscom:dss:v1.0",
@@ -5313,4 +6083,4 @@ declare namespace ns2='http://www.w3.org/2000/09/xmldsig#';
     }
   }
 }</con:request><con:assertion type="Valid HTTP Status Codes" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace ns1='https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/sign';
-//ns1:Response/ns1:dss.SignResponse</path><content/><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>AP_ID</con:name><con:value>cartel.ch</con:value></con:property><con:property><con:name>STATIC_ID</con:name><con:value>kp2-cartel.ch</con:value></con:property><con:property><con:name>ONDEMAND_QUALIFIED</con:name><con:value>OnDemand-Qualified</con:value></con:property><con:property><con:name>ONDEMAND_ADVANCED</con:name><con:value>OnDemand-Advanced</con:value></con:property><con:property><con:name>MSISDN</con:name><con:value>41792078937</con:value></con:property><con:property><con:name>SHA224</con:name><con:value>http://www.w3.org/2001/04/xmldsig-more#sha224</con:value></con:property><con:property><con:name>SHA256</con:name><con:value>http://www.w3.org/2001/04/xmlenc#sha256</con:value></con:property><con:property><con:name>SHA384</con:name><con:value>http://www.w3.org/2001/04/xmldsig-more#sha384</con:value></con:property><con:property><con:name>SHA512</con:name><con:value>http://www.w3.org/2001/04/xmlenc#sha512</con:value></con:property><con:property><con:name>DIGEST_224</con:name><con:value>YyNmU8FIXM0wNgdcmZyJIW1S3f8KbOcN8Ulgzw==</con:value></con:property><con:property><con:name>DIGEST_256</con:name><con:value>1WON4H3Hrinf7LYRNmhV6Uf7apdUvuYEsmhxAklxumA=</con:value></con:property><con:property><con:name>DIGEST_384</con:name><con:value>be5JJtVMoZqkJ3isZaBBpwXXQtV4Opqf3KtYcHacCh7fVZ1bS8VSnMnK3z9mIy1R</con:value></con:property><con:property><con:name>DIGEST_512</con:name><con:value>FsntfB/ATHb1O7HlxpB4l9L+1vkgCOki3omkM6jJVnxXDRRgd1uZ7S/GkLPkFEUJ+SDllcWWjDNJHJcnkritGg==</con:value></con:property><con:property><con:name>tmp_ResponseID</con:name><con:value>d741ef07-2020-4476-bb4f-97b117200dac</con:value></con:property><con:property><con:name>tmp_RequestID_RawReq</con:name><con:value>2013-12-16T21:54:00.601</con:value></con:property><con:property><con:name>tmp_RequestID_Resp</con:name><con:value>2013-12-16T21:54:00.601</con:value></con:property></con:properties></con:testSuite><con:properties/><con:wssContainer/><con:sensitiveInformation/></con:soapui-project>
+//ns1:Response/ns1:dss.SignResponse</path><content/><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:properties><con:property><con:name>AP_ID</con:name><con:value>cartel.ch</con:value></con:property><con:property><con:name>STATIC_ID</con:name><con:value>kp2-cartel.ch</con:value></con:property><con:property><con:name>ONDEMAND_QUALIFIED</con:name><con:value>OnDemand-Qualified</con:value></con:property><con:property><con:name>ONDEMAND_ADVANCED</con:name><con:value>OnDemand-Advanced</con:value></con:property><con:property><con:name>MSISDN</con:name><con:value>41792078937</con:value></con:property><con:property><con:name>SHA224</con:name><con:value>http://www.w3.org/2001/04/xmldsig-more#sha224</con:value></con:property><con:property><con:name>SHA256</con:name><con:value>http://www.w3.org/2001/04/xmlenc#sha256</con:value></con:property><con:property><con:name>SHA384</con:name><con:value>http://www.w3.org/2001/04/xmldsig-more#sha384</con:value></con:property><con:property><con:name>SHA512</con:name><con:value>http://www.w3.org/2001/04/xmlenc#sha512</con:value></con:property><con:property><con:name>DIGEST_224</con:name><con:value>YyNmU8FIXM0wNgdcmZyJIW1S3f8KbOcN8Ulgzw==</con:value></con:property><con:property><con:name>DIGEST_256</con:name><con:value>1WON4H3Hrinf7LYRNmhV6Uf7apdUvuYEsmhxAklxumA=</con:value></con:property><con:property><con:name>DIGEST_384</con:name><con:value>be5JJtVMoZqkJ3isZaBBpwXXQtV4Opqf3KtYcHacCh7fVZ1bS8VSnMnK3z9mIy1R</con:value></con:property><con:property><con:name>DIGEST_512</con:name><con:value>FsntfB/ATHb1O7HlxpB4l9L+1vkgCOki3omkM6jJVnxXDRRgd1uZ7S/GkLPkFEUJ+SDllcWWjDNJHJcnkritGg==</con:value></con:property><con:property><con:name>tmp_ResponseID</con:name><con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">54708c3c-b12f-4b63-b5cf-a3aef8918eb6</con:value></con:property><con:property><con:name>tmp_RequestID_RawReq</con:name><con:value>2013-12-18T10:25:52.978</con:value></con:property><con:property><con:name>tmp_RequestID_Resp</con:name><con:value>2013-12-18T10:25:52.978</con:value></con:property></con:properties><con:reportParameters/></con:testSuite><con:properties/><con:wssContainer/><con:databaseConnectionContainer/><con:reporting><con:xmlTemplates/><con:parameters/></con:reporting><con:sensitiveInformation/></con:soapui-project>
