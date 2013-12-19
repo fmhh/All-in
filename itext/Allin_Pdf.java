@@ -1,7 +1,7 @@
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.*;
 import com.itextpdf.text.pdf.codec.Base64;
-import com.sun.istack.internal.NotNull;
+import javax.annotation.*;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class Allin_Pdf {
     private PdfSignatureAppearance pdfSignatureAppearance;
     private PdfSignature pdfSignature;
 
-    Allin_Pdf(@NotNull String inputFilePath, @NotNull String outputFilePath, String pdfPassword, String signReason, String signLocation, String signContact){
+    Allin_Pdf(@Nonnull String inputFilePath, @Nonnull String outputFilePath, String pdfPassword, String signReason, String signLocation, String signContact){
         this.inputFilePath = inputFilePath;
         this.outputFilePath = outputFilePath;
         this.pdfPassword = pdfPassword;
@@ -32,7 +32,7 @@ public class Allin_Pdf {
         this.signContact = signContact;
     }
 
-    public byte[] getPdfHash(@NotNull Calendar signDate, int estimatedSize,@NotNull String hashAlgorithm, boolean isTimestampOnly) throws Exception {
+    public byte[] getPdfHash(@Nonnull Calendar signDate, int estimatedSize,@Nonnull String hashAlgorithm, boolean isTimestampOnly) throws Exception {
 
         PdfReader pdfReader = new PdfReader(inputFilePath, pdfPassword != null ? pdfPassword.getBytes() : null);
         AcroFields acroFields = pdfReader.getAcroFields();
@@ -69,7 +69,7 @@ public class Allin_Pdf {
      * @throws IOException
      * @throws DocumentException
      */
-    private void addSignatureToPdf(@NotNull byte[] externalSignature, int estimatedSize) throws IOException, DocumentException {
+    private void addSignatureToPdf(@Nonnull byte[] externalSignature, int estimatedSize) throws IOException, DocumentException {
 
         if (estimatedSize < externalSignature.length)
             throw new IOException("Not enough space for signature");
@@ -90,7 +90,7 @@ public class Allin_Pdf {
      * @param hash
      * @param estimatedSize
      */
-    public void sign(@NotNull String hash, int estimatedSize){
+    public void sign(@Nonnull String hash, int estimatedSize){
         try {
             addSignatureToPdf(Base64.decode(hash), estimatedSize);
         } catch (UnsupportedEncodingException e) {
