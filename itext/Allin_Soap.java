@@ -1,3 +1,5 @@
+package ch.swisscom;
+
 /**
  * Created:
  * 03.12.13 KW49 14:51
@@ -12,13 +14,13 @@
  * **********************************************************************************
  */
 
-import com.sun.istack.internal.NotNull;
-import com.sun.istack.internal.Nullable;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.net.ssl.HttpsURLConnection;
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
@@ -99,8 +101,8 @@ public class Allin_Soap {
      * @param language
      * @throws Exception
      */
-    public void sign(boolean verboseOutput, boolean debugMode, @NotNull Allin_Include.Signature signatureType, @NotNull String fileIn,
-                     @NotNull String fileOut, String distinguishedName, String msisdn, String msg, String language) throws Exception {
+    public void sign(boolean verboseOutput, boolean debugMode, @Nonnull Allin_Include.Signature signatureType, @Nonnull String fileIn,
+                     @Nonnull String fileOut, String distinguishedName, String msisdn, String msg, String language) throws Exception {
 
         this._debug = debugMode;
         this._verboseMode = verboseOutput;
@@ -164,10 +166,10 @@ public class Allin_Soap {
      * @param requestId
      * @throws Exception
      */
-    private void signDocumentOnDemandCertMobileId(@NotNull Allin_Pdf pdfs[], @NotNull Calendar signDate, @NotNull Allin_Include.HashAlgorithm hashAlgo,
-                                                 @NotNull String serverURI, boolean addTimestamp, boolean addOcsp, @NotNull String claimedIdentity,
-                                                 @NotNull String distinguishedName, @NotNull String phoneNumber, @NotNull String certReqMsg,
-                                                 @NotNull String certReqMsgLang, int requestId) throws Exception {
+    private void signDocumentOnDemandCertMobileId(@Nonnull Allin_Pdf pdfs[], @Nonnull Calendar signDate, @Nonnull Allin_Include.HashAlgorithm hashAlgo,
+                                                 @Nonnull String serverURI, boolean addTimestamp, boolean addOcsp, @Nonnull String claimedIdentity,
+                                                 @Nonnull String distinguishedName, @Nonnull String phoneNumber, @Nonnull String certReqMsg,
+                                                 @Nonnull String certReqMsgLang, int requestId) throws Exception {
 
         String[] additionalProfiles;
         if (pdfs.length > 1) {
@@ -208,9 +210,9 @@ public class Allin_Soap {
      * @param requestId
      * @throws Exception
      */
-    private void signDocumentOnDemandCert(@NotNull Allin_Pdf[] pdfs, @NotNull Allin_Include.HashAlgorithm hashAlgo, Calendar signDate, @NotNull String serverURI,
-                                         @NotNull String certRequestProfile, boolean addTimeStamp, boolean addOcsp,
-                                         @NotNull String distinguishedName, @NotNull String claimedIdentity, int requestId) throws Exception {
+    private void signDocumentOnDemandCert(@Nonnull Allin_Pdf[] pdfs, @Nonnull Allin_Include.HashAlgorithm hashAlgo, Calendar signDate, @Nonnull String serverURI,
+                                         @Nonnull String certRequestProfile, boolean addTimeStamp, boolean addOcsp,
+                                         @Nonnull String distinguishedName, @Nonnull String claimedIdentity, int requestId) throws Exception {
 
         String[] additionalProfiles;
         if (pdfs.length > 1) {
@@ -247,8 +249,8 @@ public class Allin_Soap {
      * @param requestId
      * @throws Exception
      */
-    private void signDocumentStaticCert(@NotNull Allin_Pdf[] pdfs, @NotNull Allin_Include.HashAlgorithm hashAlgo, Calendar signDate, @NotNull String serverURI,
-                                       boolean addTimeStamp, boolean addOCSP, @NotNull String claimedIdentity, int requestId) throws Exception {
+    private void signDocumentStaticCert(@Nonnull Allin_Pdf[] pdfs, @Nonnull Allin_Include.HashAlgorithm hashAlgo, Calendar signDate, @Nonnull String serverURI,
+                                       boolean addTimeStamp, boolean addOCSP, @Nonnull String claimedIdentity, int requestId) throws Exception {
 
         String[] additionalProfiles = null;
         if (pdfs.length > 1) {
@@ -281,8 +283,8 @@ public class Allin_Soap {
      * @param requestId
      * @throws Exception
      */
-    private void signDocumentTimestampOnly(@NotNull Allin_Pdf[] pdfs, @NotNull Allin_Include.HashAlgorithm hashAlgo, Calendar signDate,
-                                          @NotNull String serverURI, @NotNull String claimedIdentity, int requestId) throws Exception {
+    private void signDocumentTimestampOnly(@Nonnull Allin_Pdf[] pdfs, @Nonnull Allin_Include.HashAlgorithm hashAlgo, Calendar signDate,
+                                          @Nonnull String serverURI, @Nonnull String claimedIdentity, int requestId) throws Exception {
 
         Allin_Include.SignatureType signatureType = Allin_Include.SignatureType.TIMESTAMP;
 
@@ -318,7 +320,7 @@ public class Allin_Soap {
      * @param signNodeName
      * @throws Exception
      */
-    private void signDocumentSync(@NotNull SOAPMessage sigReqMsg, @NotNull String serverURI, @NotNull Allin_Pdf[] pdfs, int estimatedSize, String signNodeName) throws Exception {
+    private void signDocumentSync(@Nonnull SOAPMessage sigReqMsg, @Nonnull String serverURI, @Nonnull Allin_Pdf[] pdfs, int estimatedSize, String signNodeName) throws Exception {
 
         String sigResponse = sendRequest(sigReqMsg, serverURI);
 
@@ -338,7 +340,7 @@ public class Allin_Soap {
      * @param pdfs
      * @param estimatedSize
      */
-    private void signDocuments(@NotNull ArrayList<String> signatureList, @NotNull Allin_Pdf[] pdfs, int estimatedSize) {
+    private void signDocuments(@Nonnull ArrayList<String> signatureList, @Nonnull Allin_Pdf[] pdfs, int estimatedSize) {
         int counter = 0;
         for (String signatureHash : signatureList) {
             pdfs[counter].sign(signatureHash, estimatedSize);
@@ -368,7 +370,7 @@ public class Allin_Soap {
      * @return if nodes with searched node names exist it will return an array list containing text from value from nodes
      */
     @Nullable
-    private ArrayList<String> getNodesFromNodeList(@NotNull Element element, @NotNull String nodeName) {
+    private ArrayList<String> getNodesFromNodeList(@Nonnull Element element, @Nonnull String nodeName) {
         ArrayList<String> returnlist = null;
         NodeList nl = element.getElementsByTagName(nodeName);
 
@@ -392,7 +394,7 @@ public class Allin_Soap {
      * @throws IOException
      * @throws SAXException
      */
-    private Element getNodeList(@NotNull String xmlString) throws ParserConfigurationException, IOException, SAXException {
+    private Element getNodeList(@Nonnull String xmlString) throws ParserConfigurationException, IOException, SAXException {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
         ByteArrayInputStream bis = new ByteArrayInputStream(xmlString.getBytes());
@@ -423,10 +425,10 @@ public class Allin_Soap {
      * @throws SOAPException
      * @throws IOException
      */
-    private SOAPMessage createRequestMessage(@NotNull Allin_Include.RequestType reqType, @NotNull String digestMethodAlgorithmURL,
-                                             String certRequestProfile, @NotNull byte[][] hashList, String timestampURN, String ocspURN,
+    private SOAPMessage createRequestMessage(@Nonnull Allin_Include.RequestType reqType, @Nonnull String digestMethodAlgorithmURL,
+                                             String certRequestProfile, @Nonnull byte[][] hashList, String timestampURN, String ocspURN,
                                              String[] additionalProfiles, String claimedIdentityFormat, String claimedIdentity,
-                                             @NotNull String signatureType, String distinguishedName,
+                                             @Nonnull String signatureType, String distinguishedName,
                                              String mobileIdType, String phoneNumber, String certReqMsg, String certReqMsgLang,
                                              String responseId, int requestId) throws SOAPException, IOException {
 
@@ -560,7 +562,7 @@ public class Allin_Soap {
      * @throws IOException
      */
     @Nullable
-    private String sendRequest(@NotNull SOAPMessage soapMsg, @NotNull String urlPath) throws IOException, SOAPException {
+    private String sendRequest(@Nonnull SOAPMessage soapMsg, @Nonnull String urlPath) throws IOException, SOAPException {
 
         if (_verboseMode)
             System.out.println("Creating connection object");

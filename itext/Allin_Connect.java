@@ -1,3 +1,4 @@
+package ch.swisscom;
 
 /**
  * Created:
@@ -11,8 +12,7 @@
  * **********************************************************************************
  */
 
-import com.sun.istack.internal.NotNull;
-import com.sun.istack.internal.Nullable;
+import javax.annotation.*;
 
 import javax.net.ssl.*;
 import java.io.IOException;
@@ -50,9 +50,9 @@ public class Allin_Connect {
      * @param timeout in ms
      * @param debug
      */
-    public Allin_Connect(@NotNull String url, @NotNull String privateKey, @NotNull String serverCert, @NotNull String clientCert,
-                         @NotNull String keyStoreName, @NotNull String trustStoreName,
-                         @NotNull String keyStorePass, @NotNull String trustStorePass, int timeout, boolean debug) {
+    public Allin_Connect(@Nonnull String url, @Nonnull String privateKey, @Nonnull String serverCert, @Nonnull String clientCert,
+                         @Nonnull String keyStoreName, @Nonnull String trustStoreName,
+                         @Nonnull String keyStorePass, @Nonnull String trustStorePass, int timeout, boolean debug) {
         this._url = url;
         this._privateKey = privateKey;
         this._serverCert = serverCert;
@@ -67,7 +67,6 @@ public class Allin_Connect {
 
     @Nullable
     public URLConnection getConnection() {
-
         System.setProperty("javax.net.ssl.keyStore", _keyStore);
         System.setProperty("javax.net.ssl.trustStore", _trustStore);
         System.setProperty("javax.net.ssl.keyStorePassword", _keyStorePass);
@@ -99,7 +98,7 @@ public class Allin_Connect {
         return null;
     }
 
-    private URLConnection createConnectionObject(@NotNull String urlString,@NotNull  SSLSocketFactory sslSocketFactory) throws IOException {
+    private URLConnection createConnectionObject(@Nonnull String urlString,@Nonnull  SSLSocketFactory sslSocketFactory) throws IOException {
         URL url = new URL(urlString);
         URLConnection connection = url.openConnection();
         if (connection instanceof HttpsURLConnection) {
@@ -108,7 +107,7 @@ public class Allin_Connect {
         return connection;
     }
 
-    private SSLSocketFactory initItAll(@NotNull KeyManager[] keyManagers,@NotNull  TrustManager[] trustManagers)
+    private SSLSocketFactory initItAll(@Nonnull KeyManager[] keyManagers,@Nonnull  TrustManager[] trustManagers)
             throws NoSuchAlgorithmException, KeyManagementException {
         SSLContext context = SSLContext.getInstance("TLS");
         context.init(keyManagers, trustManagers, null);
@@ -116,7 +115,7 @@ public class Allin_Connect {
         return socketFactory;
     }
 
-    private KeyManager[] createKeyManagers(@NotNull String keyStoreFileName,@NotNull  String keyStorePassword,@NotNull  String alias)
+    private KeyManager[] createKeyManagers(@Nonnull String keyStoreFileName,@Nonnull  String keyStorePassword,@Nonnull  String alias)
             throws IOException, KeyStoreException, NoSuchAlgorithmException, UnrecoverableKeyException, CertificateException {
         java.io.InputStream inputStream = new java.io.FileInputStream(keyStoreFileName);
         KeyStore keyStore = KeyStore.getInstance("JKS");
@@ -140,7 +139,7 @@ public class Allin_Connect {
         return managers;
     }
 
-    private TrustManager[] createTrustManagers(@NotNull String trustStoreFileName,@NotNull  String trustStorePassword)
+    private TrustManager[] createTrustManagers(@Nonnull String trustStoreFileName,@Nonnull  String trustStorePassword)
             throws KeyStoreException, NoSuchAlgorithmException, IOException, java.security.cert.CertificateException {
         java.io.InputStream inputStream = new java.io.FileInputStream(trustStoreFileName);
         KeyStore trustStore = KeyStore.getInstance("JKS");
@@ -154,7 +153,7 @@ public class Allin_Connect {
         return trustManagerFactory.getTrustManagers();
     }
 
-    private static void printKeystoreInfo(@NotNull KeyStore keystore) throws KeyStoreException {
+    private static void printKeystoreInfo(@Nonnull KeyStore keystore) throws KeyStoreException {
         System.out.println("Provider : " + keystore.getProvider().getName());
         System.out.println("Type : " + keystore.getType());
         System.out.println("Size : " + keystore.size());
@@ -174,8 +173,8 @@ public class Allin_Connect {
         private String _clientCert;
         private String _serverCert;
 
-        public AliasKeyManager(@NotNull KeyStore ks,@NotNull  String alias,@NotNull  String password,@NotNull  String privateKeyName,
-                               @NotNull String serverCert,@NotNull  String clientCert) {
+        public AliasKeyManager(@Nonnull KeyStore ks,@Nonnull  String alias,@Nonnull  String password,@Nonnull  String privateKeyName,
+                               @Nonnull String serverCert,@Nonnull  String clientCert) {
             this._ks = ks;
             this._alias = alias;
             this._password = password;

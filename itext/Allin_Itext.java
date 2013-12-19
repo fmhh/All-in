@@ -1,4 +1,6 @@
-import com.sun.istack.internal.NotNull;
+package ch.swisscom;
+
+import javax.annotation.*;
 
 import java.io.File;
 
@@ -50,7 +52,7 @@ public class Allin_Itext {
         System.out.println("java allin-itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en");
     }
 
-    public static void printError(@NotNull String error) {
+    public static void printError(@Nonnull String error) {
         System.out.println(error);
     }
 
