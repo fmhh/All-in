@@ -1,3 +1,4 @@
+
 /**
  * Created:
  * 03.12.13 KW49 14:51
@@ -23,7 +24,7 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Enumeration;
 
-public class DSSConnection {
+public class Allin_Connect {
 
     private boolean _debug;
     private String _url;
@@ -34,10 +35,24 @@ public class DSSConnection {
     private String _trustStore;
     private String _keyStorePass;
     private String _trustStorePass;
+    private int _timeout;
 
-    public DSSConnection(@NotNull String url,@NotNull  String privateKey,@NotNull  String serverCert,@NotNull  String clientCert,
-                         @NotNull String keyStoreName,@NotNull  String trustStoreName,
-                         @NotNull String keyStorePass,@NotNull  String trustStorePass, boolean debug) {
+    /**
+     * Constructor
+     * @param url
+     * @param privateKey
+     * @param serverCert
+     * @param clientCert
+     * @param keyStoreName
+     * @param trustStoreName
+     * @param keyStorePass
+     * @param trustStorePass
+     * @param timeout in ms
+     * @param debug
+     */
+    public Allin_Connect(@NotNull String url, @NotNull String privateKey, @NotNull String serverCert, @NotNull String clientCert,
+                         @NotNull String keyStoreName, @NotNull String trustStoreName,
+                         @NotNull String keyStorePass, @NotNull String trustStorePass, int timeout, boolean debug) {
         this._url = url;
         this._privateKey = privateKey;
         this._serverCert = serverCert;
@@ -46,6 +61,7 @@ public class DSSConnection {
         this._trustStore = trustStoreName;
         this._keyStorePass = keyStorePass;
         this._trustStorePass = trustStorePass;
+        this._timeout = timeout;
         this._debug = debug;
     }
 
@@ -62,6 +78,7 @@ public class DSSConnection {
             TrustManager[] trustManagers = createTrustManagers(_trustStore, _trustStorePass);
             SSLSocketFactory factory = initItAll(keyManagers, trustManagers);
             URLConnection con = createConnectionObject(_url, factory);
+            con.setConnectTimeout(_timeout);
 
             return con;
 
@@ -111,9 +128,9 @@ public class DSSConnection {
         KeyManager[] managers;
         if (alias != null) {
             managers =
-                    new KeyManager[]{new DSSConnection(_url, _privateKey, _serverCert, _clientCert, _keyStore, _trustStore,
-                                     _keyStorePass, _trustStorePass, _debug).new AliasKeyManager(keyStore, alias, keyStorePassword,
-                                     _privateKey, _serverCert, _clientCert)};
+                    new KeyManager[]{new Allin_Connect(_url, _privateKey, _serverCert, _clientCert, _keyStore, _trustStore,
+                            _keyStorePass, _trustStorePass, _timeout, _debug).new AliasKeyManager(keyStore, alias, keyStorePassword,
+                            _privateKey, _serverCert, _clientCert)};
         } else {
             KeyManagerFactory keyManagerFactory =
                     KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());

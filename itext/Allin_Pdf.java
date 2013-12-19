@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class Pdf {
+public class Allin_Pdf {
 
     private String inputFilePath;
     private String outputFilePath;
@@ -23,7 +23,7 @@ public class Pdf {
     private PdfSignatureAppearance pdfSignatureAppearance;
     private PdfSignature pdfSignature;
 
-    Pdf(@NotNull String inputFilePath,@NotNull String outputFilePath, String pdfPassword, String signReason, String signLocation, String signContact){
+    Allin_Pdf(@NotNull String inputFilePath, @NotNull String outputFilePath, String pdfPassword, String signReason, String signLocation, String signContact){
         this.inputFilePath = inputFilePath;
         this.outputFilePath = outputFilePath;
         this.pdfPassword = pdfPassword;
