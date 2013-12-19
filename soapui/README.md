@@ -33,9 +33,7 @@ ${#TestSuite#DIGEST_224}|Base64 encoded binary hash (SHA-224) value of any docum
 ${#TestSuite#DIGEST_256}|Base64 encoded binary hash (SHA-256) value of any document
 ${#TestSuite#DIGEST_384}|Base64 encoded binary hash (SHA-384) value of any document
 ${#TestSuite#DIGEST_512}|Base64 encoded binary hash (SHA-512) value of any document
-${#TestSuite#tmp_ResponseID}|Temporary Variable
-${#TestSuite#tmp_RequestID_RawReq}|Temporary Variable
-${#TestSuite#tmp_RequestID_Resp}|Temporary Variable
+${#TestSuite#_tmp}|This variable is used for temporary session data only
 
 ### Known issues
 
