@@ -84,7 +84,25 @@ FAILED on GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= with following details:
 
 ## iText
 
-<TODO>
+Contains source code and a Java command line tool to digitally sign a PDF with iText.
+
+````
+Usage: java allin-itext <args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>
+-v        - verbose output
+-d        - debug mode
+signature - tsa, static, ondemand
+pdftosign - PDF to be signed
+signedpdf - signed PDF
+<dn>      - optional distinguished name in ondemand
+<msisdn>  - optional Mobile ID step-up in ondemand
+<msg>     - optional Mobile ID message, mandatory if msisdn is set
+<lang>    - optional Mobile ID language element (en, de, fr, it), mandatory if msisdn is set
+
+Example: java allin-itext -v tsa sample.pdf signed.pdf
+         java allin-itext -v static sample.pdf signed.pdf
+         java allin-itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH'
+         java allin-itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en
+```
 
 
 ## Known issues

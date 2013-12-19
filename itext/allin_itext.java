@@ -10,44 +10,30 @@ import java.io.File;
  * 18.12.13 KW 51 23:42
  * </p>
  * **********************************************************************************************************
- * This is a wrapper class for Allin_soap class                                                             *
+ * This is a wrapper class for allin_soap class                                                             *
  * Only program arguments will be handled                                                                   *
- * At least Allin_soap will be called with arguments                                                        *
+ * At least allin_soap will be called with arguments                                                        *
  * **********************************************************************************************************
- * Usage: java allin-itext.java <args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>
- * -v        - verbose output
- * -d        - debug mode
- * signature - tsa, static, ondemand
- * pdftosign - PDF to be signed
- * signedpdf - signed PDF
- * <dn>      - optional distinguished name in ondemand
- * <msisdn>  - optional Mobile ID step-up in ondemand
- * <msg>     - optional Mobile ID message, mandatory if msisdn is set
- * <lang>    - optional Mobile ID language element (en, de, fr, it), mandatory if msisdn is set
- * <p/>
- * Examples java allin-itext.java -v tsa sample.pdf signed.pdf
- * java allin-itext.java -v static sample.pdf signed.pdf
- * java allin-itext.java -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH'
- * java allin-itext.java -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en
  */
 
 public class allin_itext {
 
     public static void printUsage() {
-        System.out.println("Usage: java Allin-itext <args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>");
-        System.out.println("-v \t \t - verbose output");
-        System.out.println("-d \t \t - debug mode");
+        System.out.println("Usage: java allin-itext <args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>");
+        System.out.println("-v        - verbose output");
+        System.out.println("-d        - debug mode");
         System.out.println("signature - tsa, static, ondemand");
         System.out.println("pdftosign - PDF to be signed");
         System.out.println("signedpdf - signed PDF");
-        System.out.println("<dn> \t - optional distinguished name in ondemand");
-        System.out.println("<msisdn> \t - optional Mobile ID step-up in ondemand");
-        System.out.println("<msg> \t - optional Mobile ID message, mandatory if msisdn is set");
-        System.out.println("<lang> \t - optional Mobile ID language element (en, de, fr, it), mandatory if msisdn is set");
-        System.out.println("Examples java allin-itext -v tsa sample.pdf signed.pdf");
-        System.out.println("java allin-itext -v static sample.pdf signed.pdf");
-        System.out.println("java allin-itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH'");
-        System.out.println("java allin-itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en");
+        System.out.println("<dn>      - optional distinguished name in ondemand");
+        System.out.println("<msisdn>  - optional Mobile ID step-up in ondemand");
+        System.out.println("<msg>     - optional Mobile ID message, mandatory if msisdn is set");
+        System.out.println("<lang>    - optional Mobile ID language element (en, de, fr, it), mandatory if msisdn is set");
+        System.out.println("");
+        System.out.println("Example: java allin-itext -v tsa sample.pdf signed.pdf");
+        System.out.println("         java allin-itext -v static sample.pdf signed.pdf");
+        System.out.println("         java allin-itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH'");
+        System.out.println("         java allin-itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en");
     }
 
     public static void printError(@Nonnull String error) {
