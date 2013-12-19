@@ -1,5 +1,3 @@
-package ch.swisscom;
-
 /**
  * Created:
  * 03.12.13 KW49 14:51

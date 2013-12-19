@@ -1,5 +1,3 @@
-package ch.swisscom;
-
 /**
  * Creator:
  * 19.12.13 KW51 08:04 fritschka

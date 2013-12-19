@@ -1,5 +1,3 @@
-package ch.swisscom;
-
 import javax.annotation.*;
 
 import java.io.File;

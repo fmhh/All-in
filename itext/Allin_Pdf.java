@@ -1,5 +1,3 @@
-package ch.swisscom;
-
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.*;
 import com.itextpdf.text.pdf.codec.Base64;
