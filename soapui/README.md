@@ -25,11 +25,9 @@ ${#TestSuite#STATIC_ID}|ClaimedIdentity Key ID for Static Keys
 ${#TestSuite#ONDEMAND_QUALIFIED}|ClaimedIdentity Key ID for OnDemand Keys and enforced MID Auth
 ${#TestSuite#ONDEMAND_ADVANCED}|ClaimedIdentity Key ID for OnDemand Keys and optional MID Auth
 ${#TestSuite#MSISDN}|The Mobile Subscriber Number
-${#TestSuite#SHA224}|URI For SHA-224 Algorithm
 ${#TestSuite#SHA256}|URI For SHA-256 Algorithm
 ${#TestSuite#SHA384}|URI For SHA-384 Algorithm
 ${#TestSuite#SHA512}|URI For SHA-512 Algorithm
-${#TestSuite#DIGEST_224}|Base64 encoded binary hash (SHA-224) value of any document
 ${#TestSuite#DIGEST_256}|Base64 encoded binary hash (SHA-256) value of any document
 ${#TestSuite#DIGEST_384}|Base64 encoded binary hash (SHA-384) value of any document
 ${#TestSuite#DIGEST_512}|Base64 encoded binary hash (SHA-512) value of any document

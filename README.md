@@ -16,7 +16,7 @@ Usage: ./allin-tsa.sh <args> digest method pkcs7
   -v        - verbose output
   -d        - debug mode
   digest    - digest/hash to be signed
-  method    - digest method (SHA224, SHA256, SHA384, SHA512)
+  method    - digest method (SHA256, SHA384, SHA512)
   pkcs7     - output file with PKCS#7 (Crytographic Message Syntax)
 
   Examples ./allin-tsa.sh GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s
@@ -29,7 +29,7 @@ Usage: ./allin-org.sh <args> digest method pkcs7
   -v        - verbose output
   -d        - debug mode
   digest    - digest/hash to be signed
-  method    - digest method (SHA224, SHA256, SHA384, SHA512)
+  method    - digest method (SHA256, SHA384, SHA512)
   pkcs7     - output file with PKCS#7 (Crytographic Message Syntax)
 
   Examples ./allin-org.sh GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s
@@ -42,7 +42,7 @@ Usage: ./allin-ondemand.sh <args> digest method pkcs7 dn <msisdn> <msg> <lang>
   -v        - verbose output
   -d        - debug mode
   digest    - digest/hash to be signed
-  method    - digest method (SHA224, SHA256, SHA384, SHA512)
+  method    - digest method (SHA256, SHA384, SHA512)
   pkcs7     - output file with PKCS#7 (Crytographic Message Syntax)
   dn        - distinguished name in the ondemand certificate
   <msisdn>  - optional Mobile ID step-up
