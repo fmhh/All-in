@@ -108,11 +108,17 @@ Example: java allin-itext -v tsa sample.pdf signed.pdf
 
 To run this java example you need to download the following files from given sources:
 
-1: http://mvnrepository.com/artifact/com.google.code.findbugs/jsr305 - version 2.0.2 is successfully tested
+1: http://mvnrepository.com/artifact/com.google.code.findbugs/jsr305
 
-2: http://sourceforge.net/projects/itext/ - version 5.4.5 is successfully tested
+Version 2.0.2 is successfully tested
 
-3: http://www.bouncycastle.org/latest_releases.html - download bcprov-jdk15on-150.jar - this is successfully tested
+2: http://sourceforge.net/projects/itext
+
+Version 5.4.5 is successfully tested
+
+3: http://www.bouncycastle.org/latest_releases.html
+
+bcprov-jdk15on-150.jar is successfully tested
 
 ### Compiling
 
@@ -122,6 +128,9 @@ After downloading this files you need to compile the java sources (maybe you hav
 
 Now you can run the program: `java -cp .:bcprov-jdk15on-150.jar:itextpdf-5.4.5.jar:jsr305-2.0.2.jar allin_itext`
 
+### Configuration
+
+Refer to `allin_itext.cfg` configuration file for related settings.
 
 ## Known issues
 
