@@ -1,5 +1,5 @@
 #!/bin/sh
-# allin-org.sh - 1.1
+# allin-org.sh - 1.2
 #
 # Generic script using curl to invoke Swisscom Allin service: Organization
 # Dependencies: curl, openssl, base64, sed, date, xmllint, tr, python
@@ -7,6 +7,7 @@
 # Change Log:
 #  1.0 26.11.2013: Initial version
 #  1.1 05.12.2013: Added support for RESTful interface
+#  1.2 19.12.2013: Removed SHA224
 
 ######################################################################
 # User configurable options
@@ -46,7 +47,7 @@ if [ $# -lt 3 ]; then                           # Parse the rest of the argument
   echo "  -v        - verbose output"
   echo "  -d        - debug mode"
   echo "  digest    - digest/hash to be signed"
-  echo "  method    - digest method (SHA224, SHA256, SHA384, SHA512)"
+  echo "  method    - digest method (SHA256, SHA384, SHA512)"
   echo "  pkcs7     - output file with PKCS#7 (Crytographic Message Syntax)"
   echo
   echo "  Examples $0 GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s"
@@ -80,8 +81,6 @@ TIMEOUT_CON=90                                  # Timeout of the client connecti
 DIGEST_VALUE=$1                                 # Hash to be signed
 DIGEST_METHOD=$2                                # Digest method
 case "$DIGEST_METHOD" in
-  SHA224)
-    DIGEST_ALGO='http://www.w3.org/2001/04/xmldsig-more#sha224' ;;
   SHA256)
     DIGEST_ALGO='http://www.w3.org/2001/04/xmlenc#sha256' ;;
   SHA384)
