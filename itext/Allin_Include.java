@@ -9,7 +9,7 @@
  * <p/>
  * Copyright (c) 2003 ABACUS Research AG, All Rights Reserved
  */
-public class Allin_Include {
+public class allin_include {
 
     public enum HashAlgorithm {
 

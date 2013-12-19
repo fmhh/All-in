@@ -31,7 +31,7 @@ import java.io.File;
  * java allin-itext.java -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en
  */
 
-public class Allin_Itext {
+public class allin_itext {
 
     public static void printUsage() {
         System.out.println("Usage: java Allin-itext <args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>");
@@ -58,16 +58,13 @@ public class Allin_Itext {
 
         boolean verboseOutput = false;
         boolean debugMode = false;
-        Allin_Include.Signature signature = null;
+        allin_include.Signature signature = null;
         String pdfToSign = null;
         String signedPDF = null;
         String distinguishedName = null;
         String msisdn = null;
         String msg = null;
         String language = null;
-
-        args = new String[]{"-v", "-d", "ondemand", "/Users/fritschka/Desktop/test_pdfs/leere_pdf.pdf",  "/Users/fritschka/Desktop/signed_pdfs/leeres_pdf_dss_ondemand_cert.pdf",
-                "cn=Hans Muster,o=Abacus Research AG,c=CH"};
 
         if (args == null || args.length < 3) {
             printUsage();
@@ -82,7 +79,7 @@ public class Allin_Itext {
 
         int argPointer = debugMode && verboseOutput ? 2 : !debugMode && !verboseOutput ? 0 : !debugMode && verboseOutput || debugMode && !verboseOutput ? 1 : -1;
 
-        signature = Allin_Include.Signature.valueOf(args[argPointer].trim().toUpperCase());
+        signature = allin_include.Signature.valueOf(args[argPointer].trim().toUpperCase());
         ++argPointer;
 
         if (args.length < argPointer + 1) {
@@ -95,7 +92,7 @@ public class Allin_Itext {
         ++argPointer;
 
         if (!filePdfToSign.exists() || !filePdfToSign.isFile() || !filePdfToSign.canRead()) {
-            printError("File " + pdfToSign + "does not exist or is not a file or can not be read.");
+            printError("File " + pdfToSign + " does not exist or is not a file or can not be read.");
             return;
         }
 
@@ -139,7 +136,7 @@ public class Allin_Itext {
             return;
         }
 
-        Allin_Soap dss_soap = new Allin_Soap();
+        allin_soap dss_soap = new allin_soap();
         try{
         dss_soap.sign(verboseOutput, debugMode, signature, pdfToSign, signedPDF, distinguishedName, msisdn, msg, language);
         } catch (Exception e){

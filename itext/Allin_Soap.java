@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Properties;
 
-public class Allin_Soap {
+public class allin_soap {
 
     private static final String _CLAIMED_IDENTITY_FORMAT = "urn:com:swisscom:dss:v1.0:entity";
     private static final String _CERTIFICATE_REQUEST_PROFILE = "urn:com:swisscom:advanced";
@@ -57,7 +57,7 @@ public class Allin_Soap {
      * load properties file and set connection properties from properties file
      */
 
-    public Allin_Soap() {
+    public allin_soap() {
 
         properties = new Properties();
 
@@ -99,7 +99,7 @@ public class Allin_Soap {
      * @param language
      * @throws Exception
      */
-    public void sign(boolean verboseOutput, boolean debugMode, @Nonnull Allin_Include.Signature signatureType, @Nonnull String fileIn,
+    public void sign(boolean verboseOutput, boolean debugMode, @Nonnull allin_include.Signature signatureType, @Nonnull String fileIn,
                      @Nonnull String fileOut, String distinguishedName, String msisdn, String msg, String language) throws Exception {
 
         this._debug = debugMode;
@@ -111,36 +111,36 @@ public class Allin_Soap {
         boolean addTimestamp = properties.getProperty("ADD_TSA").trim().toLowerCase().equals("true");
         boolean addOCSP = properties.getProperty("ADD_OCSP").trim().toLowerCase().equals("true");
 
-        Allin_Include.HashAlgorithm hashAlgo = Allin_Include.HashAlgorithm.valueOf(properties.getProperty("DIGEST_METHOD").trim().toUpperCase());
+        allin_include.HashAlgorithm hashAlgo = allin_include.HashAlgorithm.valueOf(properties.getProperty("DIGEST_METHOD").trim().toUpperCase());
 
-        String claimedIdentityPropName = signatureType.equals(Allin_Include.Signature.ONDEMAND) ? "AP_ID_ONDEMAND" : signatureType.equals(Allin_Include.Signature.TSA) ? "AP_ID_TSA" : "AP_ID_STATIC";
+        String claimedIdentityPropName = signatureType.equals(allin_include.Signature.ONDEMAND) ? "AP_ID_ONDEMAND" : signatureType.equals(allin_include.Signature.TSA) ? "AP_ID_TSA" : "AP_ID_STATIC";
         String claimedIdentity = properties.getProperty(claimedIdentityPropName);
 
-        Allin_Pdf pdf = new Allin_Pdf(fileIn, fileOut, null, null, null, null);
+        allin_pdf pdf = new allin_pdf(fileIn, fileOut, null, null, null, null);
 
-        if (msisdn != null && msg != null && language != null && signatureType.equals(Allin_Include.Signature.ONDEMAND)){
+        if (msisdn != null && msg != null && language != null && signatureType.equals(allin_include.Signature.ONDEMAND)){
             if (verboseOutput)
                 System.out.println("Going to sign ondemand with mobile id");
-            signDocumentOnDemandCertMobileId(new Allin_Pdf[]{pdf}, Calendar.getInstance(), hashAlgo, _url, addTimestamp,
+            signDocumentOnDemandCertMobileId(new allin_pdf[]{pdf}, Calendar.getInstance(), hashAlgo, _url, addTimestamp,
                     addOCSP, claimedIdentity, distinguishedName, msisdn, msg, language, (int) (Math.random() * 1000));
             System.out.println("Signing ondemand was successful");
-        } else if (signatureType.equals(Allin_Include.Signature.ONDEMAND))                                                 {
+        } else if (signatureType.equals(allin_include.Signature.ONDEMAND))                                                 {
             if (verboseOutput)
                 System.out.println("Going to sign with ondemand");
-            signDocumentOnDemandCert(new Allin_Pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, _CERTIFICATE_REQUEST_PROFILE,
+            signDocumentOnDemandCert(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, _CERTIFICATE_REQUEST_PROFILE,
                     addTimestamp, addOCSP, distinguishedName, claimedIdentity, (int) (Math.random() * 1000));
             if (verboseOutput)
                 System.out.println("Signing ondemand was successful");
-        } else if (signatureType.equals(Allin_Include.Signature.TSA))                                                       {
+        } else if (signatureType.equals(allin_include.Signature.TSA))                                                       {
             if (verboseOutput)
                 System.out.println("Going to sign only with timestamp");
-            signDocumentTimestampOnly(new Allin_Pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, claimedIdentity,
+            signDocumentTimestampOnly(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, claimedIdentity,
                     (int) (Math.random() * 1000));
             System.out.println("Signing only with timestamp was successful");
-        } else if (signatureType.equals(Allin_Include.Signature.STATIC))                                                     {
+        } else if (signatureType.equals(allin_include.Signature.STATIC))                                                     {
             if (verboseOutput)
                 System.out.println("Going to sign with static cert");
-            signDocumentStaticCert(new Allin_Pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, addTimestamp, addOCSP,
+            signDocumentStaticCert(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, addTimestamp, addOCSP,
                     claimedIdentity, (int) (Math.random() * 1000));
             if (verboseOutput)
                 System.out.println("Singing with static cert was successful");
@@ -164,7 +164,7 @@ public class Allin_Soap {
      * @param requestId
      * @throws Exception
      */
-    private void signDocumentOnDemandCertMobileId(@Nonnull Allin_Pdf pdfs[], @Nonnull Calendar signDate, @Nonnull Allin_Include.HashAlgorithm hashAlgo,
+    private void signDocumentOnDemandCertMobileId(@Nonnull allin_pdf pdfs[], @Nonnull Calendar signDate, @Nonnull allin_include.HashAlgorithm hashAlgo,
                                                  @Nonnull String serverURI, boolean addTimestamp, boolean addOcsp, @Nonnull String claimedIdentity,
                                                  @Nonnull String distinguishedName, @Nonnull String phoneNumber, @Nonnull String certReqMsg,
                                                  @Nonnull String certReqMsgLang, int requestId) throws Exception {
@@ -172,10 +172,10 @@ public class Allin_Soap {
         String[] additionalProfiles;
         if (pdfs.length > 1) {
             additionalProfiles = new String[2];
-            additionalProfiles[1] = Allin_Include.AdditionalProfiles.BATCH.getProfileName();
+            additionalProfiles[1] = allin_include.AdditionalProfiles.BATCH.getProfileName();
         } else
             additionalProfiles = new String[1];
-        additionalProfiles[0] = Allin_Include.AdditionalProfiles.ON_DEMAND_CERTIFCATE.getProfileName();
+        additionalProfiles[0] = allin_include.AdditionalProfiles.ON_DEMAND_CERTIFCATE.getProfileName();
 
         int estimatedSize = getEstimatedSize(addTimestamp, addOcsp, true);
 
@@ -184,9 +184,9 @@ public class Allin_Soap {
             pdfHash[i] = pdfs[i].getPdfHash(signDate, estimatedSize, hashAlgo.getHashAlgorythm(), false);
         }
 
-        SOAPMessage sigReqMsg = createRequestMessage(Allin_Include.RequestType.SignRequest, hashAlgo.getHashUri(), _CERTIFICATE_REQUEST_PROFILE,
+        SOAPMessage sigReqMsg = createRequestMessage(allin_include.RequestType.SignRequest, hashAlgo.getHashUri(), _CERTIFICATE_REQUEST_PROFILE,
                 pdfHash, addTimestamp ? _TIMESTAMP_URN : null, addOcsp ? _OCSP_URN : null, additionalProfiles, _CLAIMED_IDENTITY_FORMAT,
-                claimedIdentity, Allin_Include.SignatureType.CMS.getSignatureType(), distinguishedName, _MOBILE_ID_TYPE, phoneNumber,
+                claimedIdentity, allin_include.SignatureType.CMS.getSignatureType(), distinguishedName, _MOBILE_ID_TYPE, phoneNumber,
                 certReqMsg, certReqMsgLang, null, requestId);
 
         signDocumentSync(sigReqMsg, serverURI, pdfs, estimatedSize, "Base64Signature");
@@ -208,17 +208,17 @@ public class Allin_Soap {
      * @param requestId
      * @throws Exception
      */
-    private void signDocumentOnDemandCert(@Nonnull Allin_Pdf[] pdfs, @Nonnull Allin_Include.HashAlgorithm hashAlgo, Calendar signDate, @Nonnull String serverURI,
+    private void signDocumentOnDemandCert(@Nonnull allin_pdf[] pdfs, @Nonnull allin_include.HashAlgorithm hashAlgo, Calendar signDate, @Nonnull String serverURI,
                                          @Nonnull String certRequestProfile, boolean addTimeStamp, boolean addOcsp,
                                          @Nonnull String distinguishedName, @Nonnull String claimedIdentity, int requestId) throws Exception {
 
         String[] additionalProfiles;
         if (pdfs.length > 1) {
             additionalProfiles = new String[2];
-            additionalProfiles[1] = Allin_Include.AdditionalProfiles.BATCH.getProfileName();
+            additionalProfiles[1] = allin_include.AdditionalProfiles.BATCH.getProfileName();
         } else
             additionalProfiles = new String[1];
-        additionalProfiles[0] = Allin_Include.AdditionalProfiles.ON_DEMAND_CERTIFCATE.getProfileName();
+        additionalProfiles[0] = allin_include.AdditionalProfiles.ON_DEMAND_CERTIFCATE.getProfileName();
 
         int estimatedSize = getEstimatedSize(addTimeStamp, addOcsp, true);
 
@@ -227,9 +227,9 @@ public class Allin_Soap {
             pdfHash[i] = pdfs[i].getPdfHash(signDate, estimatedSize, hashAlgo.getHashAlgorythm(), false);
         }
 
-        SOAPMessage sigReqMsg = createRequestMessage(Allin_Include.RequestType.SignRequest, hashAlgo.getHashUri(), certRequestProfile,
+        SOAPMessage sigReqMsg = createRequestMessage(allin_include.RequestType.SignRequest, hashAlgo.getHashUri(), certRequestProfile,
                 pdfHash, addTimeStamp ? _TIMESTAMP_URN : null, addOcsp ? _OCSP_URN : null, additionalProfiles, _CLAIMED_IDENTITY_FORMAT,
-                claimedIdentity, Allin_Include.SignatureType.CMS.getSignatureType(), distinguishedName, null, null, null, null, null, requestId);
+                claimedIdentity, allin_include.SignatureType.CMS.getSignatureType(), distinguishedName, null, null, null, null, null, requestId);
 
         signDocumentSync(sigReqMsg, serverURI, pdfs, estimatedSize, "Base64Signature");
     }
@@ -247,13 +247,13 @@ public class Allin_Soap {
      * @param requestId
      * @throws Exception
      */
-    private void signDocumentStaticCert(@Nonnull Allin_Pdf[] pdfs, @Nonnull Allin_Include.HashAlgorithm hashAlgo, Calendar signDate, @Nonnull String serverURI,
+    private void signDocumentStaticCert(@Nonnull allin_pdf[] pdfs, @Nonnull allin_include.HashAlgorithm hashAlgo, Calendar signDate, @Nonnull String serverURI,
                                        boolean addTimeStamp, boolean addOCSP, @Nonnull String claimedIdentity, int requestId) throws Exception {
 
         String[] additionalProfiles = null;
         if (pdfs.length > 1) {
             additionalProfiles = new String[1];
-            additionalProfiles[0] = Allin_Include.AdditionalProfiles.BATCH.getProfileName();
+            additionalProfiles[0] = allin_include.AdditionalProfiles.BATCH.getProfileName();
         }
 
         int estimatedSize = getEstimatedSize(addTimeStamp, addOCSP, false);
@@ -263,9 +263,9 @@ public class Allin_Soap {
             pdfHash[i] = pdfs[i].getPdfHash(signDate, estimatedSize, hashAlgo.getHashAlgorythm(), false);
         }
 
-        SOAPMessage sigReqMsg = createRequestMessage(Allin_Include.RequestType.SignRequest, hashAlgo.getHashUri(), null,
+        SOAPMessage sigReqMsg = createRequestMessage(allin_include.RequestType.SignRequest, hashAlgo.getHashUri(), null,
                 pdfHash, addTimeStamp ? _TIMESTAMP_URN : null, addOCSP ? _OCSP_URN : null, additionalProfiles, _CLAIMED_IDENTITY_FORMAT,
-                claimedIdentity, Allin_Include.SignatureType.CMS.getSignatureType(), null, null, null, null, null, null, requestId);
+                claimedIdentity, allin_include.SignatureType.CMS.getSignatureType(), null, null, null, null, null, null, requestId);
 
         signDocumentSync(sigReqMsg, serverURI, pdfs, estimatedSize, "Base64Signature");
     }
@@ -281,18 +281,18 @@ public class Allin_Soap {
      * @param requestId
      * @throws Exception
      */
-    private void signDocumentTimestampOnly(@Nonnull Allin_Pdf[] pdfs, @Nonnull Allin_Include.HashAlgorithm hashAlgo, Calendar signDate,
+    private void signDocumentTimestampOnly(@Nonnull allin_pdf[] pdfs, @Nonnull allin_include.HashAlgorithm hashAlgo, Calendar signDate,
                                           @Nonnull String serverURI, @Nonnull String claimedIdentity, int requestId) throws Exception {
 
-        Allin_Include.SignatureType signatureType = Allin_Include.SignatureType.TIMESTAMP;
+        allin_include.SignatureType signatureType = allin_include.SignatureType.TIMESTAMP;
 
         String[] additionalProfiles;
         if (pdfs.length > 1) {
             additionalProfiles = new String[2];
-            additionalProfiles[1] = Allin_Include.AdditionalProfiles.BATCH.getProfileName();
+            additionalProfiles[1] = allin_include.AdditionalProfiles.BATCH.getProfileName();
         } else
             additionalProfiles = new String[1];
-        additionalProfiles[0] = Allin_Include.AdditionalProfiles.TIMESTAMP.getProfileName();
+        additionalProfiles[0] = allin_include.AdditionalProfiles.TIMESTAMP.getProfileName();
 
         int estimatedSize = getEstimatedSize(true, true, false);
 
@@ -301,7 +301,7 @@ public class Allin_Soap {
             pdfHash[i] = pdfs[i].getPdfHash(signDate, estimatedSize, hashAlgo.getHashAlgorythm(), true);
         }
 
-        SOAPMessage sigReqMsg = createRequestMessage(Allin_Include.RequestType.SignRequest, hashAlgo.getHashUri(), null,
+        SOAPMessage sigReqMsg = createRequestMessage(allin_include.RequestType.SignRequest, hashAlgo.getHashUri(), null,
                 pdfHash, null, null, additionalProfiles, _CLAIMED_IDENTITY_FORMAT, claimedIdentity, signatureType.getSignatureType(),
                 null, null, null, null, null, null, requestId);
 
@@ -318,13 +318,13 @@ public class Allin_Soap {
      * @param signNodeName
      * @throws Exception
      */
-    private void signDocumentSync(@Nonnull SOAPMessage sigReqMsg, @Nonnull String serverURI, @Nonnull Allin_Pdf[] pdfs, int estimatedSize, String signNodeName) throws Exception {
+    private void signDocumentSync(@Nonnull SOAPMessage sigReqMsg, @Nonnull String serverURI, @Nonnull allin_pdf[] pdfs, int estimatedSize, String signNodeName) throws Exception {
 
         String sigResponse = sendRequest(sigReqMsg, serverURI);
 
         ArrayList<String> responseResult = getTextFromXmlText(sigResponse, "ResultMajor");
 
-        if (responseResult == null || !Allin_Include.RequestResult.Success.getResultUrn().equals(responseResult.get(0)))
+        if (responseResult == null || !allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0)))
             throw new Exception("Getting signatures failed. Result: " + responseResult);
 
         ArrayList<String> signHashes = getTextFromXmlText(sigResponse, signNodeName);
@@ -338,7 +338,7 @@ public class Allin_Soap {
      * @param pdfs
      * @param estimatedSize
      */
-    private void signDocuments(@Nonnull ArrayList<String> signatureList, @Nonnull Allin_Pdf[] pdfs, int estimatedSize) {
+    private void signDocuments(@Nonnull ArrayList<String> signatureList, @Nonnull allin_pdf[] pdfs, int estimatedSize) {
         int counter = 0;
         for (String signatureHash : signatureList) {
             pdfs[counter].sign(signatureHash, estimatedSize);
@@ -423,7 +423,7 @@ public class Allin_Soap {
      * @throws SOAPException
      * @throws IOException
      */
-    private SOAPMessage createRequestMessage(@Nonnull Allin_Include.RequestType reqType, @Nonnull String digestMethodAlgorithmURL,
+    private SOAPMessage createRequestMessage(@Nonnull allin_include.RequestType reqType, @Nonnull String digestMethodAlgorithmURL,
                                              String certRequestProfile, @Nonnull byte[][] hashList, String timestampURN, String ocspURN,
                                              String[] additionalProfiles, String claimedIdentityFormat, String claimedIdentity,
                                              @Nonnull String signatureType, String distinguishedName,
@@ -565,7 +565,7 @@ public class Allin_Soap {
         if (_verboseMode)
             System.out.println("Creating connection object");
 
-        URLConnection conn = new Allin_Connect(urlPath, _privateKeyName, _serverCert, _clientCert, _keyStorePath, _trustStorePath,
+        URLConnection conn = new allin_connect(urlPath, _privateKeyName, _serverCert, _clientCert, _keyStorePath, _trustStorePath,
                 _keyStorePass, _trustStorePass, _timeout, _debug).getConnection();
         if (conn instanceof HttpsURLConnection) {
             ((HttpsURLConnection) conn).setRequestMethod("POST");

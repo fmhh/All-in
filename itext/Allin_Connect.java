@@ -22,7 +22,7 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Enumeration;
 
-public class Allin_Connect {
+public class allin_connect {
 
     private boolean _debug;
     private String _url;
@@ -48,7 +48,7 @@ public class Allin_Connect {
      * @param timeout in ms
      * @param debug
      */
-    public Allin_Connect(@Nonnull String url, @Nonnull String privateKey, @Nonnull String serverCert, @Nonnull String clientCert,
+    public allin_connect(@Nonnull String url, @Nonnull String privateKey, @Nonnull String serverCert, @Nonnull String clientCert,
                          @Nonnull String keyStoreName, @Nonnull String trustStoreName,
                          @Nonnull String keyStorePass, @Nonnull String trustStorePass, int timeout, boolean debug) {
         this._url = url;
@@ -125,7 +125,7 @@ public class Allin_Connect {
         KeyManager[] managers;
         if (alias != null) {
             managers =
-                    new KeyManager[]{new Allin_Connect(_url, _privateKey, _serverCert, _clientCert, _keyStore, _trustStore,
+                    new KeyManager[]{new allin_connect(_url, _privateKey, _serverCert, _clientCert, _keyStore, _trustStore,
                             _keyStorePass, _trustStorePass, _timeout, _debug).new AliasKeyManager(keyStore, alias, keyStorePassword,
                             _privateKey, _serverCert, _clientCert)};
         } else {
