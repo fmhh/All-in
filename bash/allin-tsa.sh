@@ -4,6 +4,9 @@
 # Script using curl to invoke Swisscom All-in signing service: TSA
 # Dependencies: curl, openssl, base64, sed, date, xmllint, tr, python
 #
+# License: GNU General Public License version 3 or later; see LICENSE.md
+# Author: Swisscom (Schweiz AG)
+#
 # Change Log:
 #  1.0 26.11.2013: Initial version
 #  1.1 04.12.2013: Added support for RESTful interface
