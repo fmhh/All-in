@@ -64,6 +64,7 @@ public class allin_soap {
             return;
         }
         setConnectionProperties();
+        checkFilesExists(new String[]{this._clientCertPath, this._privateKeyName, this._serverCertPath});
     }
 
     private void setConnectionProperties(){
@@ -614,6 +615,23 @@ public class allin_soap {
         returnValue = useOcsp ? returnValue + 4192 : returnValue;
         returnValue = certRequestProfile ? returnValue + 700 : returnValue;
         return returnValue;
+    }
+    
+    /**
+     * 
+     * @param filePaths
+     */
+    private void checkFilesExists(@Nonnull String[] filePaths){
+
+        File file;
+        for (String filePath : filePaths){
+            file = new File(filePath);
+            if (!file.exists() || !file.isFile() || !file.canRead()) {
+                if (_debug)
+                    System.out.println("File not found: " + file.getAbsolutePath());
+                return;
+            }
+        }
     }
 
 }
