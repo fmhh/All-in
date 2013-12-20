@@ -100,7 +100,7 @@ public class allin_itext {
         }
         
         if (new File(signedPDF).exists()){
-            printUsage();
+            printError("Target file exists");
             return;
         }
         ++argPointer;
