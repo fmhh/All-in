@@ -1,10 +1,10 @@
 allin-cmd: bash scripts
 ============
 
-bash command line tools to invoke:
-* TSA Signature Request
-* Organization Signature Request
-* OnDemand Signature Request
+bash command line scripts to invoke:
+* TSA Signature Request: allin-tsa.sh
+* Static Signature Request: allin-static.sh
+* OnDemand Signature Request: allin-ondemand.sh
 
 
 ### Usage
@@ -23,7 +23,7 @@ Usage: ./allin-tsa.sh <args> digest method pkcs7
 ```
 
 ```
-Usage: ./allin-org.sh <args> digest method pkcs7
+Usage: ./allin-static.sh <args> digest method pkcs7
   -t value  - message type (SOAP, XML, JSON), default SOAP
   -v        - verbose output
   -d        - debug mode
@@ -31,8 +31,8 @@ Usage: ./allin-org.sh <args> digest method pkcs7
   method    - digest method (SHA256, SHA384, SHA512)
   pkcs7     - output file with PKCS#7 (Crytographic Message Syntax)
 
-  Examples ./allin-org.sh GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s
-           ./allin-org.sh -t JSON -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s
+  Examples ./allin-static.sh GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s
+           ./allin-static.sh -t JSON -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s
 ```
 
 ```
@@ -58,7 +58,9 @@ Usage: ./allin-ondemand.sh <args> digest method pkcs7 dn <msisdn> <msg> <lang>
 
 The files `mycert.crt`and `mycert.key` are placeholders without any valid content. Be sure to adjust them with your client certificate content in order to connect to the Mobile ID service.
 
-<TODO>
+Each script contains a configuration section on the top where at least following variables are relevant:
+
+ * AP_ID: Identification provided by Swisscom to each customer in order to use the related signature service
 
 ### How to create a digest/hash to be signed
 
@@ -83,6 +85,8 @@ FAILED on GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= with following details:
  Result minor   : urn:com:swisscom:dss:1.0:resultminor:InsufficientData
  Result message : MSISDN
 ```
+
+### PKCS#7 output file
 
 <TODO>
 
