@@ -96,12 +96,10 @@ public class allin_itext {
          signedPDF = args[argPointer];
         if (signedPDF.equals(pdfToSign)){
             printError("Source file equals target file");
-            printUsage();
             return;
         }
         
         if (new File(signedPDF).exists()){
-            printError("Target file exists");
             printUsage();
             return;
         }
