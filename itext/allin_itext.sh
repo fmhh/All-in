@@ -45,7 +45,7 @@ done
 
 # Java options
 JAVA_OPTS="-Xmx350M"
-JAVA_DEBUG="-Xdebug -Djava.security.debug=certpath"
+JAVA_DEBUG="-Xdebug"
 
 # Proxy options (can be http/socks; check the Java documentation)
 PROXY_TYPE=
