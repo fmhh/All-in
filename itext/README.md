@@ -17,10 +17,10 @@ signedpdf - signed PDF
 <msg>     - optional Mobile ID message, mandatory if msisdn is set
 <lang>    - optional Mobile ID language element (en, de, fr, it), mandatory if msisdn is set
 
-Example: allin_itext.sh -v tsa sample.pdf signed.pdf
-         allin_itext.sh -v static sample.pdf signed.pdf
-         allin_itext.sh -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH'
-         allin_itext.sh -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en
+Examples ./allin_itext.sh -v tsa sample.pdf signed.pdf
+         ./allin_itext.sh -v static sample.pdf signed.pdf
+         ./allin_itext.sh -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH'
+         ./allin_itext.sh -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en
 ```
 
 ### Dependencies
