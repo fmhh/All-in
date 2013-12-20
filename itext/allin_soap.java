@@ -629,7 +629,7 @@ public class allin_soap {
             if (!file.exists() || !file.isFile() || !file.canRead()) {
                 if (_debug)
                     System.out.println("File not found: " + file.getAbsolutePath());
-                return;
+                System.exit(1);
             }
         }
     }
