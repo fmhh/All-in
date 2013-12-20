@@ -6,7 +6,7 @@
  * 13.12.13 KW 50 14:21
  * </p>
  * **********************************************************************************
- * Sign PDF using Swisscom DSS                                                      *
+ * Sign PDF using Swisscom All-in signing service                                   *
  * Tested with iText-5.4.5; Bouncy Castle 1.50 and JDK 1.7.0_45                     *
  * For examples see main method. You only need to change variables in this method.  *
  * **********************************************************************************
