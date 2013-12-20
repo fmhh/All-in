@@ -38,8 +38,9 @@ done
 # Check and define the java classes
 JAVA_CP="$PWD"
 for cmd in bcprov-jdk15on-150.jar bcpkix-jdk15on-150.jar itextpdf-5.4.5.jar jsr305-2.0.2.jar; do
-  if [ ! -f "$PWD/$cmd" ]; then error "Dependency error: '$PWD/$cmd' not found" ; fi
-  JAVA_CP="$JAVA_CP:$PWD/$cmd"
+  file=$PWD/$cmd
+  if [ ! -f $file ]; then error "Dependency error: '$file' not found" ; fi
+  JAVA_CP="$JAVA_CP:$file"
 done
 
 # Java options
