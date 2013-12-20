@@ -6,7 +6,7 @@ import java.io.File;
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 18.12.13 KW 51 23:42
+ * 20.12.2013 16:55
  * </p>
  * **********************************************************************************************************
  * This is a wrapper class for allin_soap class                                                             *
@@ -92,7 +92,19 @@ public class allin_itext {
             printUsage();
             return;
         }
-        signedPDF = args[argPointer];
+        
+         signedPDF = args[argPointer];
+        if (signedPDF.equals(pdfToSign)){
+            printError("Source file equals target file");
+            printUsage();
+            return;
+        }
+        
+        if (new File(signedPDF).exists()){
+            printError("Target file exists");
+            printUsage();
+            return;
+        }
         ++argPointer;
 
         if (args.length >= argPointer + 1 && args[argPointer].replaceAll(" ", "").toLowerCase().contains("cn=")) {
