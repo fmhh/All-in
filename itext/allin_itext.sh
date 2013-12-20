@@ -65,7 +65,12 @@ if [ "$DEBUG" != "" ]; then
   set -x
 fi
 
-# Launch
+# Always compile if no parameters are provided
+if [ $# -lt 1 ]; then
+  javac -cp $JAVA_CP allin_itext.java
+fi
+
+# Launch it
 java $JAVA_OPTS -cp $JAVA_CP allin_itext $1 $2 $3 $4 $5 $6 $7 $8 $9
 
 #==========================================================
