@@ -3,10 +3,10 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 13.12.13 KW 50 14:21
+ * 20.12.13 15:07
  * </p>
  * **********************************************************************************
- * Sign PDF using Swisscom DSS                                                      *
+ * Sign PDF using Swisscom All-in signing service                                   *
  * Tested with iText-5.4.5; Bouncy Castle 1.50 and JDK 1.7.0_45                     *
  * For examples see main method. You only need to change variables in this method.  *
  * **********************************************************************************
@@ -38,15 +38,11 @@ public class allin_soap {
     private static final String _TIMESTAMP_URN = "urn:ietf:rfc:3161";
     private static final String _OCSP_URN = "urn:ietf:rfc:2560";
     private static final String _MOBILE_ID_TYPE = "urn:com:swisscom:auth:mobileid:v1.0";
-    private static final String _CFG_PATH = "allin_itext.cfg";
+    private static final String _CFG_PATH = "/Users/fritschka/IdeaProjects/dev/trunk/swisscom/src/java/ch/swisscom/allin_itext_priv.cfg";
     private Properties properties;
     private String _privateKeyName;
-    private String _serverCert;
-    private String _clientCert;
-    private String _keyStorePath;
-    private String _keyStorePass;
-    private String _trustStorePath;
-    private String _trustStorePass;
+    private String _serverCertPath;
+    private String _clientCertPath;
     private String _url;
     private int _timeout;
     private boolean _debug = false;
@@ -71,18 +67,14 @@ public class allin_soap {
     }
 
     private void setConnectionProperties(){
-        this._clientCert = properties.getProperty("CERT_FILE");
+        this._clientCertPath = properties.getProperty("CERT_FILE");
         this._privateKeyName = properties.getProperty("CERT_KEY");
-        this._serverCert = properties.getProperty("SSL_CA");
+        this._serverCertPath = properties.getProperty("SSL_CA");
         this._url = properties.getProperty("URL");
-        this._keyStorePath = properties.getProperty("KEYSTORE");
-        this._trustStorePath = properties.getProperty("TRUSTSTORE");
-        this._keyStorePass = properties.getProperty("KEYSTORE_PASSWORD");
-        this._trustStorePass = properties.getProperty("TRUSTSTORE_PASSWORD");
         try {
         this._timeout = Integer.parseInt(properties.getProperty("TIMEOUT_CON"));
         } catch (NumberFormatException e){
-            this._timeout = 90;
+            this._timeout = 90*1000;
         }
     }
 
@@ -565,8 +557,7 @@ public class allin_soap {
         if (_verboseMode)
             System.out.println("Creating connection object");
 
-        URLConnection conn = new allin_connect(urlPath, _privateKeyName, _serverCert, _clientCert, _keyStorePath, _trustStorePath,
-                _keyStorePass, _trustStorePass, _timeout, _debug).getConnection();
+        URLConnection conn = new allin_connect(urlPath, _privateKeyName, _serverCertPath, _clientCertPath, _timeout, _debug).getConnection();
         if (conn instanceof HttpsURLConnection) {
             ((HttpsURLConnection) conn).setRequestMethod("POST");
         }
