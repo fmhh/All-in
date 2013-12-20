@@ -19,7 +19,7 @@ import java.io.File;
 public class allin_itext {
 
     public static void printUsage() {
-        System.out.println("Usage: java allin-itext <args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>");
+        System.out.println("Usage: java <javaoptions> allin_itext <allin_itext_args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>");
         System.out.println("-v        - verbose output");
         System.out.println("-d        - debug mode");
         System.out.println("signature - tsa, static, ondemand");
@@ -30,10 +30,10 @@ public class allin_itext {
         System.out.println("<msg>     - optional Mobile ID message, mandatory if msisdn is set");
         System.out.println("<lang>    - optional Mobile ID language element (en, de, fr, it), mandatory if msisdn is set");
         System.out.println("");
-        System.out.println("Example: java allin-itext -v tsa sample.pdf signed.pdf");
-        System.out.println("         java allin-itext -v static sample.pdf signed.pdf");
-        System.out.println("         java allin-itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH'");
-        System.out.println("         java allin-itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en");
+        System.out.println("Example: java allin_itext -v tsa sample.pdf signed.pdf");
+        System.out.println("         java allin_itext -v static sample.pdf signed.pdf");
+        System.out.println("         java allin_itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH'");
+        System.out.println("         java allin_itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en");
     }
 
     public static void printError(@Nonnull String error) {
