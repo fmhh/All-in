@@ -137,9 +137,9 @@ public class allin_itext {
             return;
         }
 
-        allin_soap dss_soap = new allin_soap();
+        allin_soap dss_soap = new allin_soap(verboseOutput, debugMode);
         try{
-            dss_soap.sign(verboseOutput, debugMode, signature, pdfToSign, signedPDF, distinguishedName, msisdn, msg, language);
+            dss_soap.sign(signature, pdfToSign, signedPDF, distinguishedName, msisdn, msg, language);
         } catch (Exception e){
             printError("Signing failed");
             printError(e.getMessage());

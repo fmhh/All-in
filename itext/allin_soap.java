@@ -51,9 +51,14 @@ public class allin_soap {
     /**
      * Constructor
      * load properties file and set connection properties from properties file
+     * @param verboseOutput
+     * @param debugMode
      */
 
-    public allin_soap() {
+    public allin_soap(boolean verboseOutput, boolean debugMode) {
+        
+        this._verboseMode = verboseOutput;
+        this._debug = debugMode;
 
         properties = new Properties();
 
@@ -65,6 +70,7 @@ public class allin_soap {
         }
         setConnectionProperties();
         checkFilesExists(new String[]{this._clientCertPath, this._privateKeyName, this._serverCertPath});
+
     }
 
     private void setConnectionProperties(){
@@ -81,8 +87,6 @@ public class allin_soap {
 
     /**
      *
-     * @param verboseOutput
-     * @param debugMode
      * @param signatureType TSA, OnDemand, StaticCert
      * @param fileIn
      * @param fileOut
@@ -92,13 +96,10 @@ public class allin_soap {
      * @param language
      * @throws Exception
      */
-    public void sign(boolean verboseOutput, boolean debugMode, @Nonnull allin_include.Signature signatureType, @Nonnull String fileIn,
+    public void sign(@Nonnull allin_include.Signature signatureType, @Nonnull String fileIn,
                      @Nonnull String fileOut, String distinguishedName, String msisdn, String msg, String language) throws Exception {
 
-        this._debug = debugMode;
-        this._verboseMode = verboseOutput;
-
-        if (verboseOutput)
+        if (_verboseMode)
             System.out.println("Loaded properties file successful");
 
         boolean addTimestamp = properties.getProperty("ADD_TSA").trim().toLowerCase().equals("true");
@@ -112,30 +113,30 @@ public class allin_soap {
         allin_pdf pdf = new allin_pdf(fileIn, fileOut, null, null, null, null);
 
         if (msisdn != null && msg != null && language != null && signatureType.equals(allin_include.Signature.ONDEMAND)){
-            if (verboseOutput)
+            if (_verboseMode)
                 System.out.println("Going to sign ondemand with mobile id");
             signDocumentOnDemandCertMobileId(new allin_pdf[]{pdf}, Calendar.getInstance(), hashAlgo, _url, addTimestamp,
                     addOCSP, claimedIdentity, distinguishedName, msisdn, msg, language, (int) (Math.random() * 1000));
             System.out.println("Signing ondemand was successful");
         } else if (signatureType.equals(allin_include.Signature.ONDEMAND))                                                 {
-            if (verboseOutput)
+            if (_verboseMode)
                 System.out.println("Going to sign with ondemand");
             signDocumentOnDemandCert(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, _CERTIFICATE_REQUEST_PROFILE,
                     addTimestamp, addOCSP, distinguishedName, claimedIdentity, (int) (Math.random() * 1000));
-            if (verboseOutput)
+            if (_verboseMode)
                 System.out.println("Signing ondemand was successful");
         } else if (signatureType.equals(allin_include.Signature.TSA))                                                       {
-            if (verboseOutput)
+            if (_verboseMode)
                 System.out.println("Going to sign only with timestamp");
             signDocumentTimestampOnly(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, claimedIdentity,
                     (int) (Math.random() * 1000));
             System.out.println("Signing only with timestamp was successful");
         } else if (signatureType.equals(allin_include.Signature.STATIC))                                                     {
-            if (verboseOutput)
+            if (_verboseMode)
                 System.out.println("Going to sign with static cert");
             signDocumentStaticCert(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, addTimestamp, addOCSP,
                     claimedIdentity, (int) (Math.random() * 1000));
-            if (verboseOutput)
+            if (_verboseMode)
                 System.out.println("Singing with static cert was successful");
         }
     }
@@ -616,9 +617,9 @@ public class allin_soap {
         returnValue = certRequestProfile ? returnValue + 700 : returnValue;
         return returnValue;
     }
-    
+
     /**
-     * 
+     *
      * @param filePaths
      */
     private void checkFilesExists(@Nonnull String[] filePaths){
@@ -627,7 +628,7 @@ public class allin_soap {
         for (String filePath : filePaths){
             file = new File(filePath);
             if (!file.exists() || !file.isFile() || !file.canRead()) {
-                if (_debug)
+                if (_debug || _verboseMode)
                     System.out.println("File not found: " + file.getAbsolutePath());
                 System.exit(1);
             }
@@ -635,4 +636,3 @@ public class allin_soap {
     }
 
 }
-
