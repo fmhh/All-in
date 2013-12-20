@@ -1,5 +1,4 @@
 import javax.annotation.*;
-
 import java.io.File;
 
 /**
@@ -65,8 +64,14 @@ public class allin_itext {
 
         int argPointer = debugMode && verboseOutput ? 2 : !debugMode && !verboseOutput ? 0 : !debugMode && verboseOutput || debugMode && !verboseOutput ? 1 : -1;
 
-        signature = allin_include.Signature.valueOf(args[argPointer].trim().toUpperCase());
-        ++argPointer;
+        try{
+            signature = allin_include.Signature.valueOf(args[argPointer].trim().toUpperCase());
+            ++argPointer;
+        } catch (IllegalArgumentException e){
+            printError(args[argPointer] + " is not a valid signature.");
+            printUsage();
+            return;
+        }
 
         if (args.length < argPointer + 1) {
             printError("Could not find pdf to sign");
@@ -124,7 +129,7 @@ public class allin_itext {
 
         allin_soap dss_soap = new allin_soap();
         try{
-        dss_soap.sign(verboseOutput, debugMode, signature, pdfToSign, signedPDF, distinguishedName, msisdn, msg, language);
+            dss_soap.sign(verboseOutput, debugMode, signature, pdfToSign, signedPDF, distinguishedName, msisdn, msg, language);
         } catch (Exception e){
             printError("Signing failed");
             printError(e.getMessage());
