@@ -30,14 +30,14 @@ done
 PWD=$(dirname $0)
 
 # Check the dependencies
-for cmd in java; do
+for cmd in java ; do
   hash $cmd &> /dev/null
   if [ $? -eq 1 ]; then error "Dependency error: '$cmd' not found" ; fi
 done
 
 # Java options
 JAVA_OPTS="-Xmx350M"
-JAVA_CP="$PWD:$PWD/bcprov-jdk15on-150.jar:$PWD/itextpdf-5.4.5.jar:$PWD/jsr305-2.0.2.jar"
+JAVA_CP="$PWD:$PWD/bcprov-jdk15on-150.jar:$PWD/bcpkix-jdk15on-150.jar:$PWD/itextpdf-5.4.5.jar:$PWD/jsr305-2.0.2.jar"
 JAVA_DEBUG="-Xdebug"
 
 # Proxy options (can be http/socks; check the Java documentation)

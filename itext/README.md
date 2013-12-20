@@ -38,16 +38,17 @@ Version 5.4.5 is successfully tested
 3: http://www.bouncycastle.org/latest_releases.html
 
 bcprov-jdk15on-150.jar is successfully tested
+bcpkix-jdk15on-150.jar is successfully tested
 
 ### Compiling
 
 After downloading this files you need to compile the java sources (maybe you have to change the location of jar-files):
 
-`javac -cp .:bcprov-jdk15on-150.jar:itextpdf-5.4.5.jar:jsr305-2.0.2.jar allin_itext.java`
+`javac -cp .:bcprov-jdk15on-150.jar:bcpkix-jdk15on-150.jar:itextpdf-5.4.5.jar:jsr305-2.0.2.jar allin_itext.java`
 
 ### Running
 
-Now you can run the program with java `java -cp .:bcprov-jdk15on-150.jar:itextpdf-5.4.5.jar:jsr305-2.0.2.jar allin_itext` or by using the launcher script.
+Now you can run the program with java `java -cp .:bcprov-jdk15on-150.jar:bcpkix-jdk15on-150.jar:itextpdf-5.4.5.jar:jsr305-2.0.2.jar allin_itext` or by using the launcher script.
 
 ### Configuration
 
