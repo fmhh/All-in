@@ -38,7 +38,7 @@ public class allin_soap {
     private static final String _TIMESTAMP_URN = "urn:ietf:rfc:3161";
     private static final String _OCSP_URN = "urn:ietf:rfc:2560";
     private static final String _MOBILE_ID_TYPE = "urn:com:swisscom:auth:mobileid:v1.0";
-    private static final String _CFG_PATH = "/Users/fritschka/IdeaProjects/dev/trunk/swisscom/src/java/ch/swisscom/allin_itext_priv.cfg";
+    private static final String _CFG_PATH = "allin_itext.cfg";
     private Properties properties;
     private String _privateKeyName;
     private String _serverCertPath;
