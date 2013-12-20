@@ -1,5 +1,5 @@
 #!/bin/sh
-# allin-org.sh - 1.2
+# allin-static.sh - 1.2
 #
 # Generic script using curl to invoke Swisscom Allin service: Organization
 # Dependencies: curl, openssl, base64, sed, date, xmllint, tr, python
