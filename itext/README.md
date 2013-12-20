@@ -6,7 +6,7 @@ Java source code and command line to sign PDF with iText.
 ### Usage
 
 ````
-Usage: java allin-itext <args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>
+Usage: java -cp .:bcprov-jdk15on-150.jar:itextpdf-5.4.5.jar:jsr305-2.0.2.jar allin_itext <allin_itext_args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>
 -v        - verbose output
 -d        - debug mode
 signature - tsa, static, ondemand
