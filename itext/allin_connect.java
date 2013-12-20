@@ -68,7 +68,7 @@ public class allin_connect {
 
         try {
             KeyManager[] keyManagers = createKeyManagers(_clientCert);
-            TrustManager[] trustManagers = null;//createTrustManagers(_serverCert);
+            TrustManager[] trustManagers = createTrustManagers(_serverCert);
             SSLSocketFactory factory = initItAll(keyManagers, trustManagers);
             URLConnection con = createConnectionObject(_url, factory);
             con.setConnectTimeout(_timeout);
@@ -121,7 +121,24 @@ public class allin_connect {
     @Nullable
     private TrustManager[] createTrustManagers(String alias)
             throws KeyStoreException, NoSuchAlgorithmException, IOException, java.security.cert.CertificateException {
-        return null;
+
+        TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+            @Override
+            public void checkClientTrusted( final X509Certificate[] chain, final String authType ) {
+                System.out.println();
+            }
+            @Override
+            public void checkServerTrusted( final X509Certificate[] chain, final String authType ) {
+                System.out.println();
+            }
+            @Override
+            public X509Certificate[] getAcceptedIssuers() {
+                System.out.println();
+                return null;
+            }
+        }};
+
+        return trustAllCerts;
     }
 
     private class AliasKeyManager implements X509KeyManager {
