@@ -261,7 +261,7 @@ case "$MSGTYPE" in
 esac
 
 # Call the service
-http_code=$(curl --write-out '%{http_code}\n' --sslv3 --silent \
+http_code=$(curl --write-out '%{http_code}\n' --silent \
   $CURL_OPTIONS @$TMP.req \
   --header "${HEADER_ACCEPT}" --header "${HEADER_CONTENT_TYPE}" \
   --cert $CERT_FILE --cacert $SSL_CA --key $CERT_KEY \
