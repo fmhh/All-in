@@ -1,12 +1,12 @@
 allin-cmd: iText
 ============
 
-Java source code and command line to sign PDF with iText.
+Java source code and command line tool to sign PDF with iText.
 
 ### Usage
 
 ````
-Usage: allin_itext.sh <allin_itext_args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>
+Usage: java <javaoptions> allin_itext <allin_itext_args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>
 -v        - verbose output
 -d        - debug mode
 signature - tsa, static, ondemand
@@ -17,10 +17,10 @@ signedpdf - signed PDF
 <msg>     - optional Mobile ID message, mandatory if msisdn is set
 <lang>    - optional Mobile ID language element (en, de, fr, it), mandatory if msisdn is set
 
-Examples ./allin_itext.sh -v tsa sample.pdf signed.pdf
-         ./allin_itext.sh -v static sample.pdf signed.pdf
-         ./allin_itext.sh -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH'
-         ./allin_itext.sh -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en
+Examples java allin_itext -v tsa sample.pdf signed.pdf
+         java allin_itext -v static sample.pdf signed.pdf
+         java allin_itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH'
+         java allin_itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en
 ```
 
 ### Dependencies
@@ -48,7 +48,7 @@ After downloading this files you need to compile the java sources (maybe you hav
 
 ### Running
 
-Now you can run the program with java `java -cp .:bcprov-jdk15on-150.jar:bcpkix-jdk15on-150.jar:itextpdf-5.4.5.jar:jsr305-2.0.2.jar allin_itext` or by using the launcher script.
+Now you can run the program with java `java -cp .:bcprov-jdk15on-150.jar:bcpkix-jdk15on-150.jar:itextpdf-5.4.5.jar:jsr305-2.0.2.jar allin_itext`
 
 ### Configuration
 
@@ -56,4 +56,5 @@ Refer to `allin_itext.cfg` configuration file for related settings.
 
 ### Known issues
 
-n/a
+See actual issue reports for 'iText'
+Adobe Reader and SwissSigner do not see the embedded OCSP response (Bug report 2371 to All-in Service)
