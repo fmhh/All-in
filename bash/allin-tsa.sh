@@ -103,28 +103,28 @@ case "$MSGTYPE" in
   SOAP)
     REQ_SOAP='<?xml version="1.0" encoding="UTF-8"?>
     <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-                   xmlns="urn:oasis:names:tc:dss:1.0:core:schema"
-                   xmlns:ais="http://service.ais.swisscom.com/"
-                   xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
-      <soap:Body>
-        <ais:sign>
-          <SignRequest RequestID="'$REQUESTID'" Profile="urn:com:swisscom:dss:v1.0">
-            <OptionalInputs>
-              <ClaimedIdentity Format="urn:com:swisscom:dss:v1.0:entity">
-                <Name>'$AP_ID'</Name>
-              </ClaimedIdentity>
-              <SignatureType>urn:ietf:rfc:3161</SignatureType>
-              <AdditionalProfile>urn:oasis:names:tc:dss:1.0:profiles:timestamping</AdditionalProfile>
-            </OptionalInputs>
-            <InputDocuments>
-              <DocumentHash>
-                <dsig:DigestMethod Algorithm="'$DIGEST_ALGO'"/>
-                <dsig:DigestValue>'$DIGEST_VALUE'</dsig:DigestValue>
-              </DocumentHash>
-            </InputDocuments>
-          </SignRequest>
-        </ais:sign>
-      </soap:Body>
+                   xmlns:ais="http://service.ais.swisscom.com/">
+        <soap:Body>
+            <ais:sign>
+                <SignRequest RequestID="'$REQUESTID'" Profile="urn:com:swisscom:dss:v1.0" 
+                             xmlns="urn:oasis:names:tc:dss:1.0:core:schema" 
+                             xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+                    <OptionalInputs>
+                        <ClaimedIdentity Format="urn:com:swisscom:dss:v1.0:entity">
+                            <Name>'$AP_ID'</Name>
+                        </ClaimedIdentity>
+                        <SignatureType>urn:ietf:rfc:3161</SignatureType>
+                        <AdditionalProfile>urn:oasis:names:tc:dss:1.0:profiles:timestamping</AdditionalProfile>
+                    </OptionalInputs>
+                    <InputDocuments>
+                        <DocumentHash>
+                            <dsig:DigestMethod Algorithm="'$DIGEST_ALGO'"/>
+                            <dsig:DigestValue>'$DIGEST_VALUE'</dsig:DigestValue>
+                        </DocumentHash>
+                    </InputDocuments>
+                </SignRequest>
+            </ais:sign>
+        </soap:Body>
     </soap:Envelope>'
     # store into file
     echo "$REQ_SOAP" > $TMP.req ;;
@@ -136,7 +136,7 @@ case "$MSGTYPE" in
                  xmlns="urn:oasis:names:tc:dss:1.0:core:schema"
                  xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
         <OptionalInputs>
-            <ClaimedIdentity>
+            <ClaimedIdentity Format="urn:com:swisscom:dss:v1.0:entity">
                 <Name>'$AP_ID'</Name>
             </ClaimedIdentity>
             <SignatureType>urn:ietf:rfc:3161</SignatureType>
@@ -159,17 +159,18 @@ case "$MSGTYPE" in
         "@RequestID": "'$REQUESTID'",
         "@Profile": "urn:com:swisscom:dss:v1.0",
         "dss.OptionalInputs": {
-            "dss.ClaimedIdentity": {"dss.Name": "'$AP_ID'"},
+            "dss.ClaimedIdentity": {
+                "@Format": "urn:com:swisscom:dss:v1.0:entity",
+                "dss.Name": "'$AP_ID'"
+            },
             "dss.SignatureType": "urn:ietf:rfc:3161",
             "dss.AdditionalProfile": "urn:oasis:names:tc:dss:1.0:profiles:timestamping"
         },
         "dss.InputDocuments": {"dss.DocumentHash": {
             "xmldsig.DigestMethod": {"@Algorithm": "'$DIGEST_ALGO'"},
             "xmldsig.DigestValue": "'$DIGEST_VALUE'"
-          }
-        }
-      }
-    }'
+        }}
+    }}'
     # store into file
     echo "$REQ_JSON" > $TMP.req ;;
     
