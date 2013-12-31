@@ -1,23 +1,18 @@
 #!/bin/sh
-# allin-tsa.sh - 1.2
+# allin-timestamp.sh
 #
-# Script using curl to invoke Swisscom All-in signing service: TSA
+# Script using curl to invoke Swisscom All-in signing service
 # Dependencies: curl, openssl, base64, sed, date, xmllint, tr, python
 #
 # License: GNU General Public License version 3 or later; see LICENSE.md
-# Author: Swisscom (Schweiz AG)
-#
-# Change Log:
-#  1.0 26.11.2013: Initial version
-#  1.1 04.12.2013: Added support for RESTful interface
-#  1.2 19.12.2013: Removed SHA224
+# Author: Swisscom (Schweiz) AG
 
 ######################################################################
 # User configurable options
 ######################################################################
 
-# AP_ID used to identify to Allin (provided by Swisscom)
-AP_ID=cartel.ch
+# CUSTOMER used to identify to All-In (provided by Swisscom)
+CUSTOMER=cartel.ch
 
 ######################################################################
 # There should be no need to change anything below
@@ -45,7 +40,7 @@ done
 shift $((OPTIND-1))                             # Remove the options
 
 if [ $# -lt 3 ]; then                           # Parse the rest of the arguments
-  echo "Usage: $0 <args> digest method pkcs7"
+  echo "Usage: $0 <options> digest method pkcs7"
   echo "  -t value  - message type (SOAP, XML, JSON), default SOAP"
   echo "  -v        - verbose output"
   echo "  -d        - debug mode"
@@ -77,7 +72,7 @@ SSL_CA=$PWD/allin-ssl.crt                       # Bag file for SSL server connec
 # Create temporary request
 INSTANT=$(date +%Y-%m-%dT%H:%M:%S.%N%:z)        # Define instant and request id
 REQUESTID=ALLIN.TEST.$INSTANT
-TMP=$(mktemp -u /tmp/_tmp.XXXXXX)                  # Request goes here
+TMP=$(mktemp -u /tmp/_tmp.XXXXXX)               # Request goes here
 TIMEOUT_CON=90                                  # Timeout of the client connection
 
 # Hash and digests
@@ -98,46 +93,50 @@ esac
 PKCS7_RESULT=$3
 [ -f "$PKCS7_RESULT" ] && error "Target file $PKCS7_RESULT already exists"
 
+# Set Claimed ID (customer name + key entity)
+# In case of timestamp we do not need to define a key entity
+CLAIMED_ID=$CUSTOMER
+
 case "$MSGTYPE" in
   # MessageType is SOAP. Define the Request
   SOAP)
-    REQ_SOAP='<?xml version="1.0" encoding="UTF-8"?>
+    REQ_SOAP='
     <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-                   xmlns="urn:oasis:names:tc:dss:1.0:core:schema"
-                   xmlns:ais="http://service.ais.swisscom.com/"
-                   xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
-      <soap:Body>
-        <ais:sign>
-          <SignRequest RequestID="'$REQUESTID'" Profile="urn:com:swisscom:dss:v1.0">
-            <OptionalInputs>
-              <ClaimedIdentity Format="urn:com:swisscom:dss:v1.0:entity">
-                <Name>'$AP_ID'</Name>
-              </ClaimedIdentity>
-              <SignatureType>urn:ietf:rfc:3161</SignatureType>
-              <AdditionalProfile>urn:oasis:names:tc:dss:1.0:profiles:timestamping</AdditionalProfile>
-            </OptionalInputs>
-            <InputDocuments>
-              <DocumentHash>
-                <dsig:DigestMethod Algorithm="'$DIGEST_ALGO'"/>
-                <dsig:DigestValue>'$DIGEST_VALUE'</dsig:DigestValue>
-              </DocumentHash>
-            </InputDocuments>
-          </SignRequest>
-        </ais:sign>
-      </soap:Body>
+                   xmlns:ais="http://service.ais.swisscom.com/">
+        <soap:Body>
+            <ais:sign>
+                <SignRequest RequestID="'$REQUESTID'" Profile="urn:com:swisscom:dss:v1.0" 
+                             xmlns="urn:oasis:names:tc:dss:1.0:core:schema" 
+                             xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+                    <OptionalInputs>
+                        <ClaimedIdentity Format="urn:com:swisscom:dss:v1.0:entity">
+                            <Name>'$CLAIMED_ID'</Name>
+                        </ClaimedIdentity>
+                        <SignatureType>urn:ietf:rfc:3161</SignatureType>
+                        <AdditionalProfile>urn:oasis:names:tc:dss:1.0:profiles:timestamping</AdditionalProfile>
+                    </OptionalInputs>
+                    <InputDocuments>
+                        <DocumentHash>
+                            <dsig:DigestMethod Algorithm="'$DIGEST_ALGO'"/>
+                            <dsig:DigestValue>'$DIGEST_VALUE'</dsig:DigestValue>
+                        </DocumentHash>
+                    </InputDocuments>
+                </SignRequest>
+            </ais:sign>
+        </soap:Body>
     </soap:Envelope>'
     # store into file
     echo "$REQ_SOAP" > $TMP.req ;;
 
   # MessageType is XML. Define the Request
   XML)
-    REQ_XML='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    REQ_XML='
     <SignRequest RequestID="'$REQUESTID'" Profile="urn:com:swisscom:dss:v1.0"
                  xmlns="urn:oasis:names:tc:dss:1.0:core:schema"
                  xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
         <OptionalInputs>
-            <ClaimedIdentity>
-                <Name>'$AP_ID'</Name>
+            <ClaimedIdentity Format="urn:com:swisscom:dss:v1.0:entity">
+                <Name>'$CLAIMED_ID'</Name>
             </ClaimedIdentity>
             <SignatureType>urn:ietf:rfc:3161</SignatureType>
             <AdditionalProfile>urn:oasis:names:tc:dss:1.0:profiles:timestamping</AdditionalProfile>
@@ -159,17 +158,18 @@ case "$MSGTYPE" in
         "@RequestID": "'$REQUESTID'",
         "@Profile": "urn:com:swisscom:dss:v1.0",
         "dss.OptionalInputs": {
-            "dss.ClaimedIdentity": {"dss.Name": "'$AP_ID'"},
+            "dss.ClaimedIdentity": {
+                "@Format": "urn:com:swisscom:dss:v1.0:entity",
+                "dss.Name": "'$CLAIMED_ID'"
+            },
             "dss.SignatureType": "urn:ietf:rfc:3161",
             "dss.AdditionalProfile": "urn:oasis:names:tc:dss:1.0:profiles:timestamping"
         },
         "dss.InputDocuments": {"dss.DocumentHash": {
             "xmldsig.DigestMethod": {"@Algorithm": "'$DIGEST_ALGO'"},
             "xmldsig.DigestValue": "'$DIGEST_VALUE'"
-          }
-        }
-      }
-    }'
+        }}
+    }}'
     # store into file
     echo "$REQ_JSON" > $TMP.req ;;
     
@@ -189,17 +189,17 @@ case "$MSGTYPE" in
   SOAP)
     URL=https://ais.pre.swissdigicert.ch/DSS-Server/ws
     HEADER_ACCEPT="Accept: application/xml"
-    HEADER_CONTENT_TYPE="Content-Type: text/xml; charset=utf-8"
+    HEADER_CONTENT_TYPE="Content-Type: text/xml;charset=utf-8"
     CURL_OPTIONS="--data" ;;
   XML)
     URL=https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/sign
     HEADER_ACCEPT="Accept: application/xml"
-    HEADER_CONTENT_TYPE="Content-Type: application/xml"
+    HEADER_CONTENT_TYPE="Content-Type: application/xml;charset=utf-8"
     CURL_OPTIONS="--request POST --data" ;;
   JSON)
     URL=https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/sign
     HEADER_ACCEPT="Accept: application/json"
-    HEADER_CONTENT_TYPE="Content-Type: application/json"
+    HEADER_CONTENT_TYPE="Content-Type: application/json;charset=utf-8"
     CURL_OPTIONS="--request POST --data-binary" ;;
 esac
 
@@ -271,7 +271,7 @@ if [ "$RC" = "0" -a "$http_code" = "200" ]; then
 fi
 
 # Debug details
-if [ "$DEBUG" != "" ]; then
+if [ -n "$DEBUG" ]; then
   [ -f "$TMP.req" ] && echo ">>> $TMP.req <<<" && cat $TMP.req | ( [ "$MSGTYPE" != "JSON" ] && xmllint --format - || python -m json.tool )
   [ -f "$TMP.curl.log" ] && echo ">>> $TMP.curl.log <<<" && cat $TMP.curl.log | grep '==\|error'
   [ -f "$TMP.rsp" ] && echo ">>> $TMP.rsp <<<" && cat $TMP.rsp | ( [ "$MSGTYPE" != "JSON" ] && xmllint --format - || python -m json.tool ) 
@@ -279,7 +279,7 @@ if [ "$DEBUG" != "" ]; then
 fi
 
 # Cleanups if not DEBUG mode
-if [ "$DEBUG" = "" ]; then
+if [ ! -n "$DEBUG" ]; then
   [ -f "$TMP.req" ] && rm $TMP.req
   [ -f "$TMP.curl.log" ] && rm $TMP.curl.log
   [ -f "$TMP.rsp" ] && rm $TMP.rsp

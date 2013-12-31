@@ -2,15 +2,13 @@ allin-cmd: bash scripts
 ============
 
 bash command line scripts to invoke:
-* TSA Signature Request: allin-tsa.sh
-* Static Signature Request: allin-static.sh
-* OnDemand Signature Request: allin-ondemand.sh
-
+* Timestamp Request (RFC3161): allin-timestamp.sh
+* Signing Request (RFC5652): allin-sign.sh
 
 ### Usage
 
 ```
-Usage: ./allin-tsa.sh <args> digest method pkcs7
+Usage: ./allin-timestamp.sh <options> digest method pkcs7
   -t value  - message type (SOAP, XML, JSON), default SOAP
   -v        - verbose output
   -d        - debug mode
@@ -18,40 +16,28 @@ Usage: ./allin-tsa.sh <args> digest method pkcs7
   method    - digest method (SHA256, SHA384, SHA512)
   pkcs7     - output file with PKCS#7 (Crytographic Message Syntax)
 
-  Examples ./allin-tsa.sh GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s
-           ./allin-tsa.sh -t JSON -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s
+  Examples ./allin-timestamp.sh GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s
+           ./allin-timestamp.sh -t JSON -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s
 ```
 
 ```
-Usage: ./allin-static.sh <args> digest method pkcs7
-  -t value  - message type (SOAP, XML, JSON), default SOAP
-  -v        - verbose output
-  -d        - debug mode
-  digest    - digest/hash to be signed
-  method    - digest method (SHA256, SHA384, SHA512)
-  pkcs7     - output file with PKCS#7 (Crytographic Message Syntax)
+Usage: ./allin-sign.sh <options> digest method pkcs7 [dn] [[msisdn]] [[msg]] [[lang]]
+  -t value   - message type (SOAP, XML, JSON), default SOAP
+  -v         - verbose output
+  -d         - debug mode
+  digest     - digest/hash to be signed
+  method     - digest method (SHA256, SHA384, SHA512)
+  pkcs7      - output file with PKCS#7 (Crytographic Message Syntax)
+  [dn]       - optional distinguished name for on-demand certificate signing
+  [[msisdn]] - optional Mobile ID authentication when [dn] is present
+  [[msg]]    - optional Mobile ID message when [dn] is present
+  [[lang]]   - optional Mobile ID language (en, de, fr, it) when [dn] is present
 
-  Examples ./allin-static.sh GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s
-           ./allin-static.sh -t JSON -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s
-```
-
-```
-Usage: ./allin-ondemand.sh <args> digest method pkcs7 dn <msisdn> <msg> <lang>
-  -t value  - message type (SOAP, XML, JSON), default SOAP
-  -v        - verbose output
-  -d        - debug mode
-  digest    - digest/hash to be signed
-  method    - digest method (SHA256, SHA384, SHA512)
-  pkcs7     - output file with PKCS#7 (Crytographic Message Syntax)
-  dn        - distinguished name in the ondemand certificate
-  <msisdn>  - optional Mobile ID step-up
-  <msg>     - optional Mobile ID message
-  <lang>    - optional Mobile ID language element (en, de, fr, it)
-
-  Example ./allin-ondemand.sh -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH'
-          ./allin-ondemand.sh -v -t JSON GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH'
-          ./allin-ondemand.sh -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH' +41792080350
-          ./allin-ondemand.sh -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en
+  Example ./allin-sign.sh -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s
+          ./allin-sign.sh -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH'
+          ./allin-sign.sh -v -t JSON GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH'
+          ./allin-sign.sh -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH' +41792080350
+          ./allin-sign.sh -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'myserver.com: Sign?' en
 ```
 
 ### Configuration

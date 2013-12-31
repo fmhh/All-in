@@ -1,23 +1,20 @@
 #!/bin/sh
-# allin-ondemand.sh - 1.2
+# allin-sign.sh
 #
-# Script using curl to invoke Swisscom All-in signing service: OnDemand
+# Script using curl to invoke Swisscom All-in signing service
 # Dependencies: curl, openssl, base64, sed, date, xmllint, tr, python
 #
 # License: GNU General Public License version 3 or later; see LICENSE.md
-# Author: Swisscom (Schweiz AG)
-#
-# Change Log:
-#  1.0 26.11.2013: Initial version
-#  1.1 05.12.2013: Added support for RESTful interface
-#  1.2 19.12.2013: Removed SHA224
+# Author: Swisscom (Schweiz) AG
 
 ######################################################################
 # User configurable options
 ######################################################################
 
-# AP_ID used to identify to Allin (provided by Swisscom)
-AP_ID=cartel.ch:OnDemand-Advanced
+# CUSTOMER used to identify to All-In (provided by Swisscom)
+CUSTOMER=cartel.ch
+KEY_STATIC=kp2-cartel.ch
+KEY_ONDEMAND=OnDemand-Advanced
 
 ######################################################################
 # There should be no need to change anything below
@@ -44,23 +41,24 @@ done
 
 shift $((OPTIND-1))                             # Remove the options
 
-if [ $# -lt 4 ]; then                           # Parse the rest of the arguments
-  echo "Usage: $0 <args> digest method pkcs7 dn <msisdn> <msg> <lang>"
-  echo "  -t value  - message type (SOAP, XML, JSON), default SOAP"
-  echo "  -v        - verbose output"
-  echo "  -d        - debug mode"
-  echo "  digest    - digest/hash to be signed"
-  echo "  method    - digest method (SHA256, SHA384, SHA512)"
-  echo "  pkcs7     - output file with PKCS#7 (Crytographic Message Syntax)"
-  echo "  dn        - distinguished name in the ondemand certificate"
-  echo "  <msisdn>  - optional Mobile ID step-up"
-  echo "  <msg>     - optional Mobile ID message"
-  echo "  <lang>    - optional Mobile ID language element (en, de, fr, it)"
+if [ $# -lt 3 ]; then                           # Parse the rest of the arguments
+  echo "Usage: $0 <options> digest method pkcs7 [dn] [[msisdn]] [[msg]] [[lang]]"
+  echo "  -t value   - message type (SOAP, XML, JSON), default SOAP"
+  echo "  -v         - verbose output"
+  echo "  -d         - debug mode"
+  echo "  digest     - digest/hash to be signed"
+  echo "  method     - digest method (SHA256, SHA384, SHA512)"
+  echo "  pkcs7      - output file with PKCS#7 (Crytographic Message Syntax)"
+  echo "  [dn]       - optional distinguished name for on-demand certificate signing"
+  echo "  [[msisdn]] - optional Mobile ID authentication when [dn] is present"
+  echo "  [[msg]]    - optional Mobile ID message when [dn] is present"
+  echo "  [[lang]]   - optional Mobile ID language (en, de, fr, it) when [dn] is present"
   echo
-  echo "  Example $0 -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH'"
+  echo "  Example $0 -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s"
+  echo "          $0 -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH'"
   echo "          $0 -v -t JSON GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH'"
   echo "          $0 -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH' +41792080350"
-  echo "          $0 -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en"
+  echo "          $0 -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'myserver.com: Sign?' en"
   echo 
   exit 1
 fi
@@ -83,7 +81,7 @@ SSL_CA=$PWD/allin-ssl.crt                       # Bag file for SSL server connec
 # Create temporary request
 INSTANT=$(date +%Y-%m-%dT%H:%M:%S.%N%:z)        # Define instant and request id
 REQUESTID=ALLIN.TEST.$INSTANT
-TMP=$(mktemp -u /tmp/_tmp.XXXXXX)                  # Request goes here
+TMP=$(mktemp -u /tmp/_tmp.XXXXXX)               # Request goes here
 TIMEOUT_CON=90                                  # Timeout of the client connection
 
 # Hash and digests
@@ -107,89 +105,102 @@ PKCS7_RESULT=$3
 # OnDemand distinguished name
 ONDEMAND_DN=$4
 
-# Optional step up with Mobile ID
+# Set Claimed ID (customer name + key entity)
+[ -n "$ONDEMAND_DN" ] && CLAIMED_ID=$CUSTOMER:$KEY_ONDEMAND || CLAIMED_ID=$CUSTOMER:$KEY_STATIC
+
+# Optional step up authentication with Mobile ID
 MID=""                                          # MobileID step up by default off
 MID_MSISDN=$5                                   # MSISDN
 MID_MSG=$6                                      # Optional DTBS
-[ "$MID_MSG" = "" ] && MID_MSG="Sign it?"
+[ ! -n "$MID_MSG" ] && MID_MSG="Sign it?"
 MID_LANG=$7                                     # Optional Language
-[ "$MID_LANG" = "" ] && MID_LANG="EN"
-if [ "$MID_MSISDN" != "" ]; then                # MobileID step up?
+[ ! -n "$MID_LANG" ] && MID_LANG="EN"
+if [ -n "$MID_MSISDN" ]; then                   # MobileID step up?
   case "$MSGTYPE" in
     SOAP|XML) 
-      MID="<sc:StepUpAuthorisation>
-             <sc:MobileID>
-               <sc:MSISDN>$MID_MSISDN</sc:MSISDN>
-               <sc:Message>$MID_MSG</sc:Message>
-               <sc:Language>$MID_LANG</sc:Language>
-             </sc:MobileID>
-           </sc:StepUpAuthorisation>" ;;
+      MID='<sc:StepUpAuthorisation>
+               <sc:MobileID>
+                   <sc:MSISDN>'$MID_MSISDN'</sc:MSISDN>
+                   <sc:Message>'$MID_MSG'</sc:Message>
+                   <sc:Language>'$MID_LANG'</sc:Language>
+               </sc:MobileID>
+           </sc:StepUpAuthorisation>' ;;
     JSON) 
       MID=',"sc.StepUpAuthorisation": {
-              "sc.MobileID": {
-                "sc.MSISDN": "'$MID_MSISDN'",
-                "sc.Message": "'$MID_MSG'",
-                "sc.Language": "'$MID_LANG'"
-              }
+                "sc.MobileID": {
+                    "sc.MSISDN": "'$MID_MSISDN'",
+                    "sc.Message": "'$MID_MSG'",
+                    "sc.Language": "'$MID_LANG'"
+                }
             }' ;;
+  esac
+fi
+
+# Optional On-Demand certificate signature
+if [ -n "$ONDEMAND_DN" ]; then
+  case "$MSGTYPE" in
+    SOAP|XML) 
+      ONDEMAND='<AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:ondemandcertificate</AdditionalProfile>
+               <sc:CertificateRequest>
+                   <sc:DistinguishedName>'$ONDEMAND_DN'</sc:DistinguishedName>
+                   '$MID'
+               </sc:CertificateRequest>' ;;
+    JSON) 
+      ONDEMAND='"dss.AdditionalProfile": "urn:com:swisscom:dss:v1.0:profiles:ondemandcertificate", 
+                "sc.CertificateRequest": {
+                    "sc.DistinguishedName": "'$ONDEMAND_DN'" 
+                    '$MID'
+                },' ;;
   esac
 fi
 
 case "$MSGTYPE" in
   # MessageType is SOAP. Define the Request
   SOAP)
-    REQ_SOAP='<?xml version="1.0" encoding="UTF-8"?>
-    <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-                   xmlns="urn:oasis:names:tc:dss:1.0:core:schema"
-                   xmlns:ais="http://service.ais.swisscom.com/"
-                   xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"   
-                   xmlns:sc="urn:com:swisscom:dss:1.0:schema">
-      <soap:Body>
-        <ais:sign>
-          <SignRequest RequestID="'$REQUESTID'" Profile="urn:com:swisscom:dss:v1.0">
-            <OptionalInputs>
-              <ClaimedIdentity>
-                <Name>'$AP_ID'</Name>
-              </ClaimedIdentity>
-              <SignatureType>urn:ietf:rfc:3369</SignatureType>
-              <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:ondemandcertificate</AdditionalProfile>
-              <sc:CertificateRequest>
-                <sc:DistinguishedName>'$ONDEMAND_DN'</sc:DistinguishedName>
-                '$MID'
-              </sc:CertificateRequest>
-              <AddTimestamp Type="urn:ietf:rfc:3161"/>
-              <sc:AddOcspResponse Type="urn:ietf:rfc:2560"/>
-            </OptionalInputs>
-            <InputDocuments>
-              <DocumentHash>
-                <dsig:DigestMethod Algorithm="'$DIGEST_ALGO'"/>
-                <dsig:DigestValue>'$DIGEST_VALUE'</dsig:DigestValue>
-              </DocumentHash>
-            </InputDocuments>
-          </SignRequest>
-        </ais:sign>
-      </soap:Body>
+    REQ_SOAP='
+    <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"                  
+                   xmlns:ais="http://service.ais.swisscom.com/">
+        <soap:Body>
+            <ais:sign>
+                <SignRequest RequestID="'$REQUESTID'" Profile="urn:com:swisscom:dss:v1.0"
+                             xmlns="urn:oasis:names:tc:dss:1.0:core:schema"
+                             xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"   
+                             xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+                    <OptionalInputs>
+                        <ClaimedIdentity Format="urn:com:swisscom:dss:v1.0:entity">
+                            <Name>'$CLAIMED_ID'</Name>
+                        </ClaimedIdentity>
+                        <SignatureType>urn:ietf:rfc:3369</SignatureType>
+                        '$ONDEMAND'
+                        <AddTimestamp Type="urn:ietf:rfc:3161"/>
+                        <sc:AddOcspResponse Type="urn:ietf:rfc:2560"/>
+                    </OptionalInputs>
+                    <InputDocuments>
+                        <DocumentHash>
+                            <dsig:DigestMethod Algorithm="'$DIGEST_ALGO'"/>
+                            <dsig:DigestValue>'$DIGEST_VALUE'</dsig:DigestValue>
+                        </DocumentHash>
+                    </InputDocuments>
+                </SignRequest>
+            </ais:sign>
+        </soap:Body>
     </soap:Envelope>'
     # store into file
     echo "$REQ_SOAP" > $TMP.req ;;
 
   # MessageType is XML. Define the Request
   XML)
-    REQ_XML='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    REQ_XML='
     <SignRequest RequestID="'$REQUESTID'" Profile="urn:com:swisscom:dss:v1.0" 
                  xmlns="urn:oasis:names:tc:dss:1.0:core:schema"
                  xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"   
                  xmlns:sc="urn:com:swisscom:dss:1.0:schema">
         <OptionalInputs>
-            <ClaimedIdentity>
-                <Name>'$AP_ID'</Name>
+            <ClaimedIdentity Format="urn:com:swisscom:dss:v1.0:entity">
+                <Name>'$CLAIMED_ID'</Name>
             </ClaimedIdentity>
             <SignatureType>urn:ietf:rfc:3369</SignatureType>
-            <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:ondemandcertificate</AdditionalProfile>  
-            <sc:CertificateRequest>
-                <sc:DistinguishedName>'$ONDEMAND_DN'</sc:DistinguishedName>
-                '$MID'
-            </sc:CertificateRequest>
+            '$ONDEMAND'
             <AddTimestamp Type="urn:ietf:rfc:3161"/>
             <sc:AddOcspResponse Type="urn:ietf:rfc:2560"/>
         </OptionalInputs>
@@ -210,23 +221,20 @@ case "$MSGTYPE" in
         "@RequestID": "'$REQUESTID'",
         "@Profile": "urn:com:swisscom:dss:v1.0",
         "dss.OptionalInputs": {
-          "dss.ClaimedIdentity": {"dss.Name": "'$AP_ID'"},
-          "dss.SignatureType": "urn:ietf:rfc:3369",
-          "dss.AdditionalProfile": "urn:com:swisscom:dss:v1.0:profiles:ondemandcertificate", 
-          "sc.CertificateRequest": {
-            "sc.DistinguishedName": "'$ONDEMAND_DN'" 
-            '$MID'
+            "dss.ClaimedIdentity": {
+                "@Format": "urn:com:swisscom:dss:v1.0:entity",
+                "dss.Name": "'$CLAIMED_ID'"
             },
-          "dss.AddTimestamp": {"@Type": "urn:ietf:rfc:3161"},
-          "sc.AddOcspResponse": {"@Type": "urn:ietf:rfc:2560"}
-          },
+            "dss.SignatureType": "urn:ietf:rfc:3369",
+            '$ONDEMAND'
+            "dss.AddTimestamp": {"@Type": "urn:ietf:rfc:3161"},
+            "sc.AddOcspResponse": {"@Type": "urn:ietf:rfc:2560"}
+        },
         "dss.InputDocuments": {"dss.DocumentHash": {
-          "xmldsig.DigestMethod": {"@Algorithm": "'$DIGEST_ALGO'"},
-          "xmldsig.DigestValue": "'$DIGEST_VALUE'" 
-          }
-        }
-      }
-    }'
+            "xmldsig.DigestMethod": {"@Algorithm": "'$DIGEST_ALGO'"},
+            "xmldsig.DigestValue": "'$DIGEST_VALUE'" 
+        }}
+    }}'
     # store into file
     echo "$REQ_JSON" > $TMP.req ;;
     
@@ -246,17 +254,17 @@ case "$MSGTYPE" in
   SOAP)
     URL=https://ais.pre.swissdigicert.ch/DSS-Server/ws
     HEADER_ACCEPT="Accept: application/xml"
-    HEADER_CONTENT_TYPE="Content-Type: text/xml; charset=utf-8"
+    HEADER_CONTENT_TYPE="Content-Type: text/xml;charset=utf-8"
     CURL_OPTIONS="--data" ;;
   XML)
     URL=https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/sign
     HEADER_ACCEPT="Accept: application/xml"
-    HEADER_CONTENT_TYPE="Content-Type: application/xml"
+    HEADER_CONTENT_TYPE="Content-Type: application/xml;charset=utf-8"
     CURL_OPTIONS="--request POST --data" ;;
   JSON)
     URL=https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/sign
     HEADER_ACCEPT="Accept: application/json"
-    HEADER_CONTENT_TYPE="Content-Type: application/json"
+    HEADER_CONTENT_TYPE="Content-Type: application/json;charset=utf-8"
     CURL_OPTIONS="--request POST --data-binary" ;;
 esac
 
@@ -328,7 +336,7 @@ if [ "$RC" = "0" -a "$http_code" = "200" ]; then
 fi
 
 # Debug details
-if [ "$DEBUG" != "" ]; then
+if [ -n "$DEBUG" ]; then
   [ -f "$TMP.req" ] && echo ">>> $TMP.req <<<" && cat $TMP.req | ( [ "$MSGTYPE" != "JSON" ] && xmllint --format - || python -m json.tool )
   [ -f "$TMP.curl.log" ] && echo ">>> $TMP.curl.log <<<" && cat $TMP.curl.log | grep '==\|error'
   [ -f "$TMP.rsp" ] && echo ">>> $TMP.rsp <<<" && cat $TMP.rsp | ( [ "$MSGTYPE" != "JSON" ] && xmllint --format - || python -m json.tool ) 
@@ -336,7 +344,7 @@ if [ "$DEBUG" != "" ]; then
 fi
 
 # Cleanups if not DEBUG mode
-if [ "$DEBUG" = "" ]; then
+if [ ! -n "$DEBUG" ]; then
   [ -f "$TMP.req" ] && rm $TMP.req
   [ -f "$TMP.curl.log" ] && rm $TMP.curl.log
   [ -f "$TMP.rsp" ] && rm $TMP.rsp
