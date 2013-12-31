@@ -101,7 +101,7 @@ PKCS7_RESULT=$3
 case "$MSGTYPE" in
   # MessageType is SOAP. Define the Request
   SOAP)
-    REQ_SOAP='<?xml version="1.0" encoding="UTF-8"?>
+    REQ_SOAP='
     <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
                    xmlns:ais="http://service.ais.swisscom.com/">
         <soap:Body>
@@ -131,7 +131,7 @@ case "$MSGTYPE" in
 
   # MessageType is XML. Define the Request
   XML)
-    REQ_XML='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    REQ_XML='
     <SignRequest RequestID="'$REQUESTID'" Profile="urn:com:swisscom:dss:v1.0"
                  xmlns="urn:oasis:names:tc:dss:1.0:core:schema"
                  xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
