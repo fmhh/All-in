@@ -55,8 +55,6 @@ public class allin_itext {
 
     public static void main(String[] args) throws Exception {
 
-        boolean verboseOutput = false;
-        boolean debugMode = false;
         allin_include.Signature signature = null;
         String pdfToSign = null;
         String signedPDF = null;
