@@ -2,12 +2,23 @@ import javax.annotation.*;
 import java.io.File;
 
 /**
- *  * Created:
+ * Created:
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
  * 20.12.2013 16:55
+ * <p/>
+ * Version:
+ * 1.0.0
  * </p>
+ * Copyright:
+ * Copyright (C) 2013. All rights reserved.
+ * </p>
+ * License:
+ * GNU General Public License version 2 or later; see LICENSE.md
+ * </p>
+ * Author:
+ * Swisscom (Schweiz AG)
  * **********************************************************************************************************
  * This is a wrapper class for allin_soap class                                                             *
  * Only program arguments will be handled                                                                   *

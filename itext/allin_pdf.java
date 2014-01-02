@@ -1,3 +1,20 @@
+/**
+ * Created:
+ * 19.12.13 KW51 08:04
+ * <p/>
+ * Version:
+ * 1.0.0
+ * </p>
+ * Copyright:
+ * Copyright (C) 2013. All rights reserved.
+ * </p>
+ * License:
+ * GNU General Public License version 2 or later; see LICENSE.md
+ * </p>
+ * Author:
+ * Swisscom (Schweiz AG)
+ */
+
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.*;
 import com.itextpdf.text.pdf.codec.Base64;

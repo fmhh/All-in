@@ -1,13 +1,18 @@
 /**
- * Creator:
- * 19.12.13 KW51 08:04 fritschka
+ * Created:
+ * 19.12.13 KW51 08:04
  * <p/>
- * Maintainer:
- * 19.12.13 KW51 08:04 fritschka
- * <p/>
- * Last Modification:
- * <p/>
- * Copyright (c) 2003 ABACUS Research AG, All Rights Reserved
+ * Version:
+ * 1.0.0
+ * </p>
+ * Copyright:
+ * Copyright (C) 2013. All rights reserved.
+ * </p>
+ * License:
+ * GNU General Public License version 2 or later; see LICENSE.md
+ * </p>
+ * Author:
+ * Swisscom (Schweiz AG)
  */
 public class allin_include {
 

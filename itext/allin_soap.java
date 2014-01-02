@@ -4,7 +4,18 @@
  * </p>
  * Last Modification:
  * 20.12.13 15:07
+ * <p/>
+ * Version:
+ * 1.0.0
  * </p>
+ * Copyright:
+ * Copyright (C) 2013. All rights reserved.
+ * </p>
+ * License:
+ * GNU General Public License version 2 or later; see LICENSE.md
+ * </p>
+ * Author:
+ * Swisscom (Schweiz AG)
  * **********************************************************************************
  * Sign PDF using Swisscom All-in signing service                                   *
  * Tested with iText-5.4.5; Bouncy Castle 1.50 and JDK 1.7.0_45                     *
