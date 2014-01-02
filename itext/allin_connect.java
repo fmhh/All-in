@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 20.12.13 15:04
+ * 02.01.2014 14:20
  * <p/>
  * Version:
  * 1.0.0
@@ -38,14 +38,15 @@ import java.net.Socket;
 import java.net.URL;
 import java.net.URLConnection;
 import java.security.*;
+import java.security.cert.*;
 import java.security.cert.Certificate;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class allin_connect {
 
-    private boolean _debug;
+    static boolean _debugMode = false;
+    static boolean _verboseMode = false;
     private String _url;
     private String _privateKey;
     private String _serverCert;
@@ -63,44 +64,28 @@ public class allin_connect {
      * @param debug
      */
     public allin_connect(@Nonnull String url, @Nonnull String privateKey, @Nonnull String serverCert, @Nonnull String clientCert,
-                         int timeout, boolean debug) {
+                         int timeout, boolean debug, boolean verbose) {
         this._url = url;
         this._privateKey = privateKey;
         this._serverCert = serverCert;
         this._clientCert = clientCert;
         this._timeout = timeout;
-        this._debug = debug;
+        _debugMode = debug;
+        _verboseMode = verbose;
 
         Security.addProvider(new BouncyCastleProvider());
     }
 
     @Nullable
-    public URLConnection getConnection() {
+    public URLConnection getConnection() throws UnrecoverableKeyException, CertificateException, NoSuchAlgorithmException, KeyStoreException, IOException, KeyManagementException {
 
-        try {
-            KeyManager[] keyManagers = createKeyManagers(_clientCert);
-            TrustManager[] trustManagers = createTrustManagers(_serverCert);
-            SSLSocketFactory factory = initItAll(keyManagers, trustManagers);
-            URLConnection con = createConnectionObject(_url, factory);
-            con.setConnectTimeout(_timeout);
+        KeyManager[] keyManagers = createKeyManagers(_clientCert);
+        TrustManager[] trustManagers = createTrustManagers(_serverCert);
+        SSLSocketFactory factory = initItAll(keyManagers, trustManagers);
+        URLConnection con = createConnectionObject(_url, factory);
+        con.setConnectTimeout(_timeout);
 
-            return con;
-
-        } catch (KeyStoreException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (CertificateException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (UnrecoverableKeyException e) {
-            e.printStackTrace();
-        } catch (KeyManagementException e) {
-            e.printStackTrace();
-        }
-
-        return null;
+        return con;
     }
 
     private URLConnection createConnectionObject(@Nonnull String urlString, @Nonnull SSLSocketFactory sslSocketFactory) throws IOException {
@@ -124,7 +109,7 @@ public class allin_connect {
             throws IOException, KeyStoreException, NoSuchAlgorithmException, UnrecoverableKeyException, CertificateException {
 
         KeyManager[] managers = new KeyManager[]{new allin_connect(_url, _privateKey, _serverCert, _clientCert, _timeout,
-                _debug).new AliasKeyManager(alias, _privateKey, _serverCert)};
+                _debugMode, _verboseMode).new AliasKeyManager(alias, _privateKey, _serverCert)};
 
         return managers;
     }
@@ -133,22 +118,50 @@ public class allin_connect {
     private TrustManager[] createTrustManagers(String alias)
             throws KeyStoreException, NoSuchAlgorithmException, IOException, java.security.cert.CertificateException {
 
-        TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+        TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+
+            X509Certificate[] trustedIssuers = null;
+
             @Override
-            public void checkClientTrusted( final X509Certificate[] chain, final String authType ) {
-                System.out.println();
+            public void checkClientTrusted(final X509Certificate[] chain, final String authType) {
+                //not relevant here
             }
+
             @Override
-            public void checkServerTrusted( final X509Certificate[] chain, final String authType ) {
-                System.out.println();
+            public void checkServerTrusted(final X509Certificate[] chain, final String authType) throws CertificateException {
+                if (chain == null || chain.length < 2)
+                    throw new CertificateException("Error when validating server certificate");
+
+                X509Certificate certToVerify = chain[0];
+                CertificateFactory cf = CertificateFactory.getInstance("X.509");
+                CertPath cp = cf.generateCertPath(Arrays.asList(new X509Certificate[]{certToVerify}));
+
+                TrustAnchor trustAnchor = new TrustAnchor(chain[1], null);
+
+                CertPathValidator cpv = null;
+                try {
+                    cpv = CertPathValidator.getInstance("PKIX");
+
+                    PKIXParameters pkixParams = new PKIXParameters(Collections.singleton(trustAnchor));
+                    pkixParams.setRevocationEnabled(false);
+
+                    CertPathValidatorResult validated = cpv.validate(cp, pkixParams);
+
+                    if (validated == null)
+                        throw new CertificateException("Error when validating server certificate");
+
+                    trustedIssuers = chain;
+
+                } catch (Exception e) {
+                    throw new CertificateException("Error when validating server certificate");
+                }
             }
+
             @Override
             public X509Certificate[] getAcceptedIssuers() {
-                System.out.println();
-                return null;
+                return trustedIssuers;
             }
         }};
-
         return trustAllCerts;
     }
 
@@ -180,7 +193,8 @@ public class allin_connect {
                 Certificate certificate = certificateFactory.generateCertificate(new FileInputStream(clientCertFilePath));
                 return new X509Certificate[]{(X509Certificate) certificate};
             } catch (Exception e) {
-                e.printStackTrace();
+                if (allin_connect._debugMode)
+                    e.printStackTrace();
                 return null;
             }
         }
@@ -199,7 +213,8 @@ public class allin_connect {
                 java.security.PrivateKey privateKey = jcaPEMKeyConverter.getPrivateKey(privateKeyInfo);
                 return privateKey;
             } catch (Exception e) {
-                e.printStackTrace();
+                if (allin_connect._debugMode)
+                    e.printStackTrace();
                 return null;
             }
         }
