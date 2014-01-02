@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 20.12.13 15:07
+ * 02.01.2014 11:55
  * <p/>
  * Version:
  * 1.0.0
@@ -64,10 +64,11 @@ public class allin_soap {
      * load properties file and set connection properties from properties file
      * @param verboseOutput
      * @param debugMode
+     * @throws FileNotFoundException
      */
 
-    public allin_soap(boolean verboseOutput, boolean debugMode) {
-        
+    public allin_soap(boolean verboseOutput, boolean debugMode) throws FileNotFoundException {
+
         this._verboseMode = verboseOutput;
         this._debug = debugMode;
 
@@ -76,11 +77,15 @@ public class allin_soap {
         try {
             properties.load(new FileReader(_CFG_PATH));
         } catch (IOException e) {
+            if (_debug)
             System.out.println("Could not find properties file");
             return;
         }
         setConnectionProperties();
         checkFilesExists(new String[]{this._clientCertPath, this._privateKeyName, this._serverCertPath});
+
+        if (_verboseMode)
+            System.out.println("Properties file loaded");
 
     }
 
@@ -105,13 +110,9 @@ public class allin_soap {
      * @param msisdn
      * @param msg
      * @param language
-     * @throws Exception
      */
     public void sign(@Nonnull allin_include.Signature signatureType, @Nonnull String fileIn,
                      @Nonnull String fileOut, String distinguishedName, String msisdn, String msg, String language) throws Exception {
-
-        if (_verboseMode)
-            System.out.println("Loaded properties file successful");
 
         boolean addTimestamp = properties.getProperty("ADD_TSA").trim().toLowerCase().equals("true");
         boolean addOCSP = properties.getProperty("ADD_OCSP").trim().toLowerCase().equals("true");
@@ -123,32 +124,41 @@ public class allin_soap {
 
         allin_pdf pdf = new allin_pdf(fileIn, fileOut, null, null, null, null);
 
+        try {
+
         if (msisdn != null && msg != null && language != null && signatureType.equals(allin_include.Signature.ONDEMAND)){
-            if (_verboseMode)
+            if (_debug)
                 System.out.println("Going to sign ondemand with mobile id");
-            signDocumentOnDemandCertMobileId(new allin_pdf[]{pdf}, Calendar.getInstance(), hashAlgo, _url, addTimestamp,
-                    addOCSP, claimedIdentity, distinguishedName, msisdn, msg, language, (int) (Math.random() * 1000));
+                signDocumentOnDemandCertMobileId(new allin_pdf[]{pdf}, Calendar.getInstance(), hashAlgo, _url, addTimestamp,
+                        addOCSP, claimedIdentity, distinguishedName, msisdn, msg, language, (int) (Math.random() * 1000));
+            if (_verboseMode)
             System.out.println("Signing ondemand was successful");
         } else if (signatureType.equals(allin_include.Signature.ONDEMAND))                                                 {
-            if (_verboseMode)
+            if (_debug)
                 System.out.println("Going to sign with ondemand");
             signDocumentOnDemandCert(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, _CERTIFICATE_REQUEST_PROFILE,
                     addTimestamp, addOCSP, distinguishedName, claimedIdentity, (int) (Math.random() * 1000));
             if (_verboseMode)
                 System.out.println("Signing ondemand was successful");
         } else if (signatureType.equals(allin_include.Signature.TSA))                                                       {
-            if (_verboseMode)
+            if (_debug)
                 System.out.println("Going to sign only with timestamp");
             signDocumentTimestampOnly(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, claimedIdentity,
                     (int) (Math.random() * 1000));
+            if (_verboseMode)
             System.out.println("Signing only with timestamp was successful");
         } else if (signatureType.equals(allin_include.Signature.STATIC))                                                     {
-            if (_verboseMode)
+            if (_debug)
                 System.out.println("Going to sign with static cert");
             signDocumentStaticCert(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, addTimestamp, addOCSP,
                     claimedIdentity, (int) (Math.random() * 1000));
             if (_verboseMode)
                 System.out.println("Singing with static cert was successful");
+        }
+        } catch (Exception e) {
+            if (new File(fileOut).exists())
+                new File(fileOut).delete();
+            throw new Exception(e);
         }
     }
 
@@ -323,14 +333,38 @@ public class allin_soap {
      * @param signNodeName
      * @throws Exception
      */
-    private void signDocumentSync(@Nonnull SOAPMessage sigReqMsg, @Nonnull String serverURI, @Nonnull allin_pdf[] pdfs, int estimatedSize, String signNodeName) throws Exception {
+    private void signDocumentSync(@Nonnull SOAPMessage sigReqMsg, @Nonnull String serverURI, @Nonnull allin_pdf[] pdfs,
+                                  int estimatedSize, String signNodeName) throws Exception {
 
         String sigResponse = sendRequest(sigReqMsg, serverURI);
 
         ArrayList<String> responseResult = getTextFromXmlText(sigResponse, "ResultMajor");
 
-        if (responseResult == null || !allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0)))
-            throw new Exception("Getting signatures failed. Result: " + responseResult);
+        if (responseResult == null || !allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0))){
+            StringBuilder sb = new StringBuilder();
+            if (_debug || _verboseMode){
+            ArrayList<String> resultMinor = getTextFromXmlText(sigResponse, "ResultMinor");
+            if (responseResult != null)
+                for (String s : responseResult)
+                sb.append("\nResult major: " + s);
+
+            if (resultMinor != null)
+                for (String s : resultMinor)
+                    sb.append("\nResult minor: " + s);
+
+            ArrayList<String> errorMsg = getTextFromXmlText(sigResponse, "ResultMessage");
+            if (errorMsg != null)
+                for (String s : errorMsg)
+                    sb.append("\nResult message: " + s);
+
+            ArrayList<String> errorMsg2 = getTextFromXmlText(sigResponse, "ns5:Reason");
+            if (errorMsg != null)
+                for (String s : errorMsg2)
+                    sb.append("\nResult message reason: " + s);
+            }
+
+            throw new Exception(sb.toString());
+        }
 
         ArrayList<String> signHashes = getTextFromXmlText(sigResponse, signNodeName);
         signDocuments(signHashes, pdfs, estimatedSize);
@@ -342,11 +376,19 @@ public class allin_soap {
      * @param signatureList
      * @param pdfs
      * @param estimatedSize
+     * @throws Exception
      */
-    private void signDocuments(@Nonnull ArrayList<String> signatureList, @Nonnull allin_pdf[] pdfs, int estimatedSize) {
+    private void signDocuments(@Nonnull ArrayList<String> signatureList, @Nonnull allin_pdf[] pdfs, int estimatedSize) throws Exception {
         int counter = 0;
         for (String signatureHash : signatureList) {
+            try{
             pdfs[counter].sign(signatureHash, estimatedSize);
+            } catch (Exception e){
+                if (_debug)
+                    System.out.println("Could not add signature hash to document");
+                throw new Exception(e);
+            }
+
             counter++;
         }
     }
@@ -357,9 +399,10 @@ public class allin_soap {
      * @param soapResponseText can be a full response as xml
      * @param nodeName
      * @return if nodes with searched node names exist it will return an array list containing text from value from nodes
+     * @throws IOException, SAXException, ParserConfigurationException
      */
     @Nullable
-    private ArrayList<String> getTextFromXmlText(String soapResponseText, String nodeName) throws Exception {
+    private ArrayList<String> getTextFromXmlText(String soapResponseText, String nodeName) throws IOException, SAXException, ParserConfigurationException {
 
         Element element = getNodeList(soapResponseText);
         return getNodesFromNodeList(element, nodeName);
@@ -434,9 +477,6 @@ public class allin_soap {
                                              @Nonnull String signatureType, String distinguishedName,
                                              String mobileIdType, String phoneNumber, String certReqMsg, String certReqMsgLang,
                                              String responseId, int requestId) throws SOAPException, IOException {
-
-        if (_verboseMode)
-            System.out.println("Creating server request message");
 
         MessageFactory messageFactory = MessageFactory.newInstance();
         SOAPMessage soapMessage = messageFactory.createMessage();
@@ -550,7 +590,7 @@ public class allin_soap {
         }
 
         if (_verboseMode)
-            System.out.println("Creating server request message was successful");
+            System.out.println("Server request message created");
 
         return soapMessage;
     }
@@ -561,16 +601,12 @@ public class allin_soap {
      * @param soapMsg
      * @param urlPath
      * @return Server response as string
-     * @throws SOAPException
-     * @throws IOException
+     * @throws Exception
      */
     @Nullable
-    private String sendRequest(@Nonnull SOAPMessage soapMsg, @Nonnull String urlPath) throws IOException, SOAPException {
+    private String sendRequest(@Nonnull SOAPMessage soapMsg, @Nonnull String urlPath) throws Exception{
 
-        if (_verboseMode)
-            System.out.println("Creating connection object");
-
-        URLConnection conn = new allin_connect(urlPath, _privateKeyName, _serverCertPath, _clientCertPath, _timeout, _debug).getConnection();
+        URLConnection conn = new allin_connect(urlPath, _privateKeyName, _serverCertPath, _clientCertPath, _timeout, _debug, _verboseMode).getConnection();
         if (conn instanceof HttpsURLConnection) {
             ((HttpsURLConnection) conn).setRequestMethod("POST");
         }
@@ -587,9 +623,6 @@ public class allin_soap {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         soapMsg.writeTo(baos);
         String msg = baos.toString();
-
-        if (_verboseMode)
-            System.out.println("Get response from server");
 
         out.write(msg);
         out.flush();
@@ -630,18 +663,16 @@ public class allin_soap {
     }
 
     /**
-     *
      * @param filePaths
+     * @throws FileNotFoundException
      */
-    private void checkFilesExists(@Nonnull String[] filePaths){
+    private void checkFilesExists(@Nonnull String[] filePaths) throws FileNotFoundException {
 
         File file;
         for (String filePath : filePaths){
             file = new File(filePath);
             if (!file.exists() || !file.isFile() || !file.canRead()) {
-                if (_debug || _verboseMode)
-                    System.out.println("File not found: " + file.getAbsolutePath());
-                System.exit(1);
+                throw new FileNotFoundException("File not found or is not a file or not readable: " + file.getAbsolutePath());
             }
         }
     }

@@ -2,6 +2,9 @@
  * Created:
  * 19.12.13 KW51 08:04
  * <p/>
+ * Last Modification:
+ * 02.01.2014 11:54
+ * <p/>
  * Version:
  * 1.0.0
  * </p>
@@ -18,13 +21,13 @@
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.*;
 import com.itextpdf.text.pdf.codec.Base64;
-import javax.annotation.*;
 
+import javax.annotation.Nonnull;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -49,9 +52,11 @@ public class allin_pdf {
         this.signContact = signContact;
     }
 
-    public byte[] getPdfHash(@Nonnull Calendar signDate, int estimatedSize,@Nonnull String hashAlgorithm, boolean isTimestampOnly) throws Exception {
+    public byte[] getPdfHash(@Nonnull Calendar signDate, int estimatedSize, @Nonnull String hashAlgorithm, boolean isTimestampOnly)
+            throws IOException, DocumentException, NoSuchAlgorithmException {
 
-        PdfReader pdfReader = new PdfReader(inputFilePath, pdfPassword != null ? pdfPassword.getBytes() : null);
+        PdfReader pdfReader = null;
+        pdfReader = new PdfReader(inputFilePath, pdfPassword != null ? pdfPassword.getBytes() : null);
         AcroFields acroFields = pdfReader.getAcroFields();
         boolean hasSignature = acroFields.getSignatureNames().size() > 0;
 
@@ -104,17 +109,13 @@ public class allin_pdf {
 
     /**
      * Decode hash to Base64 and sign PDF
+     *
      * @param hash
      * @param estimatedSize
+     * @throws IOException, DocumentException
      */
-    public void sign(@Nonnull String hash, int estimatedSize){
-        try {
-            addSignatureToPdf(Base64.decode(hash), estimatedSize);
-        } catch (UnsupportedEncodingException e) {
-            System.out.println("Error when adding hash to pdf");
-        } catch (Exception e) {
-            System.out.println("Error when adding hash to pdf");
-        }
+    public void sign(@Nonnull String hash, int estimatedSize) throws IOException, DocumentException {
+        addSignatureToPdf(Base64.decode(hash), estimatedSize);
     }
 
 

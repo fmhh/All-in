@@ -6,7 +6,7 @@ import java.io.File;
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 20.12.2013 16:55
+ * 02.01.2014 11:54
  * <p/>
  * Version:
  * 1.0.0
@@ -28,6 +28,9 @@ import java.io.File;
 
 public class allin_itext {
 
+    static boolean verboseMode = false;
+    static boolean debugMode = false;
+
     public static void printUsage() {
         System.out.println("Usage: java <javaoptions> allin_itext <allin_itext_args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>");
         System.out.println("-v        - verbose output");
@@ -42,15 +45,15 @@ public class allin_itext {
         System.out.println("");
         System.out.println("Example: java allin_itext -v tsa sample.pdf signed.pdf");
         System.out.println("         java allin_itext -v static sample.pdf signed.pdf");
-        System.out.println("         java allin_itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH'");
-        System.out.println("         java allin_itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en");
+        System.out.println("         java allin_itext -v ondemand sample.pdf signed.pdf \"cn=Hans Muster,o=ACME,c=CH\"");
+        System.out.println("         java allin_itext -v ondemand sample.pdf signed.pdf \"cn=Hans Muster,o=ACME,c=CH\" +41792080350 \"service.com: Sign?\" en");
     }
 
     public static void printError(@Nonnull String error) {
         System.out.println(error);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         boolean verboseOutput = false;
         boolean debugMode = false;
@@ -68,12 +71,12 @@ public class allin_itext {
         }
 
         if (args[0].trim().toLowerCase().equals("-v"))
-            verboseOutput = true;
+            verboseMode = true;
 
         if (args[0].trim().toLowerCase().equals("-d") || args[1].trim().toLowerCase().equals("-d"))
             debugMode = true;
 
-        int argPointer = debugMode && verboseOutput ? 2 : !debugMode && !verboseOutput ? 0 : !debugMode && verboseOutput || debugMode && !verboseOutput ? 1 : -1;
+        int argPointer = debugMode && verboseMode ? 2 : !debugMode && !verboseMode ? 0 : !debugMode && verboseMode || debugMode && !verboseMode ? 1 : -1;
 
         try{
             signature = allin_include.Signature.valueOf(args[argPointer].trim().toUpperCase());
@@ -148,12 +151,16 @@ public class allin_itext {
             return;
         }
 
-        allin_soap dss_soap = new allin_soap(verboseOutput, debugMode);
-        try{
+        try {
+            allin_soap dss_soap = new allin_soap(verboseMode, debugMode);
             dss_soap.sign(signature, pdfToSign, signedPDF, distinguishedName, msisdn, msg, language);
-        } catch (Exception e){
-            printError("Signing failed");
-            printError(e.getMessage());
+        } catch (Exception e) {
+            if (debugMode) {
+                printError("Signing FAILED");
+                printError(e.getMessage());
+            }
+
+            System.exit(1);
         }
     }
 
