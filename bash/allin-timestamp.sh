@@ -101,75 +101,75 @@ case "$MSGTYPE" in
   # MessageType is SOAP. Define the Request
   SOAP)
     REQ_SOAP='
-    <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-                   xmlns:ais="http://service.ais.swisscom.com/">
-        <soap:Body>
-            <ais:sign>
-                <SignRequest RequestID="'$REQUESTID'" Profile="urn:com:swisscom:dss:v1.0" 
-                             xmlns="urn:oasis:names:tc:dss:1.0:core:schema" 
-                             xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
-                    <OptionalInputs>
-                        <ClaimedIdentity Format="urn:com:swisscom:dss:v1.0:entity">
-                            <Name>'$CLAIMED_ID'</Name>
-                        </ClaimedIdentity>
-                        <SignatureType>urn:ietf:rfc:3161</SignatureType>
-                        <AdditionalProfile>urn:oasis:names:tc:dss:1.0:profiles:timestamping</AdditionalProfile>
-                    </OptionalInputs>
-                    <InputDocuments>
-                        <DocumentHash>
-                            <dsig:DigestMethod Algorithm="'$DIGEST_ALGO'"/>
-                            <dsig:DigestValue>'$DIGEST_VALUE'</dsig:DigestValue>
-                        </DocumentHash>
-                    </InputDocuments>
-                </SignRequest>
-            </ais:sign>
-        </soap:Body>
-    </soap:Envelope>'
+      <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+                     xmlns:ais="http://service.ais.swisscom.com/">
+          <soap:Body>
+              <ais:sign>
+                  <SignRequest RequestID="'$REQUESTID'" Profile="urn:com:swisscom:dss:v1.0" 
+                               xmlns="urn:oasis:names:tc:dss:1.0:core:schema" 
+                               xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+                      <OptionalInputs>
+                          <ClaimedIdentity Format="urn:com:swisscom:dss:v1.0:entity">
+                              <Name>'$CLAIMED_ID'</Name>
+                          </ClaimedIdentity>
+                          <SignatureType>urn:ietf:rfc:3161</SignatureType>
+                          <AdditionalProfile>urn:oasis:names:tc:dss:1.0:profiles:timestamping</AdditionalProfile>
+                      </OptionalInputs>
+                      <InputDocuments>
+                          <DocumentHash>
+                              <dsig:DigestMethod Algorithm="'$DIGEST_ALGO'"/>
+                              <dsig:DigestValue>'$DIGEST_VALUE'</dsig:DigestValue>
+                          </DocumentHash>
+                      </InputDocuments>
+                  </SignRequest>
+              </ais:sign>
+          </soap:Body>
+      </soap:Envelope>'
     # store into file
     echo "$REQ_SOAP" > $TMP.req ;;
 
   # MessageType is XML. Define the Request
   XML)
     REQ_XML='
-    <SignRequest RequestID="'$REQUESTID'" Profile="urn:com:swisscom:dss:v1.0"
-                 xmlns="urn:oasis:names:tc:dss:1.0:core:schema"
-                 xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
-        <OptionalInputs>
-            <ClaimedIdentity Format="urn:com:swisscom:dss:v1.0:entity">
-                <Name>'$CLAIMED_ID'</Name>
-            </ClaimedIdentity>
-            <SignatureType>urn:ietf:rfc:3161</SignatureType>
-            <AdditionalProfile>urn:oasis:names:tc:dss:1.0:profiles:timestamping</AdditionalProfile>
-        </OptionalInputs>
-        <InputDocuments>
-            <DocumentHash>
-                <dsig:DigestMethod Algorithm="'$DIGEST_ALGO'"/>
-                <dsig:DigestValue>'$DIGEST_VALUE'</dsig:DigestValue>
-            </DocumentHash>
-        </InputDocuments>
-    </SignRequest>'
+      <SignRequest RequestID="'$REQUESTID'" Profile="urn:com:swisscom:dss:v1.0"
+                   xmlns="urn:oasis:names:tc:dss:1.0:core:schema"
+                   xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+          <OptionalInputs>
+              <ClaimedIdentity Format="urn:com:swisscom:dss:v1.0:entity">
+                  <Name>'$CLAIMED_ID'</Name>
+              </ClaimedIdentity>
+              <SignatureType>urn:ietf:rfc:3161</SignatureType>
+              <AdditionalProfile>urn:oasis:names:tc:dss:1.0:profiles:timestamping</AdditionalProfile>
+          </OptionalInputs>
+          <InputDocuments>
+              <DocumentHash>
+                  <dsig:DigestMethod Algorithm="'$DIGEST_ALGO'"/>
+                  <dsig:DigestValue>'$DIGEST_VALUE'</dsig:DigestValue>
+              </DocumentHash>
+          </InputDocuments>
+      </SignRequest>'
     # store into file
     echo "$REQ_XML" > $TMP.req ;;
     
   # MessageType is JSON. Define the Request
   JSON)
     REQ_JSON='{
-    "dss.SignRequest": {
-        "@RequestID": "'$REQUESTID'",
-        "@Profile": "urn:com:swisscom:dss:v1.0",
-        "dss.OptionalInputs": {
-            "dss.ClaimedIdentity": {
-                "@Format": "urn:com:swisscom:dss:v1.0:entity",
-                "dss.Name": "'$CLAIMED_ID'"
-            },
-            "dss.SignatureType": "urn:ietf:rfc:3161",
-            "dss.AdditionalProfile": "urn:oasis:names:tc:dss:1.0:profiles:timestamping"
-        },
-        "dss.InputDocuments": {"dss.DocumentHash": {
-            "xmldsig.DigestMethod": {"@Algorithm": "'$DIGEST_ALGO'"},
-            "xmldsig.DigestValue": "'$DIGEST_VALUE'"
-        }}
-    }}'
+      "dss.SignRequest": {
+          "@RequestID": "'$REQUESTID'",
+          "@Profile": "urn:com:swisscom:dss:v1.0",
+          "dss.OptionalInputs": {
+              "dss.ClaimedIdentity": {
+                  "@Format": "urn:com:swisscom:dss:v1.0:entity",
+                  "dss.Name": "'$CLAIMED_ID'"
+              },
+              "dss.SignatureType": "urn:ietf:rfc:3161",
+              "dss.AdditionalProfile": "urn:oasis:names:tc:dss:1.0:profiles:timestamping"
+          },
+          "dss.InputDocuments": {"dss.DocumentHash": {
+              "xmldsig.DigestMethod": {"@Algorithm": "'$DIGEST_ALGO'"},
+              "xmldsig.DigestValue": "'$DIGEST_VALUE'"
+          }}
+      }}'
     # store into file
     echo "$REQ_JSON" > $TMP.req ;;
     
