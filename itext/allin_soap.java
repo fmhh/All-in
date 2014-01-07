@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 02.01.2014 11:55
+ * 07.01.2014 13:10
  * <p/>
  * Version:
  * 1.0.0
@@ -84,9 +84,6 @@ public class allin_soap {
         setConnectionProperties();
         checkFilesExists(new String[]{this._clientCertPath, this._privateKeyName, this._serverCertPath});
 
-        if (_verboseMode)
-            System.out.println("Properties file loaded");
-
     }
 
     private void setConnectionProperties(){
@@ -131,29 +128,21 @@ public class allin_soap {
                 System.out.println("Going to sign ondemand with mobile id");
                 signDocumentOnDemandCertMobileId(new allin_pdf[]{pdf}, Calendar.getInstance(), hashAlgo, _url, addTimestamp,
                         addOCSP, claimedIdentity, distinguishedName, msisdn, msg, language, (int) (Math.random() * 1000));
-            if (_verboseMode)
-            System.out.println("Signing ondemand was successful");
         } else if (signatureType.equals(allin_include.Signature.ONDEMAND))                                                 {
             if (_debug)
                 System.out.println("Going to sign with ondemand");
             signDocumentOnDemandCert(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, _CERTIFICATE_REQUEST_PROFILE,
                     addTimestamp, addOCSP, distinguishedName, claimedIdentity, (int) (Math.random() * 1000));
-            if (_verboseMode)
-                System.out.println("Signing ondemand was successful");
         } else if (signatureType.equals(allin_include.Signature.TSA))                                                       {
             if (_debug)
                 System.out.println("Going to sign only with timestamp");
             signDocumentTimestampOnly(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, claimedIdentity,
                     (int) (Math.random() * 1000));
-            if (_verboseMode)
-            System.out.println("Signing only with timestamp was successful");
         } else if (signatureType.equals(allin_include.Signature.STATIC))                                                     {
             if (_debug)
                 System.out.println("Going to sign with static cert");
             signDocumentStaticCert(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, addTimestamp, addOCSP,
                     claimedIdentity, (int) (Math.random() * 1000));
-            if (_verboseMode)
-                System.out.println("Singing with static cert was successful");
         }
         } catch (Exception e) {
             if (new File(fileOut).exists())
@@ -340,30 +329,40 @@ public class allin_soap {
 
         ArrayList<String> responseResult = getTextFromXmlText(sigResponse, "ResultMajor");
 
-        if (responseResult == null || !allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0))){
-            StringBuilder sb = new StringBuilder();
-            if (_debug || _verboseMode){
-            ArrayList<String> resultMinor = getTextFromXmlText(sigResponse, "ResultMinor");
+        if (_verboseMode && responseResult != null && allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0))){
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            sigReqMsg.writeTo(byteArrayOutputStream);
+            ArrayList<String> subjectResult = getTextFromXmlText(byteArrayOutputStream.toString(), "ns5:DistinguishedName");
+            if (subjectResult != null)
+                for (String s : subjectResult)
+                    if (s.length() > 0)
+                    System.out.println("Result subject: subject= " + s);
+            }
+
+        if (_debug || _verboseMode){
             if (responseResult != null)
                 for (String s : responseResult)
-                sb.append("\nResult major: " + s);
+                    if (s.length() > 0)
+                    System.out.println("Result major: " + s);
+        }
 
+        if (responseResult == null || !allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0))){
+
+            if (_debug || _verboseMode){
+            ArrayList<String> resultMinor = getTextFromXmlText(sigResponse, "ResultMinor");
             if (resultMinor != null)
                 for (String s : resultMinor)
-                    sb.append("\nResult minor: " + s);
+                    if (s.length() > 0)
+                    System.out.println("Result minor: " + s);
 
             ArrayList<String> errorMsg = getTextFromXmlText(sigResponse, "ResultMessage");
             if (errorMsg != null)
                 for (String s : errorMsg)
-                    sb.append("\nResult message: " + s);
-
-            ArrayList<String> errorMsg2 = getTextFromXmlText(sigResponse, "ns5:Reason");
-            if (errorMsg != null)
-                for (String s : errorMsg2)
-                    sb.append("\nResult message reason: " + s);
+                    if (s.length() > 0)
+                    System.out.println("Result message: " + s);
             }
 
-            throw new Exception(sb.toString());
+            throw new Exception();
         }
 
         ArrayList<String> signHashes = getTextFromXmlText(sigResponse, signNodeName);
@@ -582,15 +581,12 @@ public class allin_soap {
         soapMessage.saveChanges();
 
         if (_debug) {
-            System.out.print("Request SOAP Message = ");
+            System.out.print("Request SOAP Message: ");
             ByteArrayOutputStream ba = new ByteArrayOutputStream();
             soapMessage.writeTo(ba);
             String msg = new String(ba.toByteArray()).replaceAll("><", ">\n<");
             System.out.println(msg);
         }
-
-        if (_verboseMode)
-            System.out.println("Server request message created");
 
         return soapMessage;
     }
@@ -614,9 +610,6 @@ public class allin_soap {
         conn.setAllowUserInteraction(true);
         conn.setRequestProperty("Content-Type", "text/xml; charset=utf-8");
         conn.setDoOutput(true);
-
-        if (_verboseMode)
-            System.out.println("Creating connection object successful");
 
         OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
 
@@ -642,7 +635,7 @@ public class allin_soap {
         }
 
         if (_debug)
-            System.out.println("response : " + response.replaceAll("><", ">\n<"));
+            System.out.print("\nSOAP response message: " + response.replaceAll("><", ">\n<") + "\n");
         return response;
     }
 

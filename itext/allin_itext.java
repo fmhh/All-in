@@ -6,7 +6,7 @@ import java.io.File;
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 02.01.2014 11:54
+ * 07.01.2014 11:10
  * <p/>
  * Version:
  * 1.0.0
@@ -65,10 +65,10 @@ public class allin_itext {
 
         if (args == null || args.length < 3) {
             printUsage();
-            return;
+            System.exit(1);
         }
 
-        if (args[0].trim().toLowerCase().equals("-v"))
+        if (args[0].trim().toLowerCase().equals("-v") || args[1].trim().toLowerCase().equals("-v"))
             verboseMode = true;
 
         if (args[0].trim().toLowerCase().equals("-d") || args[1].trim().toLowerCase().equals("-d"))
@@ -79,41 +79,47 @@ public class allin_itext {
         try{
             signature = allin_include.Signature.valueOf(args[argPointer].trim().toUpperCase());
             ++argPointer;
-        } catch (IllegalArgumentException e){
-            printError(args[argPointer] + " is not a valid signature.");
+        } catch (IllegalArgumentException e) {
+            if (debugMode)
+                printError(args[argPointer] + " is not a valid signature.");
             printUsage();
-            return;
+            System.exit(1);
         }
 
         if (args.length < argPointer + 1) {
-            printError("Could not find pdf to sign");
+            if (debugMode)
+                printError("Could not find pdf to sign");
             printUsage();
-            return;
+            System.exit(1);
         }
         pdfToSign = args[argPointer];
         File filePdfToSign = new File(pdfToSign);
         ++argPointer;
 
         if (!filePdfToSign.exists() || !filePdfToSign.isFile() || !filePdfToSign.canRead()) {
-            printError("File " + pdfToSign + " does not exist or is not a file or can not be read.");
-            return;
+            if (debugMode)
+                printError("File " + pdfToSign + " does not exist or is not a file or can not be read.");
+            System.exit(1);
         }
 
         if (args.length < argPointer + 1) {
-            printError("Could not find output path for signing PDF");
+            if (debugMode)
+                printError("Could not find output path for signing PDF");
             printUsage();
-            return;
+            System.exit(1);
         }
-        
-         signedPDF = args[argPointer];
-        if (signedPDF.equals(pdfToSign)){
-            printError("Source file equals target file");
-            return;
+
+        signedPDF = args[argPointer];
+        if (signedPDF.equals(pdfToSign)) {
+            if (debugMode)
+                printError("Source file equals target file");
+            System.exit(1);
         }
         
         if (new File(signedPDF).exists()){
-            printError("Target file exists");
-            return;
+	    if (debugMode)
+              printError("Target file exists");
+            System.exit(1);
         }
         ++argPointer;
 
@@ -138,15 +144,17 @@ public class allin_itext {
         }
 
         if (msisdn != null && msg == null) {
-            printError("Missing msg parameter");
+            if (debugMode)
+                printError("Missing msg parameter");
             printUsage();
-            return;
+            System.exit(1);
         }
 
         if (msisdn != null && language == null) {
-            printError("Missing language parameter");
+            if (debugMode)
+                printError("Missing language parameter");
             printUsage();
-            return;
+            System.exit(1);
         }
 
         try {
@@ -154,7 +162,6 @@ public class allin_itext {
             dss_soap.sign(signature, pdfToSign, signedPDF, distinguishedName, msisdn, msg, language);
         } catch (Exception e) {
             if (debugMode) {
-                printError("Signing FAILED");
                 printError(e.getMessage());
             }
 
