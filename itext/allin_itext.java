@@ -162,7 +162,7 @@ public class allin_itext {
             dss_soap.sign(signature, pdfToSign, signedPDF, distinguishedName, msisdn, msg, language);
         } catch (Exception e) {
             if (debugMode) {
-                printError(e.getMessage());
+                printError(e.getMessage().replaceAll("java.lang.Exception","").length() > 0 ? e.getMessage() : "");
             }
 
             System.exit(1);
