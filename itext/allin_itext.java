@@ -6,7 +6,7 @@ import java.io.File;
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 09.01.2014 09:10
+ * 09.01.2014 11:24
  * <p/>
  * Version:
  * 1.0.0
@@ -55,7 +55,7 @@ public class allin_itext {
 
     public static void main(String[] args) throws Exception {
 
-        allin_include.Signature signature = null;
+        allin_include.Signature signature = null;   //tsa, ondemand...
         String pdfToSign = null;
         String signedPDF = null;
         String distinguishedName = null;
@@ -80,14 +80,14 @@ public class allin_itext {
             signature = allin_include.Signature.valueOf(args[argPointer].trim().toUpperCase());
             ++argPointer;
         } catch (IllegalArgumentException e) {
-            if (debugMode)
+            if (debugMode || verboseMode)
                 printError(args[argPointer] + " is not a valid signature.");
             printUsage();
             System.exit(1);
         }
 
         if (args.length < argPointer + 1) {
-            if (debugMode)
+            if (debugMode || verboseMode)
                 printError("Could not find pdf to sign");
             printUsage();
             System.exit(1);
@@ -97,13 +97,13 @@ public class allin_itext {
         ++argPointer;
 
         if (!filePdfToSign.exists() || !filePdfToSign.isFile() || !filePdfToSign.canRead()) {
-            if (debugMode)
+            if (debugMode || verboseMode)
                 printError("File " + pdfToSign + " does not exist or is not a file or can not be read.");
             System.exit(1);
         }
 
         if (args.length < argPointer + 1) {
-            if (debugMode)
+            if (debugMode || verboseMode)
                 printError("Could not find output path for signing PDF");
             printUsage();
             System.exit(1);
@@ -111,13 +111,13 @@ public class allin_itext {
 
         signedPDF = args[argPointer];
         if (signedPDF.equals(pdfToSign)) {
-            if (debugMode)
+            if (debugMode || verboseMode)
                 printError("Source file equals target file");
             System.exit(1);
         }
         
         if (new File(signedPDF).exists()){
-	    if (debugMode)
+	    if (debugMode || verboseMode)
               printError("Target file exists");
             System.exit(1);
         }
@@ -144,14 +144,14 @@ public class allin_itext {
         }
 
         if (msisdn != null && msg == null) {
-            if (debugMode)
+            if (debugMode || verboseMode)
                 printError("Missing msg parameter");
             printUsage();
             System.exit(1);
         }
 
         if (msisdn != null && language == null) {
-            if (debugMode)
+            if (debugMode || verboseMode)
                 printError("Missing language parameter");
             printUsage();
             System.exit(1);
@@ -161,7 +161,7 @@ public class allin_itext {
             allin_soap dss_soap = new allin_soap(verboseMode, debugMode, System.getProperty("propertyFile.path"));
             dss_soap.sign(signature, pdfToSign, signedPDF, distinguishedName, msisdn, msg, language);
         } catch (Exception e) {
-            if (debugMode) {
+            if (debugMode || verboseMode) {
                 printError(e.getMessage().replaceAll("java.lang.Exception","").length() > 0 ? e.getMessage() : "");
             }
 

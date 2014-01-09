@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 07.01.2014 13:10
+ * 09.01.2014 11:21
  * <p/>
  * Version:
  * 1.0.0
@@ -36,6 +36,12 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.soap.*;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -328,40 +334,35 @@ public class allin_soap {
                                   int estimatedSize, String signNodeName) throws Exception {
 
         String sigResponse = sendRequest(sigReqMsg, serverURI);
-
         ArrayList<String> responseResult = getTextFromXmlText(sigResponse, "ResultMajor");
 
-        if (_verboseMode && responseResult != null && allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0))){
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            sigReqMsg.writeTo(byteArrayOutputStream);
-            ArrayList<String> subjectResult = getTextFromXmlText(byteArrayOutputStream.toString(), "ns5:DistinguishedName");
-            if (subjectResult != null)
-                for (String s : subjectResult)
-                    if (s.length() > 0)
-                    System.out.println("Result subject: subject= " + s);
-            }
+        if (_debug || _verboseMode) {
+            if (responseResult == null || !allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0)))
+                System.out.println("FAILED with following details:");
 
-        if (_debug || _verboseMode){
-            if (responseResult != null)
+            if (responseResult != null) {
+                if (allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0)))
+                    System.out.println("OK with following details:");
                 for (String s : responseResult)
                     if (s.length() > 0)
-                    System.out.println("Result major: " + s);
+                        System.out.println(" Result major: " + s);
+            }
         }
 
-        if (responseResult == null || !allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0))){
+        if (responseResult == null) {
 
-            if (_debug || _verboseMode){
-            ArrayList<String> resultMinor = getTextFromXmlText(sigResponse, "ResultMinor");
-            if (resultMinor != null)
-                for (String s : resultMinor)
-                    if (s.length() > 0)
-                    System.out.println("Result minor: " + s);
+            if (_debug || _verboseMode) {
+                ArrayList<String> resultMinor = getTextFromXmlText(sigResponse, "ResultMinor");
+                if (resultMinor != null)
+                    for (String s : resultMinor)
+                        if (s.length() > 0)
+                            System.out.println(" Result minor: " + s);
 
-            ArrayList<String> errorMsg = getTextFromXmlText(sigResponse, "ResultMessage");
-            if (errorMsg != null)
-                for (String s : errorMsg)
-                    if (s.length() > 0)
-                    System.out.println("Result message: " + s);
+                ArrayList<String> errorMsg = getTextFromXmlText(sigResponse, "ResultMessage");
+                if (errorMsg != null)
+                    for (String s : errorMsg)
+                        if (s.length() > 0)
+                            System.out.println(" Result message: " + s);
             }
 
             throw new Exception();
@@ -586,8 +587,8 @@ public class allin_soap {
             System.out.print("Request SOAP Message: ");
             ByteArrayOutputStream ba = new ByteArrayOutputStream();
             soapMessage.writeTo(ba);
-            String msg = new String(ba.toByteArray()).replaceAll("><", ">\n<");
-            System.out.println(msg);
+            String msg = new String(ba.toByteArray());
+            System.out.println(getPrettyFormatedXml(msg, 2));
         }
 
         return soapMessage;
@@ -637,7 +638,7 @@ public class allin_soap {
         }
 
         if (_debug)
-            System.out.print("\nSOAP response message: " + response.replaceAll("><", ">\n<") + "\n");
+            System.out.print("\nSOAP response message: " + getPrettyFormatedXml(response, 2) + "\n");
         return response;
     }
 
@@ -672,4 +673,21 @@ public class allin_soap {
         }
     }
 
+    public String getPrettyFormatedXml(String input, int indent) {
+        try {
+            Source xmlInput = new StreamSource(new StringReader(input));
+            StringWriter stringWriter = new StringWriter();
+            StreamResult xmlOutput = new StreamResult(stringWriter);
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            transformerFactory.setAttribute("indent-number", indent);
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.transform(xmlInput, xmlOutput);
+            return xmlOutput.getWriter().toString();
+        } catch (Exception e) {
+            return input;
+        }
+    }
+
 }
+
