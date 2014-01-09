@@ -18,7 +18,7 @@ import java.io.File;
  * GNU General Public License version 2 or later; see LICENSE.md
  * </p>
  * Author:
- * Swisscom (Schweiz AG)
+ * Swisscom (Schweiz) AG
  * **********************************************************************************************************
  * This is a wrapper class for allin_soap class                                                             *
  * Only program arguments will be handled                                                                   *

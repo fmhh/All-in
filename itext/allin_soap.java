@@ -15,7 +15,7 @@
  * GNU General Public License version 2 or later; see LICENSE.md
  * </p>
  * Author:
- * Swisscom (Schweiz AG)
+ * Swisscom (Schweiz) AG
  * **********************************************************************************
  * Sign PDF using Swisscom All-in signing service                                   *
  * Tested with iText-5.4.5; Bouncy Castle 1.50 and JDK 1.7.0_45                     *
@@ -337,18 +337,16 @@ public class allin_soap {
         ArrayList<String> responseResult = getTextFromXmlText(sigResponse, "ResultMajor");
 
         if (_debug || _verboseMode) {
-            String additionalString = "";
             if (responseResult == null || !allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0)))
                 System.out.println("FAILED with following details:");
 
             if (responseResult != null) {
                 if (allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0))){
                     System.out.println("OK with following details:");
-                    additionalString = " with exit 0";
                 }
                 for (String s : responseResult)
                     if (s.length() > 0)
-                        System.out.println(" Result major: " + s + additionalString);
+                        System.out.println(" Result major: " + s);
             }
         }
 
