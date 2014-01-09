@@ -337,15 +337,18 @@ public class allin_soap {
         ArrayList<String> responseResult = getTextFromXmlText(sigResponse, "ResultMajor");
 
         if (_debug || _verboseMode) {
+            String additionalString = "";
             if (responseResult == null || !allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0)))
                 System.out.println("FAILED with following details:");
 
             if (responseResult != null) {
                 if (allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0)))
                     System.out.println("OK with following details:");
+                    additionalString = " with exit 0";
+                }
                 for (String s : responseResult)
                     if (s.length() > 0)
-                        System.out.println(" Result major: " + s);
+                        System.out.println(" Result major: " + s+additionalString);
             }
         }
 
