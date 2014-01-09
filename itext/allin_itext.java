@@ -6,7 +6,7 @@ import java.io.File;
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 09.01.2014 11:24
+ * 09.01.2014 15:19
  * <p/>
  * Version:
  * 1.0.0
@@ -117,7 +117,7 @@ public class allin_itext {
         }
         
         if (new File(signedPDF).exists()){
-	    if (debugMode || verboseMode)
+	    if (debugMode || verboseMode)
               printError("Target file exists");
             System.exit(1);
         }

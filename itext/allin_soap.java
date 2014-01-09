@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 09.01.2014 11:21
+ * 09.01.2014 15:11
  * <p/>
  * Version:
  * 1.0.0
@@ -342,13 +342,13 @@ public class allin_soap {
                 System.out.println("FAILED with following details:");
 
             if (responseResult != null) {
-                if (allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0)))
+                if (allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0))){
                     System.out.println("OK with following details:");
                     additionalString = " with exit 0";
                 }
                 for (String s : responseResult)
                     if (s.length() > 0)
-                        System.out.println(" Result major: " + s+additionalString);
+                        System.out.println(" Result major: " + s + additionalString);
             }
         }
 
