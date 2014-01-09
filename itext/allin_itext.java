@@ -6,7 +6,7 @@ import java.io.File;
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 07.01.2014 11:10
+ * 09.01.2014 09:10
  * <p/>
  * Version:
  * 1.0.0
@@ -158,7 +158,7 @@ public class allin_itext {
         }
 
         try {
-            allin_soap dss_soap = new allin_soap(verboseMode, debugMode);
+            allin_soap dss_soap = new allin_soap(verboseMode, debugMode, System.getProperty("propertyFile.path"));
             dss_soap.sign(signature, pdfToSign, signedPDF, distinguishedName, msisdn, msg, language);
         } catch (Exception e) {
             if (debugMode) {

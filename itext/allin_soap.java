@@ -49,7 +49,7 @@ public class allin_soap {
     private static final String _TIMESTAMP_URN = "urn:ietf:rfc:3161";
     private static final String _OCSP_URN = "urn:ietf:rfc:2560";
     private static final String _MOBILE_ID_TYPE = "urn:com:swisscom:auth:mobileid:v1.0";
-    private static final String _CFG_PATH = "allin_itext.cfg";
+    private static String _cfgPath = "allin_itext.cfg";
     private Properties properties;
     private String _privateKeyName;
     private String _serverCertPath;
@@ -64,22 +64,24 @@ public class allin_soap {
      * load properties file and set connection properties from properties file
      * @param verboseOutput
      * @param debugMode
-     * @throws FileNotFoundException
+     * @param propertyFilePath
+     * @throws Exception
      */
 
-    public allin_soap(boolean verboseOutput, boolean debugMode) throws FileNotFoundException {
+    public allin_soap(boolean verboseOutput, boolean debugMode, String propertyFilePath) throws Exception {
 
         this._verboseMode = verboseOutput;
         this._debug = debugMode;
 
+        if (propertyFilePath != null)
+            _cfgPath = propertyFilePath;
+
         properties = new Properties();
 
         try {
-            properties.load(new FileReader(_CFG_PATH));
+            properties.load(new FileReader(_cfgPath));
         } catch (IOException e) {
-            if (_debug)
-            System.out.println("Could not find properties file");
-            return;
+            throw new Exception("Could not load property file");
         }
         setConnectionProperties();
         checkFilesExists(new String[]{this._clientCertPath, this._privateKeyName, this._serverCertPath});
