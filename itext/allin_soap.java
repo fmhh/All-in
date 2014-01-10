@@ -335,33 +335,32 @@ public class allin_soap {
 
         String sigResponse = sendRequest(sigReqMsg, serverURI);
         ArrayList<String> responseResult = getTextFromXmlText(sigResponse, "ResultMajor");
-
-        String pdfNames = "";
-        for (int i=0; i< pdfs.length; i++){
-            pdfNames = pdfNames.concat(new File(pdfs[i].getInputFilePath()).getName());
-            if (pdfs.length > i+1)
-                pdfNames = pdfNames.concat(", ");
-        }
+        boolean singingSuccess = sigResponse != null && responseResult != null && allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0));
 
         if (_debug || _verboseMode) {
-            String additionalString = "";
-            if (responseResult == null || !allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0)))
-                System.out.println("FAILED to sign " + pdfNames + " with following details:");
-
-            if (responseResult != null) {
-                if (allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0))){
-                    System.out.println("OK signing " + pdfNames + " with following details:");
-                    additionalString = " with exit 0";
-                }
-                for (String s : responseResult)
-                    if (s.length() > 0)
-                        System.out.println(" Result major: " + s + additionalString);
+            //Getting pdf input file names for message output
+            String pdfNames = "";
+            for (int i = 0; i < pdfs.length; i++) {
+                pdfNames = pdfNames.concat(new File(pdfs[i].getInputFilePath()).getName());
+                if (pdfs.length > i + 1)
+                    pdfNames = pdfNames.concat(", ");
             }
-        }
 
-        if (responseResult == null) {
+            String exitCodeString = "";
+            if (!singingSuccess) {
+                System.out.println("FAILED to sign " + pdfNames + " with following details:");
+            } else {
+                System.out.println("OK signing " + pdfNames + " with following details:");
+                exitCodeString = " with exit 0";
+            }
 
-            if (_debug || _verboseMode) {
+            if (sigResponse != null) {
+
+                if (responseResult != null)
+                    for (String s : responseResult)
+                        if (s.length() > 0)
+                            System.out.println(" Result major: " + s + exitCodeString);
+
                 ArrayList<String> resultMinor = getTextFromXmlText(sigResponse, "ResultMinor");
                 if (resultMinor != null)
                     for (String s : resultMinor)
@@ -374,9 +373,10 @@ public class allin_soap {
                         if (s.length() > 0)
                             System.out.println(" Result message: " + s);
             }
-
-            throw new Exception();
         }
+
+        if (!singingSuccess)
+            throw new Exception();
 
         ArrayList<String> signHashes = getTextFromXmlText(sigResponse, signNodeName);
         signDocuments(signHashes, pdfs, estimatedSize);
