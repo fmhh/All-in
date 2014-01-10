@@ -344,21 +344,18 @@ public class allin_soap {
         }
 
         if (_debug || _verboseMode) {
+            String additionalString = "";
             if (responseResult == null || !allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0)))
                 System.out.println("FAILED to sign " + pdfNames + " with following details:");
 
             if (responseResult != null) {
                 if (allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0))){
-<<<<<<< HEAD
                     System.out.println("OK signing " + pdfNames + " with following details:");
                     additionalString = " with exit 0";
-=======
-                    System.out.println("OK with following details:");
->>>>>>> e8e8be50844398c2c39f6962f0ed17dc94ba18c2
                 }
                 for (String s : responseResult)
                     if (s.length() > 0)
-                        System.out.println(" Result major: " + s);
+                        System.out.println(" Result major: " + s + additionalString);
             }
         }
 
