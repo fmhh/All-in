@@ -15,7 +15,7 @@
  * GNU General Public License version 2 or later; see LICENSE.md
  * </p>
  * Author:
- * Swisscom (Schweiz AG)
+ * Swisscom (Schweiz) AG
  * **********************************************************************************
  * Class to connect to a server using certificates                                  *
  * **********************************************************************************

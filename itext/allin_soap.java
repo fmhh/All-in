@@ -15,7 +15,7 @@
  * GNU General Public License version 2 or later; see LICENSE.md
  * </p>
  * Author:
- * Swisscom (Schweiz AG)
+ * Swisscom (Schweiz) AG
  * **********************************************************************************
  * Sign PDF using Swisscom All-in signing service                                   *
  * Tested with iText-5.4.5; Bouncy Castle 1.50 and JDK 1.7.0_45                     *
@@ -344,18 +344,21 @@ public class allin_soap {
         }
 
         if (_debug || _verboseMode) {
-            String additionalString = "";
             if (responseResult == null || !allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0)))
                 System.out.println("FAILED to sign " + pdfNames + " with following details:");
 
             if (responseResult != null) {
                 if (allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0))){
+<<<<<<< HEAD
                     System.out.println("OK signing " + pdfNames + " with following details:");
                     additionalString = " with exit 0";
+=======
+                    System.out.println("OK with following details:");
+>>>>>>> e8e8be50844398c2c39f6962f0ed17dc94ba18c2
                 }
                 for (String s : responseResult)
                     if (s.length() > 0)
-                        System.out.println(" Result major: " + s + additionalString);
+                        System.out.println(" Result major: " + s);
             }
         }
 
