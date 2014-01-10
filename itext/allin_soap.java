@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 10.01.2014 10:52
+ * 10.01.2014 11:29
  * <p/>
  * Version:
  * 1.0.0
@@ -154,8 +154,6 @@ public class allin_soap {
                     claimedIdentity, (int) (Math.random() * 1000));
         }
         } catch (Exception e) {
-            if (new File(fileOut).exists())
-                new File(fileOut).delete();
             throw new Exception(e);
         }
     }

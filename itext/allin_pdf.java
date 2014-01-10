@@ -3,7 +3,7 @@
  * 19.12.13 KW51 08:04
  * <p/>
  * Last Modification:
- * 10.01.2014 09:14
+ * 10.01.2014 11:29
  * <p/>
  * Version:
  * 1.0.0
@@ -42,6 +42,7 @@ public class allin_pdf {
     private String signContact;
     private PdfSignatureAppearance pdfSignatureAppearance;
     private PdfSignature pdfSignature;
+    private ByteArrayOutputStream byteArrayOutputStream;
 
     allin_pdf(@Nonnull String inputFilePath, @Nonnull String outputFilePath, String pdfPassword, String signReason, String signLocation, String signContact){
         this.inputFilePath = inputFilePath;
@@ -64,8 +65,8 @@ public class allin_pdf {
         pdfReader = new PdfReader(inputFilePath, pdfPassword != null ? pdfPassword.getBytes() : null);
         AcroFields acroFields = pdfReader.getAcroFields();
         boolean hasSignature = acroFields.getSignatureNames().size() > 0;
-
-        PdfStamper pdfStamper = PdfStamper.createSignature(pdfReader, new FileOutputStream(outputFilePath), '\0', null, hasSignature);
+        byteArrayOutputStream = new ByteArrayOutputStream();
+        PdfStamper pdfStamper = PdfStamper.createSignature(pdfReader, byteArrayOutputStream, '\0', null, hasSignature);
         pdfStamper.setXmpMetadata(pdfReader.getMetadata());
 
         pdfSignatureAppearance = pdfStamper.getSignatureAppearance();
@@ -110,6 +111,10 @@ public class allin_pdf {
         PdfDictionary dic2 = new PdfDictionary();
         dic2.put(PdfName.CONTENTS, new PdfString(outc).setHexWriting(true));
         pdfSignatureAppearance.close(dic2);
+        OutputStream outputStream = new FileOutputStream(outputFilePath);
+        byteArrayOutputStream.writeTo(outputStream);
+        outputStream.close();
+        byteArrayOutputStream = null;
     }
 
     /**
