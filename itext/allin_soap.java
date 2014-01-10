@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 09.01.2014 15:11
+ * 10.01.2014 09:15
  * <p/>
  * Version:
  * 1.0.0
@@ -336,14 +336,21 @@ public class allin_soap {
         String sigResponse = sendRequest(sigReqMsg, serverURI);
         ArrayList<String> responseResult = getTextFromXmlText(sigResponse, "ResultMajor");
 
+        String pdfNames = "";
+        for (int i=0; i< pdfs.length; i++){
+            pdfNames = pdfNames.concat(new File(pdfs[i].getInputFilePath()).getName());
+            if (pdfs.length > i+1)
+                pdfNames = pdfNames.concat(", ");
+        }
+
         if (_debug || _verboseMode) {
             String additionalString = "";
             if (responseResult == null || !allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0)))
-                System.out.println("FAILED with following details:");
+                System.out.println("FAILED to sign " + pdfNames + " with following details:");
 
             if (responseResult != null) {
                 if (allin_include.RequestResult.Success.getResultUrn().equals(responseResult.get(0))){
-                    System.out.println("OK with following details:");
+                    System.out.println("OK signing " + pdfNames + " with following details:");
                     additionalString = " with exit 0";
                 }
                 for (String s : responseResult)

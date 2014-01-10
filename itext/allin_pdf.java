@@ -3,7 +3,7 @@
  * 19.12.13 KW51 08:04
  * <p/>
  * Last Modification:
- * 02.01.2014 11:54
+ * 10.01.2014 09:14
  * <p/>
  * Version:
  * 1.0.0
@@ -50,6 +50,11 @@ public class allin_pdf {
         this.signReason = signReason;
         this.signLocation = signLocation;
         this.signContact = signContact;
+    }
+
+
+    public String getInputFilePath(){
+        return inputFilePath;
     }
 
     public byte[] getPdfHash(@Nonnull Calendar signDate, int estimatedSize, @Nonnull String hashAlgorithm, boolean isTimestampOnly)
