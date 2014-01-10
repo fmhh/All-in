@@ -109,7 +109,7 @@ case "$MSGTYPE" in
                                xmlns="urn:oasis:names:tc:dss:1.0:core:schema" 
                                xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
                       <OptionalInputs>
-                          <ClaimedIdentity Format="urn:com:swisscom:dss:v1.0:entity">
+                          <ClaimedIdentity>
                               <Name>'$CLAIMED_ID'</Name>
                           </ClaimedIdentity>
                           <SignatureType>urn:ietf:rfc:3161</SignatureType>
@@ -135,7 +135,7 @@ case "$MSGTYPE" in
                    xmlns="urn:oasis:names:tc:dss:1.0:core:schema"
                    xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
           <OptionalInputs>
-              <ClaimedIdentity Format="urn:com:swisscom:dss:v1.0:entity">
+              <ClaimedIdentity>
                   <Name>'$CLAIMED_ID'</Name>
               </ClaimedIdentity>
               <SignatureType>urn:ietf:rfc:3161</SignatureType>
@@ -159,7 +159,6 @@ case "$MSGTYPE" in
           "@Profile": "urn:com:swisscom:dss:v1.0",
           "dss.OptionalInputs": {
               "dss.ClaimedIdentity": {
-                  "@Format": "urn:com:swisscom:dss:v1.0:entity",
                   "dss.Name": "'$CLAIMED_ID'"
               },
               "dss.SignatureType": "urn:ietf:rfc:3161",
