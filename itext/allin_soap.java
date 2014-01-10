@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 10.01.2014 09:15
+ * 10.01.2014 10:38
  * <p/>
  * Version:
  * 1.0.0
@@ -100,9 +100,10 @@ public class allin_soap {
         this._serverCertPath = properties.getProperty("SSL_CA");
         this._url = properties.getProperty("URL");
         try {
-        this._timeout = Integer.parseInt(properties.getProperty("TIMEOUT_CON"));
-        } catch (NumberFormatException e){
-            this._timeout = 90*1000;
+            this._timeout = Integer.parseInt(properties.getProperty("TIMEOUT_CON"));
+            this._timeout *= 1000;
+        } catch (NumberFormatException e) {
+            this._timeout = 9*1000;
         }
     }
 
