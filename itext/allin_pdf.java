@@ -42,7 +42,7 @@ public class allin_pdf {
     private PdfSignature pdfSignature;
     private ByteArrayOutputStream byteArrayOutputStream;
 
-    allin_pdf(@Nonnull String inputFilePath, @Nonnull String outputFilePath, String pdfPassword, String signReason, String signLocation, String signContact){
+    allin_pdf(@Nonnull String inputFilePath, @Nonnull String outputFilePath, String pdfPassword, String signReason, String signLocation, String signContact) {
         this.inputFilePath = inputFilePath;
         this.outputFilePath = outputFilePath;
         this.pdfPassword = pdfPassword;
@@ -52,7 +52,7 @@ public class allin_pdf {
     }
 
 
-    public String getInputFilePath(){
+    public String getInputFilePath() {
         return inputFilePath;
     }
 
@@ -81,11 +81,10 @@ public class allin_pdf {
         pdfSignatureAppearance.preClose(exc);
 
         MessageDigest messageDigest = MessageDigest.getInstance(hashAlgorithm);
-        try (InputStream rangeStream = pdfSignatureAppearance.getRangeStream()) {
-            int i;
-            while ((i = rangeStream.read()) != -1)
-                messageDigest.update((byte) i);
-        }
+        InputStream rangeStream = pdfSignatureAppearance.getRangeStream();
+        int i;
+        while ((i = rangeStream.read()) != -1)
+            messageDigest.update((byte) i);
         return messageDigest.digest();
     }
 
@@ -101,7 +100,7 @@ public class allin_pdf {
             throw new IOException("Not enough space for signature");
 
         PdfLiteral pdfLiteral = (PdfLiteral) pdfSignature.get(PdfName.CONTENTS);
-        byte[] outc = new byte[(pdfLiteral.getPosLength() -2) /2];
+        byte[] outc = new byte[(pdfLiteral.getPosLength() - 2) / 2];
 
         Arrays.fill(outc, (byte) 0);
 
