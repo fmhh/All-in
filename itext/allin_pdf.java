@@ -3,7 +3,7 @@
  * 19.12.13 KW51 08:04
  * <p/>
  * Last Modification:
- * 10.01.2014 11:29
+ * 10.01.2014 12:31
  * <p/>
  * Version:
  * 1.0.0
@@ -23,9 +23,7 @@ import com.itextpdf.text.pdf.*;
 import com.itextpdf.text.pdf.codec.Base64;
 
 import javax.annotation.Nonnull;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
