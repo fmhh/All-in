@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 10.01.2014 11:29
+ * 10.01.2014 11:38
  * <p/>
  * Version:
  * 1.0.0
@@ -345,12 +345,10 @@ public class allin_soap {
                     pdfNames = pdfNames.concat(", ");
             }
 
-            String exitCodeString = "";
             if (!singingSuccess) {
                 System.out.println("FAILED to sign " + pdfNames + " with following details:");
             } else {
                 System.out.println("OK signing " + pdfNames + " with following details:");
-                exitCodeString = " with exit 0";
             }
 
             if (sigResponse != null) {
@@ -358,7 +356,7 @@ public class allin_soap {
                 if (responseResult != null)
                     for (String s : responseResult)
                         if (s.length() > 0)
-                            System.out.println(" Result major: " + s + exitCodeString);
+                            System.out.println(" Result major: " + s);
 
                 ArrayList<String> resultMinor = getTextFromXmlText(sigResponse, "ResultMinor");
                 if (resultMinor != null)
