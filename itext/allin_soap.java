@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 10.01.2014 11:38
+ * 10.01.2014 13:35
  * <p/>
  * Version:
  * 1.0.0
@@ -50,7 +50,6 @@ import java.util.Properties;
 
 public class allin_soap {
 
-    private static final String _CLAIMED_IDENTITY_FORMAT = "urn:com:swisscom:dss:v1.0:entity";
     private static final String _CERTIFICATE_REQUEST_PROFILE = "urn:com:swisscom:advanced";
     private static final String _TIMESTAMP_URN = "urn:ietf:rfc:3161";
     private static final String _OCSP_URN = "urn:ietf:rfc:2560";
@@ -176,9 +175,9 @@ public class allin_soap {
      * @throws Exception
      */
     private void signDocumentOnDemandCertMobileId(@Nonnull allin_pdf pdfs[], @Nonnull Calendar signDate, @Nonnull allin_include.HashAlgorithm hashAlgo,
-                                                 @Nonnull String serverURI, boolean addTimestamp, boolean addOcsp, @Nonnull String claimedIdentity,
-                                                 @Nonnull String distinguishedName, @Nonnull String phoneNumber, @Nonnull String certReqMsg,
-                                                 @Nonnull String certReqMsgLang, int requestId) throws Exception {
+                                                  @Nonnull String serverURI, boolean addTimestamp, boolean addOcsp, @Nonnull String claimedIdentity,
+                                                  @Nonnull String distinguishedName, @Nonnull String phoneNumber, @Nonnull String certReqMsg,
+                                                  @Nonnull String certReqMsgLang, int requestId) throws Exception {
 
         String[] additionalProfiles;
         if (pdfs.length > 1) {
@@ -196,7 +195,7 @@ public class allin_soap {
         }
 
         SOAPMessage sigReqMsg = createRequestMessage(allin_include.RequestType.SignRequest, hashAlgo.getHashUri(), _CERTIFICATE_REQUEST_PROFILE,
-                pdfHash, addTimestamp ? _TIMESTAMP_URN : null, addOcsp ? _OCSP_URN : null, additionalProfiles, _CLAIMED_IDENTITY_FORMAT,
+                pdfHash, addTimestamp ? _TIMESTAMP_URN : null, addOcsp ? _OCSP_URN : null, additionalProfiles,
                 claimedIdentity, allin_include.SignatureType.CMS.getSignatureType(), distinguishedName, _MOBILE_ID_TYPE, phoneNumber,
                 certReqMsg, certReqMsgLang, null, requestId);
 
@@ -220,8 +219,9 @@ public class allin_soap {
      * @throws Exception
      */
     private void signDocumentOnDemandCert(@Nonnull allin_pdf[] pdfs, @Nonnull allin_include.HashAlgorithm hashAlgo, Calendar signDate, @Nonnull String serverURI,
-                                         @Nonnull String certRequestProfile, boolean addTimeStamp, boolean addOcsp,
-                                         @Nonnull String distinguishedName, @Nonnull String claimedIdentity, int requestId) throws Exception {
+                                          @Nonnull String certRequestProfile, boolean addTimeStamp, boolean addOcsp,
+                                          @Nonnull String distinguishedName, @Nonnull String claimedIdentity, int requestId)
+            throws Exception {
 
         String[] additionalProfiles;
         if (pdfs.length > 1) {
@@ -239,7 +239,7 @@ public class allin_soap {
         }
 
         SOAPMessage sigReqMsg = createRequestMessage(allin_include.RequestType.SignRequest, hashAlgo.getHashUri(), certRequestProfile,
-                pdfHash, addTimeStamp ? _TIMESTAMP_URN : null, addOcsp ? _OCSP_URN : null, additionalProfiles, _CLAIMED_IDENTITY_FORMAT,
+                pdfHash, addTimeStamp ? _TIMESTAMP_URN : null, addOcsp ? _OCSP_URN : null, additionalProfiles,
                 claimedIdentity, allin_include.SignatureType.CMS.getSignatureType(), distinguishedName, null, null, null, null, null, requestId);
 
         signDocumentSync(sigReqMsg, serverURI, pdfs, estimatedSize, "Base64Signature");
@@ -259,7 +259,8 @@ public class allin_soap {
      * @throws Exception
      */
     private void signDocumentStaticCert(@Nonnull allin_pdf[] pdfs, @Nonnull allin_include.HashAlgorithm hashAlgo, Calendar signDate, @Nonnull String serverURI,
-                                       boolean addTimeStamp, boolean addOCSP, @Nonnull String claimedIdentity, int requestId) throws Exception {
+                                        boolean addTimeStamp, boolean addOCSP, @Nonnull String claimedIdentity, int requestId)
+            throws Exception {
 
         String[] additionalProfiles = null;
         if (pdfs.length > 1) {
@@ -275,7 +276,7 @@ public class allin_soap {
         }
 
         SOAPMessage sigReqMsg = createRequestMessage(allin_include.RequestType.SignRequest, hashAlgo.getHashUri(), null,
-                pdfHash, addTimeStamp ? _TIMESTAMP_URN : null, addOCSP ? _OCSP_URN : null, additionalProfiles, _CLAIMED_IDENTITY_FORMAT,
+                pdfHash, addTimeStamp ? _TIMESTAMP_URN : null, addOCSP ? _OCSP_URN : null, additionalProfiles,
                 claimedIdentity, allin_include.SignatureType.CMS.getSignatureType(), null, null, null, null, null, null, requestId);
 
         signDocumentSync(sigReqMsg, serverURI, pdfs, estimatedSize, "Base64Signature");
@@ -293,7 +294,8 @@ public class allin_soap {
      * @throws Exception
      */
     private void signDocumentTimestampOnly(@Nonnull allin_pdf[] pdfs, @Nonnull allin_include.HashAlgorithm hashAlgo, Calendar signDate,
-                                          @Nonnull String serverURI, @Nonnull String claimedIdentity, int requestId) throws Exception {
+                                           @Nonnull String serverURI, @Nonnull String claimedIdentity, int requestId)
+            throws Exception {
 
         allin_include.SignatureType signatureType = allin_include.SignatureType.TIMESTAMP;
 
@@ -313,7 +315,7 @@ public class allin_soap {
         }
 
         SOAPMessage sigReqMsg = createRequestMessage(allin_include.RequestType.SignRequest, hashAlgo.getHashUri(), null,
-                pdfHash, null, null, additionalProfiles, _CLAIMED_IDENTITY_FORMAT, claimedIdentity, signatureType.getSignatureType(),
+                pdfHash, null, null, additionalProfiles, claimedIdentity, signatureType.getSignatureType(),
                 null, null, null, null, null, null, requestId);
 
         signDocumentSync(sigReqMsg, serverURI, pdfs, estimatedSize, "RFC3161TimeStampToken");
@@ -390,9 +392,9 @@ public class allin_soap {
     private void signDocuments(@Nonnull ArrayList<String> signatureList, @Nonnull allin_pdf[] pdfs, int estimatedSize) throws Exception {
         int counter = 0;
         for (String signatureHash : signatureList) {
-            try{
-            pdfs[counter].sign(signatureHash, estimatedSize);
-            } catch (Exception e){
+            try {
+                pdfs[counter].sign(signatureHash, estimatedSize);
+            } catch (Exception e) {
                 if (_debug)
                     System.out.println("Could not add signature hash to document");
                 throw new Exception(e);
@@ -432,7 +434,7 @@ public class allin_soap {
         for (int i = 0; i < nl.getLength(); i++) {
             if (nodeName.equals(nl.item(i).getNodeName())) {
                 if (returnlist == null)
-                    returnlist = new ArrayList<>();
+                    returnlist = new ArrayList();
                 returnlist.add(nl.item(i).getTextContent());
             }
 
@@ -468,7 +470,6 @@ public class allin_soap {
      * @param ocspURN                  if needed urn of ocsp
      * @param additionalProfiles
      * @param claimedIdentity
-     * @param claimedIdentityFormat
      * @param signatureType            e.g. cms or timestamp
      * @param distinguishedName
      * @param mobileIdType
@@ -482,7 +483,7 @@ public class allin_soap {
      */
     private SOAPMessage createRequestMessage(@Nonnull allin_include.RequestType reqType, @Nonnull String digestMethodAlgorithmURL,
                                              String certRequestProfile, @Nonnull byte[][] hashList, String timestampURN, String ocspURN,
-                                             String[] additionalProfiles, String claimedIdentityFormat, String claimedIdentity,
+                                             String[] additionalProfiles, String claimedIdentity,
                                              @Nonnull String signatureType, String distinguishedName,
                                              String mobileIdType, String phoneNumber, String certReqMsg, String certReqMsgLang,
                                              String responseId, int requestId) throws SOAPException, IOException {
@@ -534,10 +535,8 @@ public class allin_soap {
                     additionalProfileelement.addTextNode(additionalProfile);
                 }
 
-            if (claimedIdentity != null && claimedIdentityFormat != null) {
+            if (claimedIdentity != null) {
                 SOAPElement claimedIdentityElement = optionalInputsElement.addChildElement(new QName("ClaimedIdentity"));
-                if (!_CERTIFICATE_REQUEST_PROFILE.equals(certRequestProfile))
-                    claimedIdentityElement.addAttribute(new QName("Format"), claimedIdentityFormat);
                 SOAPElement claimedIdNameElement = claimedIdentityElement.addChildElement("Name");
                 claimedIdNameElement.addTextNode(claimedIdentity);
             }
@@ -610,7 +609,7 @@ public class allin_soap {
      * @throws Exception
      */
     @Nullable
-    private String sendRequest(@Nonnull SOAPMessage soapMsg, @Nonnull String urlPath) throws Exception{
+    private String sendRequest(@Nonnull SOAPMessage soapMsg, @Nonnull String urlPath) throws Exception {
 
         URLConnection conn = new allin_connect(urlPath, _privateKeyName, _serverCertPath, _clientCertPath, _timeout, _debug, _verboseMode).getConnection();
         if (conn instanceof HttpsURLConnection) {
@@ -672,7 +671,7 @@ public class allin_soap {
     private void checkFilesExists(@Nonnull String[] filePaths) throws FileNotFoundException {
 
         File file;
-        for (String filePath : filePaths){
+        for (String filePath : filePaths) {
             file = new File(filePath);
             if (!file.exists() || !file.isFile() || !file.canRead()) {
                 throw new FileNotFoundException("File not found or is not a file or not readable: " + file.getAbsolutePath());
