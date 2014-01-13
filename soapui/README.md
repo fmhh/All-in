@@ -13,7 +13,7 @@ A SoapUI Project has been created that contains example requests to invoke:
 #### Configuration
 
 * AP_ID: Each customer will need their own AP_ID. This identification is provided by Swisscom.
-* SSL KeyStore: A certificate is required for the SSL handshake. This certificate is provided by Swisscom.
+* SSL KeyStore: You need your personal SSL certificate to establish a connection to AIS. This certificate must be signed by the Swisscom CA. Please get in contact with Swisscom to order a certificate.
 
 #### Instructions
 
@@ -48,4 +48,9 @@ ${#TestSuite#DIGEST_384}|Base64 encoded binary hash (SHA-384) value of any docum
 ${#TestSuite#DIGEST_512}|Base64 encoded binary hash (SHA-512) value of any document
 ${#TestSuite#_tmp}|This property is used for temporary session data only
 
+#### Known Issues
 
+Older versions of the Groovy library may throw a _StackOverflowError_-Exception when running the Test Suite. Follow the steps below to replace the old library with the latest one:
+* Download latest Groovy Library v2.x from http://groovy.codehaus.org/Download
+* Put the ```groovy-all-2.x.x.jar``` file into your SoapUI installation /lib directory
+* Remove the original/old Groovy library version from your SoapUI installation /lib directory
