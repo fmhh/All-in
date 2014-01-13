@@ -1,7 +1,9 @@
 #!/bin/sh
 # allin-timestamp.sh
 #
-# Script using curl to invoke Swisscom All-in signing service
+# Script that will produce a detached timestamp signature for a file
+# by using curl to invoke the Swisscom All-in signing service.
+#
 # Dependencies: curl, openssl, base64, sed, date, xmllint, tr, python
 #
 # License: GNU General Public License version 3 or later; see LICENSE.md
@@ -40,16 +42,16 @@ done
 shift $((OPTIND-1))                             # Remove the options
 
 if [ $# -lt 3 ]; then                           # Parse the rest of the arguments
-  echo "Usage: $0 <options> digest method pkcs7"
+  echo "Usage: $0 <options> file method pkcs7"
   echo "  -t value  - message type (SOAP, XML, JSON), default SOAP"
   echo "  -v        - verbose output"
   echo "  -d        - debug mode"
-  echo "  digest    - digest/hash to be signed"
+  echo "  file      - file to be signed"
   echo "  method    - digest method (SHA256, SHA384, SHA512)"
-  echo "  pkcs7     - output file with PKCS#7 (Crytographic Message Syntax)"
+  echo "  pkcs7     - output file with detached PKCS#7 (Cryptographic Message Syntax) signature"
   echo
-  echo "  Examples $0 GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s"
-  echo "           $0 -t JSON -v GcXfOzOP8GsBu7odeT1w3GnMedppEWvngCQ7Ef1IBMA= SHA256 result.p7s"
+  echo "  Examples $0 -v myfile.txt SHA256 myfile.p7s"
+  echo "           $0 -v -t JSON -v myfile.txt SHA256 myfile.p7s"
   echo 
   exit 1
 fi
@@ -67,7 +69,7 @@ CERT_FILE=$PWD/mycert.crt                       # The certificate that is allowe
 CERT_KEY=$PWD/mycert.key                        # The related key of the certificate
 
 # Swisscom SDCS elements
-SSL_CA=$PWD/allin-ssl.crt                       # Bag file for SSL server connection
+SSL_CA=$PWD/allin-ssl.crt                       # CA certificate/chain file for SSL server connection
 
 # Create temporary request
 INSTANT=$(date +%Y-%m-%dT%H:%M:%S.%N%:z)        # Define instant and request id
@@ -75,9 +77,12 @@ REQUESTID=ALLIN.TEST.$INSTANT
 TMP=$(mktemp -u /tmp/_tmp.XXXXXX)               # Request goes here
 TIMEOUT_CON=90                                  # Timeout of the client connection
 
-# Hash and digests
-DIGEST_VALUE=$1                                 # Hash to be signed
-DIGEST_METHOD=$2                                # Digest method
+# File to be signed
+FILE=$1
+[ -r "${FILE}" ] || error "File to be signed ($FILE) missing or not readable"
+
+# Digest method to be used
+DIGEST_METHOD=$2
 case "$DIGEST_METHOD" in
   SHA256)
     DIGEST_ALGO='http://www.w3.org/2001/04/xmlenc#sha256' ;;
@@ -88,6 +93,9 @@ case "$DIGEST_METHOD" in
   *)
     error "Unsupported digest method $DIGEST_METHOD, check with $0" ;;
 esac
+
+# Calculate the hash to be signed
+DIGEST_VALUE=$(openssl dgst -binary -$DIGEST_METHOD $FILE | base64)
 
 # Target file
 PKCS7_RESULT=$3
@@ -212,7 +220,7 @@ http_code=$(curl --write-out '%{http_code}\n' --silent \
   $URL)
 
 # Results
-export RC=$?
+RC=$?
 
 if [ "$RC" = "0" -a "$http_code" = "200" ]; then
   case "$MSGTYPE" in
@@ -236,34 +244,31 @@ if [ "$RC" = "0" -a "$http_code" = "200" ]; then
     [ -s "${TMP}.sig.der" ] || error "Unable to decode Base64Signature"
     # Save PKCS7 content to target
     openssl pkcs7 -inform der -in $TMP.sig.der -out $PKCS7_RESULT
-    # Extract the signers certificate
-    openssl pkcs7 -inform der -in $TMP.sig.der -out $TMP.sig.certificates.pem -print_certs
-    [ -s "${TMP}.sig.certificates.pem" ] || error "Unable to extract signers certificate from signature"
-    RES_ID_CERT=$(openssl x509 -subject -noout -in $TMP.sig.certificates.pem)
   fi
 
   # Status and results
   if [ "$RES_MAJ" = "urn:oasis:names:tc:dss:1.0:resultmajor:Success" ]; then
     RC=0                                                # Ok
     if [ "$VERBOSE" = "1" ]; then                       # Verbose details
-      echo "OK on $DIGEST_VALUE with following details:"
-      echo " Signer subject : $RES_ID_CERT"
-      echo " Result major   : $RES_MAJ with exit $RC"
+      echo "OK on $FILE with following details:"
+      echo " Digest       : $DIGEST_VALUE"
+      echo " Result major : $RES_MAJ with exit $RC"
     fi
    else
     RC=1                                                # Failure
     if [ "$VERBOSE" = "1" ]; then                       # Verbose details
-      echo "FAILED on $DIGEST_VALUE with following details:"
+      echo "FAILED on $FILE with following details:"
       echo " Result major   : $RES_MAJ with exit $RC"
       echo " Result minor   : $RES_MIN"
       echo " Result message : $RES_MSG"
     fi
   fi
- else
+
+ else                                                 # -> error in curl call
   CURL_ERR=$RC                                          # Keep related error
-  export RC=2                                           # Force returned error code
+  RC=2                                                  # Force returned error code
   if [ "$VERBOSE" = "1" ]; then                         # Verbose details
-    echo "FAILED on $DIGEST_VALUE with following details:"
+    echo "FAILED on $FILE with following details:"
     echo " curl error : $CURL_ERR"
     echo " http error : $http_code"
   fi
@@ -284,7 +289,6 @@ if [ ! -n "$DEBUG" ]; then
   [ -f "$TMP.rsp" ] && rm $TMP.rsp
   [ -f "$TMP.sig.base64" ] && rm $TMP.sig.base64
   [ -f "$TMP.sig.der" ] && rm $TMP.sig.der
-  [ -f "$TMP.sig.certificates.pem" ] && rm $TMP.sig.certificates.pem
 fi
 
 exit $RC
