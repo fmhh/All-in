@@ -2,9 +2,9 @@ allin-cmd: bash scripts
 ============
 
 bash command line scripts to invoke:
+
 * Timestamp Request (RFC3161): allin-timestamp.sh
 * Signing Request (RFC5652): allin-sign.sh
-
 * Detached signature verification: allin-verify.sh
 
 ### Usage
@@ -37,7 +37,7 @@ Usage: ./allin-sign.sh <options> file method pkcs7 [dn] [[msisdn]] [[msg]] [[lan
 
   Example ./allin-sign.sh -v myfile.txt SHA256 myfile.p7s
           ./allin-sign.sh -v myfile.txt SHA256 myfile.p7s 'cn=Hans Muster,o=ACME,c=CH'
-          ./allin-sign.sh -v -t JSON myfile.txt SHA256 result.p7s 'cn=Hans Muster,o=ACME,c=CH'
+          ./allin-sign.sh -v -t JSON myfile.txt SHA256 myfile.p7s 'cn=Hans Muster,o=ACME,c=CH'
           ./allin-sign.sh -v myfile.txt SHA256 myfile.p7s 'cn=Hans Muster,o=ACME,c=CH' +41792080350
           ./allin-sign.sh -v myfile.txt SHA256 myfile.p7s 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'myserver.com: Sign?' en
 ```
