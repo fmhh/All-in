@@ -56,9 +56,8 @@ Usage: ./allin-verify.sh <options> pkcs7
 
 The files `mycert.crt`and `mycert.key` are placeholders without any valid content. Be sure to adjust them with your client certificate content in order to connect to the Mobile ID service.
 
-Each script contains a configuration section on the top where at least following variables are relevant:
-
- * AP_ID: Identification provided by Swisscom to each customer in order to use the related signature service
+Each script contains a configuration section on the top where at least following variables are relevant: CUSTOMER, KEY_STATIC, KEY_ONDEMAND.
+Those values will be provided by Swisscom to each customer in order to use the related service.
 
 
 ### Results
