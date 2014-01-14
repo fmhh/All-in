@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 10.01.2014 13:35
+ * 14.01.2014 10:14
  * <p/>
  * Version:
  * 1.0.0
@@ -67,6 +67,7 @@ public class allin_soap {
     /**
      * Constructor
      * load properties file and set connection properties from properties file
+     *
      * @param verboseOutput
      * @param debugMode
      * @param propertyFilePath
@@ -78,8 +79,9 @@ public class allin_soap {
         this._verboseMode = verboseOutput;
         this._debug = debugMode;
 
-        if (propertyFilePath != null)
+        if (propertyFilePath != null) {
             _cfgPath = propertyFilePath;
+        }
 
         properties = new Properties();
 
@@ -88,12 +90,14 @@ public class allin_soap {
         } catch (IOException e) {
             throw new Exception("Could not load property file");
         }
+
         setConnectionProperties();
         checkFilesExists(new String[]{this._clientCertPath, this._privateKeyName, this._serverCertPath});
 
     }
 
-    private void setConnectionProperties(){
+    private void setConnectionProperties() {
+
         this._clientCertPath = properties.getProperty("CERT_FILE");
         this._privateKeyName = properties.getProperty("CERT_KEY");
         this._serverCertPath = properties.getProperty("SSL_CA");
@@ -102,13 +106,13 @@ public class allin_soap {
             this._timeout = Integer.parseInt(properties.getProperty("TIMEOUT_CON"));
             this._timeout *= 1000;
         } catch (NumberFormatException e) {
-            this._timeout = 90*1000;
+            this._timeout = 90 * 1000;
         }
+
     }
 
     /**
-     *
-     * @param signatureType TSA, OnDemand, StaticCert
+     * @param signatureType     TSA, OnDemand, StaticCert
      * @param fileIn
      * @param fileOut
      * @param distinguishedName
@@ -131,27 +135,31 @@ public class allin_soap {
 
         try {
 
-        if (msisdn != null && msg != null && language != null && signatureType.equals(allin_include.Signature.ONDEMAND)){
-            if (_debug)
-                System.out.println("Going to sign ondemand with mobile id");
+            if (msisdn != null && msg != null && language != null && signatureType.equals(allin_include.Signature.ONDEMAND)) {
+                if (_debug) {
+                    System.out.println("Going to sign ondemand with mobile id");
+                }
                 signDocumentOnDemandCertMobileId(new allin_pdf[]{pdf}, Calendar.getInstance(), hashAlgo, _url, addTimestamp,
                         addOCSP, claimedIdentity, distinguishedName, msisdn, msg, language, (int) (Math.random() * 1000));
-        } else if (signatureType.equals(allin_include.Signature.ONDEMAND))                                                 {
-            if (_debug)
-                System.out.println("Going to sign with ondemand");
-            signDocumentOnDemandCert(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, _CERTIFICATE_REQUEST_PROFILE,
-                    addTimestamp, addOCSP, distinguishedName, claimedIdentity, (int) (Math.random() * 1000));
-        } else if (signatureType.equals(allin_include.Signature.TSA))                                                       {
-            if (_debug)
-                System.out.println("Going to sign only with timestamp");
-            signDocumentTimestampOnly(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, claimedIdentity,
-                    (int) (Math.random() * 1000));
-        } else if (signatureType.equals(allin_include.Signature.STATIC))                                                     {
-            if (_debug)
-                System.out.println("Going to sign with static cert");
-            signDocumentStaticCert(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, addTimestamp, addOCSP,
-                    claimedIdentity, (int) (Math.random() * 1000));
-        }
+            } else if (signatureType.equals(allin_include.Signature.ONDEMAND)) {
+                if (_debug) {
+                    System.out.println("Going to sign with ondemand");
+                }
+                signDocumentOnDemandCert(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, _CERTIFICATE_REQUEST_PROFILE,
+                        addTimestamp, addOCSP, distinguishedName, claimedIdentity, (int) (Math.random() * 1000));
+            } else if (signatureType.equals(allin_include.Signature.TSA)) {
+                if (_debug) {
+                    System.out.println("Going to sign only with timestamp");
+                }
+                signDocumentTimestampOnly(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, claimedIdentity,
+                        (int) (Math.random() * 1000));
+            } else if (signatureType.equals(allin_include.Signature.STATIC)) {
+                if (_debug) {
+                    System.out.println("Going to sign with static cert");
+                }
+                signDocumentStaticCert(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, addTimestamp, addOCSP,
+                        claimedIdentity, (int) (Math.random() * 1000));
+            }
         } catch (Exception e) {
             throw new Exception(e);
         }
@@ -183,8 +191,9 @@ public class allin_soap {
         if (pdfs.length > 1) {
             additionalProfiles = new String[2];
             additionalProfiles[1] = allin_include.AdditionalProfiles.BATCH.getProfileName();
-        } else
+        } else {
             additionalProfiles = new String[1];
+        }
         additionalProfiles[0] = allin_include.AdditionalProfiles.ON_DEMAND_CERTIFCATE.getProfileName();
 
         int estimatedSize = getEstimatedSize(addTimestamp, addOcsp, true);
@@ -227,8 +236,9 @@ public class allin_soap {
         if (pdfs.length > 1) {
             additionalProfiles = new String[2];
             additionalProfiles[1] = allin_include.AdditionalProfiles.BATCH.getProfileName();
-        } else
+        } else {
             additionalProfiles = new String[1];
+        }
         additionalProfiles[0] = allin_include.AdditionalProfiles.ON_DEMAND_CERTIFCATE.getProfileName();
 
         int estimatedSize = getEstimatedSize(addTimeStamp, addOcsp, true);
@@ -303,8 +313,9 @@ public class allin_soap {
         if (pdfs.length > 1) {
             additionalProfiles = new String[2];
             additionalProfiles[1] = allin_include.AdditionalProfiles.BATCH.getProfileName();
-        } else
+        } else {
             additionalProfiles = new String[1];
+        }
         additionalProfiles[0] = allin_include.AdditionalProfiles.TIMESTAMP.getProfileName();
 
         int estimatedSize = getEstimatedSize(true, true, false);
@@ -355,27 +366,37 @@ public class allin_soap {
 
             if (sigResponse != null) {
 
-                if (responseResult != null)
-                    for (String s : responseResult)
-                        if (s.length() > 0)
+                if (responseResult != null) {
+                    for (String s : responseResult) {
+                        if (s.length() > 0) {
                             System.out.println(" Result major: " + s);
+                        }
+                    }
+                }
 
                 ArrayList<String> resultMinor = getTextFromXmlText(sigResponse, "ResultMinor");
-                if (resultMinor != null)
-                    for (String s : resultMinor)
-                        if (s.length() > 0)
+                if (resultMinor != null) {
+                    for (String s : resultMinor) {
+                        if (s.length() > 0) {
                             System.out.println(" Result minor: " + s);
+                        }
+                    }
+                }
 
                 ArrayList<String> errorMsg = getTextFromXmlText(sigResponse, "ResultMessage");
-                if (errorMsg != null)
-                    for (String s : errorMsg)
-                        if (s.length() > 0)
+                if (errorMsg != null) {
+                    for (String s : errorMsg) {
+                        if (s.length() > 0) {
                             System.out.println(" Result message: " + s);
+                        }
+                    }
+                }
             }
         }
 
-        if (!singingSuccess)
+        if (!singingSuccess) {
             throw new Exception();
+        }
 
         ArrayList<String> signHashes = getTextFromXmlText(sigResponse, signNodeName);
         signDocuments(signHashes, pdfs, estimatedSize);
@@ -395,8 +416,9 @@ public class allin_soap {
             try {
                 pdfs[counter].sign(signatureHash, estimatedSize);
             } catch (Exception e) {
-                if (_debug)
+                if (_debug) {
                     System.out.println("Could not add signature hash to document");
+                }
                 throw new Exception(e);
             }
 
@@ -428,13 +450,15 @@ public class allin_soap {
      */
     @Nullable
     private ArrayList<String> getNodesFromNodeList(@Nonnull Element element, @Nonnull String nodeName) {
+
         ArrayList<String> returnlist = null;
         NodeList nl = element.getElementsByTagName(nodeName);
 
         for (int i = 0; i < nl.getLength(); i++) {
             if (nodeName.equals(nl.item(i).getNodeName())) {
-                if (returnlist == null)
+                if (returnlist == null) {
                     returnlist = new ArrayList();
+                }
                 returnlist.add(nl.item(i).getTextContent());
             }
 
@@ -452,6 +476,7 @@ public class allin_soap {
      * @throws SAXException
      */
     private Element getNodeList(@Nonnull String xmlString) throws ParserConfigurationException, IOException, SAXException {
+
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
         ByteArrayInputStream bis = new ByteArrayInputStream(xmlString.getBytes());
@@ -529,11 +554,12 @@ public class allin_soap {
             SOAPElement optionalInputsElement = requestElement.addChildElement("OptionalInputs");
 
             SOAPElement additionalProfileelement;
-            if (additionalProfiles != null)
+            if (additionalProfiles != null) {
                 for (String additionalProfile : additionalProfiles) {
                     additionalProfileelement = optionalInputsElement.addChildElement("AdditionalProfile");
                     additionalProfileelement.addTextNode(additionalProfile);
                 }
+            }
 
             if (claimedIdentity != null) {
                 SOAPElement claimedIdentityElement = optionalInputsElement.addChildElement(new QName("ClaimedIdentity"));
@@ -543,8 +569,9 @@ public class allin_soap {
 
             if (certRequestProfile != null) {
                 SOAPElement certificateRequestElement = optionalInputsElement.addChildElement("CertificateRequest", "ns5");
-                if (!_CERTIFICATE_REQUEST_PROFILE.equals(certRequestProfile))
+                if (!_CERTIFICATE_REQUEST_PROFILE.equals(certRequestProfile)) {
                     certificateRequestElement.addAttribute(new QName("Profile"), certRequestProfile);
+                }
                 if (distinguishedName != null) {
                     SOAPElement distinguishedNameElement = _CERTIFICATE_REQUEST_PROFILE.equals(certRequestProfile) ?
                             certificateRequestElement.addChildElement("DistinguishedName", "ns5") :
@@ -555,6 +582,7 @@ public class allin_soap {
 
                         if (mobileIdType != null && phoneNumber != null) {
                             SOAPElement mobileIdElement = stepUpAuthorisationElement.addChildElement("MobileID", "ns5");
+                            mobileIdElement.addAttribute(new QName("Type"), _MOBILE_ID_TYPE);
                             SOAPElement msisdnElement = mobileIdElement.addChildElement("MSISDN", "ns5");
                             msisdnElement.addTextNode(phoneNumber);
                             SOAPElement certReqMsgElement = mobileIdElement.addChildElement("Message", "ns5");
@@ -639,12 +667,15 @@ public class allin_soap {
         while ((line = in.readLine()) != null) {
             response = response + line;
         }
+
         if (in != null) {
             in.close();
         }
 
-        if (_debug)
+        if (_debug) {
             System.out.print("\nSOAP response message: " + getPrettyFormatedXml(response, 2) + "\n");
+        }
+
         return response;
     }
 
@@ -661,6 +692,7 @@ public class allin_soap {
         returnValue = useTimestmap ? returnValue + 4192 : returnValue;
         returnValue = useOcsp ? returnValue + 4192 : returnValue;
         returnValue = certRequestProfile ? returnValue + 700 : returnValue;
+
         return returnValue;
     }
 
@@ -680,6 +712,7 @@ public class allin_soap {
     }
 
     public String getPrettyFormatedXml(String input, int indent) {
+
         try {
             Source xmlInput = new StreamSource(new StringReader(input));
             StringWriter stringWriter = new StringWriter();
