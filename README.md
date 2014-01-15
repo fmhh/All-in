@@ -1,4 +1,4 @@
-allin-cmd
+All-in
 ============
 
 Set of tools and scripts for the Swisscom All-in Signature Service:
@@ -8,4 +8,4 @@ Set of tools and scripts for the Swisscom All-in Signature Service:
 * services: WSDL and WADL service description files
 * soapui: project that contains example requests
 
-Refer to the "All-In - SOAP client reference guide" document from Swisscom for more details.
+Refer to the "All-in - Reference guide" document from Swisscom for more details.
