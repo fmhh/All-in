@@ -74,8 +74,23 @@
 		</xs:sequence>
 		<xs:attribute name="Type" type="xs:string" use="required" />
 	</xs:complexType>
-	
-	<xs:element name="MobileIDAPTransID" type="xs:string"/>
 
-	<xs:element name="AddOcspResponse" type="dss:UpdateSignatureInstructionType"/>
+	<xs:element name="MobileIDAPTransID" type="xs:string" />
+	<xs:element name="MobileIDFault" type="MobileIDFaultType" />
+	<xs:complexType name="MobileIDFaultType" final="extension">
+		<xs:sequence>
+			<xs:element name="Subcode" type="xs:QName" />
+			<xs:element name="Reason" type="xs:string" />
+			<xs:element name="Detail" type="detail" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="detail" type="xs:string" />
+	<xs:complexType name="detail">
+		<xs:sequence>
+			<xs:element name="detail" type="xs:string" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="AddOcspResponse" type="dss:UpdateSignatureInstructionType" />
 </xs:schema>
