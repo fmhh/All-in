@@ -1672,7 +1672,7 @@
                <ClaimedIdentity>
                   <Name>cartel.ch:OnDemand-Advanced</Name>
                </ClaimedIdentity>
-               <async:ResponseID>8076d567-a302-4fbd-ad2d-ea7497b7c516</async:ResponseID>
+               <async:ResponseID>a67f584c-4a76-4f1d-bd1d-bc05f9b81b0a</async:ResponseID>
             </OptionalInputs>
          </async:PendingRequest>
       </ais:pending>
@@ -3580,12 +3580,12 @@
     <xs:attribute name="AttRefURI" type="xs:anyURI"/>
     <xs:attribute name="MimeType" type="xs:string" use="optional"/>
   </xs:complexType>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint></con:endpoints><con:resource name="/v1.0" path="/v1.0"><con:settings/><con:parameters/><con:resource name="/pending" path="/pending"><con:settings/><con:parameters><con:parameter><con:name>Accept</con:name><con:value/><con:style>HEADER</con:style><con:default/><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="POST" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xmlns:urn="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0">urn:PendingRequest</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xmlns:urn="urn:oasis:names:tc:dss:1.0:core:schema">urn:Response</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="XML PendingRequest (Poll)" mediaType="application/xml" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<asynch:async:PendingRequest Profile="urn:com:swisscom:dss:v1.0" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:async="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0">
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint></con:endpoints><con:resource name="/v1.0" path="/v1.0"><con:settings/><con:parameters/><con:resource name="/pending" path="/pending"><con:settings/><con:parameters><con:parameter><con:name>Accept</con:name><con:value/><con:style>HEADER</con:style><con:default/><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="POST" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xmlns:urn="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0">urn:PendingRequest</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xmlns:urn="urn:oasis:names:tc:dss:1.0:core:schema">urn:Response</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="XML PendingRequest (Poll)" mediaType="application/xml" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<async:PendingRequest Profile="urn:com:swisscom:dss:v1.0" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:async="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0">
     <OptionalInputs>
         <ClaimedIdentity>
             <Name>cartel.ch</Name>
         </ClaimedIdentity>
-        <async:ResponseID>cc23b1c6-a266-4a43-8269-a813f0c18bce</async:ResponseID>
+        <async:ResponseID>ee238271-57af-435e-a8be-3d0ac95c0f5c</async:ResponseID>
     </OptionalInputs>
 </async:PendingRequest>
 
@@ -3594,10 +3594,9 @@
     "@Profile": "urn:com:swisscom:dss:v1.0",
     "OptionalInputs": {
       "ClaimedIdentity": {
-        "@Format": "urn:com:swisscom:dss:v1.0:entity",
         "Name": "cartel.ch"
       },
-      "async.ResponseID": "969be0c4-a071-4e51-bde3-50cd4f443aa4"
+      "async.ResponseID": "ee238271-57af-435e-a8be-3d0ac95c0f5c"
     }
   }
 }</con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>Accept</con:entry></con:parameterOrder></con:request></con:method></con:resource><con:resource name="/sign" path="/sign"><con:settings/><con:parameters><con:parameter><con:name>Accept</con:name><con:value/><con:style>HEADER</con:style><con:default/><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="POST" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xmlns:urn="urn:oasis:names:tc:dss:1.0:core:schema">urn:SignRequest</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/xml</con:mediaType><con:params/><con:element xmlns:urn="urn:oasis:names:tc:dss:1.0:core:schema">urn:Response</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="XML Timestamp [synch]" mediaType="application/xml" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<SignRequest xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
@@ -3635,7 +3634,6 @@
     "@Profile": "urn:com:swisscom:dss:v1.0",
     "OptionalInputs": {
       "ClaimedIdentity": {
-        "@Format": "urn:com:swisscom:dss:v1.0:entity",
         "Name": "cartel.ch"
       },
       "SignatureType": "urn:ietf:rfc:3161",
@@ -3656,7 +3654,6 @@
     "@Profile": "urn:com:swisscom:dss:v1.0",
     "OptionalInputs": {
       "ClaimedIdentity": {
-        "@Format": "urn:com:swisscom:dss:v1.0:entity",
         "Name": "cartel.ch"
       },
       "SignatureType": "urn:ietf:rfc:3161",
@@ -3674,13 +3671,7 @@
       }
     }
   }
-}</con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:request></con:method></con:resource></con:resource></con:interface><con:testSuite name="Automatic Regression Test Suite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="01 SOAP Timestamps" searchProperties="true" id="aed39093-604a-494a-bb0e-75ed51d729ab" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="groovy" name="Set KeyStore" disabled="true" id="a4e4d0c5-9c2e-42da-9c1b-fb9e7ef88a23"><con:settings/><con:config><script>import com.eviware.soapui.settings.SSLSettings;
-import com.eviware.soapui.SoapUI;
-def groovyUtils = new com.eviware.soapui.support.GroovyUtils(context)
-SoapUI.settings.setString( SSLSettings.KEYSTORE, groovyUtils.projectPath + "\\mycert.p12" )
-SoapUI.settings.setString( SSLSettings.KEYSTORE_PASSWORD, "secret" )
-
-//log.info("Path to KeyStore: " + SoapUI.settings.getString(SSLSettings.KEYSTORE,"missing"))</script></con:config></con:testStep><con:testStep type="request" name="TS Sha256 [syn]" id="2d2432a0-b6d2-4d47-bd7a-19695cbb7942"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="TS Sha256 [syn]" sslKeystore=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+}</con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry/></con:parameterOrder></con:request></con:method></con:resource></con:resource></con:interface><con:testSuite name="Automatic Regression Test Suite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="01 SOAP Timestamps" searchProperties="true" id="aed39093-604a-494a-bb0e-75ed51d729ab" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="request" name="TS Sha256 [syn]" id="2d2432a0-b6d2-4d47-bd7a-19695cbb7942"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="TS Sha256 [syn]" sslKeystore=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
    <soap:Body>
       <ais:sign>
          <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
@@ -4087,7 +4078,7 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
       </Other>
     </SignatureObject>
   </Response>
-</ais:pendingResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="groovy" name="Groovy Jar Test" disabled="true" id="0136f700-da43-4e4f-ba77-1adfb5d667c8"><con:settings/><con:config><script>// Import custom jar from &lt;soapui>/bin/ext
+</ais:pendingResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="groovy" name="#2570 Groovy Jar Test" disabled="true" id="0136f700-da43-4e4f-ba77-1adfb5d667c8"><con:settings/><con:config><script>// Import custom jar from &lt;soapui>/bin/ext
 import DecoderTest
 
 // Get Test Suite Property
@@ -4420,7 +4411,6 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
     "@Profile": "urn:com:swisscom:dss:v1.0",
     "OptionalInputs": {
       "ClaimedIdentity": {
-        "@Format": "urn:com:swisscom:dss:v1.0:entity",
         "Name": "${#TestSuite#AP_ID}"
       },
       "SignatureType": "urn:ietf:rfc:3161",
@@ -4503,7 +4493,6 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
     "@Profile": "urn:com:swisscom:dss:v1.0",
     "OptionalInputs": {
       "ClaimedIdentity": {
-        "@Format": "urn:com:swisscom:dss:v1.0:entity",
         "Name": "${#TestSuite#AP_ID}"
       },
       "SignatureType": "urn:ietf:rfc:3161",
@@ -4726,7 +4715,6 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
     "@Profile": "urn:com:swisscom:dss:v1.0",
     "OptionalInputs": {
       "ClaimedIdentity": {
-        "@Format": "urn:com:swisscom:dss:v1.0:entity",
         "Name": "${#TestSuite#AP_ID}"
       },
       "SignatureType": "urn:ietf:rfc:3161",
@@ -4804,7 +4792,6 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
     "@Profile": "urn:com:swisscom:dss:v1.0",
     "OptionalInputs": {
       "ClaimedIdentity": {
-        "@Format": "urn:com:swisscom:dss:v1.0:entity",
         "Name": "${#TestSuite#AP_ID}"
       },
       "async.ResponseID": "${#TestSuite#_tmp}"
@@ -4819,7 +4806,6 @@ matches(//xmlns:ResultMajor/text(),'Pending')</con:expression><con:targetStep>Po
     "@Profile": "urn:com:swisscom:dss:v1.0",
     "OptionalInputs": {
       "ClaimedIdentity": {
-        "@Format": "urn:com:swisscom:dss:v1.0:entity",
         "Name": "${#TestSuite#AP_ID}"
       },
       "async.ResponseID": "${#TestSuite#_tmp}"
@@ -5446,7 +5432,6 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
     "@Profile": "urn:com:swisscom:dss:v1.0",
     "OptionalInputs": {
       "ClaimedIdentity": {
-        "@Format": "urn:com:swisscom:dss:v1.0:entity",
         "Name": "${#TestSuite#AP_ID}:${#TestSuite#STATIC_ID}"
       },
       "SignatureType": "urn:ietf:rfc:3369",
@@ -5630,7 +5615,6 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
     "@Profile": "urn:com:swisscom:dss:v1.0",
     "OptionalInputs": {
       "ClaimedIdentity": {
-        "@Format": "urn:com:swisscom:dss:v1.0:entity",
         "Name": "${#TestSuite#AP_ID}:${#TestSuite#STATIC_ID}"
       },
       "SignatureType": "urn:ietf:rfc:3369",
@@ -5709,7 +5693,6 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
     "@Profile": "urn:com:swisscom:dss:v1.0",
     "OptionalInputs": {
       "ClaimedIdentity": {
-        "@Format": "urn:com:swisscom:dss:v1.0:entity",
         "Name": "${#TestSuite#AP_ID}:${#TestSuite#STATIC_ID}"
       },
       "async.ResponseID": "${#TestSuite#_tmp}"
@@ -6252,7 +6235,7 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
   <ResultMajor>urn:com:swisscom:dss:1.0:resultmajor:SubsystemError</ResultMajor>
   <ResultMinor>urn:com:swisscom:dss:1.0:resultminor:subsystem:Cmp</ResultMinor>
   <ResultMessage xml:lang="en">distinguished name could not be parsed</ResultMessage>
-</Result>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="#2405 #2202 OnDemand ADV WrongDN 2 [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="#2405 #2202 OnDemand ADV WrongDN 2 [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+</Result>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="OnDemand ADV WrongDN 2 [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="OnDemand ADV WrongDN 2 [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
    <soap:Body>
       <ais:sign>
          <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
@@ -6367,6 +6350,82 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
   <SignatureObject>
     <Base64Signature Type="urn:ietf:rfc:3369">*</Base64Signature>
   </SignatureObject>
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="OnDemand ADV WrongOCSP [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="OnDemand ADV WrongOCSP [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+   <soap:Body>
+      <ais:sign>
+         <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
+            <OptionalInputs>
+               <ClaimedIdentity>
+                  <Name>${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}</Name>
+               </ClaimedIdentity>
+               <SignatureType>urn:ietf:rfc:3369</SignatureType>
+               <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:ondemandcertificate</AdditionalProfile>
+               <sc:CertificateRequest>
+                  <sc:DistinguishedName>cn=Hans Muster, o=ACME, c=CH</sc:DistinguishedName>
+               </sc:CertificateRequest>
+               <AddTimestamp Type="urn:ietf:rfc:3161"/>
+               <sc:AddOcspResponse Type="urn:ietf:rfc:xxxx"/>
+            </OptionalInputs>
+            <InputDocuments>
+               <DocumentHash>
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA256}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_256}</dsig:DigestValue>
+               </DocumentHash>
+            </InputDocuments>
+         </SignRequest>
+      </ais:sign>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace xmlns='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace sc='urn:com:swisscom:dss:1.0:schema';
+declare namespace ais='http://service.ais.swisscom.com/';
+declare namespace async='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
+
+//soap:Envelope/soap:Body/ais:signResponse/xmlns:SignResponse</path><content><![CDATA[<SignResponse xsi:type="SignResponse" RequestID="*" Profile="urn:com:swisscom:dss:v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:async="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0" xmlns:ais="http://service.ais.swisscom.com/" xmlns:sc="urn:com:swisscom:dss:1.0:schema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <Result>
+    <ResultMajor>urn:oasis:names:tc:dss:1.0:resultmajor:RequesterError</ResultMajor>
+    <ResultMinor>urn:com:swisscom:dss:1.0:resultminor:UnexpectedData</ResultMinor>
+    <ResultMessage xml:lang="en">Only supported OCSPResponse type is 'urn:ietf:rfc:2560'</ResultMessage>
+  </Result>
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="OnDemand ADV WrongTimestamp [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="OnDemand ADV WrongTimestamp [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+   <soap:Body>
+      <ais:sign>
+         <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
+            <OptionalInputs>
+               <ClaimedIdentity>
+                  <Name>${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}</Name>
+               </ClaimedIdentity>
+               <SignatureType>urn:ietf:rfc:3369</SignatureType>
+               <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:ondemandcertificate</AdditionalProfile>
+               <sc:CertificateRequest>
+                  <sc:DistinguishedName>cn=Hans Muster, o=ACME, c=CH</sc:DistinguishedName>
+               </sc:CertificateRequest>
+               <AddTimestamp Type="urn:ietf:rfc:xxxx"/>
+               <sc:AddOcspResponse Type="urn:ietf:rfc:2560"/>
+            </OptionalInputs>
+            <InputDocuments>
+               <DocumentHash>
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA256}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_256}</dsig:DigestValue>
+               </DocumentHash>
+            </InputDocuments>
+         </SignRequest>
+      </ais:sign>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace xmlns='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace sc='urn:com:swisscom:dss:1.0:schema';
+declare namespace ais='http://service.ais.swisscom.com/';
+declare namespace async='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
+
+//soap:Envelope/soap:Body/ais:signResponse/xmlns:SignResponse</path><content><![CDATA[<SignResponse xsi:type="SignResponse" RequestID="*" Profile="urn:com:swisscom:dss:v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:async="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0" xmlns:ais="http://service.ais.swisscom.com/" xmlns:sc="urn:com:swisscom:dss:1.0:schema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <Result>
+    <ResultMajor>urn:oasis:names:tc:dss:1.0:resultmajor:RequesterError</ResultMajor>
+    <ResultMinor>urn:com:swisscom:dss:1.0:resultminor:UnexpectedData</ResultMinor>
+    <ResultMessage xml:lang="en">Only supported timestamp type is 'urn:ietf:rfc:3161'</ResultMessage>
+  </Result>
 </SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="09 RESTful OnDemand" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword="" id="dca8662e-59fd-41c7-a37d-59a7844d605f"><con:settings/><con:testStep type="restrequest" name="XML OnDemand ADV [syn]"><con:settings/><con:config service="AIS RESTful" resourcePath="/DSS-Server/rs/v1.0/sign" methodName="POST" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="XML OnDemand ADV [syn]" mediaType="application/xml" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/xml" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request><![CDATA[<SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
    <OptionalInputs>
       <ClaimedIdentity>
@@ -6403,7 +6462,6 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
     "@Profile": "urn:com:swisscom:dss:v1.0",
     "OptionalInputs": {
       "ClaimedIdentity": {
-        "@Format": "urn:com:swisscom:dss:v1.0:entity",
         "Name": "${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}"
       },
       "SignatureType": "urn:ietf:rfc:3369",
@@ -6594,7 +6652,6 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
     "@Profile": "urn:com:swisscom:dss:v1.0",
     "OptionalInputs": {
       "ClaimedIdentity": {
-        "@Format": "urn:com:swisscom:dss:v1.0:entity",
         "Name": "${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}"
       },
       "SignatureType": "urn:ietf:rfc:3369",
@@ -6675,7 +6732,6 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
     "@Profile": "urn:com:swisscom:dss:v1.0",
     "OptionalInputs": {
       "ClaimedIdentity": {
-        "@Format": "urn:com:swisscom:dss:v1.0:entity",
         "Name": "${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}"
       },
       "async.ResponseID": "${#TestSuite#_tmp}"
@@ -6756,7 +6812,7 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
   </SignatureObject>
 </SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="groovy" name="UserAlert Mobile ID 2"><con:settings/><con:config><script>def alert = com.eviware.soapui.support.UISupport;
 def myMSISDN = testRunner.testCase.testSuite.getPropertyValue("MSISDN");
-alert.showInfoMessage("Please first click OK and then proceed the Mobile ID Request on your Mobile $myMSISDN")</script></con:config></con:testStep><con:testStep type="request" name="OnDemand QUA MID [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="OnDemand QUA MID [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+alert.showInfoMessage("Please first click OK and then proceed the Mobile ID Request on your Mobile $myMSISDN")</script></con:config></con:testStep><con:testStep type="request" name="#2424 OnDemand QUA MID [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="#2424 OnDemand QUA MID [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
    <soap:Body>
       <ais:sign>
          <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
@@ -6767,7 +6823,7 @@ alert.showInfoMessage("Please first click OK and then proceed the Mobile ID Requ
                <SignatureType>urn:ietf:rfc:3369</SignatureType>
                <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:ondemandcertificate</AdditionalProfile>
                <sc:CertificateRequest>
-                  <sc:DistinguishedName>cn=Hans Muster,o=ACME,c=CH</sc:DistinguishedName>
+                  <sc:DistinguishedName>commonName=Hans Muster,organizationName=ACME,countryName=CH</sc:DistinguishedName>
                   <sc:StepUpAuthorisation>
                      <sc:MobileID Type="urn:com:swisscom:auth:mobileid:v1.0">
                         <sc:MSISDN>${#TestSuite#MSISDN}</sc:MSISDN>
@@ -6819,7 +6875,7 @@ alert.showInfoMessage("Please first click OK and then proceed the Mobile ID Requ
                <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:ondemandcertificate</AdditionalProfile>
                <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:batchprocessing</AdditionalProfile>
                <sc:CertificateRequest>
-                  <sc:DistinguishedName>cn=Hans Muster,o=ACME,c=CH</sc:DistinguishedName>
+                  <sc:DistinguishedName>cn=Hans Muster,o=ACME,c=CH,emailAddress=hans.muster@acme.com,givenName=Hans,surname=Muster,localityName=Hauptgebäude,organizationalUnitName=SCS,serialNumber=123456,stateOrProvinceName=ZH</sc:DistinguishedName>
                   <sc:StepUpAuthorisation>
                      <sc:MobileID Type="urn:com:swisscom:auth:mobileid:v1.0">
                         <sc:MSISDN>${#TestSuite#MSISDN}</sc:MSISDN>
@@ -7131,7 +7187,7 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
                   <sc:StepUpAuthorisation>
                      <sc:MobileID Type="urn:com:swisscom:auth:mobileid:v1.0">
                         <sc:MSISDN>41000092101</sc:MSISDN>
-                        <sc:Message>RegressionTest: OnDemand with MID (en)</sc:Message>
+                        <sc:Message>THIS TEXT SHOULD NOT BE SENT TO THE MOBILE</sc:Message>
                         <sc:Language>EN</sc:Language>
                      </sc:MobileID>
                   </sc:StepUpAuthorisation>
@@ -7187,7 +7243,7 @@ At node: http://b-ae.prod.mobileid/</sc:detail>
                   <sc:StepUpAuthorisation>
                      <sc:MobileID Type="urn:com:swisscom:auth:mobileid:v1.0">
                         <sc:MSISDN>41000092102</sc:MSISDN>
-                        <sc:Message>RegressionTest: OnDemand with MID (en)</sc:Message>
+                        <sc:Message>THIS TEXT SHOULD NOT BE SENT TO THE MOBILE</sc:Message>
                         <sc:Language>EN</sc:Language>
                      </sc:MobileID>
                   </sc:StepUpAuthorisation>
@@ -7243,7 +7299,7 @@ At node: http://b-ae.prod.mobileid/</sc:detail>
                   <sc:StepUpAuthorisation>
                      <sc:MobileID Type="urn:com:swisscom:auth:mobileid:v1.0">
                         <sc:MSISDN>41000092103</sc:MSISDN>
-                        <sc:Message>RegressionTest: OnDemand with MID (en)</sc:Message>
+                        <sc:Message>THIS TEXT SHOULD NOT BE SENT TO THE MOBILE</sc:Message>
                         <sc:Language>EN</sc:Language>
                      </sc:MobileID>
                   </sc:StepUpAuthorisation>
@@ -7284,7 +7340,7 @@ At node: http://b-ae.prod.mobileid/</sc:detail>
       </sc:Detail>
     </sc:MobileIDFault>
   </OptionalOutputs>
-</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="#2432 OnDemand ADV MID WrongTypeAttr [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="#2432 OnDemand ADV MID WrongTypeAttr [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="OnDemand ADV MID WrongTypeAttr [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="OnDemand ADV MID WrongTypeAttr [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
    <soap:Body>
       <ais:sign>
          <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
@@ -7299,7 +7355,7 @@ At node: http://b-ae.prod.mobileid/</sc:detail>
                   <sc:StepUpAuthorisation>
                      <sc:MobileID Type="urn:com:swisscom:auth:mobileid:v1.x">
                         <sc:MSISDN>${#TestSuite#MSISDN}</sc:MSISDN>
-                        <sc:Message>RegressionTest: OnDemand with MID (en) ô crèche où ex æquo</sc:Message>
+                        <sc:Message>THIS TEXT SHOULD NOT BE SENT TO THE MOBILE</sc:Message>
                         <sc:Language>eN</sc:Language>
                      </sc:MobileID>
                   </sc:StepUpAuthorisation>
@@ -7329,7 +7385,7 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
     <ResultMinor>urn:com:swisscom:dss:1.0:resultminor:UnexpectedData</ResultMinor>
     <ResultMessage xml:lang="en">unknown &lt;MobileID> type 'urn:com:swisscom:auth:mobileid:v1.x'</ResultMessage>
   </Result>
-</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="#2432 OnDemand ADV MID MissingTypeAttr [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="#2432 OnDemand ADV MID MissingTypeAttr [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="OnDemand ADV MID MissingTypeAttr [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="OnDemand ADV MID MissingTypeAttr [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
    <soap:Body>
       <ais:sign>
          <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
@@ -7344,7 +7400,7 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
                   <sc:StepUpAuthorisation>
                      <sc:MobileID>
                         <sc:MSISDN>${#TestSuite#MSISDN}</sc:MSISDN>
-                        <sc:Message>RegressionTest: OnDemand with MID (en) ô crèche où ex æquo</sc:Message>
+                        <sc:Message>THIS TEXT SHOULD NOT BE SENT TO THE MOBILE</sc:Message>
                         <sc:Language>eN</sc:Language>
                      </sc:MobileID>
                   </sc:StepUpAuthorisation>
@@ -7389,7 +7445,7 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
                   <sc:StepUpAuthorisation>
                      <sc:MobileID Type="urn:com:swisscom:auth:mobileid:v1.0">
                         <sc:MSISDN>${#TestSuite#MSISDN}</sc:MSISDN>
-                        <sc:Message>RegressionTest: OnDemand with MID (en)</sc:Message>
+                        <sc:Message>THIS TEXT SHOULD NOT BE SENT TO THE MOBILE</sc:Message>
                         <!--<sc:Language>EN</sc:Language>-->
                      </sc:MobileID>
                   </sc:StepUpAuthorisation>
@@ -7434,7 +7490,7 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
                   <sc:StepUpAuthorisation>
                      <sc:MobileID Type="urn:com:swisscom:auth:mobileid:v1.0">
                         <sc:MSISDN>${#TestSuite#MSISDN}</sc:MSISDN>
-                        <sc:Message>RegressionTest: OnDemand with MID (en) ô crèche où ex æquo</sc:Message>
+                        <sc:Message>THIS TEXT SHOULD NOT BE SENT TO THE MOBILE</sc:Message>
                         <sc:Language>eN</sc:Language>
                      </sc:MobileID>
                   </sc:StepUpAuthorisation>
@@ -7464,6 +7520,186 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
     <ResultMinor>urn:com:swisscom:dss:1.0:resultminor:InsufficientData</ResultMinor>
     <ResultMessage xml:lang="en">DistinguishedName</ResultMessage>
   </Result>
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="#2529 OnDemand ADV MID MissingC [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="#2529 OnDemand ADV MID MissingC [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+   <soap:Body>
+      <ais:sign>
+         <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
+            <OptionalInputs>
+               <ClaimedIdentity>
+                  <Name>${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}</Name>
+               </ClaimedIdentity>
+               <SignatureType>urn:ietf:rfc:3369</SignatureType>
+               <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:ondemandcertificate</AdditionalProfile>
+               <sc:CertificateRequest>
+                  <sc:DistinguishedName>cn=Hans Muster</sc:DistinguishedName>
+                  <sc:StepUpAuthorisation>
+                     <sc:MobileID Type="urn:com:swisscom:auth:mobileid:v1.0">
+                        <sc:MSISDN>${#TestSuite#MSISDN}</sc:MSISDN>
+                        <sc:Message>THIS TEXT SHOULD NOT BE SENT TO THE MOBILE</sc:Message>
+                        <sc:Language>EN</sc:Language>
+                     </sc:MobileID>
+                  </sc:StepUpAuthorisation>
+               </sc:CertificateRequest>
+               <AddTimestamp Type="urn:ietf:rfc:3161"/>
+               <sc:AddOcspResponse Type="urn:ietf:rfc:2560"/>
+            </OptionalInputs>
+            <InputDocuments>
+               <DocumentHash>
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA256}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_256}</dsig:DigestValue>
+               </DocumentHash>
+            </InputDocuments>
+         </SignRequest>
+      </ais:sign>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace xmlns='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace sc='urn:com:swisscom:dss:1.0:schema';
+declare namespace ais='http://service.ais.swisscom.com/';
+declare namespace async='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
+
+//soap:Envelope/soap:Body/ais:signResponse/xmlns:SignResponse</path><content><![CDATA[<SignResponse xsi:type="SignResponse" RequestID="*" Profile="urn:com:swisscom:dss:v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:async="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0" xmlns:ais="http://service.ais.swisscom.com/" xmlns:sc="urn:com:swisscom:dss:1.0:schema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <Result>
+    <ResultMajor>urn:com:swisscom:dss:1.0:resultmajor:SubsystemError</ResultMajor>
+    <ResultMinor>urn:com:swisscom:dss:1.0:resultminor:subsystem:Cmp</ResultMinor>
+    <ResultMessage xml:lang="en">distinguished name is missing required RDN 'countryCode' or 'C'</ResultMessage>
+  </Result>
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="#2529 OnDemand ADV MID MissingCN [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="#2529 OnDemand ADV MID MissingCN [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+   <soap:Body>
+      <ais:sign>
+         <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
+            <OptionalInputs>
+               <ClaimedIdentity>
+                  <Name>${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}</Name>
+               </ClaimedIdentity>
+               <SignatureType>urn:ietf:rfc:3369</SignatureType>
+               <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:ondemandcertificate</AdditionalProfile>
+               <sc:CertificateRequest>
+                  <sc:DistinguishedName>c=CH</sc:DistinguishedName>
+                  <sc:StepUpAuthorisation>
+                     <sc:MobileID Type="urn:com:swisscom:auth:mobileid:v1.0">
+                        <sc:MSISDN>${#TestSuite#MSISDN}</sc:MSISDN>
+                        <sc:Message>THIS TEXT SHOULD NOT BE SENT TO THE MOBILE</sc:Message>
+                        <sc:Language>EN</sc:Language>
+                     </sc:MobileID>
+                  </sc:StepUpAuthorisation>
+               </sc:CertificateRequest>
+               <AddTimestamp Type="urn:ietf:rfc:3161"/>
+               <sc:AddOcspResponse Type="urn:ietf:rfc:2560"/>
+            </OptionalInputs>
+            <InputDocuments>
+               <DocumentHash>
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA256}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_256}</dsig:DigestValue>
+               </DocumentHash>
+            </InputDocuments>
+         </SignRequest>
+      </ais:sign>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace xmlns='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace sc='urn:com:swisscom:dss:1.0:schema';
+declare namespace ais='http://service.ais.swisscom.com/';
+declare namespace async='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
+
+//soap:Envelope/soap:Body/ais:signResponse/xmlns:SignResponse</path><content><![CDATA[<SignResponse xsi:type="SignResponse" RequestID="*" Profile="urn:com:swisscom:dss:v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:async="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0" xmlns:ais="http://service.ais.swisscom.com/" xmlns:sc="urn:com:swisscom:dss:1.0:schema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <Result>
+    <ResultMajor>urn:com:swisscom:dss:1.0:resultmajor:SubsystemError</ResultMajor>
+    <ResultMinor>urn:com:swisscom:dss:1.0:resultminor:subsystem:Cmp</ResultMinor>
+    <ResultMessage xml:lang="en">distinguished name is missing required RDN 'commonName' or 'CN'</ResultMessage>
+  </Result>
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="#2529 OnDemand ADV MID InvalidC [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="#2529 OnDemand ADV MID InvalidC [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+   <soap:Body>
+      <ais:sign>
+         <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
+            <OptionalInputs>
+               <ClaimedIdentity>
+                  <Name>${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}</Name>
+               </ClaimedIdentity>
+               <SignatureType>urn:ietf:rfc:3369</SignatureType>
+               <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:ondemandcertificate</AdditionalProfile>
+               <sc:CertificateRequest>
+                  <sc:DistinguishedName>cn=Hans Muster,c=xxx</sc:DistinguishedName>
+                  <sc:StepUpAuthorisation>
+                     <sc:MobileID Type="urn:com:swisscom:auth:mobileid:v1.0">
+                        <sc:MSISDN>${#TestSuite#MSISDN}</sc:MSISDN>
+                        <sc:Message>THIS TEXT SHOULD NOT BE SENT TO THE MOBILE</sc:Message>
+                        <sc:Language>EN</sc:Language>
+                     </sc:MobileID>
+                  </sc:StepUpAuthorisation>
+               </sc:CertificateRequest>
+               <AddTimestamp Type="urn:ietf:rfc:3161"/>
+               <sc:AddOcspResponse Type="urn:ietf:rfc:2560"/>
+            </OptionalInputs>
+            <InputDocuments>
+               <DocumentHash>
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA256}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_256}</dsig:DigestValue>
+               </DocumentHash>
+            </InputDocuments>
+         </SignRequest>
+      </ais:sign>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace xmlns='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace sc='urn:com:swisscom:dss:1.0:schema';
+declare namespace ais='http://service.ais.swisscom.com/';
+declare namespace async='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
+
+//soap:Envelope/soap:Body/ais:signResponse/xmlns:SignResponse</path><content><![CDATA[<SignResponse xsi:type="SignResponse" RequestID="*" Profile="urn:com:swisscom:dss:v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:async="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0" xmlns:ais="http://service.ais.swisscom.com/" xmlns:sc="urn:com:swisscom:dss:1.0:schema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <Result>
+    <ResultMajor>urn:com:swisscom:dss:1.0:resultmajor:SubsystemError</ResultMajor>
+    <ResultMinor>urn:com:swisscom:dss:1.0:resultminor:subsystem:Cmp</ResultMinor>
+    <ResultMessage xml:lang="en">distinguished name RDN 'C' value must be exactly two characters long</ResultMessage>
+  </Result>
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="#2529 OnDemand ADV MID WrongC [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="#2529 OnDemand ADV MID WrongC [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+   <soap:Body>
+      <ais:sign>
+         <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
+            <OptionalInputs>
+               <ClaimedIdentity>
+                  <Name>${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}</Name>
+               </ClaimedIdentity>
+               <SignatureType>urn:ietf:rfc:3369</SignatureType>
+               <AdditionalProfile>urn:com:swisscom:dss:v1.0:profiles:ondemandcertificate</AdditionalProfile>
+               <sc:CertificateRequest>
+                  <sc:DistinguishedName>cn=Hans Muster,c=$$</sc:DistinguishedName>
+                  <sc:StepUpAuthorisation>
+                     <sc:MobileID Type="urn:com:swisscom:auth:mobileid:v1.0">
+                        <sc:MSISDN>${#TestSuite#MSISDN}</sc:MSISDN>
+                        <sc:Message>THIS TEXT SHOULD NOT BE SENT TO THE MOBILE</sc:Message>
+                        <sc:Language>EN</sc:Language>
+                     </sc:MobileID>
+                  </sc:StepUpAuthorisation>
+               </sc:CertificateRequest>
+               <AddTimestamp Type="urn:ietf:rfc:3161"/>
+               <sc:AddOcspResponse Type="urn:ietf:rfc:2560"/>
+            </OptionalInputs>
+            <InputDocuments>
+               <DocumentHash>
+                  <dsig:DigestMethod Algorithm="${#TestSuite#SHA256}"/>
+                  <dsig:DigestValue>${#TestSuite#DIGEST_256}</dsig:DigestValue>
+               </DocumentHash>
+            </InputDocuments>
+         </SignRequest>
+      </ais:sign>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace xmlns='urn:oasis:names:tc:dss:1.0:core:schema';
+declare namespace sc='urn:com:swisscom:dss:1.0:schema';
+declare namespace ais='http://service.ais.swisscom.com/';
+declare namespace async='urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0';
+declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
+
+//soap:Envelope/soap:Body/ais:signResponse/xmlns:SignResponse</path><content><![CDATA[<SignResponse xsi:type="SignResponse" RequestID="*" Profile="urn:com:swisscom:dss:v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:async="urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:1.0" xmlns:ais="http://service.ais.swisscom.com/" xmlns:sc="urn:com:swisscom:dss:1.0:schema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <Result>
+    <ResultMajor>urn:com:swisscom:dss:1.0:resultmajor:SubsystemError</ResultMajor>
+    <ResultMinor>urn:com:swisscom:dss:1.0:resultminor:subsystem:Cmp</ResultMinor>
+    <ResultMessage xml:lang="en">distinguished name could not be parsed</ResultMessage>
+  </Result>
 </SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="groovy" name="UserAlert CANCEL Mobile ID 1"><con:settings/><con:config><script>def alert = com.eviware.soapui.support.UISupport;
 def myMSISDN = testRunner.testCase.testSuite.getPropertyValue("MSISDN");
 alert.showInfoMessage("Please first click OK and then proceed the Mobile ID Request on your Mobile $myMSISDN\nPLEASE >>> CANCEL &lt;&lt;&lt; THE REQUEST ON YOUR MOBILE")</script></con:config></con:testStep><con:testStep type="request" name="OnDemand ADV MID Cancelled [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="OnDemand ADV MID Cancelled [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
@@ -7481,7 +7717,7 @@ alert.showInfoMessage("Please first click OK and then proceed the Mobile ID Requ
                   <sc:StepUpAuthorisation>
                      <sc:MobileID Type="urn:com:swisscom:auth:mobileid:v1.0">
                         <sc:MSISDN>${#TestSuite#MSISDN}</sc:MSISDN>
-                        <sc:Message>RegressionTest: OnDemand with MID (en) ô crèche où ex æquo</sc:Message>
+                        <sc:Message>Please CANCEL this message!</sc:Message>
                         <sc:Language>EN</sc:Language>
                      </sc:MobileID>
                   </sc:StepUpAuthorisation>
@@ -7539,7 +7775,7 @@ alert.showInfoMessage("Please first click OK and then proceed the Mobile ID Requ
                   <sc:StepUpAuthorisation>
                      <sc:MobileID Type="urn:com:swisscom:auth:mobileid:v1.0">
                         <sc:MSISDN>${#TestSuite#MSISDN}</sc:MSISDN>
-                        <sc:Message>RegressionTest: OnDemand with MID (en) ô crèche où ex æquo</sc:Message>
+                        <sc:Message>Please IGNORE this message for at least 60 seconds</sc:Message>
                         <sc:Language>EN</sc:Language>
                      </sc:MobileID>
                   </sc:StepUpAuthorisation>
@@ -7597,7 +7833,7 @@ alert.showInfoMessage("Please >>> ENABLE AIRPLANE &lt;&lt;&lt; mode and click OK
                   <sc:StepUpAuthorisation>
                      <sc:MobileID Type="urn:com:swisscom:auth:mobileid:v1.0">
                         <sc:MSISDN>${#TestSuite#MSISDN}</sc:MSISDN>
-                        <sc:Message>RegressionTest: OnDemand with MID (en) ô crèche où ex æquo</sc:Message>
+                        <sc:Message>Please CANCEL this message</sc:Message>
                         <sc:Language>EN</sc:Language>
                      </sc:MobileID>
                   </sc:StepUpAuthorisation>
@@ -7694,7 +7930,6 @@ alert.showInfoMessage("Please first click OK and then proceed the Mobile ID Requ
     "@Profile": "urn:com:swisscom:dss:v1.0",
     "OptionalInputs": {
       "ClaimedIdentity": {
-        "@Format": "urn:com:swisscom:dss:v1.0:entity",
         "Name": "${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}"
       },
       "SignatureType": "urn:ietf:rfc:3369",
@@ -7914,7 +8149,6 @@ alert.showInfoMessage("Please first click OK and then proceed the Mobile ID Requ
     "@Profile": "urn:com:swisscom:dss:v1.0",
     "OptionalInputs": {
       "ClaimedIdentity": {
-        "@Format": "urn:com:swisscom:dss:v1.0:entity",
         "Name": "${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}"
       },
       "SignatureType": "urn:ietf:rfc:3369",
@@ -8005,7 +8239,6 @@ alert.showInfoMessage("Please first click OK and then proceed the Mobile ID Requ
     "@Profile": "urn:com:swisscom:dss:v1.0",
     "OptionalInputs": {
       "ClaimedIdentity": {
-        "@Format": "urn:com:swisscom:dss:v1.0:entity",
         "Name": "${#TestSuite#AP_ID}:${#TestSuite#ONDEMAND_ADVANCED}"
       },
       "async.ResponseID": "${#TestSuite#_tmp}"
@@ -10239,7 +10472,7 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
   <OptionalOutputs>
     <async:ResponseID>*</async:ResponseID>
   </OptionalOutputs>
-</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Static Batch 101-Docs [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="Static Batch 101-Docs [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Static Batch 101-Docs [syn]" disabled="true"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="Static Batch 101-Docs [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
    <soap:Body>
       <ais:sign>
          <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
@@ -10981,7 +11214,7 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
       </sc:SignatureObjects>
     </Other>
   </SignatureObject>
-</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Static Batch 101-Docs [asyn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="Static Batch 101-Docs [asyn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="Static Batch 101-Docs [asyn]" disabled="true"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="Static Batch 101-Docs [asyn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
    <soap:Body>
       <ais:sign>
          <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
@@ -11418,7 +11651,7 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
   <OptionalOutputs>
     <async:ResponseID>*</async:ResponseID>
   </OptionalOutputs>
-</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="#2434 OnDemand Batch 101-Docs [syn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="#2434 OnDemand Batch 101-Docs [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="#2434 OnDemand Batch 101-Docs [syn]" disabled="true"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="#2434 OnDemand Batch 101-Docs [syn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
    <soap:Body>
       <ais:sign>
          <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
@@ -12164,7 +12397,7 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
       </sc:SignatureObjects>
     </Other>
   </SignatureObject>
-</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="#2434 OnDemand Batch 101-Docs [asyn]"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="#2434 OnDemand Batch 101-Docs [asyn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="#2434 OnDemand Batch 101-Docs [asyn]" disabled="true"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AIS SOAP</con:interface><con:operation>sign</con:operation><con:request name="#2434 OnDemand Batch 101-Docs [asyn]"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch/DSS-Server/ws</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:oasis:names:tc:dss:1.0:core:schema" xmlns:ais="http://service.ais.swisscom.com/" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:sc="urn:com:swisscom:dss:1.0:schema">
    <soap:Body>
       <ais:sign>
          <SignRequest RequestID="${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}" Profile="urn:com:swisscom:dss:v1.0">
@@ -12605,4 +12838,1574 @@ declare namespace dsig='http://www.w3.org/2000/09/xmldsig#';
   <OptionalOutputs>
     <async:ResponseID>*</async:ResponseID>
   </OptionalOutputs>
-</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:loadTest name="Basic Simple Run"><con:settings><con:setting id="HttpSettings@close-connections">true</con:setting></con:settings><con:threadCount>10</con:threadCount><con:startDelay>0</con:startDelay><con:sampleInterval>250</con:sampleInterval><con:calculateTPSOnTimePassed>true</con:calculateTPSOnTimePassed><con:resetStatisticsOnThreadCountChange>true</con:resetStatisticsOnThreadCountChange><con:historyLimit>-1</con:historyLimit><con:testLimit>5</con:testLimit><con:limitType>COUNT_PER_THREAD</con:limitType><con:loadStrategy><con:type>Simple</con:type><con:config><testDelay>1000</testDelay><randomFactor>0.5</randomFactor></con:config></con:loadStrategy><con:assertion type="Step Status" name="Step Status"/><con:maxAssertionErrors>100</con:maxAssertionErrors><con:statisticsLogFolder/><con:statisticsLogInterval>0</con:statisticsLogInterval><con:logStatisticsOnThreadChange>false</con:logStatisticsOnThreadChange><con:cancelOnReachedLimit>true</con:cancelOnReachedLimit><con:cancelExcessiveThreads>true</con:cancelExcessiveThreads><con:strategyInterval>500</con:strategyInterval><con:updateStatisticsPerTestStep>false</con:updateStatisticsPerTestStep></con:loadTest><con:properties/><con:reportParameters/></con:testCase><con:properties><con:property><con:name>AP_ID</con:name><con:value>cartel.ch</con:value></con:property><con:property><con:name>STATIC_ID</con:name><con:value>kp2-cartel.ch</con:value></con:property><con:property><con:name>ONDEMAND_QUALIFIED</con:name><con:value>OnDemand-Qualified</con:value></con:property><con:property><con:name>ONDEMAND_ADVANCED</con:name><con:value>OnDemand-Advanced</con:value></con:property><con:property><con:name>MSISDN</con:name><con:value>4179123456</con:value></con:property><con:property><con:name>SHA256</con:name><con:value>http://www.w3.org/2001/04/xmlenc#sha256</con:value></con:property><con:property><con:name>SHA384</con:name><con:value>http://www.w3.org/2001/04/xmldsig-more#sha384</con:value></con:property><con:property><con:name>SHA512</con:name><con:value>http://www.w3.org/2001/04/xmlenc#sha512</con:value></con:property><con:property><con:name>DIGEST_256</con:name><con:value>1WON4H3Hrinf7LYRNmhV6Uf7apdUvuYEsmhxAklxumA=</con:value></con:property><con:property><con:name>DIGEST_384</con:name><con:value>be5JJtVMoZqkJ3isZaBBpwXXQtV4Opqf3KtYcHacCh7fVZ1bS8VSnMnK3z9mIy1R</con:value></con:property><con:property><con:name>DIGEST_512</con:name><con:value>FsntfB/ATHb1O7HlxpB4l9L+1vkgCOki3omkM6jJVnxXDRRgd1uZ7S/GkLPkFEUJ+SDllcWWjDNJHJcnkritGg==</con:value></con:property><con:property><con:name>_tmp</con:name><con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">7f488616-771a-4a73-a4be-d6b4ddb61355</con:value></con:property></con:properties><con:reportParameters/></con:testSuite><con:properties/><con:wssContainer/><con:databaseConnectionContainer/><con:reporting><con:xmlTemplates/><con:parameters/></con:reporting><con:sensitiveInformation/></con:soapui-project>
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:loadTest name="Basic Simple Run"><con:settings><con:setting id="HttpSettings@close-connections">true</con:setting></con:settings><con:threadCount>10</con:threadCount><con:startDelay>0</con:startDelay><con:sampleInterval>250</con:sampleInterval><con:calculateTPSOnTimePassed>true</con:calculateTPSOnTimePassed><con:resetStatisticsOnThreadCountChange>true</con:resetStatisticsOnThreadCountChange><con:historyLimit>-1</con:historyLimit><con:testLimit>5</con:testLimit><con:limitType>COUNT_PER_THREAD</con:limitType><con:loadStrategy><con:type>Simple</con:type><con:config><testDelay>1000</testDelay><randomFactor>0.5</randomFactor></con:config></con:loadStrategy><con:assertion type="Step Status" name="Step Status"/><con:maxAssertionErrors>100</con:maxAssertionErrors><con:statisticsLogFolder/><con:statisticsLogInterval>0</con:statisticsLogInterval><con:logStatisticsOnThreadChange>false</con:logStatisticsOnThreadChange><con:cancelOnReachedLimit>true</con:cancelOnReachedLimit><con:cancelExcessiveThreads>true</con:cancelExcessiveThreads><con:strategyInterval>500</con:strategyInterval><con:updateStatisticsPerTestStep>false</con:updateStatisticsPerTestStep><con:reportParameters/></con:loadTest><con:properties/><con:reportParameters/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="15 RESTful SimHighTraffic" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword="" disabled="true"><con:settings/><con:testStep type="restrequest" name="JSON TS Batch 101-Docs [syn]"><con:settings/><con:config service="AIS RESTful" methodName="POST" resourcePath="/DSS-Server/rs/v1.0/sign" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Copy of JSON TS Batch [syn]" mediaType="application/json" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept" value="application/json" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
+  "SignRequest": {
+    "@RequestID": "${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}",
+    "@Profile": "urn:com:swisscom:dss:v1.0",
+    "OptionalInputs": {
+      "ClaimedIdentity": {
+        "Name": "${#TestSuite#AP_ID}"
+      },
+      "SignatureType": "urn:ietf:rfc:3161",
+      "AdditionalProfile": "urn:oasis:names:tc:dss:1.0:profiles:timestamping",
+      "AdditionalProfile": "urn:com:swisscom:dss:v1.0:profiles:batchprocessing"
+    },
+    "InputDocuments": {
+      "DocumentHash": {
+        "@ID": "512_001",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_002",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_003",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_004",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_005",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_006",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_007",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_008",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_009",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_010",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_011",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_012",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_013",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_014",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_015",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_016",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_017",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_018",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_019",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_020",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_021",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_022",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_023",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_024",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_025",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_026",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_027",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_028",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_029",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_030",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_031",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_032",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_033",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_034",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_035",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_036",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_037",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_038",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_039",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_040",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_041",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_042",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_043",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_044",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_045",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_046",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_047",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_048",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_049",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_050",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_051",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_052",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_053",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_054",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_055",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_056",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_057",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_058",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_059",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_060",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_061",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_062",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_063",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_064",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_065",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_066",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_067",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_068",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_069",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_070",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_071",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_072",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_073",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_074",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_075",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_076",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_077",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_078",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_079",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_080",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_081",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_082",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_083",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_084",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_085",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_086",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_087",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_088",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_089",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_090",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_091",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_092",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_093",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_094",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_095",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_096",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_097",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_098",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_099",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_100",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_101",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      }
+    }
+  }
+}</con:request><con:assertion type="Valid HTTP Status Codes" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace xmlns='https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/sign';
+//xmlns:Response/xmlns:SignResponse</path><content><![CDATA[<SignResponse Profile="urn:com:swisscom:dss:v1.0" RequestID="*" xmlns="https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/sign">
+  <Result>
+    <ResultMajor>urn:oasis:names:tc:dss:1.0:resultmajor:Success</ResultMajor>
+  </Result>
+  <SignatureObject>
+    <Other>
+      <sc.SignatureObjects>
+        <sc.ExtendedSignatureObject>
+          <e WhichDocument="512_001">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_002">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_003">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_004">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_005">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_006">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_007">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_008">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_009">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_010">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_011">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_012">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_013">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_014">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_015">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_016">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_017">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_018">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_019">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_020">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_021">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_022">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_023">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_024">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_025">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_026">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_027">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_028">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_029">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_030">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_031">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_032">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_033">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_034">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_035">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_036">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_037">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_038">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_039">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_040">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_041">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_042">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_043">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_044">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_045">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_046">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_047">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_048">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_049">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_050">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_051">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_052">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_053">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_054">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_055">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_056">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_057">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_058">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_059">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_060">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_061">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_062">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_063">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_064">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_065">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_066">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_067">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_068">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_069">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_070">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_071">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_072">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_073">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_074">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_075">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_076">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_077">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_078">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_079">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_080">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_081">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_082">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_083">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_084">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_085">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_086">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_087">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_088">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_089">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_090">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_091">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_092">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_093">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_094">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_095">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_096">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_097">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_098">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_099">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_100">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+          <e WhichDocument="512_101">
+            <Timestamp>
+              <RFC3161TimeStampToken>*</RFC3161TimeStampToken>
+            </Timestamp>
+          </e>
+        </sc.ExtendedSignatureObject>
+      </sc.SignatureObjects>
+    </Other>
+  </SignatureObject>
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:testStep type="restrequest" name="JSON TS Batch 101-Docs [asyn]"><con:settings/><con:config service="AIS RESTful" methodName="POST" resourcePath="/DSS-Server/rs/v1.0/sign" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Copy of JSON TS Batch [asyn]" mediaType="application/json" postQueryString="false" accept=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Accept" value="application/json"/>
+  &lt;con:entry key="Accept" value="application/json"/>
+&lt;/xml-fragment></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://ais.pre.swissdigicert.ch</con:endpoint><con:request>{
+  "SignRequest": {
+    "@RequestID": "${=new Date().format('yyyy-MM-dd')}T${=new Date().format('HH:mm:ss.SSS')}",
+    "@Profile": "urn:com:swisscom:dss:v1.0",
+    "OptionalInputs": {
+      "ClaimedIdentity": {
+        "Name": "${#TestSuite#AP_ID}"
+      },
+      "SignatureType": "urn:ietf:rfc:3161",
+      "AdditionalProfile": "urn:oasis:names:tc:dss:1.0:profiles:timestamping",
+      "AdditionalProfile": "urn:com:swisscom:dss:v1.0:profiles:batchprocessing",
+      "AdditionalProfile": "urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing"
+    },
+    "InputDocuments": {
+            "DocumentHash": {
+        "@ID": "512_001",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_002",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_003",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_004",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_005",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_006",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_007",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_008",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_009",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_010",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_011",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_012",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_013",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_014",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_015",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_016",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_017",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_018",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_019",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_020",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_021",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_022",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_023",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_024",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_025",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_026",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_027",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_028",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_029",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_030",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_031",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_032",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_033",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_034",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_035",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_036",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_037",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_038",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_039",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_040",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_041",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_042",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_043",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_044",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_045",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_046",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_047",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_048",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_049",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_050",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_051",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_052",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_053",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_054",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_055",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_056",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_057",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_058",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_059",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_060",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_061",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_062",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_063",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_064",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_065",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_066",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_067",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_068",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_069",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_070",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_071",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_072",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_073",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_074",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_075",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_076",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_077",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_078",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_079",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_080",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_081",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_082",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_083",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_084",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_085",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_086",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_087",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_088",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_089",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_090",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_091",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_092",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_093",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_094",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_095",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_096",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_097",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_098",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_099",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_100",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      },
+     "DocumentHash": {
+        "@ID": "512_101",
+        "dsig.DigestMethod": { "@Algorithm": "${#TestSuite#SHA512}" },
+        "dsig.DigestValue": "${#TestSuite#DIGEST_512}"
+      }
+    }
+  }
+}</con:request><con:assertion type="Valid HTTP Status Codes" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="XPath Match" name="XPath Match"><con:configuration><path>declare namespace xmlns='https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/sign';
+//xmlns:Response/xmlns:SignResponse</path><content><![CDATA[<SignResponse Profile="urn:com:swisscom:dss:v1.0" RequestID="*" xmlns="https://ais.pre.swissdigicert.ch/DSS-Server/rs/v1.0/sign">
+  <OptionalOutputs>
+    <async.ResponseID>*</async.ResponseID>
+  </OptionalOutputs>
+  <Result>
+    <ResultMajor>urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:resultmajor:Pending</ResultMajor>
+  </Result>
+</SignResponse>]]></content><allowWildcards>true</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="Accept" value="" xmlns="http://eviware.com/soapui/config"/></con:parameters></con:restRequest></con:config></con:testStep><con:loadTest name="Basic Simple Run"><con:settings><con:setting id="HttpSettings@close-connections">true</con:setting></con:settings><con:threadCount>10</con:threadCount><con:startDelay>0</con:startDelay><con:sampleInterval>250</con:sampleInterval><con:calculateTPSOnTimePassed>true</con:calculateTPSOnTimePassed><con:resetStatisticsOnThreadCountChange>true</con:resetStatisticsOnThreadCountChange><con:historyLimit>-1</con:historyLimit><con:testLimit>5</con:testLimit><con:limitType>COUNT_PER_THREAD</con:limitType><con:loadStrategy><con:type>Simple</con:type><con:config><testDelay>1000</testDelay><randomFactor>0.5</randomFactor></con:config></con:loadStrategy><con:assertion type="Step Status" name="Step Status"/><con:maxAssertionErrors>100</con:maxAssertionErrors><con:statisticsLogFolder/><con:statisticsLogInterval>0</con:statisticsLogInterval><con:logStatisticsOnThreadChange>false</con:logStatisticsOnThreadChange><con:cancelOnReachedLimit>true</con:cancelOnReachedLimit><con:cancelExcessiveThreads>true</con:cancelExcessiveThreads><con:strategyInterval>500</con:strategyInterval><con:updateStatisticsPerTestStep>false</con:updateStatisticsPerTestStep><con:reportParameters/></con:loadTest><con:properties/><con:reportParameters/></con:testCase><con:properties><con:property><con:name>AP_ID</con:name><con:value>cartel.ch</con:value></con:property><con:property><con:name>STATIC_ID</con:name><con:value>kp2-cartel.ch</con:value></con:property><con:property><con:name>ONDEMAND_QUALIFIED</con:name><con:value>OnDemand-Qualified</con:value></con:property><con:property><con:name>ONDEMAND_ADVANCED</con:name><con:value>OnDemand-Advanced</con:value></con:property><con:property><con:name>MSISDN</con:name><con:value>4179123456</con:value></con:property><con:property><con:name>SHA256</con:name><con:value>http://www.w3.org/2001/04/xmlenc#sha256</con:value></con:property><con:property><con:name>SHA384</con:name><con:value>http://www.w3.org/2001/04/xmldsig-more#sha384</con:value></con:property><con:property><con:name>SHA512</con:name><con:value>http://www.w3.org/2001/04/xmlenc#sha512</con:value></con:property><con:property><con:name>DIGEST_256</con:name><con:value>1WON4H3Hrinf7LYRNmhV6Uf7apdUvuYEsmhxAklxumA=</con:value></con:property><con:property><con:name>DIGEST_384</con:name><con:value>be5JJtVMoZqkJ3isZaBBpwXXQtV4Opqf3KtYcHacCh7fVZ1bS8VSnMnK3z9mIy1R</con:value></con:property><con:property><con:name>DIGEST_512</con:name><con:value>FsntfB/ATHb1O7HlxpB4l9L+1vkgCOki3omkM6jJVnxXDRRgd1uZ7S/GkLPkFEUJ+SDllcWWjDNJHJcnkritGg==</con:value></con:property><con:property><con:name>_tmp</con:name><con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">7f488616-771a-4a73-a4be-d6b4ddb61355</con:value></con:property></con:properties><con:reportParameters/></con:testSuite><con:properties/><con:wssContainer/><con:databaseConnectionContainer/><con:reporting><con:xmlTemplates/><con:parameters/></con:reporting><con:sensitiveInformation/></con:soapui-project>
