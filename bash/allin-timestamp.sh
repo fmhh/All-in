@@ -162,19 +162,19 @@ case "$MSGTYPE" in
   # MessageType is JSON. Define the Request
   JSON)
     REQ_JSON='{
-      "dss.SignRequest": {
+      "SignRequest": {
           "@RequestID": "'$REQUESTID'",
           "@Profile": "urn:com:swisscom:dss:v1.0",
-          "dss.OptionalInputs": {
-              "dss.ClaimedIdentity": {
-                  "dss.Name": "'$CLAIMED_ID'"
+          "OptionalInputs": {
+              "ClaimedIdentity": {
+                  "Name": "'$CLAIMED_ID'"
               },
-              "dss.SignatureType": "urn:ietf:rfc:3161",
-              "dss.AdditionalProfile": "urn:oasis:names:tc:dss:1.0:profiles:timestamping"
+              "SignatureType": "urn:ietf:rfc:3161",
+              "AdditionalProfile": "urn:oasis:names:tc:dss:1.0:profiles:timestamping"
           },
-          "dss.InputDocuments": {"dss.DocumentHash": {
-              "xmldsig.DigestMethod": {"@Algorithm": "'$DIGEST_ALGO'"},
-              "xmldsig.DigestValue": "'$DIGEST_VALUE'"
+          "InputDocuments": {"DocumentHash": {
+              "dsig.DigestMethod": {"@Algorithm": "'$DIGEST_ALGO'"},
+              "dsig.DigestValue": "'$DIGEST_VALUE'"
           }}
       }}'
     # store into file
@@ -232,10 +232,10 @@ if [ "$RC" = "0" -a "$http_code" = "200" ]; then
       sed -n -e 's/.*<RFC3161TimeStampToken>\(.*\)<\/RFC3161TimeStampToken>.*/\1/p' $TMP.rsp > $TMP.sig.base64 ;;
     JSON)
       # JSON Parse Result
-      RES_MAJ=$(sed -n -e 's/^.*"dss.ResultMajor":"\([^"]*\)".*$/\1/p' $TMP.rsp)
-      RES_MIN=$(sed -n -e 's/^.*"dss.ResultMinor":"\([^"]*\)".*$/\1/p' $TMP.rsp)
-      RES_MSG=$(cat $TMP.rsp | sed 's/\\\//\//g' | sed 's/\\n/ /g' | sed -n -e 's/^.*"dss.ResultMessage":{\([^}]*\)}.*$/\1/p')
-      sed -n -e 's/^.*"dss.RFC3161TimeStampToken":"\([^"]*\)".*$/\1/p' $TMP.rsp | sed 's/\\//g' > $TMP.sig.base64 ;;
+      RES_MAJ=$(sed -n -e 's/^.*"ResultMajor":"\([^"]*\)".*$/\1/p' $TMP.rsp)
+      RES_MIN=$(sed -n -e 's/^.*"ResultMinor":"\([^"]*\)".*$/\1/p' $TMP.rsp)
+      RES_MSG=$(cat $TMP.rsp | sed 's/\\\//\//g' | sed 's/\\n/ /g' | sed -n -e 's/^.*"ResultMessage":{\([^}]*\)}.*$/\1/p')
+      sed -n -e 's/^.*"RFC3161TimeStampToken":"\([^"]*\)".*$/\1/p' $TMP.rsp | sed 's/\\//g' > $TMP.sig.base64 ;;
   esac
 
   if [ -s "${TMP}.sig.base64" ]; then
