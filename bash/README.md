@@ -79,8 +79,8 @@ FAILED on myfile.txt with following details:
 Example of verbose outputs for signature verifications:
 ```
 Signature verification of myfile.p7s on myfile.txt:
- Signed by    : subject= /CN=Hans Muster/O=ACME/C=CH
-                issuer= /C=ch/O=Swisscom/OU=Digital Certificate Services/CN=Swisscom TEST Saphir CA 2
+ Signed by    : subject= C=CH,O=ACME,CN=Hans Muster
+                issuer= CN=Swisscom TEST Saphir CA 2,OU=Digital Certificate Services,O=Swisscom,C=ch
                 validity= notBefore=Jan 17 09:45:16 2014 GMT notAfter=Jan 17 09:55:16 2014 GMT
                 ocsp check= good
  Verification : success with exit 0
@@ -88,8 +88,8 @@ Signature verification of myfile.p7s on myfile.txt:
 
 ```
 Signature verification of myfile.p7s on myfile.txt:
- Signed by    : subject= /CN=Hans Muster/O=ACME/C=CH
-                issuer= /C=ch/O=Swisscom/OU=Digital Certificate Services/CN=Swisscom TEST Saphir CA 2
+ Signed by    : subject= C=CH,O=ACME,CN=Hans Muster
+                issuer= CN=Swisscom TEST Saphir CA 2,OU=Digital Certificate Services,O=Swisscom,C=ch
                 validity= notBefore=Jan 17 09:45:16 2014 GMT notAfter=Jan 17 09:55:16 2014 GMT
                 ocsp check= good
  Verification : failed with exit 1
