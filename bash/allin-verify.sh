@@ -59,7 +59,7 @@ RES_SIG_STATUS=""                               # Verification status of the sig
 # Check existence of needed files
 [ -r "${FILE}" ]   || error "File to verify ($FILE) missing or not readable"
 [ -r "${SIG}" ]    || error "Signature file ($SIG) missing or not readable"
-[ -r "${SIG_CA}" ] || error "CA certificate/chain file ($CERT_CA) missing or not readable"
+[ -r "${SIG_CA}" ] || error "CA certificate/chain file ($SIG_CA) missing or not readable"
 
 # Start verification by assuming all fine
 RC=0
@@ -69,6 +69,9 @@ RES_SIG_STATUS="success"
 openssl pkcs7 -inform pem -in $SIG -out $TMP.certificates.pem -print_certs > /dev/null 2>&1
 [ -s "${TMP}.certificates.pem" ] || error "Unable to extract signers certificate from signature"
 RES_CERT_SUBJ=$(openssl x509 -subject -noout -in $TMP.certificates.pem)
+RES_CERT_ISSUER=$(openssl x509 -issuer -noout -in $TMP.certificates.pem)
+RES_CERT_START=$(openssl x509 -startdate -noout -in $TMP.certificates.pem)
+RES_CERT_END=$(openssl x509 -enddate -noout -in $TMP.certificates.pem)
 
 # Get OCSP uri from the signers certificate and verify the revocation status
 OCSP_URL=$(openssl x509 -in $TMP.certificates.pem -ocsp_uri -noout)
@@ -101,7 +104,10 @@ fi
 
 if [ "$VERBOSE" = "1" ]; then                   # Verbose details
   echo "Signature verification of $SIG on $FILE:"
-  echo " Signed by    : $RES_CERT_SUBJ -> OCSP check: $RES_CERT_STATUS"
+  echo " Signed by    : $RES_CERT_SUBJ"
+  echo "                $RES_CERT_ISSUER"
+  echo "                validity= $RES_CERT_START $RES_CERT_END"
+  echo "                ocsp check= $RES_CERT_STATUS"
   echo " Verification : $RES_SIG_STATUS with exit $RC"
 fi
 
