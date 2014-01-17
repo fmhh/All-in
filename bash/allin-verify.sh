@@ -68,8 +68,8 @@ RES_SIG_STATUS="success"
 # Extract the signers certificate
 openssl pkcs7 -inform pem -in $SIG -out $TMP.certificates.pem -print_certs > /dev/null 2>&1
 [ -s "${TMP}.certificates.pem" ] || error "Unable to extract signers certificate from signature"
-RES_CERT_SUBJ=$(openssl x509 -subject -nameopt RFC2253 -noout -in $TMP.certificates.pem)
-RES_CERT_ISSUER=$(openssl x509 -issuer -nameopt RFC2253 -noout -in $TMP.certificates.pem)
+RES_CERT_SUBJ=$(openssl x509 -subject -nameopt utf8 -nameopt sep_comma_plus -noout -in $TMP.certificates.pem)
+RES_CERT_ISSUER=$(openssl x509 -issuer -nameopt utf8 -nameopt sep_comma_plus -noout -in $TMP.certificates.pem)
 RES_CERT_START=$(openssl x509 -startdate -noout -in $TMP.certificates.pem)
 RES_CERT_END=$(openssl x509 -enddate -noout -in $TMP.certificates.pem)
 
