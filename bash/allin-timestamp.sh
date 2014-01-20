@@ -4,7 +4,7 @@
 # Script that will produce a detached timestamp signature for a file
 # by using curl to invoke the Swisscom All-in signing service.
 #
-# Dependencies: curl, openssl, base64, sed, date, xmllint, tr, python
+# Dependencies: curl, openssl, sed, date, xmllint, tr, python
 #
 # License: GNU General Public License version 3 or later; see LICENSE.md
 # Author: Swisscom (Schweiz) AG
@@ -59,7 +59,7 @@ fi
 PWD=$(dirname $0)                               # Get the Path of the script
 
 # Check the dependencies
-for cmd in curl openssl base64 sed date xmllint tr python; do
+for cmd in curl openssl sed date xmllint tr python; do
   hash $cmd &> /dev/null
   if [ $? -eq 1 ]; then error "Dependency error: '$cmd' not found" ; fi
 done
@@ -95,7 +95,7 @@ case "$DIGEST_METHOD" in
 esac
 
 # Calculate the hash to be signed
-DIGEST_VALUE=$(openssl dgst -binary -$DIGEST_METHOD $FILE | base64 --wrap=0)
+DIGEST_VALUE=$(openssl dgst -binary -$DIGEST_METHOD $FILE | openssl enc -base64 -A)
 
 # Target file
 PKCS7_RESULT=$3
@@ -240,7 +240,7 @@ if [ "$RC" = "0" -a "$http_code" = "200" ]; then
 
   if [ -s "${TMP}.sig.base64" ]; then
     # Decode signature if present
-    base64 --decode  $TMP.sig.base64 > $TMP.sig.der
+    openssl enc -base64 -d -A -in $TMP.sig.base64 -out $TMP.sig.der
     [ -s "${TMP}.sig.der" ] || error "Unable to decode Base64Signature"
     # Save PKCS7 content to target
     openssl pkcs7 -inform der -in $TMP.sig.der -out $PKCS7_RESULT
