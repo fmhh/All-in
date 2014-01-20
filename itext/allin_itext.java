@@ -3,7 +3,7 @@
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 20.01.2014 16:35
+ * 20.01.2014 17:08
  * <p/>
  * Version:
  * 1.0.0
@@ -16,6 +16,7 @@
  * </p>
  * Author:
  * Swisscom (Schweiz) AG
+ * </p>
  * **********************************************************************************************************
  * This is a wrapper class for allin_soap class                                                             *
  * Only program arguments will be handled                                                                   *
@@ -70,57 +71,66 @@ public class allin_itext {
             System.exit(1);
         }
 
-        if (args[0].trim().toLowerCase().equals("-v") || args[1].trim().toLowerCase().equals("-v"))
+        if (args[0].trim().toLowerCase().equals("-v") || args[1].trim().toLowerCase().equals("-v")) {
             verboseMode = true;
+        }
 
-        if (args[0].trim().toLowerCase().equals("-d") || args[1].trim().toLowerCase().equals("-d"))
+        if (args[0].trim().toLowerCase().equals("-d") || args[1].trim().toLowerCase().equals("-d")) {
             debugMode = true;
+        }
 
         int argPointer = debugMode && verboseMode ? 2 : !debugMode && !verboseMode ? 0 : !debugMode && verboseMode || debugMode && !verboseMode ? 1 : -1;
 
-        try{
+        try {
             signature = allin_include.Signature.valueOf(args[argPointer].trim().toUpperCase());
             ++argPointer;
         } catch (IllegalArgumentException e) {
-            if (debugMode || verboseMode)
+            if (debugMode || verboseMode) {
                 printError(args[argPointer] + " is not a valid signature.");
+            }
             printUsage();
             System.exit(1);
         }
 
         if (args.length < argPointer + 1) {
-            if (debugMode || verboseMode)
+            if (debugMode || verboseMode) {
                 printError("Could not find pdf to sign");
+            }
             printUsage();
             System.exit(1);
         }
+
         pdfToSign = args[argPointer];
         File filePdfToSign = new File(pdfToSign);
         ++argPointer;
 
         if (!filePdfToSign.exists() || !filePdfToSign.isFile() || !filePdfToSign.canRead()) {
-            if (debugMode || verboseMode)
+            if (debugMode || verboseMode) {
                 printError("File " + pdfToSign + " does not exist or is not a file or can not be read.");
+            }
             System.exit(1);
         }
 
         if (args.length < argPointer + 1) {
-            if (debugMode || verboseMode)
+            if (debugMode || verboseMode) {
                 printError("Could not find output path for signing PDF");
+            }
             printUsage();
             System.exit(1);
         }
 
         signedPDF = args[argPointer];
         if (signedPDF.equals(pdfToSign)) {
-            if (debugMode || verboseMode)
+            if (debugMode || verboseMode) {
                 printError("Source file equals target file");
+            }
             System.exit(1);
         }
         
-        if (new File(signedPDF).exists()){
-	    if (debugMode || verboseMode)
+        if (new File(signedPDF).exists()) {
+	    if (debugMode || verboseMode) {
               printError("Target file exists");
+            }
             System.exit(1);
         }
         ++argPointer;
@@ -146,15 +156,17 @@ public class allin_itext {
         }
 
         if (msisdn != null && msg == null) {
-            if (debugMode || verboseMode)
+            if (debugMode || verboseMode) {
                 printError("Missing msg parameter");
+            }
             printUsage();
             System.exit(1);
         }
 
         if (msisdn != null && language == null) {
-            if (debugMode || verboseMode)
+            if (debugMode || verboseMode) {
                 printError("Missing language parameter");
+            }
             printUsage();
             System.exit(1);
         }
@@ -166,7 +178,6 @@ public class allin_itext {
             if (debugMode || verboseMode) {
                 printError(e.getMessage().replaceAll("java.lang.Exception","").length() > 0 ? e.getMessage() : "");
             }
-
             System.exit(1);
         }
     }

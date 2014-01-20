@@ -1,6 +1,9 @@
 /**
  * Created:
  * 19.12.13 KW51 08:04
+ * </p>
+ * Last Modification:
+ * 20.01.2014 17:05
  * <p/>
  * Version:
  * 1.0.0
@@ -29,8 +32,10 @@ public class allin_include {
         private String hashUri;
 
         HashAlgorithm(String hashAlgo, String hashUri) {
+
             this.hashAlgo = hashAlgo;
             this.hashUri = hashUri;
+
         }
 
         public String getHashAlgorythm() {
@@ -54,7 +59,7 @@ public class allin_include {
             this.resultUrn = urn;
         }
 
-        public String getResultUrn(){
+        public String getResultUrn() {
             return this.resultUrn;
         }
     }
@@ -83,6 +88,7 @@ public class allin_include {
     }
 
     public enum Signature {
+
         TSA("tsa"),
         STATIC("static"),
         ONDEMAND("ondemand");

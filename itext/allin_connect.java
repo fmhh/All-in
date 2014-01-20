@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 02.01.2014 18:44
+ * 20.01.2014 17:01
  * <p/>
  * Version:
  * 1.0.0
@@ -36,9 +36,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.Socket;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.*;
 import java.security.*;
 import java.security.cert.*;
 import java.security.cert.Certificate;
@@ -47,8 +45,8 @@ import java.util.Collections;
 
 public class allin_connect {
 
-    static boolean _debugMode = false;
-    static boolean _verboseMode = false;
+    boolean _debugMode = false;
+    boolean _verboseMode = false;
     private String _url;
     private String _privateKey;
     private String _serverCert;
@@ -79,7 +77,8 @@ public class allin_connect {
     }
 
     @Nullable
-    public URLConnection getConnection() throws UnrecoverableKeyException, CertificateException, NoSuchAlgorithmException, KeyStoreException, IOException, KeyManagementException {
+    public URLConnection getConnection() throws UnrecoverableKeyException, CertificateException, NoSuchAlgorithmException,
+            KeyStoreException, IOException, KeyManagementException {
 
         KeyManager[] keyManagers = createKeyManagers(_clientCert);
         TrustManager[] trustManagers = createTrustManagers(_serverCert);
@@ -90,7 +89,9 @@ public class allin_connect {
         return con;
     }
 
-    private URLConnection createConnectionObject(@Nonnull String urlString, @Nonnull SSLSocketFactory sslSocketFactory) throws IOException {
+    private URLConnection createConnectionObject(@Nonnull String urlString, @Nonnull SSLSocketFactory sslSocketFactory)
+            throws IOException {
+
         URL url = new URL(urlString);
         URLConnection connection = url.openConnection();
         if (connection instanceof HttpsURLConnection) {
@@ -101,6 +102,7 @@ public class allin_connect {
 
     private SSLSocketFactory initItAll(@Nonnull KeyManager[] keyManagers, @Nonnull TrustManager[] trustManagers)
             throws NoSuchAlgorithmException, KeyManagementException {
+
         SSLContext context = SSLContext.getInstance("TLS");
         context.init(keyManagers, trustManagers, null);
         SSLSocketFactory socketFactory = context.getSocketFactory();
@@ -111,7 +113,7 @@ public class allin_connect {
             throws IOException, KeyStoreException, NoSuchAlgorithmException, UnrecoverableKeyException, CertificateException {
 
         KeyManager[] managers = new KeyManager[]{new allin_connect(_url, _privateKey, _serverCert, _clientCert, _timeout,
-                _debugMode, _verboseMode).new AliasKeyManager(alias, _privateKey, _serverCert)};
+                _debugMode, _verboseMode).new AliasKeyManager(alias, _privateKey, _serverCert, _debugMode, _verboseMode)};
 
         return managers;
     }
@@ -131,8 +133,10 @@ public class allin_connect {
 
             @Override
             public void checkServerTrusted(final X509Certificate[] chain, final String authType) throws CertificateException {
-                if (chain == null || chain.length < 2)
+
+                if (chain == null || chain.length < 2) {
                     throw new CertificateException("Error when validating server certificate");
+                }
 
                 X509Certificate certToVerify = chain[0];
                 CertificateFactory cf = CertificateFactory.getInstance("X.509");
@@ -149,8 +153,9 @@ public class allin_connect {
 
                     CertPathValidatorResult validated = cpv.validate(cp, pkixParams);
 
-                    if (validated == null)
+                    if (validated == null) {
                         throw new CertificateException("Error when validating server certificate");
+                    }
 
                     trustedIssuers = chain;
 
@@ -164,6 +169,7 @@ public class allin_connect {
                 return trustedIssuers;
             }
         }};
+
         return trustAllCerts;
     }
 
@@ -172,12 +178,17 @@ public class allin_connect {
         private String _alias;
         private String _privateKeyName;
         private String _serverCert;
+        private boolean _debugMode;
+        private boolean _verboseMode;
 
         public AliasKeyManager(@Nonnull String alias, @Nonnull String privateKeyName,
-                               @Nonnull String serverCert) {
+                               @Nonnull String serverCert, boolean debugMode, boolean verboseMode) {
+
             this._alias = alias;
             this._privateKeyName = privateKeyName;
             this._serverCert = serverCert;
+            this._debugMode = debugMode;
+            this._verboseMode = verboseMode;
         }
 
         public String chooseClientAlias(String[] str, Principal[] principal, Socket socket) {
@@ -190,12 +201,13 @@ public class allin_connect {
 
         @Nullable
         public X509Certificate[] getCertificateChain(String clientCertFilePath) {
+
             try {
                 CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
                 Certificate certificate = certificateFactory.generateCertificate(new FileInputStream(clientCertFilePath));
                 return new X509Certificate[]{(X509Certificate) certificate};
             } catch (Exception e) {
-                if (allin_connect._debugMode)
+                if (_debugMode)
                     e.printStackTrace();
                 return null;
             }
@@ -207,6 +219,7 @@ public class allin_connect {
 
         @Nullable
         public PrivateKey getPrivateKey(String privateKeyPath) {
+
             try {
                 BufferedReader br = new BufferedReader(new FileReader(_privateKeyName));
 
@@ -224,10 +237,13 @@ public class allin_connect {
 
                 JcaPEMKeyConverter jcaPEMKeyConverter = new JcaPEMKeyConverter();
                 java.security.PrivateKey privateKey = jcaPEMKeyConverter.getPrivateKey(privateKeyInfo);
+
                 return privateKey;
+
             } catch (Exception e) {
-                if (allin_connect._debugMode)
+                if (_debugMode)
                     e.printStackTrace();
+
                 return null;
             }
         }
