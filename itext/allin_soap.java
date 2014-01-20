@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 20.01.2014 17:20
+ * 20.01.2014 17:30
  * <p/>
  * Version:
  * 1.0.0
@@ -56,7 +56,7 @@ public class allin_soap {
     private static final String _TIMESTAMP_URN = "urn:ietf:rfc:3161";
     private static final String _OCSP_URN = "urn:ietf:rfc:2560";
     private static final String _MOBILE_ID_TYPE = "urn:com:swisscom:auth:mobileid:v1.0";
-    private static String _cfgPath = "allin_itext.cfg";
+    private static String _cfgPath = "allin_itext.properties";
     private Properties properties;
     private String _privateKeyName;
     private String _serverCertPath;
