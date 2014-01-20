@@ -3,7 +3,7 @@
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 20.01.2014 17:08
+ * 20.01.2014 17:59
  * <p/>
  * Version:
  * 1.0.0
@@ -104,7 +104,7 @@ public class allin_itext {
         File filePdfToSign = new File(pdfToSign);
         ++argPointer;
 
-        if (!filePdfToSign.exists() || !filePdfToSign.isFile() || !filePdfToSign.canRead()) {
+        if (!filePdfToSign.isFile() || !filePdfToSign.canRead()) {
             if (debugMode || verboseMode) {
                 printError("File " + pdfToSign + " does not exist or is not a file or can not be read.");
             }
@@ -127,7 +127,7 @@ public class allin_itext {
             System.exit(1);
         }
         
-        if (new File(signedPDF).exists()) {
+        if (new File(signedPDF).isFile()) {
 	    if (debugMode || verboseMode) {
               printError("Target file exists");
             }

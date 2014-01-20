@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 20.01.2014 17:30
+ * 20.01.2014 17:59
  * <p/>
  * Version:
  * 1.0.0
@@ -720,7 +720,7 @@ public class allin_soap {
         File file;
         for (String filePath : filePaths) {
             file = new File(filePath);
-            if (!file.exists() || !file.isFile() || !file.canRead()) {
+            if (!file.isFile() || !file.canRead()) {
                 throw new FileNotFoundException("File not found or is not a file or not readable: " + file.getAbsolutePath());
             }
         }
