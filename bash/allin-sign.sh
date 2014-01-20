@@ -310,7 +310,7 @@ if [ "$RC" = "0" -a "$http_code" = "200" ]; then
 
   if [ -s "${TMP}.sig.base64" ]; then
     # Decode signature if present
-    openssl enc -base64 -d -A -in $TMP.sig.base64 > $TMP.sig.der
+    openssl enc -base64 -d -A -in $TMP.sig.base64 -out $TMP.sig.der
     [ -s "${TMP}.sig.der" ] || error "Unable to decode Base64Signature"
     # Save PKCS7 content to target
     openssl pkcs7 -inform der -in $TMP.sig.der -out $PKCS7_RESULT
