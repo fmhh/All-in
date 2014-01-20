@@ -14,6 +14,9 @@
  * Author:
  * Swisscom (Schweiz) AG
  */
+
+package swisscom.com.ais.itext;
+
 public class allin_include {
 
     public enum HashAlgorithm {

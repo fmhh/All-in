@@ -21,6 +21,8 @@
  * **********************************************************************************
  */
 
+package swisscom.com.ais.itext;
+
 import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.openssl.PEMKeyPair;

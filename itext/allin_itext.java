@@ -1,6 +1,3 @@
-import javax.annotation.*;
-import java.io.File;
-
 /**
  * Created:
  * 18.12.13 KW 51 10:42
@@ -25,6 +22,11 @@ import java.io.File;
  * At least allin_soap will be called with arguments                                                        *
  * **********************************************************************************************************
  */
+
+package swisscom.com.ais.itext;
+
+import javax.annotation.*;
+import java.io.File;
 
 public class allin_itext {
 
