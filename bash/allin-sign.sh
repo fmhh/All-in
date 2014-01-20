@@ -104,7 +104,7 @@ case "$DIGEST_METHOD" in
 esac
 
 # Calculate the hash to be signed
-DIGEST_VALUE=$(openssl dgst -binary -$DIGEST_METHOD $FILE | openssl enc -base64 -A )
+DIGEST_VALUE=$(openssl dgst -binary -$DIGEST_METHOD $FILE | openssl enc -base64 -A)
 
 # Target file
 PKCS7_RESULT=$3
