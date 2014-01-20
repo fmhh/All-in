@@ -1,9 +1,9 @@
 /**
  * Created:
  * 19.12.13 KW51 08:04
- * <p/>
+ * </p>
  * Last Modification:
- * 10.01.2014 12:31
+ * 20.01.2014 17:09
  * <p/>
  * Version:
  * 1.0.0
@@ -17,6 +17,8 @@
  * Author:
  * Swisscom (Schweiz) AG
  */
+
+package swisscom.com.ais.itext;
 
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.*;
@@ -51,7 +53,6 @@ public class allin_pdf {
         this.signContact = signContact;
     }
 
-
     public String getInputFilePath() {
         return inputFilePath;
     }
@@ -83,8 +84,10 @@ public class allin_pdf {
         MessageDigest messageDigest = MessageDigest.getInstance(hashAlgorithm);
         InputStream rangeStream = pdfSignatureAppearance.getRangeStream();
         int i;
-        while ((i = rangeStream.read()) != -1)
+        while ((i = rangeStream.read()) != -1) {
             messageDigest.update((byte) i);
+        }
+
         return messageDigest.digest();
     }
 
@@ -96,8 +99,9 @@ public class allin_pdf {
      */
     private void addSignatureToPdf(@Nonnull byte[] externalSignature, int estimatedSize) throws IOException, DocumentException {
 
-        if (estimatedSize < externalSignature.length)
+        if (estimatedSize < externalSignature.length) {
             throw new IOException("Not enough space for signature");
+        }
 
         PdfLiteral pdfLiteral = (PdfLiteral) pdfSignature.get(PdfName.CONTENTS);
         byte[] outc = new byte[(pdfLiteral.getPosLength() - 2) / 2];
@@ -124,6 +128,5 @@ public class allin_pdf {
     public void sign(@Nonnull String hash, int estimatedSize) throws IOException, DocumentException {
         addSignatureToPdf(Base64.decode(hash), estimatedSize);
     }
-
 
 }

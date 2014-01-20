@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 14.01.2014 10:14
+ * 20.01.2014 17:59
  * <p/>
  * Version:
  * 1.0.0
@@ -22,6 +22,8 @@
  * For examples see main method. You only need to change variables in this method.  *
  * **********************************************************************************
  */
+
+package swisscom.com.ais.itext;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -54,7 +56,7 @@ public class allin_soap {
     private static final String _TIMESTAMP_URN = "urn:ietf:rfc:3161";
     private static final String _OCSP_URN = "urn:ietf:rfc:2560";
     private static final String _MOBILE_ID_TYPE = "urn:com:swisscom:auth:mobileid:v1.0";
-    private static String _cfgPath = "allin_itext.cfg";
+    private static String _cfgPath = "allin_itext.properties";
     private Properties properties;
     private String _privateKeyName;
     private String _serverCertPath;
@@ -128,13 +130,13 @@ public class allin_soap {
 
         allin_include.HashAlgorithm hashAlgo = allin_include.HashAlgorithm.valueOf(properties.getProperty("DIGEST_METHOD").trim().toUpperCase());
 
-        String claimedIdentityPropName = signatureType.equals(allin_include.Signature.ONDEMAND) ? "AP_ID_ONDEMAND" : signatureType.equals(allin_include.Signature.TSA) ? "AP_ID_TSA" : "AP_ID_STATIC";
+        String claimedIdentityPropName = signatureType.equals(allin_include.Signature.ONDEMAND) ?
+                "AP_ID_ONDEMAND" : signatureType.equals(allin_include.Signature.TSA) ? "AP_ID_TSA" : "AP_ID_STATIC";
         String claimedIdentity = properties.getProperty(claimedIdentityPropName);
 
         allin_pdf pdf = new allin_pdf(fileIn, fileOut, null, null, null, null);
 
         try {
-
             if (msisdn != null && msg != null && language != null && signatureType.equals(allin_include.Signature.ONDEMAND)) {
                 if (_debug) {
                     System.out.println("Going to sign ondemand with mobile id");
@@ -186,8 +188,8 @@ public class allin_soap {
                                                   @Nonnull String serverURI, boolean addTimestamp, boolean addOcsp, @Nonnull String claimedIdentity,
                                                   @Nonnull String distinguishedName, @Nonnull String phoneNumber, @Nonnull String certReqMsg,
                                                   @Nonnull String certReqMsgLang, int requestId) throws Exception {
-
         String[] additionalProfiles;
+
         if (pdfs.length > 1) {
             additionalProfiles = new String[2];
             additionalProfiles[1] = allin_include.AdditionalProfiles.BATCH.getProfileName();
@@ -359,17 +361,20 @@ public class allin_soap {
             }
 
             if (!singingSuccess) {
-                System.out.println("FAILED to sign " + pdfNames + " with following details:");
+                System.err.println("FAILED to sign " + pdfNames + " with following details:");
             } else {
                 System.out.println("OK signing " + pdfNames + " with following details:");
             }
 
             if (sigResponse != null) {
-
                 if (responseResult != null) {
                     for (String s : responseResult) {
                         if (s.length() > 0) {
-                            System.out.println(" Result major: " + s);
+                            if (!singingSuccess) {
+                                System.err.println(" Result major: " + s);
+                            } else {
+                                System.out.println(" Result major: " + s);
+                            }
                         }
                     }
                 }
@@ -378,7 +383,11 @@ public class allin_soap {
                 if (resultMinor != null) {
                     for (String s : resultMinor) {
                         if (s.length() > 0) {
-                            System.out.println(" Result minor: " + s);
+                            if (!singingSuccess) {
+                                System.err.println(" Result minor: " + s);
+                            } else {
+                                System.out.println(" Result minor: " + s);
+                            }
                         }
                     }
                 }
@@ -387,7 +396,11 @@ public class allin_soap {
                 if (errorMsg != null) {
                     for (String s : errorMsg) {
                         if (s.length() > 0) {
-                            System.out.println(" Result message: " + s);
+                            if (!singingSuccess) {
+                                System.err.println(" Result message: " + s);
+                            } else {
+                                System.out.println(" Result message: " + s);
+                            }
                         }
                     }
                 }
@@ -412,12 +425,13 @@ public class allin_soap {
      */
     private void signDocuments(@Nonnull ArrayList<String> signatureList, @Nonnull allin_pdf[] pdfs, int estimatedSize) throws Exception {
         int counter = 0;
+
         for (String signatureHash : signatureList) {
             try {
                 pdfs[counter].sign(signatureHash, estimatedSize);
             } catch (Exception e) {
                 if (_debug) {
-                    System.out.println("Could not add signature hash to document");
+                    System.err.println("Could not add signature hash to document");
                 }
                 throw new Exception(e);
             }
@@ -436,8 +450,8 @@ public class allin_soap {
      */
     @Nullable
     private ArrayList<String> getTextFromXmlText(String soapResponseText, String nodeName) throws IOException, SAXException, ParserConfigurationException {
-
         Element element = getNodeList(soapResponseText);
+
         return getNodesFromNodeList(element, nodeName);
     }
 
@@ -450,7 +464,6 @@ public class allin_soap {
      */
     @Nullable
     private ArrayList<String> getNodesFromNodeList(@Nonnull Element element, @Nonnull String nodeName) {
-
         ArrayList<String> returnlist = null;
         NodeList nl = element.getElementsByTagName(nodeName);
 
@@ -463,6 +476,7 @@ public class allin_soap {
             }
 
         }
+
         return returnlist;
     }
 
@@ -481,6 +495,7 @@ public class allin_soap {
         DocumentBuilder db = dbf.newDocumentBuilder();
         ByteArrayInputStream bis = new ByteArrayInputStream(xmlString.getBytes());
         Document doc = db.parse(bis);
+
         return doc.getDocumentElement();
     }
 
@@ -705,7 +720,7 @@ public class allin_soap {
         File file;
         for (String filePath : filePaths) {
             file = new File(filePath);
-            if (!file.exists() || !file.isFile() || !file.canRead()) {
+            if (!file.isFile() || !file.canRead()) {
                 throw new FileNotFoundException("File not found or is not a file or not readable: " + file.getAbsolutePath());
             }
         }
@@ -722,6 +737,7 @@ public class allin_soap {
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.transform(xmlInput, xmlOutput);
+
             return xmlOutput.getWriter().toString();
         } catch (Exception e) {
             return input;

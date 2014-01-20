@@ -91,7 +91,7 @@ fi
 
 # Verify the detached signature against original file
 #  -noverify: don't verify signers certificate to avoid expired certificate error for OnDemand
-if [ "$DEBUG" = "" ]; then
+if [ ! -n "$DEBUG" ]; then
   openssl smime -verify -inform pem -in $SIG -content $FILE -out $TMP.sig -CAfile $SIG_CA -noverify -purpose any > /dev/null 2>&1
  else
   openssl smime -verify -inform pem -in $SIG -content $FILE -out $TMP.sig -CAfile $SIG_CA -noverify -purpose any
@@ -112,7 +112,7 @@ if [ "$VERBOSE" = "1" ]; then                   # Verbose details
 fi
 
 # Cleanups if not DEBUG mode
-if [ "$DEBUG" = "" ]; then
+if [ ! -n "$DEBUG" ]; then
   [ -f "$TMP" ] && rm $TMP
   [ -f "$TMP.certificates.pem" ] && rm $TMP.certificates.pem
   [ -f "$TMP.certificates.check" ] && rm $TMP.certificates.check
