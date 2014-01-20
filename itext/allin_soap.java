@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 14.01.2014 10:14
+ * 20.01.2014 16:37
  * <p/>
  * Version:
  * 1.0.0
@@ -361,7 +361,7 @@ public class allin_soap {
             }
 
             if (!singingSuccess) {
-                System.out.println("FAILED to sign " + pdfNames + " with following details:");
+                System.err.println("FAILED to sign " + pdfNames + " with following details:");
             } else {
                 System.out.println("OK signing " + pdfNames + " with following details:");
             }
@@ -371,7 +371,11 @@ public class allin_soap {
                 if (responseResult != null) {
                     for (String s : responseResult) {
                         if (s.length() > 0) {
-                            System.out.println(" Result major: " + s);
+                            if (!singingSuccess) {
+                                System.err.println(" Result major: " + s);
+                            } else {
+                                System.out.println(" Result major: " + s);
+                            }
                         }
                     }
                 }
@@ -380,7 +384,11 @@ public class allin_soap {
                 if (resultMinor != null) {
                     for (String s : resultMinor) {
                         if (s.length() > 0) {
-                            System.out.println(" Result minor: " + s);
+                            if (!singingSuccess) {
+                                System.err.println(" Result minor: " + s);
+                            } else {
+                                System.out.println(" Result minor: " + s);
+                            }
                         }
                     }
                 }
@@ -389,7 +397,11 @@ public class allin_soap {
                 if (errorMsg != null) {
                     for (String s : errorMsg) {
                         if (s.length() > 0) {
-                            System.out.println(" Result message: " + s);
+                            if (!singingSuccess) {
+                                System.err.println(" Result message: " + s);
+                            } else {
+                                System.out.println(" Result message: " + s);
+                            }
                         }
                     }
                 }
@@ -419,7 +431,7 @@ public class allin_soap {
                 pdfs[counter].sign(signatureHash, estimatedSize);
             } catch (Exception e) {
                 if (_debug) {
-                    System.out.println("Could not add signature hash to document");
+                    System.err.println("Could not add signature hash to document");
                 }
                 throw new Exception(e);
             }
