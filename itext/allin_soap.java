@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 20.01.2014 17:59
+ * 21.01.2014 08:16
  * <p/>
  * Version:
  * 1.0.0
@@ -536,7 +536,7 @@ public class allin_soap {
         SOAPEnvelope envelope = soapPart.getEnvelope();
         envelope.addAttribute(new QName("xmlns"), "urn:oasis:names:tc:dss:1.0:core:schema");
         envelope.addNamespaceDeclaration("dsig", "http://www.w3.org/2000/09/xmldsig#");
-        envelope.addNamespaceDeclaration("ns5", "urn:com:swisscom:dss:1.0:schema");
+        envelope.addNamespaceDeclaration("sc", "urn:com:swisscom:dss:1.0:schema");
         envelope.addNamespaceDeclaration("ais", "http://service.ais.swisscom.com/");
 
         // SOAP Body
@@ -583,26 +583,26 @@ public class allin_soap {
             }
 
             if (certRequestProfile != null) {
-                SOAPElement certificateRequestElement = optionalInputsElement.addChildElement("CertificateRequest", "ns5");
+                SOAPElement certificateRequestElement = optionalInputsElement.addChildElement("CertificateRequest", "sc");
                 if (!_CERTIFICATE_REQUEST_PROFILE.equals(certRequestProfile)) {
                     certificateRequestElement.addAttribute(new QName("Profile"), certRequestProfile);
                 }
                 if (distinguishedName != null) {
                     SOAPElement distinguishedNameElement = _CERTIFICATE_REQUEST_PROFILE.equals(certRequestProfile) ?
-                            certificateRequestElement.addChildElement("DistinguishedName", "ns5") :
+                            certificateRequestElement.addChildElement("DistinguishedName", "sc") :
                             certificateRequestElement.addChildElement("DistinguishedName");
                     distinguishedNameElement.addTextNode(distinguishedName);
                     if (phoneNumber != null) {
-                        SOAPElement stepUpAuthorisationElement = certificateRequestElement.addChildElement("StepUpAuthorisation", "ns5");
+                        SOAPElement stepUpAuthorisationElement = certificateRequestElement.addChildElement("StepUpAuthorisation", "sc");
 
                         if (mobileIdType != null && phoneNumber != null) {
-                            SOAPElement mobileIdElement = stepUpAuthorisationElement.addChildElement("MobileID", "ns5");
+                            SOAPElement mobileIdElement = stepUpAuthorisationElement.addChildElement("MobileID", "sc");
                             mobileIdElement.addAttribute(new QName("Type"), _MOBILE_ID_TYPE);
-                            SOAPElement msisdnElement = mobileIdElement.addChildElement("MSISDN", "ns5");
+                            SOAPElement msisdnElement = mobileIdElement.addChildElement("MSISDN", "sc");
                             msisdnElement.addTextNode(phoneNumber);
-                            SOAPElement certReqMsgElement = mobileIdElement.addChildElement("Message", "ns5");
+                            SOAPElement certReqMsgElement = mobileIdElement.addChildElement("Message", "sc");
                             certReqMsgElement.addTextNode(certReqMsg);
-                            SOAPElement certReqMsgLangElement = mobileIdElement.addChildElement("Language", "ns5");
+                            SOAPElement certReqMsgLangElement = mobileIdElement.addChildElement("Language", "sc");
                             certReqMsgLangElement.addTextNode(certReqMsgLang.toUpperCase());
                         }
                     }
@@ -620,7 +620,7 @@ public class allin_soap {
             }
 
             if (ocspURN != null && !signatureType.equals(_TIMESTAMP_URN)) {
-                SOAPElement addOcspElement = optionalInputsElement.addChildElement("AddOcspResponse", "ns5");
+                SOAPElement addOcspElement = optionalInputsElement.addChildElement("AddOcspResponse", "sc");
                 addOcspElement.addAttribute(new QName("Type"), ocspURN);
             }
 
