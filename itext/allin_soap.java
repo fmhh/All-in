@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 21.01.2014 08:33
+ * 21.01.2014 09:30
  * <p/>
  * Version:
  * 1.0.0
@@ -125,13 +125,13 @@ public class allin_soap {
     public void sign(@Nonnull allin_include.Signature signatureType, @Nonnull String fileIn,
                      @Nonnull String fileOut, String distinguishedName, String msisdn, String msg, String language) throws Exception {
 
-        boolean addTimestamp = properties.getProperty("ADD_TSA").trim().toLowerCase().equals("true");
+        boolean addTimestamp = properties.getProperty("ADD_TIMESTAMP").trim().toLowerCase().equals("true");
         boolean addOCSP = properties.getProperty("ADD_OCSP").trim().toLowerCase().equals("true");
 
         allin_include.HashAlgorithm hashAlgo = allin_include.HashAlgorithm.valueOf(properties.getProperty("DIGEST_METHOD").trim().toUpperCase());
 
         String claimedIdentityPropName = signatureType.equals(allin_include.Signature.ONDEMAND) ?
-                "AP_ID_ONDEMAND" : signatureType.equals(allin_include.Signature.TSA) ? "AP_ID_TSA" : "AP_ID_STATIC";
+                "AP_ID_ONDEMAND" : signatureType.equals(allin_include.Signature.TSA) ? "AP_ID_TIMESTAMP" : "AP_ID_STATIC";
         String claimedIdentity = properties.getProperty(claimedIdentityPropName);
 
         allin_pdf pdf = new allin_pdf(fileIn, fileOut, null, null, null, null);
