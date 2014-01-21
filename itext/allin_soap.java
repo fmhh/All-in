@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 21.01.2014 08:30
+ * 21.01.2014 08:33
  * <p/>
  * Version:
  * 1.0.0
@@ -603,7 +603,7 @@ public class allin_soap {
                             SOAPElement certReqMsgElement = mobileIdElement.addChildElement("Message", "sc");
                             certReqMsgElement.addTextNode(certReqMsg);
                             SOAPElement certReqMsgLangElement = mobileIdElement.addChildElement("Language", "sc");
-                            certReqMsgLangElement.addTextNode(certReqMsgLang.toUpperCase());
+                            certReqMsgLangElement.addTextNode(certReqMsgLang);
                         }
                     }
                 }
