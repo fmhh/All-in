@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 21.01.2014 14:43
+ * 21.01.2014 15:00
  * <p/>
  * Version:
  * 1.0.0
@@ -370,7 +370,7 @@ public class allin_soap {
             }
 
             if (sigResponse != null) {
-                if (responseResult != null) {
+                if (responseResult != null && _verboseMode) {
                     for (String s : responseResult) {
                         if (s.length() > 0) {
                             if (!singingSuccess) {
@@ -383,7 +383,7 @@ public class allin_soap {
                 }
 
                 ArrayList<String> resultMinor = getTextFromXmlText(sigResponse, "ResultMinor");
-                if (resultMinor != null) {
+                if (resultMinor != null && _verboseMode) {
                     for (String s : resultMinor) {
                         if (s.length() > 0) {
                             if (!singingSuccess) {
@@ -396,7 +396,7 @@ public class allin_soap {
                 }
 
                 ArrayList<String> errorMsg = getTextFromXmlText(sigResponse, "ResultMessage");
-                if (errorMsg != null) {
+                if (errorMsg != null && _verboseMode) {
                     for (String s : errorMsg) {
                         if (s.length() > 0) {
                             if (!singingSuccess) {
