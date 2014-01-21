@@ -9,7 +9,7 @@ Java source code and command line tool to sign PDF with iText.
 Usage: java <javaoptions> allin_itext <allin_itext_args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>
 -v        - verbose output
 -d        - debug mode
-signature - tsa, static, ondemand
+signature - timestamp, static, ondemand
 pdftosign - PDF to be signed
 signedpdf - signed PDF
 <dn>      - optional distinguished name in ondemand
@@ -17,7 +17,7 @@ signedpdf - signed PDF
 <msg>     - optional Mobile ID message, mandatory if msisdn is set
 <lang>    - optional Mobile ID language element (en, de, fr, it), mandatory if msisdn is set
 
-Examples java allin_itext -v tsa sample.pdf signed.pdf
+Examples java allin_itext -v timestamp sample.pdf signed.pdf
          java allin_itext -v static sample.pdf signed.pdf
          java allin_itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH'
          java allin_itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en
