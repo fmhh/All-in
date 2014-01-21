@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 21.01.2014 15:54
+ * 21.01.2014 16:14
  * <p/>
  * Version:
  * 1.0.0
@@ -141,30 +141,32 @@ public class allin_soap {
         allin_pdf pdf = new allin_pdf(fileIn, fileOut, null, null, null, null);
 
         try {
+            long requestId = System.nanoTime();
+
             if (msisdn != null && msg != null && language != null && signatureType.equals(allin_include.Signature.ONDEMAND)) {
                 if (_debug) {
                     System.out.println("Going to sign ondemand with mobile id");
                 }
                 signDocumentOnDemandCertMobileId(new allin_pdf[]{pdf}, Calendar.getInstance(), hashAlgo, _url, addTimestamp,
-                        addOCSP, claimedIdentity, distinguishedName, msisdn, msg, language, (int) (Math.random() * 1000));
+                        addOCSP, claimedIdentity, distinguishedName, msisdn, msg, language, requestId);
             } else if (signatureType.equals(allin_include.Signature.ONDEMAND)) {
                 if (_debug) {
                     System.out.println("Going to sign with ondemand");
                 }
                 signDocumentOnDemandCert(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, _CERTIFICATE_REQUEST_PROFILE,
-                        addTimestamp, addOCSP, distinguishedName, claimedIdentity, (int) (Math.random() * 1000));
+                        addTimestamp, addOCSP, distinguishedName, claimedIdentity, requestId);
             } else if (signatureType.equals(allin_include.Signature.TIMESTAMP)) {
                 if (_debug) {
                     System.out.println("Going to sign only with timestamp");
                 }
                 signDocumentTimestampOnly(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, claimedIdentity,
-                        (int) (Math.random() * 1000));
+                        requestId);
             } else if (signatureType.equals(allin_include.Signature.STATIC)) {
                 if (_debug) {
                     System.out.println("Going to sign with static cert");
                 }
                 signDocumentStaticCert(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, addTimestamp, addOCSP,
-                        claimedIdentity, (int) (Math.random() * 1000));
+                        claimedIdentity, requestId);
             }
         } catch (Exception e) {
             throw new Exception(e);
@@ -191,7 +193,7 @@ public class allin_soap {
     private void signDocumentOnDemandCertMobileId(@Nonnull allin_pdf pdfs[], @Nonnull Calendar signDate, @Nonnull allin_include.HashAlgorithm hashAlgo,
                                                   @Nonnull String serverURI, boolean addTimestamp, boolean addOcsp, @Nonnull String claimedIdentity,
                                                   @Nonnull String distinguishedName, @Nonnull String phoneNumber, @Nonnull String certReqMsg,
-                                                  @Nonnull String certReqMsgLang, int requestId) throws Exception {
+                                                  @Nonnull String certReqMsgLang, long requestId) throws Exception {
         String[] additionalProfiles;
 
         if (pdfs.length > 1) {
@@ -235,7 +237,7 @@ public class allin_soap {
      */
     private void signDocumentOnDemandCert(@Nonnull allin_pdf[] pdfs, @Nonnull allin_include.HashAlgorithm hashAlgo, Calendar signDate, @Nonnull String serverURI,
                                           @Nonnull String certRequestProfile, boolean addTimeStamp, boolean addOcsp,
-                                          @Nonnull String distinguishedName, @Nonnull String claimedIdentity, int requestId)
+                                          @Nonnull String distinguishedName, @Nonnull String claimedIdentity, long requestId)
             throws Exception {
 
         String[] additionalProfiles;
@@ -275,7 +277,7 @@ public class allin_soap {
      * @throws Exception
      */
     private void signDocumentStaticCert(@Nonnull allin_pdf[] pdfs, @Nonnull allin_include.HashAlgorithm hashAlgo, Calendar signDate, @Nonnull String serverURI,
-                                        boolean addTimeStamp, boolean addOCSP, @Nonnull String claimedIdentity, int requestId)
+                                        boolean addTimeStamp, boolean addOCSP, @Nonnull String claimedIdentity, long requestId)
             throws Exception {
 
         String[] additionalProfiles = null;
@@ -310,7 +312,7 @@ public class allin_soap {
      * @throws Exception
      */
     private void signDocumentTimestampOnly(@Nonnull allin_pdf[] pdfs, @Nonnull allin_include.HashAlgorithm hashAlgo, Calendar signDate,
-                                           @Nonnull String serverURI, @Nonnull String claimedIdentity, int requestId)
+                                           @Nonnull String serverURI, @Nonnull String claimedIdentity, long requestId)
             throws Exception {
 
         allin_include.SignatureType signatureType = allin_include.SignatureType.TIMESTAMP;
@@ -530,7 +532,7 @@ public class allin_soap {
                                              String[] additionalProfiles, String claimedIdentity,
                                              @Nonnull String signatureType, String distinguishedName,
                                              String mobileIdType, String phoneNumber, String certReqMsg, String certReqMsgLang,
-                                             String responseId, int requestId) throws SOAPException, IOException {
+                                             String responseId, long requestId) throws SOAPException, IOException {
 
         MessageFactory messageFactory = MessageFactory.newInstance();
         SOAPMessage soapMessage = messageFactory.createMessage();
