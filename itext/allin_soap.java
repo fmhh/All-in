@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 21.01.2014 08:28
+ * 21.01.2014 08:30
  * <p/>
  * Version:
  * 1.0.0
@@ -633,11 +633,11 @@ public class allin_soap {
         soapMessage.saveChanges();
 
         if (_debug) {
-            System.out.print("Request SOAP Message:\n");
+            System.out.print("\nRequest SOAP Message:\n");
             ByteArrayOutputStream ba = new ByteArrayOutputStream();
             soapMessage.writeTo(ba);
             String msg = new String(ba.toByteArray());
-            System.out.println(getPrettyFormatedXml(msg, 2));
+            System.out.println(getPrettyFormatedXml(msg, 2) + "\n");
         }
 
         return soapMessage;
