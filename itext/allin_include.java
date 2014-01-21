@@ -3,7 +3,7 @@
  * 19.12.13 KW51 08:04
  * </p>
  * Last Modification:
- * 21.01.2014 :41
+ * 21.01.2014 17:33
  * <p/>
  * Version:
  * 1.0.0
@@ -89,6 +89,7 @@ public class allin_include {
 
     public enum Signature {
 
+        SIGN("sign"),
         TIMESTAMP("timestamp"),
         STATIC("static"),
         ONDEMAND("ondemand");
@@ -99,9 +100,6 @@ public class allin_include {
             this.signature = signature;
         }
 
-        public String getSignature() {
-            return this.signature;
-        }
     }
 
     public enum SignatureType {

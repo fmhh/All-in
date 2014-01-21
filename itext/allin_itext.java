@@ -3,7 +3,7 @@
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 21.01.2014 13:16
+ * 21.01.2014 17:45
  * <p/>
  * Version:
  * 1.0.0
@@ -36,15 +36,15 @@ public class allin_itext {
 
     public static void printUsage() {
         System.out.println("Usage: java <javaoptions> swisscom/com/ais/itext/allin_itext <allin_itext_args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>");
-        System.out.println("-v        - verbose output");
-        System.out.println("-d        - debug mode");
-        System.out.println("signature - timestamp, static, ondemand");
-        System.out.println("pdftosign - PDF to be signed");
-        System.out.println("signedpdf - signed PDF");
-        System.out.println("<dn>      - optional distinguished name in ondemand");
-        System.out.println("<msisdn>  - optional Mobile ID step-up in ondemand");
-        System.out.println("<msg>     - optional Mobile ID message, mandatory if msisdn is set");
-        System.out.println("<lang>    - optional Mobile ID language element (en, de, fr, it), mandatory if msisdn is set");
+        System.out.println("-v          - verbose output");
+        System.out.println("-d          - debug mode");
+        System.out.println("signature   - timestamp, sign");
+        System.out.println("pdftosign   - PDF to be signed");
+        System.out.println("signedpdf   - signed PDF");
+        System.out.println("[dn]        - optional distinguished name for on-demand certificate signing");
+        System.out.println("[[msisdn]]  - optional Mobile ID authentication when [dn] is present");
+        System.out.println("[[msg]]     - optional Mobile ID message when [dn] is present");
+        System.out.println("[[lang]]    - optional Mobile ID language (en, de, fr, it) when [dn] is present");
         System.out.println("");
         System.out.println("Example: java swisscom/com/ais/itext/allin_itext -v timestamp sample.pdf signed.pdf");
         System.out.println("         java swisscom/com/ais/itext/allin_itext -v static sample.pdf signed.pdf");
@@ -58,7 +58,7 @@ public class allin_itext {
 
     public static void main(String[] args) throws Exception {
 
-        allin_include.Signature signature = null;   //timestamp, ondemand...
+        allin_include.Signature signature = null;   //timestamp, sign...
         String pdfToSign = null;
         String signedPDF = null;
         String distinguishedName = null;
@@ -172,6 +172,13 @@ public class allin_itext {
         }
 
         try {
+            //parse signature
+            if (signature.equals(allin_include.Signature.SIGN) && distinguishedName != null){
+                signature = allin_include.Signature.ONDEMAND;
+            } else if (signature.equals(allin_include.Signature.SIGN) && distinguishedName == null){
+                signature = allin_include.Signature.STATIC;
+            }
+
             allin_soap dss_soap = new allin_soap(verboseMode, debugMode, System.getProperty("propertyFile.path"));
             dss_soap.sign(signature, pdfToSign, signedPDF, distinguishedName, msisdn, msg, language);
         } catch (Exception e) {
