@@ -42,17 +42,23 @@ bcpkix-jdk15on-150.jar is successfully tested
 
 ### Compiling
 
-After downloading this files you need to compile the java sources (maybe you have to change the location of jar-files):
+After downloading this files you need to compile the java sources (maybe you have to change the location of jar-files).
+It is necessary to move the java sources in following directory structure: ./swisscom/com/ais/itext/. To compile and run
+the java source files you need to be at the directory where `swisscom/com/ais/itext/s` exist:
 
-`javac -cp .:bcprov-jdk15on-150.jar:bcpkix-jdk15on-150.jar:itextpdf-5.4.5.jar:jsr305-2.0.2.jar allin_itext.java`
+Linux/OSX: `javac -cp .:bcprov-jdk15on-150.jar:bcpkix-jdk15on-150.jar:itextpdf-5.4.5.jar:jsr305-2.0.2.jar swisscom/com/ais/itext/allin_itext.java`
+Windows  : `javac -cp .;bcprov-jdk15on-150.jar;bcpkix-jdk15on-150.jar;itextpdf-5.4.5.jar;jsr305-2.0.2.jar swisscom/com/ais/itext/allin_itext.java`
 
 ### Running
 
-Now you can run the program with java `java -cp .:bcprov-jdk15on-150.jar:bcpkix-jdk15on-150.jar:itextpdf-5.4.5.jar:jsr305-2.0.2.jar allin_itext`
+Now you can run the program with:
+
+Linux/OSX: java `java -cp .:bcprov-jdk15on-150.jar:bcpkix-jdk15on-150.jar:itextpdf-5.4.5.jar:jsr305-2.0.2.jar swisscom/com/ais/itext/allin_itext`
+Windows  : java `java -cp .;bcprov-jdk15on-150.jar;bcpkix-jdk15on-150.jar;itextpdf-5.4.5.jar;jsr305-2.0.2.jar swisscom/com/ais/itext/allin_itext`
 
 ### Configuration
 
-Refer to `allin_itext.cfg` configuration file for related settings.
+Refer to `allin_itext.properties` configuration file for related settings.
 
 ### Known issues
 

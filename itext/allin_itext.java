@@ -3,7 +3,7 @@
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 20.01.2014 09:46
+ * 21.01.2014 13:16
  * <p/>
  * Version:
  * 1.0.0
@@ -35,7 +35,7 @@ public class allin_itext {
     static boolean debugMode = false;
 
     public static void printUsage() {
-        System.out.println("Usage: java <javaoptions> allin_itext <allin_itext_args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>");
+        System.out.println("Usage: java <javaoptions> swisscom/com/ais/itext/allin_itext <allin_itext_args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>");
         System.out.println("-v        - verbose output");
         System.out.println("-d        - debug mode");
         System.out.println("signature - timestamp, static, ondemand");
@@ -46,10 +46,10 @@ public class allin_itext {
         System.out.println("<msg>     - optional Mobile ID message, mandatory if msisdn is set");
         System.out.println("<lang>    - optional Mobile ID language element (en, de, fr, it), mandatory if msisdn is set");
         System.out.println("");
-        System.out.println("Example: java allin_itext -v timestamp sample.pdf signed.pdf");
-        System.out.println("         java allin_itext -v static sample.pdf signed.pdf");
-        System.out.println("         java allin_itext -v ondemand sample.pdf signed.pdf \"cn=Hans Muster,o=ACME,c=CH\"");
-        System.out.println("         java allin_itext -v ondemand sample.pdf signed.pdf \"cn=Hans Muster,o=ACME,c=CH\" +41792080350 \"service.com: Sign?\" en");
+        System.out.println("Example: java swisscom/com/ais/itext/allin_itext -v timestamp sample.pdf signed.pdf");
+        System.out.println("         java swisscom/com/ais/itext/allin_itext -v static sample.pdf signed.pdf");
+        System.out.println("         java swisscom/com/ais/itext/allin_itext -v ondemand sample.pdf signed.pdf \"cn=Hans Muster,o=ACME,c=CH\"");
+        System.out.println("         java swisscom/com/ais/itext/allin_itext -v ondemand sample.pdf signed.pdf \"cn=Hans Muster,o=ACME,c=CH\" +41792080350 \"service.com: Sign?\" en");
     }
 
     public static void printError(@Nonnull String error) {
