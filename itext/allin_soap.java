@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 21.01.2014 12:41
+ * 21.01.2014 13:53
  * <p/>
  * Version:
  * 1.0.0
@@ -131,7 +131,7 @@ public class allin_soap {
         allin_include.HashAlgorithm hashAlgo = allin_include.HashAlgorithm.valueOf(properties.getProperty("DIGEST_METHOD").trim().toUpperCase());
 
         String claimedIdentityPropName = signatureType.equals(allin_include.Signature.ONDEMAND) ?
-                "AP_ID_ONDEMAND" : signatureType.equals(allin_include.Signature.TIMESTAMP) ? "AP_ID_TIMESTAMP" : "AP_ID_STATIC";
+                "KEY_ONDEMAND" : signatureType.equals(allin_include.Signature.TIMESTAMP) ? "CUSTOMER" : "KEY_STATIC";
         String claimedIdentity = properties.getProperty(claimedIdentityPropName);
 
         allin_pdf pdf = new allin_pdf(fileIn, fileOut, null, null, null, null);
