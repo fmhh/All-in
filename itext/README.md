@@ -40,6 +40,10 @@ Version 5.4.5 is successfully tested
 bcprov-jdk15on-150.jar is successfully tested
 bcpkix-jdk15on-150.jar is successfully tested
 
+### Configuration
+
+Refer to `allin_itext.properties` configuration file for related settings.
+
 ### Compiling
 
 After downloading this files you need to compile the java sources (maybe you have to change the location of jar-files).
@@ -53,14 +57,10 @@ Windows  : `javac -cp .;bcprov-jdk15on-150.jar;bcpkix-jdk15on-150.jar;itextpdf-5
 
 Now you can run the program with:
 
-Linux/OSX: `java -cp .:bcprov-jdk15on-150.jar:bcpkix-jdk15on-150.jar:itextpdf-5.4.5.jar:jsr305-2.0.2.jar swisscom/com/ais/itext/allin_itext`
 Windows  : `java -cp .;bcprov-jdk15on-150.jar;bcpkix-jdk15on-150.jar;itextpdf-5.4.5.jar;jsr305-2.0.2.jar swisscom/com/ais/itext/allin_itext`
+Linux/OSX: `java -cp .:bcprov-jdk15on-150.jar:bcpkix-jdk15on-150.jar:itextpdf-5.4.5.jar:jsr305-2.0.2.jar swisscom/com/ais/itext/allin_itext`
 
-### Configuration
+To get more debugging information you have to set java options. This looks as follows:
 
-Refer to `allin_itext.properties` configuration file for related settings.
-
-### Known issues
-
-See actual issue reports for 'iText'
-Adobe Reader and SwissSigner do not see the embedded OCSP response (Bug report 2371 to All-in Service)
+Windows  : `java -cp .;bcprov-jdk15on-150.jar;bcpkix-jdk15on-150.jar;itextpdf-5.4.5.jar;jsr305-2.0.2.jar swisscom/com/ais/itext/allin_itext -Djavax.net.debug=all -Djava.security.debug=certpath`
+Linux/OSX: `java -cp .:bcprov-jdk15on-150.jar:bcpkix-jdk15on-150.jar:itextpdf-5.4.5.jar:jsr305-2.0.2.jar swisscom/com/ais/itext/allin_itext -Djavax.net.debug=all -Djava.security.debug=certpath`
