@@ -3,7 +3,7 @@
  * 19.12.13 KW51 08:04
  * </p>
  * Last Modification:
- * 20.01.2014 17:05
+ * 21.01.2014 09:46
  * <p/>
  * Version:
  * 1.0.0
@@ -89,7 +89,7 @@ public class allin_include {
 
     public enum Signature {
 
-        TSA("tsa"),
+        TSA("timestamp"),
         STATIC("static"),
         ONDEMAND("ondemand");
 

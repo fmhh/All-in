@@ -3,7 +3,7 @@
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 20.01.2014 17:59
+ * 20.01.2014 09:46
  * <p/>
  * Version:
  * 1.0.0
@@ -38,7 +38,7 @@ public class allin_itext {
         System.out.println("Usage: java <javaoptions> allin_itext <allin_itext_args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>");
         System.out.println("-v        - verbose output");
         System.out.println("-d        - debug mode");
-        System.out.println("signature - tsa, static, ondemand");
+        System.out.println("signature - timestamp, static, ondemand");
         System.out.println("pdftosign - PDF to be signed");
         System.out.println("signedpdf - signed PDF");
         System.out.println("<dn>      - optional distinguished name in ondemand");
@@ -46,7 +46,7 @@ public class allin_itext {
         System.out.println("<msg>     - optional Mobile ID message, mandatory if msisdn is set");
         System.out.println("<lang>    - optional Mobile ID language element (en, de, fr, it), mandatory if msisdn is set");
         System.out.println("");
-        System.out.println("Example: java allin_itext -v tsa sample.pdf signed.pdf");
+        System.out.println("Example: java allin_itext -v timestamp sample.pdf signed.pdf");
         System.out.println("         java allin_itext -v static sample.pdf signed.pdf");
         System.out.println("         java allin_itext -v ondemand sample.pdf signed.pdf \"cn=Hans Muster,o=ACME,c=CH\"");
         System.out.println("         java allin_itext -v ondemand sample.pdf signed.pdf \"cn=Hans Muster,o=ACME,c=CH\" +41792080350 \"service.com: Sign?\" en");
@@ -58,7 +58,7 @@ public class allin_itext {
 
     public static void main(String[] args) throws Exception {
 
-        allin_include.Signature signature = null;   //tsa, ondemand...
+        allin_include.Signature signature = null;   //timestamp, ondemand...
         String pdfToSign = null;
         String signedPDF = null;
         String distinguishedName = null;
