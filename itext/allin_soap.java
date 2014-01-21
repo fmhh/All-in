@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 21.01.2014 10:19
+ * 21.01.2014 10:57
  * <p/>
  * Version:
  * 1.0.0
@@ -470,7 +470,7 @@ public class allin_soap {
         for (int i = 0; i < nl.getLength(); i++) {
             if (nodeName.equals(nl.item(i).getNodeName())) {
                 if (returnlist == null) {
-                    returnlist = new ArrayList();
+                    returnlist = new ArrayList<String>();
                 }
                 returnlist.add(nl.item(i).getTextContent());
             }
