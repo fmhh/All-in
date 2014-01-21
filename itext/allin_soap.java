@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 21.01.2014 09:30
+ * 21.01.2014 10:19
  * <p/>
  * Version:
  * 1.0.0
@@ -534,13 +534,22 @@ public class allin_soap {
 
         // SOAP Envelope
         SOAPEnvelope envelope = soapPart.getEnvelope();
+        envelope.removeNamespaceDeclaration("SOAP-ENV");
+        envelope.setPrefix("soap");
         envelope.addAttribute(new QName("xmlns"), "urn:oasis:names:tc:dss:1.0:core:schema");
         envelope.addNamespaceDeclaration("dsig", "http://www.w3.org/2000/09/xmldsig#");
         envelope.addNamespaceDeclaration("sc", "urn:com:swisscom:dss:1.0:schema");
         envelope.addNamespaceDeclaration("ais", "http://service.ais.swisscom.com/");
 
+        //SOAP Header
+        SOAPHeader soapHeader = envelope.getHeader();
+        soapHeader.removeNamespaceDeclaration("SOAP-ENV");
+        soapHeader.setPrefix("soap");
+
         // SOAP Body
         SOAPBody soapBody = envelope.getBody();
+        soapBody.removeNamespaceDeclaration("SOAP-ENV");
+        soapBody.setPrefix("soap");
 
         SOAPElement signElement = soapBody.addChildElement("sign", "ais");
 
