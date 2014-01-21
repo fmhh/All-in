@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 21.01.2014 10:57
+ * 21.01.2014 12:41
  * <p/>
  * Version:
  * 1.0.0
@@ -114,7 +114,7 @@ public class allin_soap {
     }
 
     /**
-     * @param signatureType     TSA, OnDemand, StaticCert
+     * @param signatureType     TIMESTAMP, OnDemand, StaticCert
      * @param fileIn
      * @param fileOut
      * @param distinguishedName
@@ -131,7 +131,7 @@ public class allin_soap {
         allin_include.HashAlgorithm hashAlgo = allin_include.HashAlgorithm.valueOf(properties.getProperty("DIGEST_METHOD").trim().toUpperCase());
 
         String claimedIdentityPropName = signatureType.equals(allin_include.Signature.ONDEMAND) ?
-                "AP_ID_ONDEMAND" : signatureType.equals(allin_include.Signature.TSA) ? "AP_ID_TIMESTAMP" : "AP_ID_STATIC";
+                "AP_ID_ONDEMAND" : signatureType.equals(allin_include.Signature.TIMESTAMP) ? "AP_ID_TIMESTAMP" : "AP_ID_STATIC";
         String claimedIdentity = properties.getProperty(claimedIdentityPropName);
 
         allin_pdf pdf = new allin_pdf(fileIn, fileOut, null, null, null, null);
@@ -149,7 +149,7 @@ public class allin_soap {
                 }
                 signDocumentOnDemandCert(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, _CERTIFICATE_REQUEST_PROFILE,
                         addTimestamp, addOCSP, distinguishedName, claimedIdentity, (int) (Math.random() * 1000));
-            } else if (signatureType.equals(allin_include.Signature.TSA)) {
+            } else if (signatureType.equals(allin_include.Signature.TIMESTAMP)) {
                 if (_debug) {
                     System.out.println("Going to sign only with timestamp");
                 }
