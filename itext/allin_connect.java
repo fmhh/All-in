@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 20.01.2014 17:01
+ * 21.01.2014 09:04
  * <p/>
  * Version:
  * 1.0.0
@@ -226,14 +226,20 @@ public class allin_connect {
                 //if we read a X509 key we will get immediately PrivatekeyInfo if key is a RSA key it is necessary to
                 //create a PEMKeyPair first
                 PrivateKeyInfo privateKeyInfo = null;
+                PEMParser pemParser = null;
                 try {
-                    privateKeyInfo = (PrivateKeyInfo) new PEMParser(br).readObject();
+                    pemParser = new PEMParser(br);
+                    privateKeyInfo = (PrivateKeyInfo) pemParser.readObject();
                 } catch (Exception e) {
                     br.close();
                     br = new BufferedReader(new FileReader(_privateKeyName));
-                    PEMKeyPair pemKeyPair = (PEMKeyPair) new PEMParser(br).readObject();
+                    pemParser = new PEMParser(br);
+                    PEMKeyPair pemKeyPair = (PEMKeyPair) pemParser.readObject();
                     privateKeyInfo = pemKeyPair.getPrivateKeyInfo();
                 }
+
+                pemParser.close();
+                br.close();
 
                 JcaPEMKeyConverter jcaPEMKeyConverter = new JcaPEMKeyConverter();
                 java.security.PrivateKey privateKey = jcaPEMKeyConverter.getPrivateKey(privateKeyInfo);
