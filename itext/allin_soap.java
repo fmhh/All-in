@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 21.01.2014 13:53
+ * 21.01.2014 14:30
  * <p/>
  * Version:
  * 1.0.0
@@ -663,7 +663,7 @@ public class allin_soap {
     @Nullable
     private String sendRequest(@Nonnull SOAPMessage soapMsg, @Nonnull String urlPath) throws Exception {
 
-        URLConnection conn = new allin_connect(urlPath, _privateKeyName, _serverCertPath, _clientCertPath, _timeout, _debug, _verboseMode).getConnection();
+        URLConnection conn = new allin_connect(urlPath, _privateKeyName, _serverCertPath, _clientCertPath, _timeout, _debug).getConnection();
         if (conn instanceof HttpsURLConnection) {
             ((HttpsURLConnection) conn).setRequestMethod("POST");
         }

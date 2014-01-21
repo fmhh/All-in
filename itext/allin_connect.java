@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 21.01.2014 09:04
+ * 21.01.2014 14:30
  * <p/>
  * Version:
  * 1.0.0
@@ -46,7 +46,6 @@ import java.util.Collections;
 public class allin_connect {
 
     boolean _debugMode = false;
-    boolean _verboseMode = false;
     private String _url;
     private String _privateKey;
     private String _serverCert;
@@ -64,14 +63,13 @@ public class allin_connect {
      * @param debug
      */
     public allin_connect(@Nonnull String url, @Nonnull String privateKey, @Nonnull String serverCert, @Nonnull String clientCert,
-                         int timeout, boolean debug, boolean verbose) {
+                         int timeout, boolean debug) {
         this._url = url;
         this._privateKey = privateKey;
         this._serverCert = serverCert;
         this._clientCert = clientCert;
         this._timeout = timeout;
         _debugMode = debug;
-        _verboseMode = verbose;
 
         Security.addProvider(new BouncyCastleProvider());
     }
@@ -113,7 +111,7 @@ public class allin_connect {
             throws IOException, KeyStoreException, NoSuchAlgorithmException, UnrecoverableKeyException, CertificateException {
 
         KeyManager[] managers = new KeyManager[]{new allin_connect(_url, _privateKey, _serverCert, _clientCert, _timeout,
-                _debugMode, _verboseMode).new AliasKeyManager(alias, _privateKey, _serverCert, _debugMode, _verboseMode)};
+                _debugMode).new AliasKeyManager(alias, _privateKey, _serverCert, _debugMode)};
 
         return managers;
     }
@@ -179,16 +177,14 @@ public class allin_connect {
         private String _privateKeyName;
         private String _serverCert;
         private boolean _debugMode;
-        private boolean _verboseMode;
 
         public AliasKeyManager(@Nonnull String alias, @Nonnull String privateKeyName,
-                               @Nonnull String serverCert, boolean debugMode, boolean verboseMode) {
+                               @Nonnull String serverCert, boolean debugMode) {
 
             this._alias = alias;
             this._privateKeyName = privateKeyName;
             this._serverCert = serverCert;
             this._debugMode = debugMode;
-            this._verboseMode = verboseMode;
         }
 
         public String chooseClientAlias(String[] str, Principal[] principal, Socket socket) {
