@@ -3,7 +3,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 21.01.2014 15:00
+ * 21.01.2014 15:54
  * <p/>
  * Version:
  * 1.0.0
@@ -25,6 +25,7 @@
 
 package swisscom.com.ais.itext;
 
+import com.itextpdf.text.pdf.codec.Base64;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -573,7 +574,7 @@ public class allin_soap {
             digestMethodElement.addAttribute(new QName("Algorithm"), digestMethodAlgorithmURL);
             digestValueElement = documentHashElement.addChildElement("DigestValue", "dsig");
 
-            String s = com.itextpdf.text.pdf.codec.Base64.encodeBytes(hashList[i]);
+            String s = com.itextpdf.text.pdf.codec.Base64.encodeBytes(hashList[i], Base64.DONT_BREAK_LINES);
             digestValueElement.addTextNode(s);
         }
 
