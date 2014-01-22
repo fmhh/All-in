@@ -78,21 +78,18 @@ FAILED on myfile.txt with following details:
 
 Example of verbose outputs for signature verifications:
 ```
-Signature verification of myfile.p7s on myfile.txt:
- Signed by    : subject= C=CH,O=ACME,CN=Hans Muster
-                issuer= CN=Swisscom TEST Saphir CA 2,OU=Digital Certificate Services,O=Swisscom,C=ch
-                validity= notBefore=Jan 17 09:45:16 2014 GMT notAfter=Jan 17 09:55:16 2014 GMT
-                ocsp check= good
- Verification : success with exit 0
+OK on myfile.p7s with following details:
+ Signed by    : subject= CN=Hans Muster,O=ACME,C=CH
+                issuer= C=ch,O=Swisscom,OU=Digital Certificate Services,CN=Swisscom TEST Saphir CA 2
+                validity= notBefore=Jan 22 08:48:10 2014 GMT notAfter=Jan 22 08:58:10 2014 GMT
+ OCSP check   : unknown
 ```
 
 ```
-Signature verification of myfile.p7s on myfile.txt:
- Signed by    : subject= C=CH,O=ACME,CN=Hans Muster
-                issuer= CN=Swisscom TEST Saphir CA 2,OU=Digital Certificate Services,O=Swisscom,C=ch
-                validity= notBefore=Jan 17 09:45:16 2014 GMT notAfter=Jan 17 09:55:16 2014 GMT
-                ocsp check= good
- Verification : failed with exit 1
+FAILED on myfile.p7s with following details:
+Verification failure
+2710938092:error:21071065:PKCS7 routines:PKCS7_signatureVerify:digest failure:pk7_doit.c:1097:
+2710938092:error:21075069:PKCS7 routines:PKCS7_verify:signature failure:pk7_smime.c:410:
 ```
 
 
