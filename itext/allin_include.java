@@ -5,7 +5,7 @@
  * 19.12.13 KW51 08:04
  * </p>
  * Last Modification:
- * 22.01.2014 13:21
+ * 22.01.2014 16:34
  * <p/>
  * Version:
  * 1.0.0
@@ -208,11 +208,9 @@ public class allin_include {
          */
         ONDEMAND("ondemand");
 
-
         /**
          * Name of signature
          */
-        private String signature;
 
         /**
          * Set name of signature
@@ -220,7 +218,7 @@ public class allin_include {
          * @param signature Name of signature
          */
         Signature(String signature) {
-            this.signature = signature;
+            ; //nothing to do
         }
 
     }
