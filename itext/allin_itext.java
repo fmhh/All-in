@@ -3,7 +3,7 @@
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 22.01.2014 08:54
+ * 22.01.2014 16:44
  * <p/>
  * Version:
  * 1.0.0
@@ -157,7 +157,7 @@ public class allin_itext {
         }
         ++argPointer;
 
-        if (args.length >= argPointer + 1 && args[argPointer].replaceAll(" ", "").toLowerCase().contains("cn=")) {
+        if (args.length >= argPointer + 1) {
             distinguishedName = args[argPointer];
             ++argPointer;
         }
