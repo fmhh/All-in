@@ -3,7 +3,7 @@
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 21.01.2014 17:45
+ * 22.01.2014 08:31
  * <p/>
  * Version:
  * 1.0.0
@@ -47,9 +47,9 @@ public class allin_itext {
         System.out.println("[[lang]]    - optional Mobile ID language (en, de, fr, it) when [dn] is present");
         System.out.println("");
         System.out.println("Example: java swisscom/com/ais/itext/allin_itext -v timestamp sample.pdf signed.pdf");
-        System.out.println("         java swisscom/com/ais/itext/allin_itext -v static sample.pdf signed.pdf");
-        System.out.println("         java swisscom/com/ais/itext/allin_itext -v ondemand sample.pdf signed.pdf \"cn=Hans Muster,o=ACME,c=CH\"");
-        System.out.println("         java swisscom/com/ais/itext/allin_itext -v ondemand sample.pdf signed.pdf \"cn=Hans Muster,o=ACME,c=CH\" +41792080350 \"service.com: Sign?\" en");
+        System.out.println("         java swisscom/com/ais/itext/allin_itext -v sign sample.pdf signed.pdf");
+        System.out.println("         java swisscom/com/ais/itext/allin_itext -v sign sample.pdf signed.pdf \"cn=Hans Muster,o=ACME,c=CH\"");
+        System.out.println("         java swisscom/com/ais/itext/allin_itext -v sign sample.pdf signed.pdf \"cn=Hans Muster,o=ACME,c=CH\" +41792080350 \"service.com: Sign?\" en");
     }
 
     public static void printError(@Nonnull String error) {

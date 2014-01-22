@@ -6,21 +6,21 @@ Java source code and command line tool to sign PDF with iText.
 ### Usage
 
 ````
-Usage: java <javaoptions> allin_itext <allin_itext_args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>
--v        - verbose output
--d        - debug mode
-signature - timestamp, static, ondemand
-pdftosign - PDF to be signed
-signedpdf - signed PDF
-<dn>      - optional distinguished name in ondemand
-<msisdn>  - optional Mobile ID step-up in ondemand
-<msg>     - optional Mobile ID message, mandatory if msisdn is set
-<lang>    - optional Mobile ID language element (en, de, fr, it), mandatory if msisdn is set
+Usage: java <javaoptions> swisscom/com/ais/itext/allin_itext <allin_itext_args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>
+-v          - verbose output
+-d          - debug mode
+signature   - timestamp, sign
+pdftosign   - PDF to be signed
+signedpdf   - signed PDF
+[dn]        - optional distinguished name for on-demand certificate signing
+[[msisdn]]  - optional Mobile ID authentication when [dn] is present
+[[msg]]     - optional Mobile ID message when [dn] is present
+[lang]      - optional Mobile ID language (en, de, fr, it) when [dn] is present
 
-Examples java allin_itext -v timestamp sample.pdf signed.pdf
-         java allin_itext -v static sample.pdf signed.pdf
-         java allin_itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH'
-         java allin_itext -v ondemand sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en
+Examples java swisscom/com/ais/itext/allin_itext -v timestamp sample.pdf signed.pdf
+         java swisscom/com/ais/itext/allin_itext -v sign sample.pdf signed.pdf
+         java swisscom/com/ais/itext/allin_itext -v sign sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH'
+         java swisscom/com/ais/itext/allin_itext -v sign sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en
 ```
 
 ### Dependencies
