@@ -3,7 +3,7 @@
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 22.01.2014 16:44
+ * 22.01.2014 17:22
  * <p/>
  * Version:
  * 1.0.0
@@ -45,7 +45,7 @@ public class allin_itext {
      * Prints usage of allin
      */
     public static void printUsage() {
-        System.out.println("Usage: java <javaoptions> swisscom/com/ais/itext/allin_itext <allin_itext_args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>");
+        System.out.println("Usage: swisscom.com.ais.itext.allin_itext <options> signature pdftosign signedpdf [dn] [[msisdn]] [[msg]] [[lang]]");
         System.out.println("-v          - verbose output");
         System.out.println("-d          - debug mode");
         System.out.println("signature   - timestamp, sign");
@@ -56,10 +56,10 @@ public class allin_itext {
         System.out.println("[[msg]]     - optional Mobile ID message when [dn] is present");
         System.out.println("[[lang]]    - optional Mobile ID language (en, de, fr, it) when [dn] is present");
         System.out.println("");
-        System.out.println("Example: java swisscom/com/ais/itext/allin_itext -v timestamp sample.pdf signed.pdf");
-        System.out.println("         java swisscom/com/ais/itext/allin_itext -v sign sample.pdf signed.pdf");
-        System.out.println("         java swisscom/com/ais/itext/allin_itext -v sign sample.pdf signed.pdf \"cn=Hans Muster,o=ACME,c=CH\"");
-        System.out.println("         java swisscom/com/ais/itext/allin_itext -v sign sample.pdf signed.pdf \"cn=Hans Muster,o=ACME,c=CH\" +41792080350 \"service.com: Sign?\" en");
+        System.out.println("Example: java swisscom.com.ais.itext.allin_itext -v timestamp sample.pdf signed.pdf");
+        System.out.println("         java swisscom.com.ais.itext.allin_itext -v sign sample.pdf signed.pdf");
+        System.out.println("         java swisscom.com.ais.itext.allin_itext -v sign sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH'");
+        System.out.println("         java swisscom.com.ais.itext.allin_itext -v sign sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en");
     }
 
     /**
