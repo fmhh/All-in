@@ -6,7 +6,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 22.01.2014 17:16
+ * 22.01.2014 17:35
  * <p/>
  * Version:
  * 1.0.0
@@ -24,7 +24,6 @@
 package swisscom.com.ais.itext;
 
 import com.itextpdf.text.pdf.codec.Base64;
-import com.sun.istack.internal.NotNull;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -814,7 +813,7 @@ public class allin_soap {
      * @param indent Set indent from left
      * @return Pretty formated xml
      */
-    public String getPrettyFormatedXml(@NotNull String input, int indent) {
+    public String getPrettyFormatedXml(@Nonnull String input, int indent) {
 
         try {
             Source xmlInput = new StreamSource(new StringReader(input));
