@@ -1,9 +1,12 @@
 /**
+ * Creates SOAP requests with hash from a pdf document and send it to a server. If server sends a response with a signature
+ * this will be add to a pdf.
+ *
  * Created:
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 21.01.2014 16:14
+ * 22.01.2014 15:56
  * <p/>
  * Version:
  * 1.0.0
@@ -16,16 +19,12 @@
  * </p>
  * Author:
  * Swisscom (Schweiz) AG
- * **********************************************************************************
- * Sign PDF using Swisscom All-in signing service                                   *
- * Tested with iText-5.4.5; Bouncy Castle 1.50 and JDK 1.7.0_45                     *
- * For examples see main method. You only need to change variables in this method.  *
- * **********************************************************************************
  */
 
 package swisscom.com.ais.itext;
 
 import com.itextpdf.text.pdf.codec.Base64;
+import com.sun.istack.internal.NotNull;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -53,31 +52,81 @@ import java.util.Properties;
 
 public class allin_soap {
 
+    /**
+     * Constant for certificate request profile
+     */
     private static final String _CERTIFICATE_REQUEST_PROFILE = "urn:com:swisscom:advanced";
+
+    /**
+     * Constant for timestamp urn
+     */
     private static final String _TIMESTAMP_URN = "urn:ietf:rfc:3161";
+
+    /**
+     * Constant for ocsp urn
+     */
     private static final String _OCSP_URN = "urn:ietf:rfc:2560";
+
+    /**
+     * Constant for mobile id type
+     */
     private static final String _MOBILE_ID_TYPE = "urn:com:swisscom:auth:mobileid:v1.0";
+
+    /**
+     * Path to configuration file. Can also set in constructor
+     */
     private static String _cfgPath = "allin_itext.properties";
+
+    /**
+     * Properties from properties file
+     */
     private Properties properties;
+
+    /**
+     * File path of private key
+     */
     private String _privateKeyName;
+
+    /**
+     * File path of server certificate
+     */
     private String _serverCertPath;
+
+    /**
+     * File patj of client certificate
+     */
     private String _clientCertPath;
+
+    /**
+     * Url of dss server
+     */
     private String _url;
+
+    /**
+     * Connection timeout in seconds
+     */
     private int _timeout;
+
+    /**
+     * If set to true debug information will be print otherwise not
+     */
     private boolean _debug = false;
+
+    /**
+     * If set to true verbose information will be print otherwise not
+     */
     private boolean _verboseMode = false;
 
     /**
-     * Constructor
-     * load properties file and set connection properties from properties file
+     * Constructor. Set parameter and load properties from file. Connection properties will be set and check if all needed
+     * files exist
      *
-     * @param verboseOutput
-     * @param debugMode
-     * @param propertyFilePath
-     * @throws Exception
+     * @param verboseOutput    If true verbose information will be print out
+     * @param debugMode        If true debug information will be print out
+     * @param propertyFilePath Path of property file
+     * @throws FileNotFoundException If a file do not exist. E.g. property file, certificate, input pdf etc
      */
-
-    public allin_soap(boolean verboseOutput, boolean debugMode, String propertyFilePath) throws Exception {
+    public allin_soap(boolean verboseOutput, boolean debugMode, @Nullable String propertyFilePath) throws FileNotFoundException {
 
         this._verboseMode = verboseOutput;
         this._debug = debugMode;
@@ -91,14 +140,18 @@ public class allin_soap {
         try {
             properties.load(new FileReader(_cfgPath));
         } catch (IOException e) {
-            throw new Exception("Could not load property file");
+            throw new FileNotFoundException(("Could not load property file"));
         }
 
         setConnectionProperties();
-        checkFilesExists(new String[]{this._clientCertPath, this._privateKeyName, this._serverCertPath});
+        checkFilesExistsAndIsFile(new String[]{this._clientCertPath, this._privateKeyName, this._serverCertPath});
 
     }
 
+    /**
+     * Set connection properties from property file. Also convert timeout from seconds to milliseconds. If timeout can not
+     * be readed from properties file it will use standard value 90 seconds
+     */
     private void setConnectionProperties() {
 
         this._clientCertPath = properties.getProperty("CERT_FILE");
@@ -115,16 +168,20 @@ public class allin_soap {
     }
 
     /**
-     * @param signatureType     TIMESTAMP, OnDemand, StaticCert
-     * @param fileIn
-     * @param fileOut
-     * @param distinguishedName
-     * @param msisdn
-     * @param msg
-     * @param language
+     * Read signing options from properties. Depending on parameters here will be decided which type of signature will be used.
+     *
+     * @param signatureType     Type of signature e.g. timestamp, ondemand or static
+     * @param fileIn            File path of input pdf document
+     * @param fileOut           File path of output pdf document which will be the signed one
+     * @param distinguishedName Information about signer e.g. name, country etc.
+     * @param msisdn            Mobile id for sending message to signer
+     * @param msg               Message which will be send to signer if msisdn is set
+     * @param language          Language of message
+     * @throws Exception If parameters are not set or signing failed
      */
-    public void sign(@Nonnull allin_include.Signature signatureType, @Nonnull String fileIn,
-                     @Nonnull String fileOut, String distinguishedName, String msisdn, String msg, String language) throws Exception {
+    public void sign(@Nonnull allin_include.Signature signatureType, @Nonnull String fileIn, @Nonnull String fileOut,
+                     @Nullable String distinguishedName, @Nullable String msisdn, @Nullable String msg, @Nullable String language)
+            throws Exception {
 
         boolean addTimestamp = properties.getProperty("ADD_TIMESTAMP").trim().toLowerCase().equals("true");
         boolean addOCSP = properties.getProperty("ADD_OCSP").trim().toLowerCase().equals("true");
@@ -167,6 +224,8 @@ public class allin_soap {
                 }
                 signDocumentStaticCert(new allin_pdf[]{pdf}, hashAlgo, Calendar.getInstance(), _url, addTimestamp, addOCSP,
                         claimedIdentity, requestId);
+            } else {
+                throw new Exception("Wrong or missing parameters. Can not find a signature type.");
             }
         } catch (Exception e) {
             throw new Exception(e);
@@ -174,21 +233,21 @@ public class allin_soap {
     }
 
     /**
-     * Sign document with on demand certificate and authenticate with mobile id
+     * Create SOAP request message and sign document with on demand certificate and authenticate with mobile id
      *
-     * @param pdfs
-     * @param signDate
-     * @param hashAlgo
-     * @param serverURI
-     * @param addTimestamp
-     * @param addOcsp
-     * @param claimedIdentity
-     * @param distinguishedName
-     * @param phoneNumber
-     * @param certReqMsg
-     * @param certReqMsgLang
-     * @param requestId
-     * @throws Exception
+     * @param pdfs              Pdf input files
+     * @param signDate          Date when document(s) will be signed
+     * @param hashAlgo          Hash algorithm to use for signature
+     * @param serverURI         Server uri where to send the request
+     * @param addTimestamp      If set to true timestamp will be added in signature otherwise not
+     * @param addOcsp           If set to true ocsp information will be add in signature otherwise not
+     * @param claimedIdentity   Signers identity
+     * @param distinguishedName Information about signer e.g. name, country etc.
+     * @param phoneNumber       Number of phone when mobile id is used
+     * @param certReqMsg        Message which the signer get on his phone
+     * @param certReqMsgLang    Language of message
+     * @param requestId         An id for the request
+     * @throws Exception If hash or request can not be generated or document can not be signed.
      */
     private void signDocumentOnDemandCertMobileId(@Nonnull allin_pdf pdfs[], @Nonnull Calendar signDate, @Nonnull allin_include.HashAlgorithm hashAlgo,
                                                   @Nonnull String serverURI, boolean addTimestamp, boolean addOcsp, @Nonnull String claimedIdentity,
@@ -221,19 +280,19 @@ public class allin_soap {
     }
 
     /**
-     * Sign document with on demand certificate
+     * create SOAP request message and sign document with ondemand certificate but without mobile id
      *
-     * @param pdfs
-     * @param hashAlgo
-     * @param signDate
-     * @param serverURI
-     * @param certRequestProfile
-     * @param addTimeStamp
-     * @param addOcsp
-     * @param distinguishedName
-     * @param claimedIdentity
-     * @param requestId
-     * @throws Exception
+     * @param pdfs               Pdf input files
+     * @param hashAlgo           Hash algorithm to use for signature
+     * @param signDate           Date when document(s) will be signed
+     * @param serverURI          Server uri where to send the request
+     * @param certRequestProfile Urn of certificate request profile
+     * @param addTimeStamp       If set to true timestamp will be added in signature otherwise not
+     * @param addOcsp            If set to true ocsp information will be add in signature otherwise not
+     * @param distinguishedName  Information about signer e.g. name, country etc.
+     * @param claimedIdentity    Signers identity
+     * @param requestId          An id for the request
+     * @throws Exception If hash or request can not be generated or document can not be signed.
      */
     private void signDocumentOnDemandCert(@Nonnull allin_pdf[] pdfs, @Nonnull allin_include.HashAlgorithm hashAlgo, Calendar signDate, @Nonnull String serverURI,
                                           @Nonnull String certRequestProfile, boolean addTimeStamp, boolean addOcsp,
@@ -264,17 +323,17 @@ public class allin_soap {
     }
 
     /**
-     * Sign document with static cert
+     * Create SOAP request message and sign document with static certificate
      *
-     * @param pdfs
-     * @param hashAlgo
-     * @param signDate
-     * @param serverURI
-     * @param addTimeStamp
-     * @param addOCSP
-     * @param claimedIdentity
-     * @param requestId
-     * @throws Exception
+     * @param pdfs            Pdf input files
+     * @param hashAlgo        Hash algorithm to use for signature
+     * @param signDate        Date when document(s) will be signed
+     * @param serverURI       Server uri where to send the request
+     * @param addTimeStamp    If set to true timestamp will be added in signature otherwise not
+     * @param addOCSP         If set to true ocsp information will be add in signature otherwise not
+     * @param claimedIdentity Signers identity
+     * @param requestId       An id for the request
+     * @throws Exception If hash or request can not be generated or document can not be signed.
      */
     private void signDocumentStaticCert(@Nonnull allin_pdf[] pdfs, @Nonnull allin_include.HashAlgorithm hashAlgo, Calendar signDate, @Nonnull String serverURI,
                                         boolean addTimeStamp, boolean addOCSP, @Nonnull String claimedIdentity, long requestId)
@@ -301,15 +360,15 @@ public class allin_soap {
     }
 
     /**
-     * Sign document only with timestamp
+     * Create SOAP request message and add a timestamp to pdf
      *
-     * @param pdfs
-     * @param hashAlgo
-     * @param signDate
-     * @param serverURI
-     * @param claimedIdentity
-     * @param requestId
-     * @throws Exception
+     * @param pdfs            Pdf input files
+     * @param hashAlgo        Hash algorithm to use for signature
+     * @param signDate        Date when document(s) will be signed
+     * @param serverURI       Server uri where to send the request
+     * @param claimedIdentity Signers identity
+     * @param requestId       An id for the request
+     * @throws Exception If hash or request can not be generated or document can not be signed.
      */
     private void signDocumentTimestampOnly(@Nonnull allin_pdf[] pdfs, @Nonnull allin_include.HashAlgorithm hashAlgo, Calendar signDate,
                                            @Nonnull String serverURI, @Nonnull String claimedIdentity, long requestId)
@@ -341,14 +400,14 @@ public class allin_soap {
     }
 
     /**
-     * Sign document synchron
+     * Send SOAP request to server and sign document if server send signature
      *
-     * @param sigReqMsg
-     * @param serverURI
-     * @param pdfs
-     * @param estimatedSize
-     * @param signNodeName
-     * @throws Exception
+     * @param sigReqMsg     SOAP request message which will be send to the server
+     * @param serverURI     Uri of server
+     * @param pdfs          Pdf input file
+     * @param estimatedSize Estimated size of external signature
+     * @param signNodeName  Name of node where to find the signature
+     * @throws Exception If hash can not be generated or document can not be signed.
      */
     private void signDocumentSync(@Nonnull SOAPMessage sigReqMsg, @Nonnull String serverURI, @Nonnull allin_pdf[] pdfs,
                                   int estimatedSize, String signNodeName) throws Exception {
@@ -422,12 +481,12 @@ public class allin_soap {
     }
 
     /**
-     * Sign document
+     * Add signature to pdf
      *
-     * @param signatureList
-     * @param pdfs
-     * @param estimatedSize
-     * @throws Exception
+     * @param signatureList Arraylist with Base64 encoded signatures
+     * @param pdfs          Pdf which will be signed
+     * @param estimatedSize Estimated size of external signature
+     * @throws Exception If adding signature to pdf failed.
      */
     private void signDocuments(@Nonnull ArrayList<String> signatureList, @Nonnull allin_pdf[] pdfs, int estimatedSize) throws Exception {
         int counter = 0;
@@ -447,12 +506,14 @@ public class allin_soap {
     }
 
     /**
-     * Get nodes text content
+     * Get text from a node from a xml text
      *
-     * @param soapResponseText can be a full response as xml
-     * @param nodeName
-     * @return if nodes with searched node names exist it will return an array list containing text from value from nodes
-     * @throws IOException, SAXException, ParserConfigurationException
+     * @param soapResponseText Text where to search
+     * @param nodeName         Name of the node which text should be returned
+     * @return If nodes with searched node names exist it will return an array list containing text from nodes
+     * @throws IOException                  If any IO errors occur
+     * @throws SAXException                 If any parse errors occur
+     * @throws ParserConfigurationException If a DocumentBuilder cannot be created which satisfies the configuration requested
      */
     @Nullable
     private ArrayList<String> getTextFromXmlText(String soapResponseText, String nodeName) throws IOException, SAXException, ParserConfigurationException {
@@ -487,13 +548,13 @@ public class allin_soap {
     }
 
     /**
-     * Get a XML string as an element
+     * Get a xml string as an xml element object
      *
-     * @param xmlString
+     * @param xmlString String to convert e.g. a server request or response
      * @return org.w3c.dom.Element from XML String
-     * @throws ParserConfigurationException
-     * @throws IOException
-     * @throws SAXException
+     * @throws ParserConfigurationException If a DocumentBuilder cannot be created which satisfies the configuration requested
+     * @throws IOException                  If any IO errors occur
+     * @throws SAXException                 If any parse errors occur
      */
     private Element getNodeList(@Nonnull String xmlString) throws ParserConfigurationException, IOException, SAXException {
 
@@ -506,26 +567,27 @@ public class allin_soap {
     }
 
     /**
-     * Create a SOAP message object. Will print the message if debug is set to true
+     * Create SOAP message object for server request. Will print debug information if debug is set to true
      *
-     * @param reqType                  type of request e.g. singing or pending
-     * @param digestMethodAlgorithmURL
-     * @param certRequestProfile       only necessary when on demand certificate is needed
-     * @param hashList                 pdf hashes
-     * @param timestampURN             if needed urn of timestamp
-     * @param ocspURN                  if needed urn of ocsp
-     * @param additionalProfiles
-     * @param claimedIdentity
-     * @param signatureType            e.g. cms or timestamp
-     * @param distinguishedName
-     * @param mobileIdType
-     * @param phoneNumber              must start with e.g. +41 or +49
-     * @param certReqMsg
-     * @param certReqMsgLang
-     * @param responseId
-     * @return
-     * @throws SOAPException
-     * @throws IOException
+     * @param reqType                  Type of request message e.g. singing or pending request
+     * @param digestMethodAlgorithmURL Uri of hash algorithm
+     * @param certRequestProfile       Urn of certificate request profile. Only necessary when on demand certificate is needed
+     * @param hashList                 Hashes from documents which should be signed
+     * @param timestampURN             Urn of timestamp if timestamp should be added
+     * @param ocspURN                  Urn of ocsp if ocsp information should be added
+     * @param additionalProfiles       Urn of additional profiles e.g. ondemand certificate, timestamp signature, batch process etc.
+     * @param claimedIdentity          Signers identity / profile
+     * @param signatureType            Urn of signature type e.g. signature type cms or timestamp
+     * @param distinguishedName        Information about signer e.g. name, country etc.
+     * @param mobileIdType             Urn of mobile id type
+     * @param phoneNumber              Mobile id for on demand certificates with mobile id request
+     * @param certReqMsg               Message which will be send to phone number if set
+     * @param certReqMsgLang           Language from message which will be send to mobile id
+     * @param responseId               Only necessary when asking the signing status on server
+     * @param requestId                Request id to identify signature in response
+     * @return SOAP response from server. Depending on request profile it can be a signarure, signing status information or an error
+     * @throws SOAPException If there is an error creating SOAP message
+     * @throws IOException   If there is an error writing debug information
      */
     private SOAPMessage createRequestMessage(@Nonnull allin_include.RequestType reqType, @Nonnull String digestMethodAlgorithmURL,
                                              String certRequestProfile, @Nonnull byte[][] hashList, String timestampURN, String ocspURN,
@@ -659,12 +721,12 @@ public class allin_soap {
     }
 
     /**
-     * Send request to a server. If debug is set to true it will print response message.
+     * Creating connection object and send request to server. If debug is set to true it will print response message.
      *
-     * @param soapMsg
-     * @param urlPath
-     * @return Server response as string
-     * @throws Exception
+     * @param soapMsg Message which will be send to server
+     * @param urlPath Url of server where to send the request
+     * @return Server response
+     * @throws Exception If creating connection ,sending request or reading response failed
      */
     @Nullable
     private String sendRequest(@Nonnull SOAPMessage soapMsg, @Nonnull String urlPath) throws Exception {
@@ -712,10 +774,10 @@ public class allin_soap {
     /**
      * Calculate size of signature
      *
-     * @param useTimestmap
-     * @param useOcsp
-     * @param certRequestProfile
-     * @return calculated size of signature as int
+     * @param useTimestmap       If timestamp should be add to a signature
+     * @param useOcsp            If ocsp information should be add to a signature
+     * @param certRequestProfile Is signature an ondemand signature
+     * @return Calculated size of external signature as int
      */
     private int getEstimatedSize(boolean useTimestmap, boolean useOcsp, boolean certRequestProfile) {
         int returnValue = 8192;
@@ -727,10 +789,12 @@ public class allin_soap {
     }
 
     /**
-     * @param filePaths
-     * @throws FileNotFoundException
+     * Check if given files exist and are files
+     *
+     * @param filePaths Files to check
+     * @throws FileNotFoundException If file will not be found or is not readable
      */
-    private void checkFilesExists(@Nonnull String[] filePaths) throws FileNotFoundException {
+    private void checkFilesExistsAndIsFile(@Nonnull String[] filePaths) throws FileNotFoundException {
 
         File file;
         for (String filePath : filePaths) {
@@ -741,7 +805,14 @@ public class allin_soap {
         }
     }
 
-    public String getPrettyFormatedXml(String input, int indent) {
+    /**
+     * Convert a xml text which is not formated to a pretty format
+     *
+     * @param input  Input text
+     * @param indent Set indent from left
+     * @return Pretty formated xml
+     */
+    public String getPrettyFormatedXml(@NotNull String input, int indent) {
 
         try {
             Source xmlInput = new StreamSource(new StringReader(input));

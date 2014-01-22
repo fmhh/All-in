@@ -1,9 +1,11 @@
 /**
+ * Class to modify or get information from pdf document
+ *
  * Created:
  * 19.12.13 KW51 08:04
  * </p>
  * Last Modification:
- * 20.01.2014 17:09
+ * 22.01.2014 13:58
  * <p/>
  * Version:
  * 1.0.0
@@ -34,16 +36,61 @@ import java.util.HashMap;
 
 public class allin_pdf {
 
+    /**
+     * Save file path from input file
+     */
     private String inputFilePath;
+
+    /**
+     * Save file path from output file
+     */
     private String outputFilePath;
+
+    /**
+     * Save password from pdf
+     */
     private String pdfPassword;
+
+    /**
+     * Save signing reason
+     */
     private String signReason;
+
+    /**
+     * Save signing location
+     */
     private String signLocation;
+
+    /**
+     * Save signing contact
+     */
     private String signContact;
+
+    /**
+     * Save signature appearance from pdf
+     */
     private PdfSignatureAppearance pdfSignatureAppearance;
+
+    /**
+     * Save pdf signature
+     */
     private PdfSignature pdfSignature;
+
+    /**
+     * Save byte array outputstream for writing pdf file
+     */
     private ByteArrayOutputStream byteArrayOutputStream;
 
+    /**
+     * Set parameters
+     *
+     * @param inputFilePath  Path from input file
+     * @param outputFilePath Path from output file
+     * @param pdfPassword    Password form pdf
+     * @param signReason     Reason from signing
+     * @param signLocation   Location for frOn signing
+     * @param signContact    Contact for signing
+     */
     allin_pdf(@Nonnull String inputFilePath, @Nonnull String outputFilePath, String pdfPassword, String signReason, String signLocation, String signContact) {
         this.inputFilePath = inputFilePath;
         this.outputFilePath = outputFilePath;
@@ -53,10 +100,27 @@ public class allin_pdf {
         this.signContact = signContact;
     }
 
+    /**
+     * Get file path of pdf to sign
+     *
+     * @return Path from pdf to sign
+     */
     public String getInputFilePath() {
         return inputFilePath;
     }
 
+    /**
+     * Add signature information (reason for signing, location, contact, date) and create hash from pdf document
+     *
+     * @param signDate        Date of signing
+     * @param estimatedSize   The estimated size for signatures
+     * @param hashAlgorithm   The hash algorithm which will be used to sign the pdf
+     * @param isTimestampOnly If it is a timestamp signature. This is necessary because the filter is an other one compared to a "standard" signature
+     * @return Hash of pdf as bytes
+     * @throws IOException              If the input file can not be readed
+     * @throws DocumentException        If PdfStamper can not create the signature or signature appearance can not be preclosed
+     * @throws NoSuchAlgorithmException If no Provider supports a MessageDigest implementation for the specified algorithm.
+     */
     public byte[] getPdfHash(@Nonnull Calendar signDate, int estimatedSize, @Nonnull String hashAlgorithm, boolean isTimestampOnly)
             throws IOException, DocumentException, NoSuchAlgorithmException {
 
@@ -92,10 +156,12 @@ public class allin_pdf {
     }
 
     /**
-     * @param externalSignature
-     * @param estimatedSize
-     * @throws IOException
-     * @throws DocumentException
+     * Add a signature to pdf document
+     *
+     * @param externalSignature The extern generated signature
+     * @param estimatedSize     Size of external signature
+     * @throws IOException       If estimated size is to small, signature appearance can not be closed or output file can not be written
+     * @throws DocumentException If signature appearance can not be closed
      */
     private void addSignatureToPdf(@Nonnull byte[] externalSignature, int estimatedSize) throws IOException, DocumentException {
 
@@ -119,11 +185,12 @@ public class allin_pdf {
     }
 
     /**
-     * Decode hash to Base64 and sign PDF
+     * Decode hash to Base64 call method to sign PDF
      *
-     * @param hash
-     * @param estimatedSize
-     * @throws IOException, DocumentException
+     * @param hash          Signature hash as Base64
+     * @param estimatedSize Size of external signature
+     * @throws IOException       If estimated size is to small, signature appearance can not be closed or output file can not be written
+     * @throws DocumentException If signature appearance can not be closed
      */
     public void sign(@Nonnull String hash, int estimatedSize) throws IOException, DocumentException {
         addSignatureToPdf(Base64.decode(hash), estimatedSize);

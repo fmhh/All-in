@@ -3,7 +3,7 @@
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 22.01.2014 08:31
+ * 22.01.2014 08:54
  * <p/>
  * Version:
  * 1.0.0
@@ -31,9 +31,19 @@ import java.io.File;
 
 public class allin_itext {
 
+    /**
+     * The value is used to decide if verbose information should be print
+     */
     static boolean verboseMode = false;
+
+    /**
+     * The value is used to decide if debug information should be print
+     */
     static boolean debugMode = false;
 
+    /**
+     * Prints usage of allin
+     */
     public static void printUsage() {
         System.out.println("Usage: java <javaoptions> swisscom/com/ais/itext/allin_itext <allin_itext_args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>");
         System.out.println("-v          - verbose output");
@@ -52,13 +62,25 @@ public class allin_itext {
         System.out.println("         java swisscom/com/ais/itext/allin_itext -v sign sample.pdf signed.pdf \"cn=Hans Muster,o=ACME,c=CH\" +41792080350 \"service.com: Sign?\" en");
     }
 
+    /**
+     * Prints error message
+     *
+     * @param error Message that should print
+     */
     public static void printError(@Nonnull String error) {
         System.err.println(error);
     }
 
-    public static void main(String[] args) throws Exception {
+    /**
+     * Main method to start allin. This will parse given parameters e.g. input file, output file etc. and start signature
+     * process. Furthermore this method prints error message if signing failed. See usage part in README to know how to
+     * use it.
+     *
+     * @param args Arguments that will be parsed. See useage part in README for more details.
+     */
+    public static void main(String[] args) {
 
-        allin_include.Signature signature = null;   //timestamp, sign...
+        allin_include.Signature signature = null;
         String pdfToSign = null;
         String signedPDF = null;
         String distinguishedName = null;
@@ -173,9 +195,9 @@ public class allin_itext {
 
         try {
             //parse signature
-            if (signature.equals(allin_include.Signature.SIGN) && distinguishedName != null){
+            if (signature.equals(allin_include.Signature.SIGN) && distinguishedName != null) {
                 signature = allin_include.Signature.ONDEMAND;
-            } else if (signature.equals(allin_include.Signature.SIGN) && distinguishedName == null){
+            } else if (signature.equals(allin_include.Signature.SIGN) && distinguishedName == null) {
                 signature = allin_include.Signature.STATIC;
             }
 
@@ -183,7 +205,7 @@ public class allin_itext {
             dss_soap.sign(signature, pdfToSign, signedPDF, distinguishedName, msisdn, msg, language);
         } catch (Exception e) {
             if (debugMode || verboseMode) {
-                printError(e.getMessage().replaceAll("java.lang.Exception","").length() > 0 ? e.getMessage() : "");
+                printError(e.getMessage().replaceAll("java.lang.Exception", "").length() > 0 ? e.getMessage() : "");
             }
             System.exit(1);
         }
