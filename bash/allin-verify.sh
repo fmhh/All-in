@@ -61,7 +61,7 @@ SIG=$2                                          # File containing the detached s
 # Verify the detached signature against original file
 #  -noverify: don't verify signers certificate to avoid expired certificate error for OnDemand
 #  stdout and stderr to a file as the -out will not contain the details about the verification itself
-openssl smime -verify -inform pem -in $SIG -content $FILE -out $TMP.sig -CAfile $SIG_CA -noverify -purpose any &> $TMP.verify
+openssl smime -verify -inform pem -in $SIG -content $FILE -out $TMP.sig -CAfile $SIG_CA -noverify -purpose any 1> $TMP.verify 2>&1
 
 RC=$?                                           # Keep the related errorlevel
 if [ "$RC" = "0" ]; then                        # Verification ok
