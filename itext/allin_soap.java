@@ -6,7 +6,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 22.01.2014 15:56
+ * 22.01.2014 17:16
  * <p/>
  * Version:
  * 1.0.0
@@ -46,8 +46,10 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.net.URLConnection;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
 
 public class allin_soap {
@@ -198,7 +200,7 @@ public class allin_soap {
         allin_pdf pdf = new allin_pdf(fileIn, fileOut, null, null, null, null);
 
         try {
-            long requestId = System.nanoTime();
+            String requestId = getRequestId();
 
             if (msisdn != null && msg != null && language != null && signatureType.equals(allin_include.Signature.ONDEMAND)) {
                 if (_debug) {
@@ -252,7 +254,7 @@ public class allin_soap {
     private void signDocumentOnDemandCertMobileId(@Nonnull allin_pdf pdfs[], @Nonnull Calendar signDate, @Nonnull allin_include.HashAlgorithm hashAlgo,
                                                   @Nonnull String serverURI, boolean addTimestamp, boolean addOcsp, @Nonnull String claimedIdentity,
                                                   @Nonnull String distinguishedName, @Nonnull String phoneNumber, @Nonnull String certReqMsg,
-                                                  @Nonnull String certReqMsgLang, long requestId) throws Exception {
+                                                  @Nonnull String certReqMsgLang, String requestId) throws Exception {
         String[] additionalProfiles;
 
         if (pdfs.length > 1) {
@@ -296,7 +298,7 @@ public class allin_soap {
      */
     private void signDocumentOnDemandCert(@Nonnull allin_pdf[] pdfs, @Nonnull allin_include.HashAlgorithm hashAlgo, Calendar signDate, @Nonnull String serverURI,
                                           @Nonnull String certRequestProfile, boolean addTimeStamp, boolean addOcsp,
-                                          @Nonnull String distinguishedName, @Nonnull String claimedIdentity, long requestId)
+                                          @Nonnull String distinguishedName, @Nonnull String claimedIdentity, String requestId)
             throws Exception {
 
         String[] additionalProfiles;
@@ -336,7 +338,7 @@ public class allin_soap {
      * @throws Exception If hash or request can not be generated or document can not be signed.
      */
     private void signDocumentStaticCert(@Nonnull allin_pdf[] pdfs, @Nonnull allin_include.HashAlgorithm hashAlgo, Calendar signDate, @Nonnull String serverURI,
-                                        boolean addTimeStamp, boolean addOCSP, @Nonnull String claimedIdentity, long requestId)
+                                        boolean addTimeStamp, boolean addOCSP, @Nonnull String claimedIdentity, String requestId)
             throws Exception {
 
         String[] additionalProfiles = null;
@@ -371,7 +373,7 @@ public class allin_soap {
      * @throws Exception If hash or request can not be generated or document can not be signed.
      */
     private void signDocumentTimestampOnly(@Nonnull allin_pdf[] pdfs, @Nonnull allin_include.HashAlgorithm hashAlgo, Calendar signDate,
-                                           @Nonnull String serverURI, @Nonnull String claimedIdentity, long requestId)
+                                           @Nonnull String serverURI, @Nonnull String claimedIdentity, String requestId)
             throws Exception {
 
         allin_include.SignatureType signatureType = allin_include.SignatureType.TIMESTAMP;
@@ -594,7 +596,7 @@ public class allin_soap {
                                              String[] additionalProfiles, String claimedIdentity,
                                              @Nonnull String signatureType, String distinguishedName,
                                              String mobileIdType, String phoneNumber, String certReqMsg, String certReqMsgLang,
-                                             String responseId, long requestId) throws SOAPException, IOException {
+                                             String responseId, String requestId) throws SOAPException, IOException {
 
         MessageFactory messageFactory = MessageFactory.newInstance();
         SOAPMessage soapMessage = messageFactory.createMessage();
@@ -623,7 +625,7 @@ public class allin_soap {
 
         SOAPElement requestElement = signElement.addChildElement(reqType.getRequestType());
         requestElement.addAttribute(new QName("Profile"), reqType.getUrn());
-        requestElement.addAttribute(new QName("RequestID"), String.valueOf(requestId));
+        requestElement.addAttribute(new QName("RequestID"), requestId);
         SOAPElement inputDocumentsElement = requestElement.addChildElement("InputDocuments");
 
         SOAPElement digestValueElement;
@@ -828,6 +830,17 @@ public class allin_soap {
         } catch (Exception e) {
             return input;
         }
+    }
+
+    /**
+     * Generate a new request id with actually time and a 3 digit random number. Output looks like 22.01.2014 17:10:26:0073122
+     *
+     * @return Request id as String
+     */
+    public String getRequestId() {
+        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss:SSSS");
+        int randomNumber = (int) (Math.random() * 1000);
+        return (df.format(new Date()).concat(String.valueOf(randomNumber)));
     }
 
 }
