@@ -6,7 +6,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 22.01.2014 17:35
+ * 23.01.2014 09:25
  * <p/>
  * Version:
  * 1.0.0
@@ -742,8 +742,8 @@ public class allin_soap {
         conn.setDoOutput(true);
 
         OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
-
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
         soapMsg.writeTo(baos);
         String msg = baos.toString();
 
@@ -758,7 +758,7 @@ public class allin_soap {
 
         String response = "";
         while ((line = in.readLine()) != null) {
-            response = response + line;
+            response = response.length() > 0 ? response + " " + line : response + line;
         }
 
         if (in != null) {
