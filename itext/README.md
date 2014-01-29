@@ -56,7 +56,7 @@ The source files can be compiled as follows. The following placeholder need to b
 
 Compile the sources: `javac -d <CLASS> -cp ".:<LIB>/*" <SRC>/*.java`
 
-Note: The class files are generated in a directory hierarchy which reflects the package structure `<CLASS>/swisscom/com/ais/itext`
+Note: The class files are always generated in a directory hierarchy which reflects the given package structure: `<CLASS>/swisscom/com/ais/itext/*.class`
 
 The compiled application can be run as follows.
 
