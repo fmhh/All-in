@@ -49,12 +49,14 @@ Refer to `allin_itext.properties` configuration file.
 The source files can be compiled as follows. The following placeholder need to be replaced accordingly:
 ```
 <SRC>   = Directory containing the java source files
-<CLASS> = Directory containing the (compiled) java class files
 <LIB>   = Directory containing the external libraries (jar files)
-<CFG>   = Path to the allin_itext.properties
+<CLASS> = Directory where to place the generated class files
+<CFG>   = Location (path) of the allin_itext.properties
 ```
 
 Compile the sources: `javac -d <CLASS> -cp ".:<LIB>/*" <SRC>/*.java`
+
+Note: The class files are generated in a directory hierarchy which reflects the package structure `<CLASS>/swisscom/com/ais/itext`
 
 The compiled application can be run as follows.
 
