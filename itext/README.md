@@ -61,10 +61,10 @@ Note: The class files are always generated in a directory hierarchy which reflec
 The compiled application can be run as follows.
 
 Run the application (Unix/OSX):
-`java -cp ".:<CLASS>:<LIB>/*" swisscom.com.ais.itext.allin_itext`
+`java -cp "<CLASS>:<LIB>/*" swisscom.com.ais.itext.allin_itext`
 
 Run the application (Unix/OSX) with custom path to the properties file:
-`java -DpropertyFile.path=<CFG> -cp ".:<CLASS>:<LIB>/*" swisscom.com.ais.itext.allin_itext`
+`java -DpropertyFile.path=<CFG> -cp "<CLASS>:<LIB>/*" swisscom.com.ais.itext.allin_itext`
 
 Run the application (Unix/OSX) with DEBUG enabled:
 `java -Djavax.net.debug=all -Djava.security.debug=certpath -cp ".:<CLASS>:<LIB>/*" swisscom.com.ais.itext.allin_itext`
@@ -76,5 +76,12 @@ If you're on Windows then use a semicolon ; instead of the colon :
 Alternatively you can run the executable JAR file that contains already the compiled java code. It is located in the `./jar` directory. 
 
 Run the application (Unix/OSX): `java -cp "allin_itext.jar:<LIB>/*" swisscom.com.ais.itext.allin_itext`
+
+Run the application (Unix/OSX) with custom path to the properties file:
+`java -DpropertyFile.path=<CFG> -cp "allin_itext.jar:<LIB>/*" swisscom.com.ais.itext.allin_itext`
+
+Run the application (Unix/OSX) with DEBUG enabled:
+`java -Djavax.net.debug=all -Djava.security.debug=certpath -cp "allin_itext.jar:<LIB>/*" swisscom.com.ais.itext.allin_itext`
+
 
 If you're on Windows then use a semicolon ; instead of the colon : 
