@@ -25,7 +25,8 @@ Example: java swisscom.com.ais.itext.allin_itext -v timestamp sample.pdf signed.
 
 ### Dependencies
 
-To run this java example you need to download the following external libraries from given sources:
+This java application has external dependencies (libraries). They are located in the `./lib` subfolder.
+The latest version may be downloaded from the following source:
 
 1: http://mvnrepository.com/artifact/com.google.code.findbugs/jsr305
 
@@ -48,15 +49,15 @@ Refer to `allin_itext.properties` configuration file.
 
 The source files can be compiled as follows. The following placeholder need to be replaced accordingly:
 ```
-<SRC>   = Directory containing the java source files
-<LIB>   = Directory containing the external libraries (jar files)
-<CLASS> = Directory where to place the generated class files
-<CFG>   = Location (path) of the allin_itext.properties
+<SRC>   = Path to the ./src subfolder containing the *.java source files, e.g. ./All-in/itext/src/swisscom/com/ais/itext
+<LIB>   = Path to the ./lib subfolder containing the libraries, e.g. ./All-in/itext/lib
+<CLASS> = Path to the directory where class files will be created, e.g. ./All-in/itext/class
+<CFG>   = Path to the allin_itext.properties file, e.g. ./All-in/itext/allin_itext.properties
 ```
 
 Compile the sources: `javac -d <CLASS> -cp "<LIB>/*" <SRC>/*.java`
 
-Note: The class files are always generated in a directory hierarchy which reflects the given package structure: `<CLASS>/swisscom/com/ais/itext/*.class`
+Note: The class files are generated in a directory hierarchy which reflects the given package structure: `<CLASS>/swisscom/com/ais/itext/*.class`
 
 The compiled application can be run as follows.
 
@@ -77,15 +78,15 @@ Alternatively you may create a Java Archive (JAR) that contains the compiled cla
 
 Create a JAR: `jar cfe allin_itext.jar swisscom.com.ais.itext.allin_itext -C <CLASS> .`
 
-Note that we have done that already for you. The latest JAR file is located in the `./jar` sub-directory. 
+Note that we have done that already for you. The latest JAR file is located in the `./jar` subfolder. 
 
-Run the JAR (Unix/OSX): `java -cp "allin_itext.jar:<LIB>/*" swisscom.com.ais.itext.allin_itext`
+Run the JAR (Unix/OSX): `java -cp "./jar/allin_itext.jar:<LIB>/*" swisscom.com.ais.itext.allin_itext`
 
 Run the JAR (Unix/OSX) with custom path to the properties file:
-`java -DpropertyFile.path=<CFG> -cp "allin_itext.jar:<LIB>/*" swisscom.com.ais.itext.allin_itext`
+`java -DpropertyFile.path=<CFG> -cp "./jar/allin_itext.jar:<LIB>/*" swisscom.com.ais.itext.allin_itext`
 
 Run the JAR (Unix/OSX) with DEBUG enabled:
-`java -Djavax.net.debug=all -Djava.security.debug=certpath -cp "allin_itext.jar:<LIB>/*" swisscom.com.ais.itext.allin_itext`
+`java -Djavax.net.debug=all -Djava.security.debug=certpath -cp "./jar/allin_itext.jar:<LIB>/*" swisscom.com.ais.itext.allin_itext`
 
 
 If you're on Windows then use a semicolon ; instead of the colon : 
