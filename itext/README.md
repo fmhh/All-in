@@ -6,7 +6,7 @@ Java source code and command line tool to sign PDF with iText.
 ### Usage
 
 ````
-Usage: java <javaoptions> swisscom/com/ais/itext/allin_itext <allin_itext_args> signature pdftosign signedpdf <dn> <msisdn> <msg> <lang>
+Usage: swisscom.com.ais.itext.allin_itext <options> signature pdftosign signedpdf [dn] [[msisdn]] [[msg]] [[lang]]
 -v          - verbose output
 -d          - debug mode
 signature   - timestamp, sign
@@ -17,10 +17,10 @@ signedpdf   - signed PDF
 [[msg]]     - optional Mobile ID message when [dn] is present
 [[lang]]    - optional Mobile ID language (en, de, fr, it) when [dn] is present
 
-Example: java swisscom/com/ais/itext/allin_itext -v timestamp sample.pdf signed.pdf
-         java swisscom/com/ais/itext/allin_itext -v sign sample.pdf signed.pdf
-         java swisscom/com/ais/itext/allin_itext -v sign sample.pdf signed.pdf "cn=Hans Muster,o=ACME,c=CH"
-         java swisscom/com/ais/itext/allin_itext -v sign sample.pdf signed.pdf "cn=Hans Muster,o=ACME,c=CH" +41792080350 "service.com: Sign?" en
+Example: java swisscom.com.ais.itext.allin_itext -v timestamp sample.pdf signed.pdf
+         java swisscom.com.ais.itext.allin_itext -v sign sample.pdf signed.pdf
+         java swisscom.com.ais.itext.allin_itext -v sign sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH'
+         java swisscom.com.ais.itext.allin_itext -v sign sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en
 ```
 
 ### Dependencies
@@ -49,12 +49,14 @@ Refer to `allin_itext.properties` configuration file.
 The source files can be compiled as follows. The following placeholder need to be replaced accordingly:
 ```
 <SRC>   = Directory containing the java source files
-<CLASS> = Directory containing the (compiled) java class files
 <LIB>   = Directory containing the external libraries (jar files)
-<CFG>   = Path to the allin_itext.properties
+<CLASS> = Directory where to place the generated class files
+<CFG>   = Location (path) of the allin_itext.properties
 ```
 
 Compile the sources: `javac -d <CLASS> -cp ".:<LIB>/*" <SRC>/*.java`
+
+Note: The class files are always generated in a directory hierarchy which reflects the given package structure: `<CLASS>/swisscom/com/ais/itext/*.class`
 
 The compiled application can be run as follows.
 
