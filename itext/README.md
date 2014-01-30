@@ -70,3 +70,11 @@ Run the application (Unix/OSX) with DEBUG enabled:
 `java -Djavax.net.debug=all -Djava.security.debug=certpath -cp ".:<CLASS>:<LIB>/*" swisscom.com.ais.itext.allin_itext`
 
 If you're on Windows then use a semicolon ; instead of the colon : 
+
+### Run executable JAR file
+
+Alternatively you can run the executable JAR file that contains already the compiled java code. It is located in the `./jar` directory. 
+
+Run the application (Unix/OSX): `java -cp "allin_itext.jar:<LIB>/*" swisscom.com.ais.itext.allin_itext`
+
+If you're on Windows then use a semicolon ; instead of the colon : 
