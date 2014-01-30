@@ -67,7 +67,7 @@ Run the application (Unix/OSX) with custom path to the properties file:
 `java -DpropertyFile.path=<CFG> -cp "<CLASS>:<LIB>/*" swisscom.com.ais.itext.allin_itext`
 
 Run the application (Unix/OSX) with DEBUG enabled:
-`java -Djavax.net.debug=all -Djava.security.debug=certpath -cp ".:<CLASS>:<LIB>/*" swisscom.com.ais.itext.allin_itext`
+`java -Djavax.net.debug=all -Djava.security.debug=certpath -cp "<CLASS>:<LIB>/*" swisscom.com.ais.itext.allin_itext`
 
 If you're on Windows then use a semicolon ; instead of the colon : 
 
