@@ -71,9 +71,13 @@ Run the application (Unix/OSX) with DEBUG enabled:
 
 If you're on Windows then use a semicolon ; instead of the colon : 
 
-### Run executable JAR file
+#### Create & Run JAR file
 
-Alternatively you can run the executable JAR file that contains already the compiled java code. It is located in the `./jar` directory. 
+Alternatively you may create a Java Archive (JAR) that contains the compiled class files.
+
+Create a JAR: `jar cfe allin_itext.jar swisscom.com.ais.itext.allin_itext -C <CLASS> .`
+
+Note that we have done that already for you. The latest JAR file is located in the `./jar` sub-directory. 
 
 Run the JAR (Unix/OSX): `java -cp "allin_itext.jar:<LIB>/*" swisscom.com.ais.itext.allin_itext`
 
