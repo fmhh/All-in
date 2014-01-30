@@ -54,7 +54,7 @@ The source files can be compiled as follows. The following placeholder need to b
 <CFG>   = Location (path) of the allin_itext.properties
 ```
 
-Compile the sources: `javac -d <CLASS> -cp ".:<LIB>/*" <SRC>/*.java`
+Compile the sources: `javac -d <CLASS> -cp "<LIB>/*" <SRC>/*.java`
 
 Note: The class files are always generated in a directory hierarchy which reflects the given package structure: `<CLASS>/swisscom/com/ais/itext/*.class`
 
