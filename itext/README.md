@@ -75,12 +75,12 @@ If you're on Windows then use a semicolon ; instead of the colon :
 
 Alternatively you can run the executable JAR file that contains already the compiled java code. It is located in the `./jar` directory. 
 
-Run the application (Unix/OSX): `java -cp "allin_itext.jar:<LIB>/*" swisscom.com.ais.itext.allin_itext`
+Run the JAR (Unix/OSX): `java -cp "allin_itext.jar:<LIB>/*" swisscom.com.ais.itext.allin_itext`
 
-Run the application (Unix/OSX) with custom path to the properties file:
+Run the JAR (Unix/OSX) with custom path to the properties file:
 `java -DpropertyFile.path=<CFG> -cp "allin_itext.jar:<LIB>/*" swisscom.com.ais.itext.allin_itext`
 
-Run the application (Unix/OSX) with DEBUG enabled:
+Run the JAR (Unix/OSX) with DEBUG enabled:
 `java -Djavax.net.debug=all -Djava.security.debug=certpath -cp "allin_itext.jar:<LIB>/*" swisscom.com.ais.itext.allin_itext`
 
 
