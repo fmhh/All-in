@@ -112,7 +112,7 @@ fi
 if [ ! -n "$DEBUG" ]; then
   [ -f "$TMP" ] && rm $TMP
   [ -f "$TMP.certs.pem" ] && rm $TMP.certs.pem
-  ## TODO REMOVE ALL LEVEL certs
+  for i in $TMP.certs.level?.pem; do rm $i; done
   [ -f "$TMP.certs.check" ] && rm $TMP.certs.check
   [ -f "$TMP.sig" ] && rm $TMP.sig
   [ -f "$TMP.verify" ] && rm $TMP.verify
