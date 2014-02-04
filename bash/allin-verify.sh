@@ -69,8 +69,8 @@ if [ "$RC" = "0" ]; then                        # Verification ok
   openssl pkcs7 -inform pem -in $SIG -out $TMP.certs.pem -print_certs > /dev/null 2>&1
   [ -s "${TMP}.certs.pem" ] || error "Unable to extract the certificates in the signature"
   # Split the certificate list into separate files
-  cat $TMP.certs.pem | awk -v abc=$TMP.certs.level -v c=-1 '/-----BEGIN CERTIFICATE-----/{inc=1;c++}
-                                    inc {print > (abc c ".pem")}
+  cat $TMP.certs.pem | awk -v tmp=$TMP.certs.level -v c=-1 '/-----BEGIN CERTIFICATE-----/{inc=1;c++}
+                                    inc {print > (tmp c ".pem")}
                                     /---END CERTIFICATE-----/{inc=0}'
   # Signers certificate is in level0
   [ -s "$TMP.certs.level0.pem" ] || error "Unable to extract signers certificate from the list"
