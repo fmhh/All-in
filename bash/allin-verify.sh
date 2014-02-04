@@ -54,9 +54,9 @@ FILE=$1                                         # File to verify
 SIG=$2                                          # File containing the detached signature
 
 # Check existence of needed files
-[ -r "${FILE}" ]   || error "File to verify ($FILE) missing or not readable"
-[ -r "${SIG}" ]    || error "Signature file ($SIG) missing or not readable"
-[ -r "${SIG_CA}" ] || error "CA certificate/chain file ($SIG_CA) missing or not readable"
+[ -r "$FILE" ]   || error "File to verify ($FILE) missing or not readable"
+[ -r "$SIG" ]    || error "Signature file ($SIG) missing or not readable"
+[ -r "$SIG_CA" ] || error "CA certificate/chain file ($SIG_CA) missing or not readable"
 
 # Verify the detached signature against original file
 #  -noverify: don't verify signers certificate to avoid expired certificate error for OnDemand
@@ -67,11 +67,10 @@ RC=$?                                           # Keep the related errorlevel
 if [ "$RC" = "0" ]; then                        # Verification ok
   # Extract the certificates in the signature
   openssl pkcs7 -inform pem -in $SIG -out $TMP.certs.pem -print_certs > /dev/null 2>&1
-  [ -s "${TMP}.certs.pem" ] || error "Unable to extract the certificates in the signature"
+  [ -s "$TMP.certs.pem" ] || error "Unable to extract the certificates in the signature"
   # Split the certificate list into separate files
-  cat $TMP.certs.pem | awk -v tmp=$TMP.certs.level -v c=-1 '/-----BEGIN CERTIFICATE-----/{inc=1;c++}
-                                    inc {print > (tmp c ".pem")}
-                                    /---END CERTIFICATE-----/{inc=0}'
+  awk -v tmp=$TMP.certs.level -v c=-1 '/-----BEGIN CERTIFICATE-----/{inc=1;c++} inc {print > (tmp c ".pem")}/---END CERTIFICATE-----/{inc=0}' $TMP.certs.pem
+                                    
   # Signers certificate is in level0
   [ -s "$TMP.certs.level0.pem" ] || error "Unable to extract signers certificate from the list"
   RES_CERT_SUBJ=$(openssl x509 -subject -nameopt utf8 -nameopt sep_comma_plus -noout -in $TMP.certs.level0.pem)
