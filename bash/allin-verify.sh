@@ -69,22 +69,22 @@ if [ "$RC" = "0" ]; then                        # Verification ok
   openssl pkcs7 -inform pem -in $SIG -out $TMP.certs.pem -print_certs > /dev/null 2>&1
   [ -s "${TMP}.certs.pem" ] || error "Unable to extract the certificates in the signature"
   # Split the certificate list into separate files
-  cat $TMP.certs.pem | awk -v c=-1 '/-----BEGIN CERTIFICATE-----/{inc=1;c++}
-                                    inc {print > ("TMP.certs.level" c ".pem")}
+  cat $TMP.certs.pem | awk -v abc=$TMP.certs.level -v c=-1 '/-----BEGIN CERTIFICATE-----/{inc=1;c++}
+                                    inc {print > (abc c ".pem")}
                                     /---END CERTIFICATE-----/{inc=0}'
   # Signers certificate is in level0
-  [ -s "TMP.certs.level0.pem" ] || error "Unable to extract signers certificate from the list"
-  RES_CERT_SUBJ=$(openssl x509 -subject -nameopt utf8 -nameopt sep_comma_plus -noout -in TMP.certs.level0.pem)
-  RES_CERT_ISSUER=$(openssl x509 -issuer -nameopt utf8 -nameopt sep_comma_plus -noout -in TMP.certs.level0.pem)
-  RES_CERT_START=$(openssl x509 -startdate -noout -in TMP.certs.level0.pem)
-  RES_CERT_END=$(openssl x509 -enddate -noout -in TMP.certs.level0.pem)
+  [ -s "$TMP.certs.level0.pem" ] || error "Unable to extract signers certificate from the list"
+  RES_CERT_SUBJ=$(openssl x509 -subject -nameopt utf8 -nameopt sep_comma_plus -noout -in $TMP.certs.level0.pem)
+  RES_CERT_ISSUER=$(openssl x509 -issuer -nameopt utf8 -nameopt sep_comma_plus -noout -in $TMP.certs.level0.pem)
+  RES_CERT_START=$(openssl x509 -startdate -noout -in $TMP.certs.level0.pem)
+  RES_CERT_END=$(openssl x509 -enddate -noout -in $TMP.certs.level0.pem)
 
   # Get OCSP uri from the signers certificate and verify the revocation status
-  OCSP_URL=$(openssl x509 -in TMP.certs.level0.pem -ocsp_uri -noout)
+  OCSP_URL=$(openssl x509 -in $TMP.certs.level0.pem -ocsp_uri -noout)
 
   # Verify the revocation status over OCSP
   if [ -n "$OCSP_URL" ]; then
-    openssl ocsp -CAfile $SIG_CA -issuer TMP.certs.level1.pem -nonce -out $TMP.certs.check -url $OCSP_URL -cert TMP.certs.level0.pem > /dev/null 2>&1
+    openssl ocsp -CAfile $SIG_CA -issuer $TMP.certs.level1.pem -nonce -out $TMP.certs.check -url $OCSP_URL -cert $TMP.certs.level0.pem > /dev/null 2>&1
     OCSP_ERR=$?                                   # Keep related errorlevel
     if [ "$OCSP_ERR" = "0" ]; then                # Revocation check completed
       RES_CERT_STATUS=$(sed -n -e 's/.*.certs.level0.pem: //p' $TMP.certs.check)
