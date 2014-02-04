@@ -1,4 +1,4 @@
-allin-cmd: iText
+All-in: iText
 ============
 
 Java source code and command line tool to sign PDF with iText.
@@ -53,6 +53,7 @@ The source files can be compiled as follows. The following placeholder need to b
 <LIB>   = Path to the ./lib subfolder containing the libraries, e.g. ./All-in/itext/lib
 <CLASS> = Path to the directory where class files will be created, e.g. ./All-in/itext/class
 <CFG>   = Path to the allin_itext.properties file, e.g. ./All-in/itext/allin_itext.properties
+<DOC>   = Path to the ./doc subfolder containing the JavaDoc, e.g. ./All-in/itext/doc
 ```
 
 Compile the sources: `javac -d <CLASS> -cp "<LIB>/*" <SRC>/*.java`
@@ -90,3 +91,8 @@ Run the JAR (Unix/OSX) with DEBUG enabled:
 
 
 If you're on Windows then use a semicolon ; instead of the colon : 
+
+### JavaDoc
+
+The latest JavaDoc is located in the `./doc` subfolder.
+Create the JavaDoc: `javadoc -d <DOC> -private -sourcepath <SRC> swisscom.com.ais.itext`
