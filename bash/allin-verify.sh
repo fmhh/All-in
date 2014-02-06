@@ -58,13 +58,24 @@ SIG=$2                                          # File containing the detached s
 [ -r "$SIG" ]    || error "Signature file ($SIG) missing or not readable"
 [ -r "$SIG_CA" ] || error "CA certificate/chain file ($SIG_CA) missing or not readable"
 
-# Verify the detached signature against original file
+# Convert the PKCS from PEM to DER
+# as this format is supported for both verifications (CMS / TSA)
+openssl pkcs7 -inform pem -in $SIG -out $TMP.sig.der -outform der > /dev/null 2>&1
+[ -s "$TMP.sig.der" ] || error "Unable to convert PKCS7 in $SIG from PEM to DER"
+
+# Verify the detached signature against original file: CMS
 #  -noverify: don't verify signers certificate to avoid expired certificate error for OnDemand
 #  stdout and stderr to a file as the -out will not contain the details about the verification itself
-openssl smime -verify -inform pem -in $SIG -content $FILE -out $TMP.sig -CAfile $SIG_CA -noverify -purpose any 1> $TMP.verify 2>&1
+openssl cms -verify -inform der -in $TMP.sig.der -content $FILE -out $TMP.sig -CAfile $SIG_CA -noverify -purpose any 1> $TMP.cms.verify 2>&1
+RC_CMS=$?                                       # Keep the related errorlevel
 
-RC=$?                                           # Keep the related errorlevel
-if [ "$RC" = "0" ]; then                        # Verification ok
+# Verify the detached signature against original file: TSA
+#  -token_in: indicates that the input is a DER encoded time stamp token (ContentInfo) instead of a time stamp response
+#  stdout and stderr to a file as the -out will not contain the details about the verification itself
+openssl ts -verify -data $FILE -in $TMP.sig.der -token_in -CAfile allin-ca.crt 1> $TMP.tsa.verify 2>&1
+RC_TSA=$?                                       # Keep the related errorlevel
+
+if [ "$RC_CMS" = "0" -o "$RC_TSA" = "0" ]; then # Any verification ok
   # Extract the certificates in the signature
   openssl pkcs7 -inform pem -in $SIG -out $TMP.certs.pem -print_certs > /dev/null 2>&1
   [ -s "$TMP.certs.pem" ] || error "Unable to extract the certificates in the signature"
@@ -80,10 +91,19 @@ if [ "$RC" = "0" ]; then                        # Verification ok
 
   # Get OCSP uri from the signers certificate and verify the revocation status
   OCSP_URL=$(openssl x509 -in $TMP.certs.level0.pem -ocsp_uri -noout)
+  # Find the proper issuer certificate in the list
+  ISSUER=
+  for i in $TMP.certs.level?.pem; do
+    if [ -s "$i" ]; then
+      RES_TMP=$(openssl x509 -subject -nameopt utf8 -nameopt sep_comma_plus -noout -in $i)
+      RES_TMP=${RES_TMP/subject= /issuer= }
+      if [ "$RES_TMP" = "$RES_CERT_ISSUER" ]; then ISSUER=$i; fi
+    fi
+  done
 
   # Verify the revocation status over OCSP
-  if [ -n "$OCSP_URL" ]; then
-    openssl ocsp -CAfile $SIG_CA -issuer $TMP.certs.level1.pem -nonce -out $TMP.certs.check -url $OCSP_URL -cert $TMP.certs.level0.pem > /dev/null 2>&1
+  if [ -n "$OCSP_URL" -a -n "$ISSUER" ]; then
+    openssl ocsp -CAfile $SIG_CA -issuer $ISSUER -nonce -out $TMP.certs.check -url $OCSP_URL -cert $TMP.certs.level0.pem > /dev/null 2>&1
     OCSP_ERR=$?                                   # Keep related errorlevel
     if [ "$OCSP_ERR" = "0" ]; then                # Revocation check completed
       RES_CERT_STATUS=$(sed -n -e 's/.*.certs.level0.pem: //p' $TMP.certs.check)
@@ -104,7 +124,10 @@ if [ "$RC" = "0" ]; then                        # Verification ok
  else                                           # -> verification failure
   if [ "$VERBOSE" = "1" ]; then                   # Verbose details
     echo "FAILED on $SIG with following details:"
-    [ -f "$TMP.verify" ] && cat $TMP.verify
+    echo ">> CMS verification details <<"
+    [ -f "$TMP.cms.verify" ] && cat $TMP.cms.verify
+    echo ">> TSA verification details <<"
+    [ -f "$TMP.tsa.verify" ] && cat $TMP.tsa.verify
   fi
 fi
 
@@ -112,10 +135,11 @@ fi
 if [ ! -n "$DEBUG" ]; then
   [ -f "$TMP" ] && rm $TMP
   [ -f "$TMP.certs.pem" ] && rm $TMP.certs.pem
-  for i in $TMP.certs.level?.pem; do rm $i; done
+  for i in $TMP.certs.level?.pem; do [ -f "$i" ] && rm $i; done
   [ -f "$TMP.certs.check" ] && rm $TMP.certs.check
-  [ -f "$TMP.sig" ] && rm $TMP.sig
-  [ -f "$TMP.verify" ] && rm $TMP.verify
+  [ -f "$TMP.sig.der" ] && rm $TMP.sig.der
+  [ -f "$TMP.cms.verify" ] && rm $TMP.cms.verify
+  [ -f "$TMP.tsa.verify" ] && rm $TMP.tsa.verify
 fi
 
 exit $RC
