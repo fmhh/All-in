@@ -72,7 +72,7 @@ RC_CMS=$?                                       # Keep the related errorlevel
 # Verify the detached signature against original file: TSA
 #  -token_in: indicates that the input is a DER encoded time stamp token (ContentInfo) instead of a time stamp response
 #  stdout and stderr to a file as the -out will not contain the details about the verification itself
-openssl ts -verify -data $FILE -in $TMP.sig.der -token_in -CAfile allin-ca.crt 1> $TMP.tsa.verify 2>&1
+openssl ts -verify -data $FILE -in $TMP.sig.der -token_in -CAfile $SIG_CA 1> $TMP.tsa.verify 2>&1
 RC_TSA=$?                                       # Keep the related errorlevel
 
 if [ "$RC_CMS" = "0" -o "$RC_TSA" = "0" ]; then # Any verification ok
