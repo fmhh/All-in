@@ -96,7 +96,7 @@ if [ "$RC_CMS" = "0" -o "$RC_TSA" = "0" ]; then # Any verification ok
   for i in $TMP.certs.level?.pem; do
     if [ -s "$i" ]; then
       RES_TMP=$(openssl x509 -subject -nameopt utf8 -nameopt sep_comma_plus -noout -in $i)
-      RES_TMP=${RES_TMP/subject= /issuer= }
+      RES_TMP=$(echo "$RES_TMP" | sed -e 's/subject= /issuer= /')
       if [ "$RES_TMP" = "$RES_CERT_ISSUER" ]; then ISSUER=$i; fi
     fi
   done
