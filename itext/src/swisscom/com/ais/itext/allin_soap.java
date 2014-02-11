@@ -6,7 +6,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 23.01.2014 09:25
+ * 11.02.2014 10:19
  * <p/>
  * Version:
  * 1.0.0
@@ -427,49 +427,70 @@ public class allin_soap {
             }
 
             if (!singingSuccess) {
-                System.err.println("FAILED to sign " + pdfNames + " with following details:");
+                System.err.print("FAILED to sign " + pdfNames);
             } else {
-                System.out.println("OK signing " + pdfNames + " with following details:");
+                System.out.print("OK signing " + pdfNames);
             }
 
             if (sigResponse != null) {
-                if (responseResult != null && _verboseMode) {
-                    for (String s : responseResult) {
-                        if (s.length() > 0) {
-                            if (!singingSuccess) {
-                                System.err.println(" Result major: " + s);
-                            } else {
-                                System.out.println(" Result major: " + s);
-                            }
-                        }
-                    }
-                }
 
-                ArrayList<String> resultMinor = getTextFromXmlText(sigResponse, "ResultMinor");
-                if (resultMinor != null && _verboseMode) {
-                    for (String s : resultMinor) {
-                        if (s.length() > 0) {
-                            if (!singingSuccess) {
-                                System.err.println(" Result minor: " + s);
-                            } else {
-                                System.out.println(" Result minor: " + s);
-                            }
-                        }
-                    }
-                }
+                ArrayList<String> resultMinor = null;
+                ArrayList<String> errorMsg = null;
 
-                ArrayList<String> errorMsg = getTextFromXmlText(sigResponse, "ResultMessage");
-                if (errorMsg != null && _verboseMode) {
-                    for (String s : errorMsg) {
-                        if (s.length() > 0) {
-                            if (!singingSuccess) {
-                                System.err.println(" Result message: " + s);
-                            } else {
-                                System.out.println(" Result message: " + s);
+                if (_verboseMode) {
+                    resultMinor = getTextFromXmlText(sigResponse, "ResultMinor");
+                    errorMsg = getTextFromXmlText(sigResponse, "ResultMessage");
+
+                    if (responseResult != null || resultMinor != null || errorMsg != null) {
+                        if (!singingSuccess) {
+                            System.err.println(" with following details:");
+                        } else {
+                            System.out.println(" with following details:");
+                        }
+                    }
+
+                    if (responseResult != null) {
+                        for (String s : responseResult) {
+                            if (s.length() > 0) {
+                                if (!singingSuccess) {
+                                    System.err.println(" Result major: " + s);
+                                } else {
+                                    System.out.println(" Result major: " + s);
+                                }
+                            }
+                        }
+                    }
+
+                    if (resultMinor != null) {
+                        for (String s : resultMinor) {
+                            if (s.length() > 0) {
+                                if (!singingSuccess) {
+                                    System.err.println(" Result minor: " + s);
+                                } else {
+                                    System.out.println(" Result minor: " + s);
+                                }
+                            }
+                        }
+                    }
+
+                    if (errorMsg != null) {
+                        for (String s : errorMsg) {
+                            if (s.length() > 0) {
+                                if (!singingSuccess) {
+                                    System.err.println(" Result message: " + s);
+                                } else {
+                                    System.out.println(" Result message: " + s);
+                                }
                             }
                         }
                     }
                 }
+            }
+            //we need a line break
+            if (!singingSuccess) {
+                System.err.println("");
+            } else {
+                System.out.println("");
             }
         }
 
