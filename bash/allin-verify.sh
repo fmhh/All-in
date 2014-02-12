@@ -102,8 +102,9 @@ if [ "$RC_CMS" = "0" -o "$RC_TSA" = "0" ]; then # Any verification ok
   done
 
   # Verify the revocation status over OCSP
+  # -no_cert_verify: don't verify the OCSP response signers certificate at all
   if [ -n "$OCSP_URL" -a -n "$ISSUER" ]; then
-    openssl ocsp -CAfile $SIG_CA -issuer $ISSUER -nonce -out $TMP.certs.check -url $OCSP_URL -cert $TMP.certs.level0.pem > /dev/null 2>&1
+    openssl ocsp -CAfile $SIG_CA -issuer $ISSUER -nonce -out $TMP.certs.check -url $OCSP_URL -cert $TMP.certs.level0.pem -no_cert_verify > /dev/null 2>&1
     OCSP_ERR=$?                                   # Keep related errorlevel
     if [ "$OCSP_ERR" = "0" ]; then                # Revocation check completed
       RES_CERT_STATUS=$(sed -n -e 's/.*.certs.level0.pem: //p' $TMP.certs.check)
