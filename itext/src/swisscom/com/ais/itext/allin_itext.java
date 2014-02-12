@@ -3,7 +3,7 @@
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 22.01.2014 17:22
+ * 12.02.2014 13:09
  * <p/>
  * Version:
  * 1.0.0
@@ -42,24 +42,65 @@ public class allin_itext {
     static boolean debugMode = false;
 
     /**
+     * The signature type. E.g. timestamp, sign, ...
+     */
+    allin_include.Signature signature = null;
+
+    /**
+     * Path to pdf which get a signature
+     */
+    String pdfToSign = null;
+
+    /**
+     * Path to output document with generated signature
+     */
+    String signedPDF = null;
+
+    /**
+     * Distinguished name contains information about signer. Needed for ondemand signature
+     */
+    String distinguishedName = null;
+
+    /**
+     * Mobile phone number to send a message when signing a document. Needed for signing with mobile id
+     */
+    String msisdn = null;
+
+    /**
+     * Message which will be send to mobile phone with mobile id. Needed for signing with mobile id.
+     */
+    String msg = null;
+
+    /**
+     * Language of the message which will be send to mobile phone with mobile id. Needed for signing with mobile id.
+     */
+    String language = null;
+
+    /**
+     * Path for properties file. Needed if standard path will not be used.
+     */
+    String propertyFilePath = null;
+
+    /**
      * Prints usage of allin
      */
     public static void printUsage() {
-        System.out.println("Usage: swisscom.com.ais.itext.allin_itext <options> signature pdftosign signedpdf [dn] [[msisdn]] [[msg]] [[lang]]");
-        System.out.println("-v          - verbose output");
-        System.out.println("-d          - debug mode");
-        System.out.println("signature   - timestamp, sign");
-        System.out.println("pdftosign   - PDF to be signed");
-        System.out.println("signedpdf   - signed PDF");
-        System.out.println("[dn]        - optional distinguished name for on-demand certificate signing");
-        System.out.println("[[msisdn]]  - optional Mobile ID authentication when [dn] is present");
-        System.out.println("[[msg]]     - optional Mobile ID message when [dn] is present");
-        System.out.println("[[lang]]    - optional Mobile ID language (en, de, fr, it) when [dn] is present");
+        System.out.println("Usage: swisscom.com.ais.itext.allin_itext <options>");
+        System.out.println("-v              - verbose output");
+        System.out.println("-d              - debug mode");
+        System.out.println("-mode           - timestamp, sign");
+        System.out.println("-infile         - PDF to be signed");
+        System.out.println("-outfile        - signed PDF");
+        System.out.println("[-dn]           - optional distinguished name for on-demand certificate signing");
+        System.out.println("[[-msisdn]]     - optional Mobile ID authentication when [dn] is present");
+        System.out.println("[[-msg]]        - optional Mobile ID message when [dn] is present");
+        System.out.println("[[-lang]]       - optional Mobile ID language (en, de, fr, it) when [dn] is present");
+        System.out.println("[-prop_file]    - optional path to properties file when standard path will not be used");
         System.out.println("");
-        System.out.println("Example: java swisscom.com.ais.itext.allin_itext -v timestamp sample.pdf signed.pdf");
-        System.out.println("         java swisscom.com.ais.itext.allin_itext -v sign sample.pdf signed.pdf");
-        System.out.println("         java swisscom.com.ais.itext.allin_itext -v sign sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH'");
-        System.out.println("         java swisscom.com.ais.itext.allin_itext -v sign sample.pdf signed.pdf 'cn=Hans Muster,o=ACME,c=CH' +41792080350 'service.com: Sign?' en");
+        System.out.println("Example: java swisscom.com.ais.itext.allin_itext -v -mode=timestamp -infile='sample.pdf' -outfile='signed.pdf'");
+        System.out.println("         java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -prop_file='/tmp/dss.properties'");
+        System.out.println("         java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -dn='cn=Hans Muster,o=ACME,c=CH'");
+        System.out.println("         java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -dn='cn=Hans Muster,o=ACME,c=CH' -msisdn='+41792080350' -msg='service.com: Sign?' -lang=en");
     }
 
     /**
@@ -72,126 +113,142 @@ public class allin_itext {
     }
 
     /**
-     * Main method to start allin. This will parse given parameters e.g. input file, output file etc. and start signature
-     * process. Furthermore this method prints error message if signing failed. See usage part in README to know how to
-     * use it.
-     *
-     * @param args Arguments that will be parsed. See useage part in README for more details.
+     * Parse given parameters. If an error occurs application with exit with code 1. If debug and/or verbose mode is set
+     * an error message will be shown
+     * @param args
      */
-    public static void main(String[] args) {
-
-        allin_include.Signature signature = null;
-        String pdfToSign = null;
-        String signedPDF = null;
-        String distinguishedName = null;
-        String msisdn = null;
-        String msg = null;
-        String language = null;
+    private void parseParameters(String[] args) {
+        String param;
 
         if (args == null || args.length < 3) {
             printUsage();
             System.exit(1);
         }
 
-        if (args[0].trim().toLowerCase().equals("-v") || args[1].trim().toLowerCase().equals("-v")) {
-            verboseMode = true;
+        for (int i = 0; i < args.length; i++) {
+
+            param = args[i].toLowerCase();
+
+            if (args[i].toLowerCase().contains("-v")) {
+                verboseMode = true;
+            } else if (param.contains("-d")) {
+                debugMode = true;
+            } else if (param.contains("-mode=")) {
+                String signatureString = null;
+                try {
+                    signatureString = args[i].substring(args[i].indexOf("=") + 1).trim().toUpperCase();
+                    signature = allin_include.Signature.valueOf(signatureString);
+                } catch (IllegalArgumentException e) {
+                    if (debugMode || verboseMode) {
+                        printError(signatureString + " is not a valid signature.");
+                    }
+                    printUsage();
+                    System.exit(1);
+                }
+            } else if (param.contains("-infile=")) {
+                pdfToSign = args[i].substring(args[i].indexOf("=") + 1).trim();
+                File pdfToSignFile = new File(pdfToSign);
+
+                if (!pdfToSignFile.isFile() || !pdfToSignFile.canRead()) {
+                    if (debugMode || verboseMode) {
+                        printError("File " + pdfToSign + " is not a file or can not be read.");
+                    }
+                    System.exit(1);
+                }
+            } else if (param.contains("-outfile=")) {
+                signedPDF = args[i].substring(args[i].indexOf("=") + 1).trim();
+                String errorMsg = null;
+                if (signedPDF.equals(pdfToSign)) {
+                    errorMsg = "Source file equals target file.";
+                } else if (!new File(signedPDF).getParentFile().isDirectory()) {
+                    errorMsg = "Can not create target file in given path.";
+                } else if (new File(signedPDF).isFile()) {
+                    errorMsg = "Target file exist.";
+                }
+                if (errorMsg != null) {
+                    if (debugMode || verboseMode) {
+                        printError(errorMsg);
+                    }
+                    System.exit(1);
+                }
+            } else if (param.contains("-dn=")) {
+                distinguishedName = args[i].substring(args[i].indexOf("=") - 1).trim();
+            } else if (param.contains("-msisdn=")) {
+                msisdn = args[i].substring(args[i].indexOf("=") + 1).trim();
+            } else if (param.contains("-msg=")) {
+                msg = args[i].substring(args[i].indexOf("=") + 1).trim();
+            } else if (param.contains("-lang=")) {
+                language = args[i].substring(args[i].indexOf("=") + 1).trim();
+            } else if (param.contains("-prop_file=")) {
+                propertyFilePath = args[i].substring(args[i].indexOf("=") + 1).trim();
+                File propertyFile = new File(propertyFilePath);
+                if (!propertyFile.isFile() || !propertyFile.canRead()) {
+                    if (debugMode || verboseMode) {
+                        printError("Property file path is set but file does not exist or can not read it.");
+                    }
+                    System.exit(1);
+                }
+            }
         }
+    }
 
-        if (args[0].trim().toLowerCase().equals("-d") || args[1].trim().toLowerCase().equals("-d")) {
-            debugMode = true;
-        }
+    /**
+     * Check if needed parameters are given. If not method will print an error and exit with code 1
+     */
+    private void checkNecessaryParams() {
 
-        int argPointer = debugMode && verboseMode ? 2 : !debugMode && !verboseMode ? 0 : !debugMode && verboseMode || debugMode && !verboseMode ? 1 : -1;
-
-        try {
-            signature = allin_include.Signature.valueOf(args[argPointer].trim().toUpperCase());
-            ++argPointer;
-        } catch (IllegalArgumentException e) {
+        if (pdfToSign == null) {
             if (debugMode || verboseMode) {
-                printError(args[argPointer] + " is not a valid signature.");
+                printError("Input file does not exist.");
             }
-            printUsage();
             System.exit(1);
         }
 
-        if (args.length < argPointer + 1) {
+        if (signedPDF == null) {
             if (debugMode || verboseMode) {
-                printError("Could not find pdf to sign");
-            }
-            printUsage();
-            System.exit(1);
-        }
-
-        pdfToSign = args[argPointer];
-        File filePdfToSign = new File(pdfToSign);
-        ++argPointer;
-
-        if (!filePdfToSign.isFile() || !filePdfToSign.canRead()) {
-            if (debugMode || verboseMode) {
-                printError("File " + pdfToSign + " does not exist or is not a file or can not be read.");
+                printError("Output file does not exist.");
             }
             System.exit(1);
         }
+    }
 
-        if (args.length < argPointer + 1) {
-            if (debugMode || verboseMode) {
-                printError("Could not find output path for signing PDF");
+    /**
+     * This method checks if there are unnecessary parameters. If there are some it will print the usage of parameters
+     * and exit with code 1
+     */
+    private void checkUnnecessaryParams() {
+
+        if (signature.equals(allin_include.Signature.TIMESTAMP)) {
+            if (distinguishedName != null || msisdn != null || msg != null || language != null) {
+                if (debugMode || verboseMode) {
+                    printUsage();
+                }
+                System.exit(1);
             }
-            printUsage();
-            System.exit(1);
-        }
-
-        signedPDF = args[argPointer];
-        if (signedPDF.equals(pdfToSign)) {
-            if (debugMode || verboseMode) {
-                printError("Source file equals target file");
+        } else {
+            if (!(distinguishedName == null && msisdn == null && msg == null && language == null ||
+                    distinguishedName != null && msisdn == null && msg == null && language == null ||
+                    distinguishedName != null && msisdn != null && msg != null && language != null)) {
+                if (debugMode || verboseMode) {
+                    printUsage();
+                }
+                System.exit(1);
             }
-            System.exit(1);
         }
-        
-        if (new File(signedPDF).isFile()) {
-	    if (debugMode || verboseMode) {
-              printError("Target file exists");
-            }
-            System.exit(1);
-        }
-        ++argPointer;
+    }
 
-        if (args.length >= argPointer + 1) {
-            distinguishedName = args[argPointer];
-            ++argPointer;
-        }
+    /**
+     * Parse given parameters, check if all necessary parameters exist and if there are not unnecessary parameters.
+     * If there are problems with parameters application will abort with exit code 1.
+     * After all checks are done signing process will start.
+     *
+     * @param params
+     */
+    private void runSigning(String[] params) {
 
-        if (args.length >= argPointer + 1) {
-            msisdn = args[argPointer];
-            ++argPointer;
-        }
-
-        if (args.length >= argPointer + 1) {
-            msg = args[argPointer];
-            ++argPointer;
-        }
-
-        if (args.length >= argPointer + 1) {
-            language = args[argPointer];
-            ++argPointer;
-        }
-
-        if (msisdn != null && msg == null) {
-            if (debugMode || verboseMode) {
-                printError("Missing msg parameter");
-            }
-            printUsage();
-            System.exit(1);
-        }
-
-        if (msisdn != null && language == null) {
-            if (debugMode || verboseMode) {
-                printError("Missing language parameter");
-            }
-            printUsage();
-            System.exit(1);
-        }
+        parseParameters(params);
+        checkNecessaryParams();
+        checkUnnecessaryParams();
 
         try {
             //parse signature
@@ -201,7 +258,8 @@ public class allin_itext {
                 signature = allin_include.Signature.STATIC;
             }
 
-            allin_soap dss_soap = new allin_soap(verboseMode, debugMode, System.getProperty("propertyFile.path"));
+            //start signing
+            allin_soap dss_soap = new allin_soap(verboseMode, debugMode, propertyFilePath);
             dss_soap.sign(signature, pdfToSign, signedPDF, distinguishedName, msisdn, msg, language);
         } catch (Exception e) {
             if (debugMode || verboseMode) {
@@ -209,6 +267,20 @@ public class allin_itext {
             }
             System.exit(1);
         }
+    }
+
+    /**
+     * Main method to start allin. This will parse given parameters e.g. input file, output file etc. and start signature
+     * process. Furthermore this method prints error message if signing failed. See usage part in README to know how to
+     * use it.
+     *
+     * @param args Arguments that will be parsed. See useage part in README for more details.
+     */
+    public static void main(String[] args) {
+
+        allin_itext allin = new allin_itext();
+        allin.runSigning(args);
+
     }
 
 }

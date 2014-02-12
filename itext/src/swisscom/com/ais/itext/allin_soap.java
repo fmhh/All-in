@@ -6,7 +6,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 11.02.2014 10:19
+ * 12.02.2014 13:13
  * <p/>
  * Version:
  * 1.0.0
@@ -76,7 +76,7 @@ public class allin_soap {
     /**
      * Path to configuration file. Can also set in constructor
      */
-    private static String _cfgPath = "allin_itext.properties";
+    private String _cfgPath = "allin_itext.properties";
 
     /**
      * Properties from properties file
@@ -694,7 +694,7 @@ public class allin_soap {
                     if (phoneNumber != null) {
                         SOAPElement stepUpAuthorisationElement = certificateRequestElement.addChildElement("StepUpAuthorisation", "sc");
 
-                        if (mobileIdType != null && phoneNumber != null) {
+                        if (mobileIdType != null) {
                             SOAPElement mobileIdElement = stepUpAuthorisationElement.addChildElement("MobileID", "sc");
                             mobileIdElement.addAttribute(new QName("Type"), _MOBILE_ID_TYPE);
                             SOAPElement msisdnElement = mobileIdElement.addChildElement("MSISDN", "sc");
