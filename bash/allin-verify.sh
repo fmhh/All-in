@@ -132,6 +132,14 @@ if [ "$RC_CMS" = "0" -o "$RC_TSA" = "0" ]; then # Any verification ok
   fi
 fi
 
+# Debug details
+if [ -n "$DEBUG" ]; then
+  [ -f "$TMP.cms.verify" ] && echo ">>> $TMP.cms.verify <<<" && cat $TMP.cms.verify
+  [ -f "$TMP.tsa.verify" ] && echo ">>> $TMP.tsa.verify <<<" && cat $TMP.tsa.verify
+  [ -f "$TMP.certs.check" ] && echo ">>> $TMP.certs.check <<<" && cat $TMP.certs.check
+  echo ""
+fi
+
 # Cleanups if not DEBUG mode
 if [ ! -n "$DEBUG" ]; then
   [ -f "$TMP" ] && rm $TMP
