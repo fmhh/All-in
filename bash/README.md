@@ -82,14 +82,20 @@ OK on myfile.p7s with following details:
  Signed by    : subject= CN=Hans Muster,O=ACME,C=CH
                 issuer= C=ch,O=Swisscom,OU=Digital Certificate Services,CN=Swisscom TEST Saphir CA 2
                 validity= notBefore=Jan 22 08:48:10 2014 GMT notAfter=Jan 22 08:58:10 2014 GMT
- OCSP check   : unknown
+                OCSP check= good
+ Embedded OCSP: Yes
+ Embedded TSA : Yes
 ```
 
 ```
 FAILED on myfile.p7s with following details:
+>> CMS verification details <<
 Verification failure
-2710938092:error:21071065:PKCS7 routines:PKCS7_signatureVerify:digest failure:pk7_doit.c:1097:
-2710938092:error:21075069:PKCS7 routines:PKCS7_verify:signature failure:pk7_smime.c:410:
+2710938092:error:2E09A09E:CMS routines:CMS_SignerInfo_verify_content:verification failure:cms_sd.c:887:
+2710938092:error:2E09D06D:CMS routines:CMS_verify:content verify error:cms_smime.c:425:
+>> TSA verification details <<
+2710938092:error:2F094086:time stamp routines:PKCS7_to_TS_TST_INFO:detached content:ts_asn1.c:296:
+Verification: FAILED
 ```
 
 

@@ -115,12 +115,31 @@ if [ "$RC_CMS" = "0" -o "$RC_TSA" = "0" ]; then # Any verification ok
     RES_CERT_STATUS="No OCSP information found in the signers certificate"
   fi
 
+  # Check for embedded elements by decoding the PKCS#7
+  openssl cms -cmsout -print -noout -inform der -in $TMP.sig.der -out $TMP.pkcs7.dump
+  # OCSP: object: id-smime-aa-ets-revocationValues (1.2.840.113549.1.9.16.2.24)
+  CHECK_OCSP=$(grep 1.2.840.113549.1.9.16.2.24 $TMP.pkcs7.dump)
+  if [ -n "$CHECK_OCSP" ]; then
+    EMBEDDED_OCSP="Yes"
+   else
+    EMBEDDED_OCSP="No"
+  fi
+  # TSA: object: id-smime-aa-timeStampToken (1.2.840.113549.1.9.16.2.14)
+  CHECK_TSA=$(grep 1.2.840.113549.1.9.16.2.14 $TMP.pkcs7.dump)
+  if [ -n "$CHECK_TSA" ]; then
+    EMBEDDED_TSA="Yes"
+   else
+    EMBEDDED_TSA="No"
+  fi
+
   if [ "$VERBOSE" = "1" ]; then                   # Verbose details
     echo "OK on $SIG with following details:"
-    echo " Signed by    : $RES_CERT_SUBJ"
+    echo " Signer       : $RES_CERT_SUBJ"
     echo "                $RES_CERT_ISSUER"
     echo "                validity= $RES_CERT_START $RES_CERT_END"
-    echo " OCSP check   : $RES_CERT_STATUS"
+    echo "                OCSP check= $RES_CERT_STATUS"
+    echo " Embedded OCSP: $EMBEDDED_OCSP"
+    echo " Embedded TSA : $EMBEDDED_TSA"
   fi
  else                                           # -> verification failure
   if [ "$VERBOSE" = "1" ]; then                   # Verbose details
@@ -146,9 +165,11 @@ if [ ! -n "$DEBUG" ]; then
   [ -f "$TMP.certs.pem" ] && rm $TMP.certs.pem
   for i in $TMP.certs.level?.pem; do [ -f "$i" ] && rm $i; done
   [ -f "$TMP.certs.check" ] && rm $TMP.certs.check
+  [ -f "$TMP.sig" ] && rm $TMP.sig
   [ -f "$TMP.sig.der" ] && rm $TMP.sig.der
   [ -f "$TMP.cms.verify" ] && rm $TMP.cms.verify
   [ -f "$TMP.tsa.verify" ] && rm $TMP.tsa.verify
+  [ -f "$TMP.pkcs7.dump" ] && rm $TMP.pkcs7.dump
 fi
 
 exit $RC
