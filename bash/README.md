@@ -79,7 +79,7 @@ FAILED on myfile.txt with following details:
 Example of verbose outputs for signature verifications:
 ```
 OK on myfile.p7s with following details:
- Signed by    : subject= CN=Hans Muster,O=ACME,C=CH
+ Signer       : subject= CN=Hans Muster,O=ACME,C=CH
                 issuer= C=ch,O=Swisscom,OU=Digital Certificate Services,CN=Swisscom TEST Saphir CA 2
                 validity= notBefore=Jan 22 08:48:10 2014 GMT notAfter=Jan 22 08:58:10 2014 GMT
                 OCSP check= good

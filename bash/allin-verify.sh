@@ -41,7 +41,7 @@ fi
 PWD=$(dirname $0)                               # Get the Path of the script
 
 # Check the dependencies
-for cmd in openssl sed awk; do
+for cmd in openssl sed awk grep; do
   hash $cmd &> /dev/null
   if [ $? -eq 1 ]; then error "Dependency error: '$cmd' not found" ; fi
 done
