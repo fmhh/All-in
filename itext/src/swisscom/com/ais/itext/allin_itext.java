@@ -3,7 +3,7 @@
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 12.02.2014 13:09
+ * 17.02.2014 15:12
  * <p/>
  * Version:
  * 1.0.0
@@ -57,6 +57,21 @@ public class allin_itext {
     String signedPDF = null;
 
     /**
+     * Reason for signing a document.
+     */
+    String signingReason = null;
+
+    /**
+     * Location where a document was signed
+     */
+    String signingLocation = null;
+
+    /**
+     * Person who signed the document
+     */
+    String signingContact = null;
+
+    /**
      * Distinguished name contains information about signer. Needed for ondemand signature
      */
     String distinguishedName = null;
@@ -91,6 +106,9 @@ public class allin_itext {
         System.out.println("-mode           - timestamp, sign");
         System.out.println("-infile         - PDF to be signed");
         System.out.println("-outfile        - signed PDF");
+        System.out.println("[-reason]       - optional singing reason");
+        System.out.println("[-location]     - optional signign location");
+        System.out.println("[-contact]      - optional person who signed document");
         System.out.println("[-dn]           - optional distinguished name for on-demand certificate signing");
         System.out.println("[[-msisdn]]     - optional Mobile ID authentication when [dn] is present");
         System.out.println("[[-msg]]        - optional Mobile ID message when [dn] is present");
@@ -129,11 +147,7 @@ public class allin_itext {
 
             param = args[i].toLowerCase();
 
-            if (args[i].toLowerCase().contains("-v")) {
-                verboseMode = true;
-            } else if (param.contains("-d")) {
-                debugMode = true;
-            } else if (param.contains("-mode=")) {
+            if (param.contains("-mode=")) {
                 String signatureString = null;
                 try {
                     signatureString = args[i].substring(args[i].indexOf("=") + 1).trim().toUpperCase();
@@ -171,6 +185,12 @@ public class allin_itext {
                     }
                     System.exit(1);
                 }
+            } else if (param.contains("-reason")) {
+                signingReason = args[i].substring(args[i].indexOf("=") + 1).trim();
+            } else if (param.contains("-location")) {
+                signingLocation = args[i].substring(args[i].indexOf("=") + 1).trim();
+            } else if (param.contains("-contact")) {
+                signingContact = args[i].substring(args[i].indexOf("=") + 1).trim();
             } else if (param.contains("-dn=")) {
                 distinguishedName = args[i].substring(args[i].indexOf("=") - 1).trim();
             } else if (param.contains("-msisdn=")) {
@@ -188,6 +208,10 @@ public class allin_itext {
                     }
                     System.exit(1);
                 }
+            } else if (args[i].toLowerCase().contains("-v")) {
+                verboseMode = true;
+            } else if (param.contains("-d")) {
+                debugMode = true;
             }
         }
     }
@@ -214,7 +238,7 @@ public class allin_itext {
 
     /**
      * This method checks if there are unnecessary parameters. If there are some it will print the usage of parameters
-     * and exit with code 1
+     * and exit with code 1 (e.g. DN is given for signing with timestamp)
      */
     private void checkUnnecessaryParams() {
 
@@ -260,7 +284,7 @@ public class allin_itext {
 
             //start signing
             allin_soap dss_soap = new allin_soap(verboseMode, debugMode, propertyFilePath);
-            dss_soap.sign(signature, pdfToSign, signedPDF, distinguishedName, msisdn, msg, language);
+            dss_soap.sign(signature, pdfToSign, signedPDF, signingReason, signingLocation, signingContact, distinguishedName, msisdn, msg, language);
         } catch (Exception e) {
             if (debugMode || verboseMode) {
                 printError(e.getMessage().replaceAll("java.lang.Exception", "").length() > 0 ? e.getMessage() : "");

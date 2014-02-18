@@ -6,7 +6,7 @@
  * 03.12.13 KW49 14:51
  * </p>
  * Last Modification:
- * 12.02.2014 13:13
+ * 17.02.2014 15:13
  * <p/>
  * Version:
  * 1.0.0
@@ -174,6 +174,9 @@ public class allin_soap {
      * @param signatureType     Type of signature e.g. timestamp, ondemand or static
      * @param fileIn            File path of input pdf document
      * @param fileOut           File path of output pdf document which will be the signed one
+     * @param signingReason     Reason for signing a document
+     * @param signingLocation   Location where a document was signed
+     * @param signingContact    Person who signed document
      * @param distinguishedName Information about signer e.g. name, country etc.
      * @param msisdn            Mobile id for sending message to signer
      * @param msg               Message which will be send to signer if msisdn is set
@@ -181,6 +184,7 @@ public class allin_soap {
      * @throws Exception If parameters are not set or signing failed
      */
     public void sign(@Nonnull allin_include.Signature signatureType, @Nonnull String fileIn, @Nonnull String fileOut,
+                     @Nullable String signingReason, @Nullable String signingLocation, @Nullable String signingContact,
                      @Nullable String distinguishedName, @Nullable String msisdn, @Nullable String msg, @Nullable String language)
             throws Exception {
 
@@ -196,7 +200,7 @@ public class allin_soap {
             claimedIdentity = claimedIdentity.concat(":" + properties.getProperty(claimedIdentityPropName));
         }
 
-        allin_pdf pdf = new allin_pdf(fileIn, fileOut, null, null, null, null);
+        allin_pdf pdf = new allin_pdf(fileIn, fileOut, null, signingReason, signingLocation, signingContact);
 
         try {
             String requestId = getRequestId();
