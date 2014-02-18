@@ -3,7 +3,7 @@
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 17.02.2014 15:12
+ * 1.02.2014 13:47
  * <p/>
  * Version:
  * 1.0.0
@@ -116,7 +116,7 @@ public class allin_itext {
         System.out.println("[-prop_file]    - optional path to properties file when standard path will not be used");
         System.out.println("");
         System.out.println("Example: java swisscom.com.ais.itext.allin_itext -v -mode=timestamp -infile='sample.pdf' -outfile='signed.pdf'");
-        System.out.println("         java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -prop_file='/tmp/dss.properties'");
+        System.out.println("         java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -reason='nothing is changed' -location='Zürich' -contact='Musterperson' -prop_file='/tmp/dss.properties'");
         System.out.println("         java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -dn='cn=Hans Muster,o=ACME,c=CH'");
         System.out.println("         java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -dn='cn=Hans Muster,o=ACME,c=CH' -msisdn='+41792080350' -msg='service.com: Sign?' -lang=en");
     }
@@ -192,7 +192,7 @@ public class allin_itext {
             } else if (param.contains("-contact")) {
                 signingContact = args[i].substring(args[i].indexOf("=") + 1).trim();
             } else if (param.contains("-dn=")) {
-                distinguishedName = args[i].substring(args[i].indexOf("=") - 1).trim();
+                distinguishedName = args[i].substring(args[i].indexOf("=") + 1).trim();
             } else if (param.contains("-msisdn=")) {
                 msisdn = args[i].substring(args[i].indexOf("=") + 1).trim();
             } else if (param.contains("-msg=")) {
