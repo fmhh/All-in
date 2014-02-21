@@ -3,7 +3,7 @@
  * 18.12.13 KW 51 10:42
  * </p>
  * Last Modification:
- * 1.02.2014 13:47
+ * 18.02.2014 13:47
  * <p/>
  * Version:
  * 1.0.0
@@ -107,18 +107,18 @@ public class allin_itext {
         System.out.println("-infile         - PDF to be signed");
         System.out.println("-outfile        - signed PDF");
         System.out.println("[-reason]       - optional singing reason");
-        System.out.println("[-location]     - optional signign location");
-        System.out.println("[-contact]      - optional person who signed document");
+        System.out.println("[-location]     - optional signing location");
+        System.out.println("[-contact]      - optional signing contact");
         System.out.println("[-dn]           - optional distinguished name for on-demand certificate signing");
         System.out.println("[[-msisdn]]     - optional Mobile ID authentication when [dn] is present");
         System.out.println("[[-msg]]        - optional Mobile ID message when [dn] is present");
         System.out.println("[[-lang]]       - optional Mobile ID language (en, de, fr, it) when [dn] is present");
         System.out.println("[-prop_file]    - optional path to properties file when standard path will not be used");
         System.out.println("");
-        System.out.println("Example: java swisscom.com.ais.itext.allin_itext -v -mode=timestamp -infile='sample.pdf' -outfile='signed.pdf'");
-        System.out.println("         java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -reason='nothing is changed' -location='Zürich' -contact='Musterperson' -prop_file='/tmp/dss.properties'");
-        System.out.println("         java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -dn='cn=Hans Muster,o=ACME,c=CH'");
-        System.out.println("         java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -dn='cn=Hans Muster,o=ACME,c=CH' -msisdn='+41792080350' -msg='service.com: Sign?' -lang=en");
+        System.out.println("Example java swisscom.com.ais.itext.allin_itext -v -mode=timestamp -infile='sample.pdf' -outfile='signed.pdf'");
+        System.out.println("        java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -reason='Ok' -location='Zuerich' -contact='Musterperson' -prop_file='/tmp/dss.properties'");
+        System.out.println("        java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -dn='cn=Hans Muster,o=ACME,c=CH'");
+        System.out.println("        java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -dn='cn=Hans Muster,o=ACME,c=CH' -msisdn='+41792080350' -msg='service.com: Sign?' -lang=en");
     }
 
     /**

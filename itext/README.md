@@ -12,19 +12,19 @@ Usage: swisscom.com.ais.itext.allin_itext <options>
 -mode           - timestamp, sign
 -infile         - PDF to be signed
 -outfile        - signed PDF
-[-reason]       - optional singing reason
-[-location]     - optional signign location
-[-contact]      - optional person who signed document
+[-reason]       - optional signing reason
+[-location]     - optional signing location
+[-contact]      - optional signing contact
 [-dn]           - optional distinguished name for on-demand certificate signing
 [[-msisdn]]     - optional Mobile ID authentication when [dn] is present
 [[-msg]]        - optional Mobile ID message when [dn] is present
 [[-lang]]       - optional Mobile ID language (en, de, fr, it) when [dn] is present
 [-prop_file]    - optional path to properties file when standard path will not be used
 
-Example: java swisscom.com.ais.itext.allin_itext -v -mode=timestamp -infile='sample.pdf' -outfile='signed.pdf'
-         java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -reason='nothing is changed' -location='Zürich' -contact='Musterperson' -prop_file='/tmp/dss.properties'
-         java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -dn='cn=Hans Muster,o=ACME,c=CH'
-         java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -dn='cn=Hans Muster,o=ACME,c=CH' -msisdn='+41792080350' -msg='service.com: Sign?' -lang=en
+Example java swisscom.com.ais.itext.allin_itext -v -mode=timestamp -infile='sample.pdf' -outfile='signed.pdf'
+        java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -reason='Ok' -location='Zuerich' -contact='Musterperson' -prop_file='/tmp/dss.properties'
+        java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -dn='cn=Hans Muster,o=ACME,c=CH'
+        java swisscom.com.ais.itext.allin_itext -v -mode=sign -infile='sample.pdf' -outfile='signed.pdf' -dn='cn=Hans Muster,o=ACME,c=CH' -msisdn='+41792080350' -msg='service.com: Sign?' -lang=en
 ```
 
 ### Dependencies
